@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Res Ipsa Loquitur - Irish Judicial Studies Journal</title>
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+ul { margin-bottom: 1rem; padding-left: 2rem; }
+li { font-size: 14px; line-height: 1.75; margin-bottom: 0.5rem; }
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="window.history.back()" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>RES IPSA LOQUITUR – A RULE, A PRINCIPLE, A MAXIM, A DOCTRINE, A MYTH OR A CONVENIENT LABEL?</h1>
+<p class="subtitle">Authors: Mr Justice Michael MacGrath, Judge of the Court of Appeal, with the assistance of Ms Leah Powell, Judicial Assistant.[cite: 8] &bull; Irish Judicial Studies Journal Vol 8(2)[cite: 8]</p>
+
+<div class="section">
+<p class="section-title">Abstract</p>
+<p class="written">This article charts the history of the evidential principle of res ipsa loquitur and its interpretation across jurisdictions.[cite: 8] It addresses the myriad of descriptions which have been attached to the principle and the inconsistent views of its procedural effect.[cite: 8] The view favoured is that the correct characterisation of res ipsa loquitur is as an evidential aid where an inference of negligence, or want of care, arises from the existence of certain facts.[cite: 8] It is a rule grounded in common sense.[cite: 8] It is not a substantive rule of law.[cite: 8] It results in the shifting of the evidential, not legal, burden of proof.[cite: 8] The recommendation of academic commentators that the principle is so confused and nebulous that it ought to be abolished is tentatively rejected on the grounds that there exist particular conditions for its applicability and that, when construed and applied properly, it has sufficient internal coherency.[cite: 8] The view is also advanced that the principle of res ipsa loquitur is distinct from wider doctrines such as those of peculiar knowledge or capacity for proof and ought not to be conflated with them.[cite: 8]</p>
+</div>
+
+<div class="section">
+<p class="section-title">Introduction</p>
+<p class="written">It is unsatisfactory if a principle of law is unpredictable in its application or confusing as to its effect.[cite: 8] This may be said of the history and development of res ipsa loquitur as a legal concept.[cite: 8] "The thing speaks for itself" was a phrase frequently employed in Roman times.[cite: 8] The legal concept can be traced back to at least the 1860's and is thought to have its origins in the common calling cases, such as the old railway collision cases and, thereafter, the falling objects cases.[cite: 8] It has variously been described as a principle, a rule, a maxim, a myth, an evidentiary doctrine, and 'a species of circumstantial evidence'.[cite: 8] Indeed, in Ballard v North British Railway Co., Lord Shaw stated that if it had not been in Latin, 'nobody would have called it a principle.'[cite: 8] In Lindsay v Mid-Western Health Board, O'Flaherty J adopted as an 'apt description of the scope of the maxim' the characterisation of the principle by the authors of Fleming's Law of Torts.[cite: 8]</p>
+
+<p class="written" style="padding-left: 2rem; border-left: 3px solid var(--border);">...a convenient label...to describe situations where, notwithstanding the plaintiff's inability to establish the exact cause of the accident, the fact of the accident by itself is sufficient in the absence of an explanation to justify the conclusion that most probably the defendant was negligent and that his negligence caused the injury.[cite: 8] The maxim contains nothing new; it is based on common sense, since it is a matter of ordinary observation and experience in life that sometimes a thing tells its own story.[cite: 8]</p>
+
+<p class="written">Thus, while variously described, for the purposes of this discussion it will be here referred to as the principle of res ipsa loquitur.[cite: 8] When circumstances exist such as to give rise to the invocation of the principle, controversy and disagreement have surrounded its operation and effect.[cite: 8] One important point of disagreement has been whether the successful invocation of the principle results in shifting the 'legal' or 'evidential' burden.[cite: 8] In almost all cases, and all the way through a trial, the legal burden rests with the plaintiff.[cite: 8] The legal burden has also been described as the burden of persuasion.[cite: 8] In contrast, the evidential burden may shift many times during the course of the trial.[cite: 8] It is concerned with the burden of adducing evidence.[cite: 8] Using these terms interchangeably, as has sometimes happened in the context of the application of the res ipsa loquitur principle, has given rise to confusion, particularly in the assessment of when and in what circumstances those burdens shift.[cite: 8]</p>
+</div>
+
+<div class="section">
+<p class="section-title">Conditions of Applicability</p>
+<p class="written">It has been said that where the principle arises, the plaintiff must show what happened and that harm was occasioned but is relieved of showing how it happened.[cite: 8] It does not apply where the cause is known and, historically, it was associated with negligence actions where want of care had to be established as a necessary ingredient of the cause of action.[cite: 8] It follows that when res ipsa loquitur arises it does not shift the burden of proof of establishing the existence of the duty of care or of causation, which burdens remain on the plaintiff.[cite: 8]</p>
+
+<p class="written">The principle is said to apply where:</p>
+<ul>
+  <li>The thing or operation was under the management of the defendant.[cite: 8]</li>
+  <li>The accident was such as in ordinary circumstances could not have occurred where care was exercised by those in control of the thing or operation.[cite: 8]</li>
+  <li>Reasonable evidence of negligence has been established.[cite: 8] The evidence of negligence adduced does not have to be direct.[cite: 8] Circumstantial evidence is just as probative.[cite: 8]</li>
+</ul>
+</div>
+
+<div class="section">
+<p class="section-title">Procedural Effect - Varying Views</p>
+<p class="written">There has been jurisdictional inconsistency as to the effect of the operation of the principle; whether a burden is shifted and, if so, what burden – legal or evidential.[cite: 8] McMahon and Binchy have aptly commented that this state of perplexity is '[o]ne of the most difficult and unsatisfactory aspects of the operation of the res ipsa loquitur.'[cite: 8]</p>
+
+<p class="written">The authors of Phipson on Evidence describe the authorities in England and Wales as having long been confused as to the effect of res ipsa loquitur.[cite: 8] Wigmore, writing over one hundred years ago in his Treatise on the Law of Evidence, commented that courts did not always make it clear whether res ipsa loquitur creates a full presumption, or merely satisfies the plaintiff's duty of producing evidence sufficient to go to the jury.[cite: 8] This is explored by Thomsen, in an article entitled 'Presumptions and Burdens of Proof in Res Ipsa Loquitur Cases in Maryland'.[cite: 8] The author suggests that a consideration of the authorities illustrate that the uncertainty and perhaps, conversely, the flexibility of the principle's application is long standing.[cite: 8]</p>
+
+<p class="written">In this jurisdiction, therefore, the better view seems to be that the evidential burden shifts, the court retaining final discretion to determine whether the inference ought to prevail.[cite: 8] The defendant is required to show that all reasonable care was exercised on their part; he is not required to prove the cause of the alleged harm to a persuasive standard.[cite: 8]</p>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

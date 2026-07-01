@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byrne v. Boadle - Court of Exchequer</title>
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="window.history.back()" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>Byrne v. Boadle</h1>
+<p class="subtitle">Court of Exchequer &bull; 2 H. & C. 722, 159 Eng. Rep. 299 &bull; 1863</p>
+
+<div class="section">
+<p class="written"><strong>Facts:</strong> In Byrne v Boadle, a Liverpool flour merchant was sued by a pedestrian who was struck and injured by a barrel which fell from a storeroom on the second story of the defendant's premises.[cite: 8] The plaintiff was unable to present direct evidence of the defendant's negligence.[cite: 8]</p>
+
+<p class="written"><strong>Opinion:</strong> In the Court of Exchequer, Pollock CB ruled in favour of the plaintiff despite his inability to present evidence of the defendant's negligence.[cite: 8] Pollock CB observed that '[t]here are certain cases of which it may be said <em>res ipsa loquitur</em>, and this seems one of them.[cite: 8] A barrel could not roll out of a warehouse without some negligence'.[cite: 8]</p>
+
+<p class="written">The decision in Byrne is best understood as a practical expansion of existing liability doctrine.[cite: 8] Though it provides only a snapshot of jurisprudence during this period, the case persuasively indicates that judges at the height of nineteenth-century industrialization were not so caught up in big business or big ideas that they had abandoned the ageless imperative of the common law system to seek the fairest legal outcome for every set of facts.[cite: 8]</p>
+</div>
+
+<div class="section" style="text-align: center; margin-top: 2rem;">
+  <a href="byrne_practice.html" class="case-btn" style="margin-right: 8px;">Practice Question</a>
+  <a href="/pages/byrne_bonusreading.html" class="case-btn">Bonus Reading</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

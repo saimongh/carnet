@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vosburg v. Putney - Supreme Court of Wisconsin</title>
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.brief-row{display:flex;gap:8px;align-items:flex-start;padding:0.6rem 0;border-bottom:0.5px solid var(--border);}
+.brief-row:last-child{border-bottom:none;}
+.brief-num{font-size:12px;font-weight:500;color:var(--text-sub);min-width:20px;}
+.brief-text{font-size:13px;line-height:1.5;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.written sup{font-size:10px;color:var(--text-sub);margin-left:2px;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+/* toggle & nav button styles */
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <a href="/index.html" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </a>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>Vosburg v. Putney</h1>
+<p class="subtitle">Supreme Court of Wisconsin &bull; 80 Wis. 523, 50 N.W. 403 &bull; October 26 - November 17, 1891</p>
+
+<div class="section">
+<p class="written">VOSBURG, by guardian ad litem, Respondent, vs. PUTNEY, by guardian ad litem, Appellant.[cite: 6]</p>
+
+<p class="written" style="font-weight:500;">(1) Assault and battery: Intent to do harm.[cite: 6] (2) Measure of damages.[cite: 6] (3) Evidence: Hypothetical questions.[cite: 6]</p>
+<p class="written">1. A kick upon the leg, given by one pupil to another in the school-room and while school was in session, was an unlawful act, and an action for assault and battery may be maintained therefor, although there was no intention to do harm.[cite: 6]<br>
+2. The wrong-doer in such case is liable for all injuries resulting directly from the wrongful act, whether they could or could not have been foreseen by him.[cite: 6]<br>
+3. It is error to permit an expert witness to answer a hypothetical question which calls for his opinion in a matter vital to the case, but excludes from his consideration facts already proved by the witness upon whose testimony such hypothetical question is based, when a consideration of such facts is essential to the formation of an intelligent opinion concerning the matter.[cite: 6]</p>
+
+<p class="written">APPEAL from the Circuit Court for Waukesha County.[cite: 6]</p>
+<p class="written">The action was brought to recover damages for an assault and battery, alleged to have been committed by the defendant upon the plaintiff on February 20, 1889.[cite: 6] The answer is a general denial.[cite: 6] At the date of the alleged assault the plaintiff was a little more than fourteen years of age, and the defendant a little less than twelve years of age.[cite: 6]</p>
+<p class="written">The injury complained of was caused by a kick inflicted by defendant upon the leg of the plaintiff, a little below the knee.[cite: 6] The transaction occurred in a school-room in Waukesha, during school hours, both parties being pupils in the school.[cite: 6] A former trial of the cause resulted in a verdict and judgment for the plaintiff for $2,800.[cite: 6] The defendant appealed from such judgment to this court, and the same was reversed for error, and a new trial awarded.[cite: 6] 78 Wis. 84.[cite: 6]</p>
+<p class="written">The case has been again tried in the circuit court, and the trial resulted in a verdict for plaintiff for $2,500.[cite: 6] The facts of the case, as they appeared on both trials, are sufficiently stated in the opinion by Mr. Justice ORTON on the former appeal, and require no repetition.[cite: 6]</p>
+<p class="written">On the last trial the jury found a special verdict, as follows: “ (1) Had the plaintiff during the month of January, 1889, received an injury just above the knee, which became inflamed, and produced pus? Answer. Yes.[cite: 6] (2) Had such injury on the 20th day of February, 1889, nearly healed at the point of the injury? A. Yes.[cite: 6] (3) Was the plaintiff, before said 20th of February, lame, as the result of such injury? A. No.[cite: 6] (4) Had the tibia in the plaintiff’s right leg become inflamed or diseased to some extent before he received the blow or kick from the defendant? A. No.[cite: 6] (5) What was the exciting cause of the injury to the plaintiff’s leg? A. Kick.[cite: 6] (6) Did the defendant, in touching the plaintiff with his foot, intend to do him any harm? A. No.[cite: 6] (7) At what sum do you assess the damages of the plaintiff? A. $2,500.”[cite: 6]</p>
+<p class="written">The defendant moved for judgment in his favor on the verdict, and also for a new trial.[cite: 6] The plaintiff moved for judgment on the verdict in his favor.[cite: 6] The motions of defendant were overruled, and that of the plaintiff granted.[cite: 6] Thereupon judgment for plaintiff for $2,500 damages and costs of suit was duly entered.[cite: 6] The defendant appeals from the judgment.[cite: 6]</p>
+
+<p class="written">T. W. Haight, attorney, and J. V. Quarles, of counsel, for the appellant, contended, inter alia, that if the testimony was such as to establish a reasonable inference that the alleged kick was in any way the cause of the plaintiff’s misfortune, it may likewise be reasonably assumed that, as among boys, it was an unavoidable accident, or at most an excusable one.[cite: 6] Harvey v. Dunlap, Hill & Denio Supp. 195; Bullock v. Babcock, 3 Wend. 391; Webster’s Dict. tit. ACCIDENT; Barry v. U. S. Mut. Acc. Ass’n, 23 Fed. Rep. 712; U. S. Mut. Acc. Ass’n v. Barry, 131 U. S. 100; Brown v. Kendall 6 Cush. 292.[cite: 6] Negligence is the real ground of possible recovery in a case like this.[cite: 6] Conway v. Reed, 66 Mo. 346, 27 Am. Rep. 354.[cite: 6] And the rule governing liability as well as damages should be the same as in cases of negligence.[cite: 6] Crandall v. Goodrich Transp. Co. 16 Fed. Rep. 75; McGrew v. Stone, 53 Pa. St. 441-2; Putnam v. B. & S. A. R. Co. 55 N. Y. 118; Servatius v. Pichel, 34 Wis. 299; Stewart v. Ripon, 38 id. 590; Ingram v. Rankin, 47 id. 409; Harvey v. Dunlap, Hill & Denio Supp. 195, cited in 51 N. Y. 488; Paxton v. Boyer, 67 Ill. 132; Morris v. Platt, 32 Conn. 75; Phillips v. Dickerson, 85 Ill. 11; Marvin v. C., M. & St. P. R. Co. 79 Wis. 140.[cite: 6] The question of contributory negligence, therefore, on the part of the plaintiff or of his parents, should have been submitted as requested.[cite: 6] Setting aside the question of contributory negligence, however, “in order to warrant a finding that negligence, or an act not amounting to a wanton wrong, is the proximate cause of an injury, it must appear that the injury was the natural and probable consequence of the wrongful act, and that it ought to have been foreseen in the light of attending circumstances.”[cite: 6] Atkinson v. Goodrich Transp. Co. 60 Wis. 141; Mil. & St. P. R. Co. v. Kellogg, 94 U. S. 469; 2 Thomp. Neg. 1083.[cite: 6] That the bone inflammation suffered by plaintiff was not a natural, or probable, or ordinary result of defendant’s act is conceded, and therefore a nonsuit should have been granted.[cite: 6] Vedder v. Hildreth, 2 Wis. 427; Cooley, Torts, 62, 69; Addison, Torts (Wood’s ed.), 1, 5, and note; Bigelow, Torts, 312; Miles v. A., M. & O. R. Co. Receivers, 4 Hughes, 172; Scheffer v. Railroad Co. 105 U. S. 249; Moak’s Underhill, Torts, 16; Stewart v. Ripon, 38 Wis. 590; Sharp v. Powell, L. R. 7 C. P. 258.[cite: 6]</p>
+
+<p class="written">There being no evil intent or its equivalent shown, there should be no recovery.[cite: 6] 2 Greenl. Ev. secs. 82-85; 2 Addison, Torts, sec. 790; Cooley, Torts, 162; Coward v. Baddeley, 4 Hurl. & N. 478; Christopherson v. Bare, 11 Q. B. 473; Hoffman v. Eppers, 41 Wis. 251; Krall v. Lull, 49 id. 405; Alderson v. Waistell, 1 Car. & K. 358; Brown v. Kendall, 6 Cush. 292; Morris v. Platt, 32 Conn. 75-86.[cite: 6] The motive and purpose being innocent and harmless, the law implies a license for the defendant’s act.[cite: 6] Hooker v. C., M. & St. P. R. Co. 76 Wis. 546; Adam v. Freeman, 12 Johns. 408; Cooley, Torts, 303, 163; Thayer v. Jarvis, 44 Wis. 390.[cite: 6]</p>
+
+<p class="written">For the respondent there was a brief by Ryan & Merton, and oral argument by T. E. Ryan.[cite: 6] They argued, among other things, that where an infant commits a wrong to another, whether wilfully or negligently, or by the direct application of force, or the indirect results of force, the law, while regarding his youth or inexperience and making due allowance for absence of evil intent or capacity for evil intent, proceeds upon the reason that damages directly resulting to another from the wrong he has committed ought to be recompensed.[cite: 6] Cooley, Torts, 98, 99; Huchting v. Engel, 17 Wis. 230; School Dist. v. Bragdon, 23 N. H. 507; Zouch v. Parsons, 3 Burr. 1802; Jennings v. Rundall, 8 Term R. 335; Conway v. Reed, 66 Mo. 346; Oliver v. McClellan, 21 Ala. 675; Barham v. Turbeville, 1 Swan (Tenn.), 437; Bullock v. Babcock, 3 Wend. 391; Peterson v. Haffner, 59 Ind. 130; Conklin v. Thompson, 29 Barb. 218; Neal v. Gillett, 23 Conn. 437.[cite: 6] The party who commits a trespass or other wrongful act is liable for all the direct injury resulting from such act, although such resulting injury could not have been contemplated as the probable result.[cite: 6] 3 Suth. Dam. 714; McNamara v. Clintonville, 62 Wis. 207; Oliver v. La Valle, 36 id. 592; Stewart v. Ripon, 38 id. 584; Brown v. C., M. & St. P. R. Co. 54 id. 362; Ehrgott v. Mayor, 96 N. Y. 280.[cite: 6] It being shown that the defendant knowingly and consciously kicked the plaintiff and injured him, the nonsuit was properly denied.[cite: 6]</p>
+
+<p class="written" style="text-align:center; font-weight:500;">Opinion</p>
+<p class="written">LYON, J. Several errors are assigned, only three of which will be considered.[cite: 6]</p>
+<p class="written">1. The jury having found that the defendant, in touching the plaintiff with his foot, did not intend to do him any harm, counsel for defendant maintain that the plaintiff has no cause of action, and that defendant’s motion for judgment on the special verdict should have been granted.[cite: 6] In support of this proposition counsel quote from 2 Greenl. Ev. § 83, the rule that “the intention to do harm is of the essence of an assault.”[cite: 6] Such is the rule, no doubt, in actions or prosecutions for mere assaults.[cite: 6] But this is an action to recover damages for an alleged assault and battery.[cite: 6] In such case the rule is correctly stated, in many of the authorities cited by counsel, that plaintiff must show either that the intention was unlawful, or that the defendant is in fault.[cite: 6] If the intended act is unlawful, the intention to commit it must necessarily be unlawful.[cite: 6] Hence, as applied to this case, if the kicking of the plaintiff by the defendant was an unlawful act, the intention of defendant to kick him was also unlawful.[cite: 6]</p>
+<p class="written">Had the parties been upon the play-grounds of the school, engaged in the usual boyish sports, the defendant being free from malice, wantonness, or negligence, and intending no harm to plaintiff in what he did, we should hesitate to hold the act of the defendant unlawful, or that he could be held liable in this action.[cite: 6] Some consideration is due to the implied license of the play-grounds.[cite: 6] But it appears that the injury was inflicted in the school, after it had been called to order by the teacher, and after the regular exercises of the school had commenced.[cite: 6] Under these circumstances, no implied license to do the act complained of existed, and such act was a violation of the order and decorum of the school, and necessarily unlawful.[cite: 6] Hence we are of the opinion that, under the evidence and verdict, the action may be sustained.[cite: 6]</p>
+
+<p class="written">2. The plaintiff testified, as a witness in his own behalf, as to the circumstances of the alleged injury inflicted upon him by the defendant, and also in regard to the wound he received in January, near the same knee, mentioned in the special verdict.[cite: 6] The defendant claimed that such wound was the proximate cause of the injury to plaintiff’s leg, in that it produced a diseased condition of the bone, which disease was in active progress when he received the kick, and that such kick did nothing more than to change the location, and perhaps somewhat hasten the progress, of the disease.[cite: 6] The testimony of Dr. Bacon, a witness for plaintiff (who was plaintiff’s attending physician), elicited on cross-examination, tends to some extent to establish such claim.[cite: 6] Dr. Bacon first saw the injured leg on February 25th, and Dr. Philler, also one of the plaintiff’s witnesses, first saw it March 8th.[cite: 6] Dr. Philler was called as a witness after the examination of the plaintiff and Dr. Bacon.[cite: 6] On his direct examination he testified as follows: “I heard the testimony of Andrew Vosburg in regard to how he received the kick, February 20th, from his playmate.[cite: 6] I heard read the testimony of Miss More, and heard where he said he received this kick on that day.”[cite: 6] (Miss More had already testified that she was the teacher of the school, and saw defendant standing in the aisle by his seat, and kicking across the aisle, hitting the plaintiff.)[cite: 6] The following question was then propounded to Dr. Philler: “After hearing that testimony, and what you know of the case of the boy, seeing it on the 8th day of March, what, in your opinion, was the exciting cause that produced the inflammation that you saw in that boy’s leg on that day?”[cite: 6] An objection to this question was overruled, and the witness answered: “The exciting cause was the injury received at that day by the kick on the shin-bone.”[cite: 6]</p>
+<p class="written">It will be observed that the above question to Dr. Philler calls for his opinion as a medical expert, based in part upon the testimony of the plaintiff, as to what was the proximate cause of the injury to plaintiff’s leg.[cite: 6] The plaintiff testified to two wounds upon his leg, either of which might have been such proximate cause.[cite: 6] Without taking both of these wounds into consideration, the expert could give no intelligent or reliable opinion as to which of them caused the injury complained of; yet, in the hypothetical question propounded to him, one of these probable causes was excluded from the consideration of the witness, and he was required to give his opinion upon an imperfect and insufficient hypothesis, one which excluded from his consideration a material fact essential to an intelligent opinion.[cite: 6] A consideration by the witness of the wound received by the plaintiff in January being thus prevented, the witness had but one fact upon which to base his opinion, to wit, the fact that defendant kicked plaintiff on the shin-bone.[cite: 6] Based, as it necessarily was, on that fact alone, the opinion of Dr. Philler that the kick caused the injury was inevitable, when, had the proper hypothesis been submitted to him, his opinion might have been different.[cite: 6] The answer of Dr. Philler to the hypothetical question put to him may have had, probably did have, a controlling influence with the jury, for they found by their verdict that his opinion was correct.[cite: 6]</p>
+<p class="written">Surely there can be no rule of evidence which will tolerate a hypothetical question to an expert, calling for his opinion in a matter vital to the case, which excludes from his consideration facts already proved by a witness upon whose testimony such hypothetical question is based, when a consideration of such facts by the expert is absolutely essential to enable him to form an intelligent opinion concerning such matter.[cite: 6] The objection to the question put to Dr. Philler should have been sustained.[cite: 6] The error in permitting the witness to answer the question is material, and necessarily fatal to the judgment.[cite: 6]</p>
+
+<p class="written">3. Certain questions were proposed on behalf of defendant to be submitted to the jury, founded upon the theory that only such damages could be recovered as the defendant might reasonably be supposed to have contemplated as likely to result from his kicking the plaintiff.[cite: 6] The court refused to submit such questions to the jury.[cite: 6] The ruling was correct.[cite: 6] The rule of damages in actions for torts was held in Brown v. C., M. & St. P. R. Co. 54 Wis. 342, to be that the wrong-doer is liable for all injuries resulting directly from the wrongful act, whether they could or could not have been foreseen by him.[cite: 6] The chief justice and the writer of this opinion dissented from the judgment in that case, chiefly because we were of the opinion that the complaint stated a cause of action ex contractu, and not ex delicto, and hence that a different rule of damages - the rule here contended for - was applicable.[cite: 6] We did not question that the rule in actions for tort was correctly stated.[cite: 6] That case rules this on the question of damages.[cite: 6]</p>
+<p class="written">The remaining errors assigned are upon the rulings of the court on objections to testimony.[cite: 6] These rulings are not very likely to be repeated on another trial, and are not of sufficient importance to require a review of them on this appeal.[cite: 6]</p>
+<p class="written">By the Court. - The judgment of the circuit court is reversed, and the cause will be remanded for a new trial.[cite: 6]</p>
+<p class="written">See note to this case in 14 L. R. A. 226. - REP.[cite: 6]</p>
+</div>
+
+<div class="section" style="text-align: center; margin-top: 2rem;">
+  <a href="/pages/vosburg_practice.html" class="case-btn">Practice Question</a>
+  <a href="/pages/vosburg_history.html" class="case-btn">Bonus Reading</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

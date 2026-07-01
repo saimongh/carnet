@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palsgraf v. Long Island Railroad — Practice Question</title>
+<style>
+:root{
+  --bg:#fff;--text:#2C2C2A;--text-muted:#5F5E5A;--text-sub:#888780;
+  --border:#D3D1C7;--card-bg:#fff;--phase-bg:#F1EFE8;
+  --teal-bg:#E1F5EE;--teal-text:#0F6E56;--teal-border:#1D9E75;
+  --purple-bg:#EEEDFE;--purple-text:#3C3489;--purple-border:#3C3489;
+  --amber-bg:#FAEEDA;--amber-text:#854F0B;--amber-border:#EF9F27;
+  --coral-bg:#FAECE7;--coral-text:#993C1D;--coral-border:#993C1D;
+  --blue-bg:#E6F1FB;--blue-text:#185FA5;--blue-border:#378ADD;
+  --success-text:#085041;--warn-text:#633806;--info-text:#0C447C;
+}
+[data-theme="dark"]{
+  --bg:#222;--text:#f0f0f0;--text-muted:#bbb;--text-sub:#aaa;
+  --border:#444;--card-bg:#2d2d2d;--phase-bg:#333;
+  --teal-bg:#11332a;--teal-text:#4adeb2;--teal-border:#1a8f69;
+  --purple-bg:#1c1a3b;--purple-text:#a8a0f0;--purple-border:#564cba;
+  --amber-bg:#3b280b;--amber-text:#f0b767;--amber-border:#c4801c;
+  --coral-bg:#3b170c;--coral-text:#f28b6b;--coral-border:#bd4821;
+  --blue-bg:#0b2238;--blue-text:#73b3f0;--blue-border:#2c72b8;
+  --success-text:#59dcb1;--warn-text:#f5c487;--info-text:#88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition:background .3s,color .3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:.5rem;border-bottom:.5px solid var(--border);}
+.card{background:var(--card-bg);border:.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem;}
+.warn-box{background:var(--amber-bg);border:.5px solid var(--amber-border);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--warn-text);margin-bottom:.75rem;line-height:1.5;}
+.success-box{background:var(--teal-bg);border:.5px solid var(--teal-border);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--success-text);line-height:1.5;margin-top:.75rem;}
+.info-box{background:var(--blue-bg);border:.5px solid var(--blue-border);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:.75rem;}
+.fact-box{background:var(--phase-bg);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;border-left:3px solid var(--teal-border);}
+.fact-box p{font-size:14px;line-height:1.8;margin-bottom:.75rem;}
+.fact-box p:last-child{margin-bottom:0;}
+.brief-row{display:flex;gap:8px;align-items:flex-start;padding:.5rem 0;border-bottom:.5px solid var(--border);}
+.brief-row:last-child{border-bottom:none;}
+.brief-num{font-size:12px;font-weight:500;color:var(--text-sub);min-width:20px;}
+.brief-text{font-size:13px;line-height:1.5;}
+textarea{width:100%;border:.5px solid var(--border);border-radius:8px;padding:.75rem;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);resize:vertical;min-height:220px;line-height:1.6;transition:border-color .2s;}
+textarea:focus{outline:none;border-color:var(--teal-border);}
+.btn{font-size:13px;font-weight:500;padding:8px 16px;border-radius:6px;border:.5px solid var(--border);background:var(--phase-bg);color:var(--text);cursor:pointer;transition:all .2s;}
+.btn:hover{filter:brightness(.95);}
+[data-theme="dark"] .btn:hover{filter:brightness(1.15);}
+.btn-primary{background:var(--teal-border);color:#fff;border-color:var(--teal-border);}
+.btn-primary:hover{filter:brightness(.9);}
+.btn-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem;}
+.timer-bar{display:flex;align-items:center;justify-content:space-between;background:var(--phase-bg);border-radius:8px;padding:.75rem 1rem;margin-bottom:1.5rem;}
+.timer-display{font-size:22px;font-weight:500;font-variant-numeric:tabular-nums;}
+.timer-display.warning{color:var(--coral-text);}
+.timer-label{font-size:12px;color:var(--text-sub);}
+.irac-bar{display:flex;gap:6px;margin:.75rem 0 1.25rem;}
+.irac-seg{flex:1;text-align:center;padding:4px 0;font-size:11px;font-weight:500;border-radius:4px;}
+.irac-i{background:var(--teal-bg);color:var(--teal-text);}
+.irac-r{background:var(--purple-bg);color:var(--purple-text);}
+.irac-a{background:var(--coral-bg);color:var(--coral-text);}
+.irac-c{background:var(--blue-bg);color:var(--blue-text);}
+.answer-section{display:none;margin-top:2rem;border-top:.5px solid var(--border);padding-top:1.5rem;}
+.answer-section.visible{display:block;}
+.answer-block{border-left:3px solid;padding:.75rem 1rem;margin-bottom:.75rem;}
+.ab-i{border-color:var(--teal-border);background:var(--teal-bg);}
+.ab-r{border-color:var(--purple-border);background:var(--purple-bg);}
+.ab-a{border-color:var(--coral-border);background:var(--coral-bg);}
+.ab-c{border-color:var(--blue-border);background:var(--blue-bg);}
+.ab-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px;}
+.ab-text{font-size:13px;line-height:1.75;}
+.ab-text p{margin-bottom:.6rem;}
+.ab-text p:last-child{margin-bottom:0;}
+.rubric-row{display:flex;gap:10px;align-items:flex-start;padding:.5rem 0;border-bottom:.5px solid var(--border);}
+.rubric-row:last-child{border-bottom:none;}
+.rubric-pts{font-size:12px;font-weight:500;color:var(--teal-text);min-width:44px;background:var(--teal-bg);border-radius:6px;padding:2px 6px;text-align:center;flex-shrink:0;margin-top:2px;}
+.rubric-desc{font-size:13px;line-height:1.5;}
+.hidden{display:none;}
+#nav-arrows{position:fixed;top:1.5rem;left:1.5rem;display:flex;gap:8px;z-index:1000;}
+.action-btn{background:var(--card-bg);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .2s;text-decoration:none;padding:0;}
+.action-btn:hover{background:var(--phase-bg);}
+.action-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+#theme-toggle{position:fixed;top:1.5rem;right:1.5rem;}
+#sun-icon{display:block;}#moon-icon{display:none;}
+[data-theme="dark"] #sun-icon{display:none;}[data-theme="dark"] #moon-icon{display:block;}
+@media print{body{padding:1rem;}#theme-toggle,#nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <a href="/pages/palsgraf_case.html" class="action-btn" aria-label="Back to case">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </a>
+  <a href="/index.html" class="action-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </a>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle dark mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>Palsgraf v. Long Island Railroad — Practice Question</h1>
+<p class="subtitle">1L Torts &bull; Duty &bull; Foreseeability &bull; Cardozo vs. Andrews &bull; Proximate cause &bull; Timed exam format</p>
+
+<div id="page-intro">
+  <div class="section">
+    <p class="section-title">Before you begin</p>
+    <div class="info-box">This is a closed-book practice exam. You should have already read the Palsgraf opinion and the Leon Green essay before opening this file. If you haven't, go back and do that first. The question tests whether you understand not just the holding, but the difference in methodology between Cardozo and Andrews — and why that difference matters procedurally.</div>
+    <div class="card">
+      <div class="brief-row"><span class="brief-num">Q</span><span class="brief-text">One essay question requiring you to apply both the Cardozo majority and the Andrews dissent to a new fact pattern. You must argue both sides and reach a separate conclusion under each framework.</span></div>
+      <div class="brief-row"><span class="brief-num">T</span><span class="brief-text">60 minutes suggested. This question is harder than the Vosburg question — Palsgraf requires you to hold two competing analytical frameworks simultaneously without blending them.</span></div>
+      <div class="brief-row"><span class="brief-num">F</span><span class="brief-text">IRAC structure required. Address Cardozo fully (rule → analysis → conclusion), then Andrews fully (rule → analysis → conclusion). Do not blend the two analyses.</span></div>
+      <div class="brief-row"><span class="brief-num">R</span><span class="brief-text">A model answer and grading rubric unlock after you submit. Read your own answer first — then compare.</span></div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="startExam(true)">Start — begin 60-minute timer</button>
+      <button class="btn" onclick="startExam(false)">Start without timer</button>
+    </div>
+  </div>
+</div>
+
+<div id="page-exam" class="hidden">
+
+  <div class="timer-bar" id="timer-bar">
+    <div>
+      <p class="timer-label">Time remaining</p>
+      <p class="timer-display" id="timer-display">60:00</p>
+    </div>
+    <button class="btn" id="pause-btn" onclick="togglePause()">Pause</button>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Fact pattern</p>
+    <div class="fact-box">
+      <p>Riverside Arena is a large indoor concert venue. On a busy Saturday evening, thousands of fans are attending a sold-out show. The venue's security team has established a strict no-bag policy and is actively screening patrons at the entrance gates.</p>
+      <p>At Gate 3, a security guard named Reyes negligently waves through a patron — later identified as Torres — without scanning his backpack. Inside the backpack is a professional-grade pyrotechnic flare kit that Torres intends to use in the crowd. The flare kit is not obviously visible and Torres has made no threatening statements.</p>
+      <p>Torres makes his way to a spot near the stage. Midway through the show, he ignites one of the flares. The flare burns out of control. Panicked fans near Torres surge backward. The surge moves through the crowd in a wave, reaching the far end of the arena floor — approximately 200 feet from where Torres ignited the flare.</p>
+      <p>At the far end of the arena, Dana is standing near the merchandise table. She is not part of the surging crowd and is unaware of what is happening near the stage. The surge reaches her section. A fleeing fan collides with a freestanding merchandise display rack. The rack tips over and strikes Dana, fracturing her collarbone.</p>
+      <p>Dana sues Riverside Arena for negligence, arguing that Reyes's failure to screen Torres's bag was the negligent act that set the entire sequence in motion. The Arena argues it owed no duty to Dana with respect to Reyes's failure at Gate 3.</p>
+    </div>
+
+    <div class="warn-box"><strong style="font-weight:500;">Instructions:</strong> Discuss the Arena's potential liability to Dana for negligence. Focus your analysis on the element of duty. Apply the reasoning of both Chief Judge Cardozo (majority) and Judge Andrews (dissent) from Palsgraf v. Long Island Railroad Co. Your answer must analyze duty under each framework separately and reach a distinct conclusion under each. Approximately 500–700 words. Do not assume facts not stated above.</div>
+
+    <div class="irac-bar">
+      <div class="irac-seg irac-i">I — Issue</div>
+      <div class="irac-seg irac-r">R — Rule</div>
+      <div class="irac-seg irac-a">A — Analysis</div>
+      <div class="irac-seg irac-c">C — Conclusion</div>
+    </div>
+
+    <textarea id="answer" placeholder="Structure: Issue → Cardozo (rule, analysis, conclusion) → Andrews (rule, analysis, conclusion). Each framework must reach its own conclusion."></textarea>
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="submit()">Submit and reveal model answer</button>
+      <button class="btn" onclick="clearAnswer()">Clear</button>
+    </div>
+  </div>
+
+  <div class="answer-section" id="answer-section">
+
+    <div class="section">
+      <p class="section-title">Model answer</p>
+
+      <div class="answer-block ab-i">
+        <p class="ab-label" style="color:var(--teal-text);">Issue</p>
+        <p class="ab-text">Whether Riverside Arena owed a duty of care to Dana — a patron standing 200 feet from the negligent act, injured through an attenuated chain of events — when its security guard failed to screen a patron carrying pyrotechnic materials, triggering a crowd surge that caused a merchandise rack to fall on her.</p>
+      </div>
+
+      <div class="answer-block ab-r">
+        <p class="ab-label" style="color:var(--purple-text);">Rule</p>
+        <div class="ab-text">
+          <p>To establish negligence, a plaintiff must prove duty, breach, causation, and damages. The parties dispute duty. Two competing frameworks from Palsgraf v. Long Island Railroad Co. (N.Y. 1928) govern the analysis.</p>
+          <p>Under Chief Judge Cardozo's majority, duty is relational and limited. A defendant owes a duty only to those plaintiffs who fall within the reasonably foreseeable zone of danger created by the defendant's negligent conduct — the "range of apprehension." If the plaintiff was not within that zone, no duty runs to her and the court resolves the question as a matter of law. The case does not reach a jury.</p>
+          <p>Under Judge Andrews's dissent, duty runs to the world at large. Once a defendant acts negligently toward anyone, a duty exists as to all who are harmed. Andrews explicitly rejects foreseeability of the specific plaintiff as a duty test. The limiting principle is not duty but proximate cause — and that question, being one of "convenience, public policy, and a rough sense of justice," belongs to the jury.</p>
+        </div>
+      </div>
+
+      <div class="answer-block ab-a">
+        <p class="ab-label" style="color:var(--coral-text);">Analysis</p>
+        <div class="ab-text">
+          <p><strong style="font-weight:500;">Under Cardozo:</strong> The Arena's negligent act was Reyes's failure to screen Torres at Gate 3. The foreseeable risk that act created was that an unscreened patron might introduce dangerous materials and injure fans nearby. The zone of danger plausibly extends to fans in Torres's immediate vicinity — those exposed to the flare and the initial surge. Dana, however, was 200 feet away at the merchandise table, uninvolved in and unaware of the events near the stage. She was injured only after the surge traveled the full length of the arena floor, struck a rack, and caused it to fall. Each step in that chain — surge traveling 200 feet, striking a rack, rack falling on Dana — further narrows the class of foreseeable plaintiffs. Cardozo would likely find Dana was outside the range of apprehension of Reyes's failure at the gate. The court resolves duty against Dana as a matter of law.</p>
+          <p><strong style="font-weight:500;">Under Andrews:</strong> The threshold duty question is answered simply: the Arena's negligence set a harmful sequence in motion and Dana was harmed by it — duty runs to her. The real question is proximate cause. No external force intervened in the chain from Reyes's failure to Dana's injury: Reyes waved Torres through; Torres ignited the flare; the flare caused the panic; the panic drove the surge; the surge toppled the rack; the rack struck Dana. Each step followed directly from the last. A jury could find that chain sufficient to establish proximate cause. The Arena is not entitled to dismissal on duty grounds. The case goes to the jury.</p>
+          <p><strong style="font-weight:500;">The deeper structural point:</strong> The real difference between Cardozo and Andrews is not just doctrinal — it is procedural. Cardozo's framework allows the judge to end the case at the courthouse door by finding no duty as a matter of law. Andrews's framework requires the case to go to the jury because duty is never the limiting principle. The same facts produce different procedural destinations depending on which opinion controls.</p>
+        </div>
+      </div>
+
+      <div class="answer-block ab-c">
+        <p class="ab-label" style="color:var(--blue-text);">Conclusion</p>
+        <div class="ab-text">
+          <p><strong style="font-weight:500;">Under Cardozo:</strong> The Arena likely owed no duty to Dana. She was outside the foreseeable zone of danger created by Reyes's failure to screen Torres. The court resolves the duty question in the Arena's favor as a matter of law. The case does not reach a jury.</p>
+          <p><strong style="font-weight:500;">Under Andrews:</strong> The Arena owed Dana a duty — duty runs to all persons harmed by a negligent act. Whether Reyes's failure was the proximate cause of Dana's injury is a fact question for the jury. Given the unbroken physical chain of events, the Arena is not entitled to dismissal on duty grounds. The case goes to the jury.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Grading rubric — 100 points</p>
+      <div class="card">
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Issue statement:</strong> Identifies the precise question as whether the Arena owed a duty to Dana specifically — not just whether it was negligent generally. Names the distance and attenuated causal chain as the reason the issue is contested. A vague issue earns 4 pts maximum.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Rule — Cardozo:</strong> Accurately states the range of apprehension / foreseeable plaintiff test. Identifies that duty is limited, relational, and resolved by the court as a matter of law. Missing the court-resolves-as-matter-of-law point drops to 5 pts.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Rule — Andrews:</strong> Accurately states that duty runs to the world at large and that foreseeability of the specific plaintiff is not the test. Must name proximate cause as the limiting principle and identify it as a jury question.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">25 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Analysis — Cardozo applied:</strong> Works through the causal chain step by step and argues at which point Dana exits the foreseeable zone of danger. Must engage with the 200-foot distance and the intermediary events (crowd surge, merchandise rack). Superficial treatment earns 10 pts maximum.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">25 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Analysis — Andrews applied:</strong> Correctly bypasses foreseeability-of-plaintiff and moves to proximate cause. Traces the unbroken causal chain from Reyes's failure to Dana's injury. Must not apply Cardozo's foreseeability reasoning inside Andrews's framework — that error drops this section to 5 pts.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Court vs. jury distinction:</strong> Explicitly names who resolves the key question under each framework — the court under Cardozo, the jury under Andrews. This procedural consequence is the structural heart of the Palsgraf debate.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Two separate conclusions:</strong> Reaches a distinct conclusion under each framework — and those conclusions must differ. Both frameworks reaching the same result is a signal the analyses were blended. Clear IRAC structure maintained throughout with signal phrases at each transition.</span>
+        </div>
+      </div>
+
+      <div class="success-box"><strong style="font-weight:500;">What separates an A from a B:</strong> Most students state both rules correctly. The A answer does three things the B answer doesn't: (1) works through the causal chain link by link under Cardozo rather than just labeling Dana "unforeseeable"; (2) correctly identifies that under Andrews the duty question is trivial and the real fight is proximate cause — without reaching for foreseeability language; and (3) names the court-vs-jury allocation as the underlying procedural difference between the two frameworks, not just a doctrinal one.</div>
+
+      <div class="warn-box" style="margin-top:.75rem;"><strong style="font-weight:500;">Common mistakes:</strong> (1) Treating both frameworks as variations on foreseeability — Andrews explicitly rejects foreseeability as the duty test. (2) Reaching the same conclusion under both frameworks — if both reach "no liability," you have almost certainly applied Cardozo twice. (3) Putting your conclusion before your analysis — rule and analysis must come first, every time. (4) Analyzing the wrong defendant — Dana is suing the Arena, not the individual guard. Frame duty at the institutional level.</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const root = document.documentElement;
+const toggleBtn = document.getElementById('theme-toggle');
+if (localStorage.getItem('theme') === 'dark') root.setAttribute('data-theme','dark');
+else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) root.setAttribute('data-theme','dark');
+toggleBtn.addEventListener('click', () => {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  isDark ? root.removeAttribute('data-theme') : root.setAttribute('data-theme','dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+});
+
+let seconds = 60 * 60;
+let paused = false;
+let interval = null;
+let timerEnabled = false;
+
+function startExam(withTimer) {
+  timerEnabled = withTimer;
+  document.getElementById('page-intro').classList.add('hidden');
+  document.getElementById('page-exam').classList.remove('hidden');
+  if (!withTimer) {
+    document.getElementById('timer-bar').style.display = 'none';
+  } else {
+    interval = setInterval(() => {
+      if (paused) return;
+      seconds--;
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      const el = document.getElementById('timer-display');
+      el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (seconds <= 300) el.classList.add('warning');
+      if (seconds <= 0) {
+        clearInterval(interval);
+        el.textContent = '0:00';
+        document.getElementById('pause-btn').textContent = 'Time up';
+        document.getElementById('pause-btn').disabled = true;
+      }
+    }, 1000);
+  }
+  window.scrollTo(0, 0);
+}
+
+function togglePause() {
+  paused = !paused;
+  document.getElementById('pause-btn').textContent = paused ? 'Resume' : 'Pause';
+}
+
+function submit() {
+  if (timerEnabled) { paused = true; clearInterval(interval); }
+  const pb = document.getElementById('pause-btn');
+  if (pb) { pb.textContent = 'Submitted'; pb.disabled = true; }
+  const section = document.getElementById('answer-section');
+  section.classList.add('visible');
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearAnswer() {
+  if (confirm('Clear your answer? This cannot be undone.')) {
+    document.getElementById('answer').value = '';
+  }
+}
+</script>
+</body>
+</html>
