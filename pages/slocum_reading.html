@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to the American Legal System — Study Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+
+  /* circuit map palette (local to this page) */
+  --m1:#C96B6B; --m2:#CE8F52; --m3:#C7A93E; --m4:#8FAE55; --m5:#4FA486;
+  --m6:#3FA6A0; --m7:#5AA0C9; --m8:#5C86D6; --m9:#8C7FE0; --m10:#B07FD1;
+  --m11:#D178A8; --mdc:#9A9A93; --mtxt:#2C2C2A;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+
+  --m1:#8f4646; --m2:#8f5f31; --m3:#8a7622; --m4:#5c7332; --m5:#2c6b53;
+  --m6:#256e6a; --m7:#376a86; --m8:#3c5a92; --m9:#5e51a8; --m10:#7a4f96;
+  --m11:#96496d; --mdc:#5c5c56; --mtxt:#f0f0f0;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:900px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+/* diagram components */
+.diagram-card{background:var(--phase-bg);border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;margin:1.25rem 0;}
+.diagram-label{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-sub);margin-bottom:1rem;}
+.ladder{display:flex;flex-direction:column;align-items:center;}
+.ladder-box{width:100%;max-width:320px;background:var(--card-bg);border:0.5px solid var(--border);border-radius:8px;padding:12px 16px;text-align:center;}
+.ladder-box .t{font-weight:500;font-size:14px;}
+.ladder-box .s{font-size:12px;color:var(--text-sub);margin-top:2px;}
+.ladder-arrow{font-size:18px;color:var(--purple-text);padding:4px 0;}
+.ladders-row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;}
+.ladder-col{flex:1;min-width:240px;}
+.ladder-col-title{text-align:center;font-size:12px;letter-spacing:0.05em;text-transform:uppercase;color:var(--purple-text);margin-bottom:10px;font-weight:500;}
+
+.map-wrap{overflow-x:auto;}
+.us-grid{display:grid;grid-template-columns:repeat(11,36px);grid-template-rows:repeat(8,36px);gap:3px;margin:0 auto 12px;width:max-content;}
+.state{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;border-radius:4px;color:var(--mtxt);}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:14px;font-size:12px;color:var(--text-muted);}
+.legend-item{display:flex;align-items:center;gap:6px;}
+.legend-swatch{width:11px;height:11px;border-radius:3px;flex-shrink:0;}
+.s-c1{background:var(--m1);}.s-c2{background:var(--m2);}.s-c3{background:var(--m3);}
+.s-c4{background:var(--m4);}.s-c5{background:var(--m5);}.s-c6{background:var(--m6);}
+.s-c7{background:var(--m7);}.s-c8{background:var(--m8);}.s-c9{background:var(--m9);}
+.s-c10{background:var(--m10);}.s-c11{background:var(--m11);}.s-cdc{background:var(--mdc);}
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>Introduction to the American Legal System</h1>
+<p class="subtitle">Fundamentals of Law &bull; Rebuilt from Robin Wellford Slocum, <em>Legal Reasoning, Writing, and Other Lawyering Skills</em> (3d ed., LexisNexis 2011), Ch. 2 &mdash; same sequence, original wording, diagrams rebuilt as real graphics</p>
+
+<div class="section">
+<p class="section-title">A. Two court systems, one country</p>
+<p class="written">Think about your first day of orientation: before anything else mattered, you needed to know you were in the actual law school building, not the college of arts and sciences next door &mdash; even if a room number happened to match. Figuring out "where you are" turns out to matter just as much once you're researching a legal question. The United States runs two parallel court systems, federal and state, each with its own laws and its own courts, operating side by side and largely independently of one another.</p>
+<p class="written">When a client asks for legal advice, one of the first things you have to figure out is which system &mdash; and which set of laws &mdash; controls their situation. Some conduct is governed solely by state law, some solely by federal law, and some by both. That answer also tells you which courthouse you'd walk into: as a general rule, federal courts interpret federal law and state courts resolve disputes arising from state law, though a few important exceptions to that clean split come up later, in Civil Procedure.</p>
+</div>
+
+<div class="section">
+<p class="section-title">B. Where law comes from</p>
+<p class="written">Both the federal and state systems draw their law from the same three sources.</p>
+<h3>1. Constitutions</h3>
+<p class="written">Constitutional provisions are relatively few in number, but they carry outsized weight because they protect the rights a society treats as most fundamental &mdash; freedom from unreasonable searches and seizures, for instance. An entire first-year course, Constitutional Law, is built around how courts interpret these provisions.</p>
+<h3>2. Statutes and administrative regulations</h3>
+<p class="written">In both systems, the legislative branch &mdash; Congress federally, a state legislature at the state level &mdash; creates law by passing statutes that define people's rights and duties. Legislatures also delegate authority to administrative agencies to write regulations that interpret and give practical effect to a statute. Title VII, for example, is the statute making it illegal for an employer to discriminate based on race, religion, gender, or national origin; the Equal Employment Opportunity Commission is the federal agency Congress empowered to issue the regulations that put that statute into practice day to day.</p>
+<h3>3. Common law</h3>
+<p class="written">Some law has no constitutional or statutory source at all &mdash; it comes entirely from accumulated court decisions, and it's called the "common law." Judges built it starting from a handful of broadly accepted medieval principles, refining and extending those principles case by case as new factual disputes arose, always reasoning from similarities to and differences from earlier decisions. The common law originated in England and crossed the Atlantic with British colonists, becoming the founding body of law in every state. Statutes have since displaced a fair amount of it, but the common law's central method &mdash; reasoning by analogy from one case to the next &mdash; remains the primary tool lawyers use to evaluate a case and predict how the law will treat a client's conduct.</p>
+</div>
+
+<div class="section">
+<p class="section-title">C. Why precedent binds at all: stare decisis</p>
+<p class="written">Judges face a genuine tension. On one hand, they want rulings that are fair and that further the policy goals behind the law. On the other, the whole system depends on predictability: it would be nearly impossible, as citizens, to know what conduct is lawful unless we could trust that the law would be interpreted consistently over time. Judges resolve that tension by looking to the decisions of earlier courts for guidance &mdash; a practice known as "stare decisis," Latin for "let the decision stand," under which courts are expected to interpret the law the same way earlier courts already have.</p>
+</div>
+
+<div class="section">
+<p class="section-title">D. Not all precedent binds equally: mandatory vs. persuasive</p>
+<p class="written">Judges actually work with two different kinds of precedent: "mandatory," which a court is required to follow, and "persuasive," which a court may or may not be swayed by. Telling the two apart depends on two questions &mdash; the jurisdiction the earlier case came out of, and that court's position in the hierarchy of that jurisdiction. A previous case only binds a new court if (1) it arose within the <em>same jurisdiction</em> as the dispute now before the court, and (2) it was decided by a <em>higher-level court</em> within that same jurisdiction.</p>
+
+<h3>The jurisdictional half of the test</h3>
+<p class="written"><strong>Federal courts</strong> have jurisdiction over disputes involving the U.S. Constitution, federal statutes, and federal regulations, plus certain state-law disputes that satisfy special jurisdictional requirements (diversity of citizenship, pendent jurisdiction). Because the country is so large and the volume of litigation so vast, Congress has divided it into thirteen federal judicial circuits &mdash; eleven numbered circuits, plus the D.C. Circuit and the Federal Circuit, the latter of which resolves patent disputes, certain international trade cases, and damage claims against the federal government rather than covering a fixed geographic region. A ruling from one circuit binds only future federal cases arising within that same circuit; a panel in the Second Circuit is entirely free to disagree with how the First Circuit has read an identical federal statute.</p>
+
+<div class="diagram-card">
+  <div class="diagram-label">Rebuilt graphic &mdash; The Federal Judicial Circuits (state-to-circuit assignment)</div>
+  <div class="map-wrap">
+    <div class="us-grid">
+      <div class="state s-c1" style="grid-column:9; grid-row:1;">ME</div>
+      <div class="state s-c7" style="grid-column:6; grid-row:2;">WI</div>
+      <div class="state s-c2" style="grid-column:9; grid-row:2;">VT</div>
+      <div class="state s-c1" style="grid-column:10; grid-row:2;">NH</div>
+      <div class="state s-c9" style="grid-column:1; grid-row:3;">WA</div>
+      <div class="state s-c9" style="grid-column:2; grid-row:3;">ID</div>
+      <div class="state s-c9" style="grid-column:3; grid-row:3;">MT</div>
+      <div class="state s-c8" style="grid-column:4; grid-row:3;">ND</div>
+      <div class="state s-c8" style="grid-column:5; grid-row:3;">MN</div>
+      <div class="state s-c6" style="grid-column:7; grid-row:3;">MI</div>
+      <div class="state s-c2" style="grid-column:9; grid-row:3;">NY</div>
+      <div class="state s-c1" style="grid-column:10; grid-row:3;">MA</div>
+      <div class="state s-c1" style="grid-column:11; grid-row:3;">RI</div>
+      <div class="state s-c9" style="grid-column:1; grid-row:4;">OR</div>
+      <div class="state s-c9" style="grid-column:2; grid-row:4;">NV</div>
+      <div class="state s-c10" style="grid-column:3; grid-row:4;">WY</div>
+      <div class="state s-c8" style="grid-column:4; grid-row:4;">SD</div>
+      <div class="state s-c8" style="grid-column:5; grid-row:4;">IA</div>
+      <div class="state s-c7" style="grid-column:6; grid-row:4;">IL</div>
+      <div class="state s-c7" style="grid-column:7; grid-row:4;">IN</div>
+      <div class="state s-c6" style="grid-column:8; grid-row:4;">OH</div>
+      <div class="state s-c3" style="grid-column:9; grid-row:4;">PA</div>
+      <div class="state s-c3" style="grid-column:10; grid-row:4;">NJ</div>
+      <div class="state s-c2" style="grid-column:11; grid-row:4;">CT</div>
+      <div class="state s-c9" style="grid-column:1; grid-row:5;">CA</div>
+      <div class="state s-c10" style="grid-column:2; grid-row:5;">UT</div>
+      <div class="state s-c10" style="grid-column:3; grid-row:5;">CO</div>
+      <div class="state s-c8" style="grid-column:4; grid-row:5;">NE</div>
+      <div class="state s-c8" style="grid-column:5; grid-row:5;">MO</div>
+      <div class="state s-c6" style="grid-column:6; grid-row:5;">KY</div>
+      <div class="state s-c4" style="grid-column:7; grid-row:5;">WV</div>
+      <div class="state s-c4" style="grid-column:8; grid-row:5;">VA</div>
+      <div class="state s-c4" style="grid-column:9; grid-row:5;">MD</div>
+      <div class="state s-c3" style="grid-column:10; grid-row:5;">DE</div>
+      <div class="state s-c9" style="grid-column:2; grid-row:6;">AZ</div>
+      <div class="state s-c10" style="grid-column:3; grid-row:6;">NM</div>
+      <div class="state s-c10" style="grid-column:4; grid-row:6;">KS</div>
+      <div class="state s-c8" style="grid-column:5; grid-row:6;">AR</div>
+      <div class="state s-c6" style="grid-column:6; grid-row:6;">TN</div>
+      <div class="state s-c4" style="grid-column:7; grid-row:6;">NC</div>
+      <div class="state s-c4" style="grid-column:8; grid-row:6;">SC</div>
+      <div class="state s-cdc" style="grid-column:9; grid-row:6;">DC</div>
+      <div class="state s-c9" style="grid-column:1; grid-row:7;">HI</div>
+      <div class="state s-c10" style="grid-column:3; grid-row:7;">OK</div>
+      <div class="state s-c5" style="grid-column:4; grid-row:7;">TX</div>
+      <div class="state s-c5" style="grid-column:5; grid-row:7;">LA</div>
+      <div class="state s-c5" style="grid-column:6; grid-row:7;">MS</div>
+      <div class="state s-c11" style="grid-column:7; grid-row:7;">AL</div>
+      <div class="state s-c11" style="grid-column:8; grid-row:7;">GA</div>
+      <div class="state s-c9" style="grid-column:1; grid-row:8;">AK</div>
+      <div class="state s-c11" style="grid-column:8; grid-row:8;">FL</div>
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch s-c1"></span>1st &mdash; ME, NH, MA, RI</div>
+      <div class="legend-item"><span class="legend-swatch s-c2"></span>2nd &mdash; NY, VT, CT</div>
+      <div class="legend-item"><span class="legend-swatch s-c3"></span>3rd &mdash; PA, NJ, DE</div>
+      <div class="legend-item"><span class="legend-swatch s-c4"></span>4th &mdash; MD, VA, WV, NC, SC</div>
+      <div class="legend-item"><span class="legend-swatch s-c5"></span>5th &mdash; TX, LA, MS</div>
+      <div class="legend-item"><span class="legend-swatch s-c6"></span>6th &mdash; OH, MI, KY, TN</div>
+      <div class="legend-item"><span class="legend-swatch s-c7"></span>7th &mdash; WI, IL, IN</div>
+      <div class="legend-item"><span class="legend-swatch s-c8"></span>8th &mdash; ND, SD, MN, IA, NE, MO, AR</div>
+      <div class="legend-item"><span class="legend-swatch s-c9"></span>9th &mdash; WA, OR, CA, NV, ID, MT, AZ, AK, HI</div>
+      <div class="legend-item"><span class="legend-swatch s-c10"></span>10th &mdash; CO, KS, OK, NM, UT, WY</div>
+      <div class="legend-item"><span class="legend-swatch s-c11"></span>11th &mdash; AL, GA, FL</div>
+      <div class="legend-item"><span class="legend-swatch s-cdc"></span>D.C. Circuit</div>
+    </div>
+  </div>
+  <p style="font-size:11px; color:var(--text-sub); margin-top:12px;">Schematic tile grid, not to scale &mdash; preserves relative position, not geography. The Federal Circuit (patents, international trade, claims against the U.S.) isn't tied to a region, so it isn't shown.</p>
+</div>
+
+<p class="written"><strong>State courts</strong> are the mirror image: each individual state has sole jurisdiction over its own constitution, statutes, and common law, so an earlier decision only binds future disputes within that same state. A case from the Illinois courts interpreting Illinois' burglary statute carries essentially no weight &mdash; and likely wouldn't even be persuasive &mdash; for a Wisconsin judge interpreting Wisconsin's own burglary statute. Unlike federal law, which is uniform nationwide, each state's law is its own, shaped by that state's own legislature and courts.</p>
+
+<h3>The hierarchy half of the test</h3>
+<p class="written">Even within the correct jurisdiction, an earlier case only has mandatory effect if it was decided by a <em>higher-level</em> court. Higher-level courts bind lower-level courts; lower-level courts never bind higher ones &mdash; and courts sitting at the same level never bind each other, which is exactly how circuit splits happen at the federal level, and how appellate districts can end up disagreeing within a single state.</p>
+</div>
+
+<div class="section">
+<p class="section-title">Federal court structure</p>
+<p class="written">The federal system has three tiers. <strong>District Courts</strong> are the trial-level courts, where a federal case is actually tried; each circuit contains a number of district courts, sized to that circuit's caseload. One level up, the <strong>U.S. Courts of Appeals</strong> &mdash; the intermediate appellate courts &mdash; hear appeals from the district courts within their own circuit, ordinarily through a three-judge panel, though unusually significant cases are sometimes heard by the full circuit together, called an "en banc" decision (French for "the full bench"). At the top sits the <strong>U.S. Supreme Court</strong>, whose decisions bind every other federal court in the country. The Supreme Court doesn't have to hear your case &mdash; it receives thousands of petitions annually and grants review to only about 100 to 200, generally reserving that docket for cases of major constitutional or statutory significance or ones where circuits have split on how to read the same federal law. A declined petition is written up as "cert. denied," short for "certiorari," the formal name for the Court's review.</p>
+
+<div class="diagram-card">
+  <div class="diagram-label">Rebuilt graphic &mdash; Federal Court Structure</div>
+  <div class="ladder">
+    <div class="ladder-box"><div class="t">U.S. Supreme Court</div><div class="s">Highest level court</div></div>
+    <div class="ladder-arrow">&uarr;</div>
+    <div class="ladder-box"><div class="t">U.S. Courts of Appeals</div><div class="s">1st&ndash;11th Circuits, plus D.C. Circuit &mdash; intermediate courts of appeal</div></div>
+    <div class="ladder-arrow">&uarr;</div>
+    <div class="ladder-box"><div class="t">U.S. District Courts</div><div class="s">Trial level courts</div></div>
+  </div>
+</div>
+</div>
+
+<div class="section">
+<p class="section-title">State court structure</p>
+<p class="written">Most states, though not all, mirror this three-tier shape &mdash; trial courts, an intermediate appellate court, and a final appellate court &mdash; though naming conventions vary widely from state to state (a state's "Supreme Court" is sometimes its highest court, sometimes only an intermediate one, and a few states skip the intermediate tier entirely). Missouri is a clean, typical example.</p>
+
+<div class="diagram-card">
+  <div class="diagram-label">Rebuilt graphic &mdash; Typical State Court Structure (Missouri)</div>
+  <div class="ladder">
+    <div class="ladder-box"><div class="t">Missouri Supreme Court</div><div class="s">Final court of appeal</div></div>
+    <div class="ladder-arrow">&uarr;</div>
+    <div class="ladder-box"><div class="t">Missouri Courts of Appeals</div><div class="s">Eastern, Southern &amp; Western Districts &mdash; intermediate courts of appeal</div></div>
+    <div class="ladder-arrow">&uarr;</div>
+    <div class="ladder-box"><div class="t">Missouri Circuit Courts</div><div class="s">Trial courts</div></div>
+  </div>
+</div>
+
+<p class="written">Like the federal system, the highest appellate court binds every lower court statewide, and intermediate appellate courts bind every trial court within the state, not just the ones in their own district &mdash; a decision from the Western District Court of Appeals binds all Missouri trial courts, including ones sitting in the Eastern District. The catch: because Missouri's three appellate districts sit at the same level, they can disagree with each other. If the Western and Eastern districts read the same issue differently, which one binds a given trial court depends entirely on which district that trial court physically sits in &mdash; the trial judge must follow their own district's precedent even if they personally find the other district more persuasive.</p>
+</div>
+
+<div class="section">
+<p class="section-title">Putting the two ladders together</p>
+<p class="written">The type of law actually in dispute decides which ladder a lawyer is climbing in the first place. A dispute resting on the Constitution, a federal statute, federal administrative rules, or a state-law claim that independently qualifies for federal jurisdiction (diversity of citizenship, pendent jurisdiction) goes up the federal ladder &mdash; district court, circuit court of appeals, Supreme Court. A dispute resting on a state's own constitution, statutes, administrative rules, or common law goes up that state's own ladder instead &mdash; trial court, intermediate appeals court, state supreme court. The two systems run in parallel and mostly independently, and only rarely &mdash; when a case makes it all the way to the U.S. Supreme Court &mdash; does one sit in direct review above the other.</p>
+
+<div class="diagram-card">
+  <div class="diagram-label">Rebuilt graphic &mdash; Two Ladders, One Dispute</div>
+  <div class="ladders-row">
+    <div class="ladder-col">
+      <div class="ladder-col-title">Federal law disputes</div>
+      <div class="ladder">
+        <div class="ladder-box"><div class="t">U.S. Supreme Court</div><div class="s">Final appeal</div></div>
+        <div class="ladder-arrow">&uarr;</div>
+        <div class="ladder-box"><div class="t">U.S. Court of Appeals</div><div class="s">Circuit &mdash; multiple judges</div></div>
+        <div class="ladder-arrow">&uarr;</div>
+        <div class="ladder-box"><div class="t">U.S. District Court</div><div class="s">Trial level &mdash; one judge</div></div>
+      </div>
+    </div>
+    <div class="ladder-col">
+      <div class="ladder-col-title">State law disputes</div>
+      <div class="ladder">
+        <div class="ladder-box"><div class="t">State Supreme Court</div><div class="s">Final appeal</div></div>
+        <div class="ladder-arrow">&uarr;</div>
+        <div class="ladder-box"><div class="t">State Court of Appeals</div><div class="s">Intermediate &mdash; multiple judges</div></div>
+        <div class="ladder-arrow">&uarr;</div>
+        <div class="ladder-box"><div class="t">State Trial Court</div><div class="s">County/city &mdash; one judge</div></div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:11px; color:var(--text-sub); margin-top:16px; text-align:center;">Which ladder a case climbs depends on whether the claim rests on federal or state constitutional/statutory/common law.</p>
+</div>
+</div>
+
+<div class="section" style="text-align:center; margin-top:2rem;">
+  <a href="kerr_reading.html" class="case-btn">Back: How to Read a Legal Opinion</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benjamin v. Lindner Aviation, Inc. - Supreme Court of Iowa</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.written sup{font-size:10px;color:var(--text-sub);margin-left:2px;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.info-box{background:var(--purple-bg);border:0.5px solid var(--purple-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--purple-text);line-height:1.5;margin-bottom:1.25rem;}
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:10px;margin-right:6px;background:var(--purple-bg);color:var(--purple-text);}
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>Benjamin v. Lindner Aviation, Inc.</h1>
+<p class="subtitle">Supreme Court of Iowa &bull; 534 N.W.2d 400 &bull; Considered en banc, 1995</p>
+
+<div class="section">
+<span class="tag">Found property</span><span class="tag">Mislaid vs. lost vs. abandoned</span><span class="tag">Treasure trove</span>
+
+<div class="info-box" style="margin-top:0.75rem;"><strong style="font-weight:500;">Holding:</strong> The bank, as owner of the airplane, has the right to the $18,000+ found inside its wing as against all but the true owner &mdash; because the money was <em>mislaid</em> property, not lost, abandoned, or treasure trove. Mislaid property belongs to the owner of the "premises" where it's found (here, the plane itself, not the hangar it happened to be parked in), not to the finder. Because Iowa Code chapter 644's finder's-fee provision applies only to <em>lost</em> property, Benjamin's ten-percent finder's fee is reversed. Three justices (Snell, Harris, Andreasen) dissent, arguing the money was abandoned and Benjamin should keep all of it.</div>
+</div>
+
+<div class="section">
+<p class="section-title">Opinion</p>
+<p class="written">Considered en banc.</p>
+<p class="written">TERNUS, Justice.</p>
+<p class="written">Appellant, Heath Benjamin, found over $18,000 in currency inside the wing of an airplane. At the time of this discovery, appellee, State Central Bank, owned the plane and it was being serviced by appellee, Lindner Aviation, Inc. All three parties claimed the money as against the true owner. After a bench trial, the district court held that the currency was mislaid property and belonged to the owner of the plane. The court awarded a finder's fee to Benjamin. Benjamin appealed and Lindner Aviation and State Central Bank cross-appealed. We reverse on the bank's cross-appeal and otherwise affirm the judgment of the district court.</p>
+</div>
+
+<div class="section">
+<p class="section-title">I. Background Facts and Proceedings</p>
+<p class="written">In April of 1992, State Central Bank became the owner of an airplane when the bank repossessed it from its prior owner who had defaulted on a loan. In August of that year, the bank took the plane to Lindner Aviation for a routine annual inspection. Benjamin worked for Lindner Aviation and did the inspection.</p>
+<p class="written">As part of the inspection, Benjamin removed panels from the underside of the wings. Although these panels were to be removed annually as part of the routine inspection, a couple of the screws holding the panel on the left wing were so rusty that Benjamin had to use a drill to remove it. Benjamin testified that the panel probably had not been removed for several years.</p>
+<p class="written">Inside the left wing Benjamin discovered two packets approximately four inches high and wrapped in aluminum foil. He removed the packets from the wing and took off the foil wrapping. Inside the foil was paper currency, tied in string and wrapped in handkerchiefs. The currency was predominately twenty-dollar bills with mint dates before the 1960s, primarily in the 1950s. The money smelled musty.</p>
+<p class="written">Benjamin took one packet to his jeep and then reported what he had found to his supervisor, offering to divide the money with him. However, the supervisor reported the discovery to the owner of Lindner Aviation, William Engle. Engle insisted that they contact the authorities and he called the Department of Criminal Investigation. The money was eventually turned over to the Keokuk police department.</p>
+<p class="written">Two days later, Benjamin filed an affidavit with the county auditor claiming that he was the finder of the currency under the provisions of Iowa Code chapter 644 (1991). Lindner Aviation and the bank also filed claims to the money. The notices required by chapter 644 were published and posted. See Iowa Code &sect; 644.8 (1991). No one came forward within twelve months claiming to be the true owner of the money. See id. &sect;644.11 (if true owner does not claim property within twelve months, the right to the property vests in the finder).</p>
+<p class="written">Benjamin filed this declaratory judgment action against Lindner Aviation and the bank to establish his right to the property. The parties tried the case to the court. The district court held that chapter 644 applies only to "lost" property and the money here was mislaid property. The court awarded the money to the bank, holding that it was entitled to possession of the money to the exclusion of all but the true owner. The court also held that Benjamin was a "finder" within the meaning of chapter 644 and awarded him a ten-percent finder's fee. See id. &sect; 644.13 (a finder of lost property is entitled to ten percent of the value of the lost property as a reward).</p>
+<p class="written">Benjamin appealed. He claims that chapter 644 governs the disposition of all found property and any common law distinctions between various types of found property are no longer valid. He asserts alternatively that even under the common law classes of found property, he is entitled to the money he discovered. He claims that the trial court should have found that the property was treasure trove or was lost or abandoned rather than mislaid, thereby entitling the finder to the property.</p>
+<p class="written">The bank and Lindner Aviation cross-appealed. Lindner Aviation claims that if the money is mislaid property, it is entitled to the money as the owner of the premises on which the money was found, the hangar where the plane was parked. It argues in the alternative that it is the finder, not Benjamin, because Benjamin discovered the money during his work for Lindner Aviation. The bank asserts in its cross-appeal that it owns the premises where the money was found &mdash; the airplane &mdash; and that no one is entitled to a finder's fee because chapter 644 does not apply to mislaid property.</p>
+</div>
+
+<div class="section">
+<p class="section-title">II. Standard of Review</p>
+<p class="written">This case was tried as an ordinary proceeding at law. Therefore, the standard of review is for correction of errors at law. Iowa R. App. P. 4; <em>Kuehl v. Freeman Bros. Agency, Inc.</em>, 521 N.W.2d 714, 717 (Iowa 1994); <em>Eldridge v. Herman</em>, 291 N.W.2d 319, 321 (Iowa 1980).</p>
+<p class="written">Whether the money found by Benjamin was treasure trove or was mislaid, abandoned or lost property is a fact question. 1 Am. Jur. 2d Abandoned, Lost, and Unclaimed Property &sect; 41, at 49 (2d ed. 1994) (hereinafter "1 Am. Jur. 2d Abandoned Property"); cf. <em>Bennett v. Bowers</em>, 238 Iowa 702, 706, 28 N.W.2d 618, 620 (1947) (whether realty has been abandoned is a question of fact); <em>Roberson v. Ellis</em>, 58 Ore. 219, 114 P. 100, 103 (Or. 1911) (whether money was hidden long enough to be classified as treasure trove was a fact question for the jury). Therefore, the trial court's finding that the money was mislaid is binding on us if supported by substantial evidence. Iowa R. App. P. 14(f)(1); see <em>Eldridge</em>, 291 N.W.2d at 323 (affirming trial court's finding that property was lost property because supported by substantial evidence).</p>
+</div>
+
+<div class="section">
+<p class="section-title">III. Does Chapter 644 Supersede the Common Law Classifications of Found Property?</p>
+<p class="written">Benjamin argues that chapter 644 governs the rights of finders of property and abrogates the common law distinctions between types of found property. As he points out, lost property statutes are intended "to encourage and facilitate the return of property to the true owner, and then to reward a finder for his honesty if the property remains unclaimed." <em>Paset v. Old Orchard Bank &amp; Trust Co.</em>, 62 Ill. App. 3d 534, 378 N.E.2d 1264, 1268, 19 Ill. Dec. 389 (Ill. App. Ct. 1978) (interpreting a statute similar to chapter 644); accord <em>Flood v. City Nat'l Bank</em>, 218 Iowa 898, 908, 253 N.W. 509, 514 (1934), cert. denied, 298 U.S. 666, 80 L. Ed. 1390, 56 S. Ct. 749 (1936) (public policy reflected in lost property statute is "to provide a reward to the finder of lost goods"); <em>Willsmore v. Township of Oceola</em>, 106 Mich. App. 671, 308 N.W.2d 796, 804 (Mich. Ct. App. 1981) (lost goods act "provides protection to the finder, a reasonable method of uniting goods with their true owner, and a plan which benefits the people of the state through their local governments"). These goals, Benjamin argues, can best be achieved by applying such statutes to all types of found property.</p>
+<p class="written">The Michigan Court of Appeals had an additional reason in <em>Willsmore</em> to apply the Michigan statute to all classes of discovered property. The Michigan court noted that the common law distinctions between categories of found property were embraced in Michigan after the enactment of its lost property statute. <em>Willsmore</em>, 308 N.W.2d at 803. Based on this fact, the Michigan court concluded that the legislature could not have intended to reflect in the term "lost property" distinctions not then in existence. <em>Id.</em> However, the Michigan court did not address the fact that the common law distinctions were first developed in England, before the enactment of most states' lost property statutes. See <em>Goddard v. Winchell</em>, 86 Iowa 71, 52 N.W. 1124 (1892) (citing to English common law); <em>Hurley v. City of Niagara Falls</em>, 30 A.D.2d 89, 289 N.Y.S.2d 889, 891 (App. Div. 1968) (stating that common law principles relating to lost property were established as early as 1722).</p>
+<p class="written">Although a few courts have adopted an expansive view of lost property statutes, we think Iowa law is to the contrary. In 1937, we quoted and affirmed a trial court ruling that "the old law of treasure trove is not merged in the statutory law of chapter 515, 1935 Code of Iowa." <em>Zornes v. Bowen</em>, 223 Iowa 1141, 1145, 274 N.W. 877, 879 (1937). Chapter 515 of the 1935 Iowa Code was eventually renumbered as chapter 644. The relevant sections of chapter 644 are unchanged since our 1937 decision. As recently as 1991, we stated that "the rights of finders of property vary according to the characterization of the property found." <em>Ritz v. Selma United Methodist Church</em>, 467 N.W.2d 266, 268 (Iowa 1991). We went on to define and apply the common law classifications of found property in deciding the rights of the parties. <em>Id.</em> at 269. As our prior cases show, we have continued to use the common law distinctions between classes of found property despite the legislature's enactment of chapter 644 and its predecessors.</p>
+<p class="written">The legislature has had many opportunities since our decision in <em>Zornes</em> to amend the statute so that it clearly applies to all types of found property. However, it has not done so. When the legislature leaves a statute unchanged after the supreme court has interpreted it, we presume that the legislature has acquiesced in our interpretation. <em>State v. Sheffey</em>, 234 N.W.2d 92, 97 (Iowa 1975). Therefore, we presume here that the legislature approves of our application of chapter 644 to lost property only. Consequently, we hold that chapter 644 does not abrogate the common law classifications of found property. We note this position is consistent with that taken by most jurisdictions. See, e.g., <em>Bishop v. Ellsworth</em>, 91 Ill. App. 2d 386, 234 N.E.2d 49, 51 (Ill. App. Ct. 1968) (holding lost property statute does not apply to abandoned or mislaid property); <em>Foster v. Fidelity Safe Deposit Co.</em>, 264 Mo. 89, 174 S.W. 376, 379 (Mo. 1915) (refusing to apply lost property statute to property that would not be considered lost under the common law); <em>Sovern v. Yoran</em>, 16 Ore. 269, 20 P. 100, 105 (Or. 1888) (same); <em>Zech v. Accola</em>, 253 Wis. 80, 33 N.W.2d 232, 235 (Wis. 1948) (concluding that if legislature had intended to include treasure trove within lost property statute, it would have specifically mentioned treasure trove).</p>
+<p class="written">In summary, chapter 644 applies only if the property discovered can be categorized as "lost" property as that term is defined under the common law. Thus, the trial court correctly looked to the common law classifications of found property to decide who had the right to the money discovered here.</p>
+</div>
+
+<div class="section">
+<p class="section-title">IV. Classification of Found Property</p>
+<p class="written">Under the common law, there are four categories of found property: (1) abandoned property, (2) lost property, (3) mislaid property, and (4) treasure trove. <em>Ritz</em>, 467 N.W.2d at 269. The rights of a finder of property depend on how the found property is classified. <em>Id.</em> at 268-69.</p>
+<p class="written"><strong>A. Abandoned property.</strong> Property is abandoned when the owner no longer wants to possess it. Cf. <em>Pearson v. City of Guttenberg</em>, 245 N.W.2d 519, 529 (Iowa 1976) (considering abandonment of real estate). Abandonment is shown by proof that the owner intends to abandon the property and has voluntarily relinquished all right, title and interest in the property. <em>Ritz</em>, 467 N.W.2d at 269; 1 Am. Jur. 2d Abandoned Property &sect;&sect; 11-14, at 15-20. Abandoned property belongs to the finder of the property against all others, including the former owner. <em>Ritz</em>, 467 N.W.2d at 269.</p>
+<p class="written"><strong>B. Lost property.</strong> "Property is lost when the owner unintentionally and involuntarily parts with its possession and does not know where it is." <em>Id.</em> (citing <em>Eldridge v. Herman</em>, 291 N.W.2d 319, 323 (Iowa 1980)); accord 1 Am. Jur. 2d Abandoned Property &sect; 4, at 9-10. Stolen property found by someone who did not participate in the theft is lost property. <em>Flood</em>, 218 Iowa at 905, 253 N.W. at 513; 1 Am. Jur. 2d Abandoned Property &sect; 5, at 11. Under chapter 644, lost property becomes the property of the finder once the statutory procedures are followed and the owner makes no claim within twelve months. Iowa Code &sect; 644.11 (1991).</p>
+<p class="written"><strong>C. Mislaid property.</strong> Mislaid property is voluntarily put in a certain place by the owner who then overlooks or forgets where the property is. <em>Ritz</em>, 467 N.W.2d at 269. It differs from lost property in that the owner voluntarily and intentionally places mislaid property in the location where it is eventually found by another. 1 Am. Jur. 2d Abandoned Property &sect; 10, at 14. In contrast, property is not considered lost unless the owner parts with it involuntarily. <em>Ritz</em>, 467 N.W.2d at 269; 1 Am. Jur. 2d Abandoned Property &sect; 10, at 14; see <em>Hill v. Schrunk</em>, 207 Ore. 71, 292 P.2d 141, 143 (Or. 1956) (carefully concealed currency was mislaid property, not lost property). The finder of mislaid property acquires no rights to the property. 1 Am. Jur. 2d Abandoned Property &sect; 24, at 30. The right of possession of mislaid property belongs to the owner of the premises upon which the property is found, as against all persons other than the true owner. <em>Ritz</em>, 467 N.W.2d at 269.</p>
+<p class="written"><strong>D. Treasure trove.</strong> Treasure trove consists of coins or currency concealed by the owner. <em>Id.</em> It includes an element of antiquity. <em>Id.</em> To be classified as treasure trove, the property must have been hidden or concealed for such a length of time that the owner is probably dead or undiscoverable. <em>Id.</em>; 1 Am. Jur. 2d Abandoned Property &sect; 8, at 13. Treasure trove belongs to the finder as against all but the true owner. <em>Zornes</em>, 223 Iowa at 1145, 274 N.W. at 879.</p>
+</div>
+
+<div class="section">
+<p class="section-title">V. Is There Substantial Evidence to Support the Trial Court's Finding That the Money Found by Benjamin Was Mislaid?</p>
+<p class="written">We think there was substantial evidence to find that the currency discovered by Benjamin was mislaid property. In the <em>Eldridge</em> case, we examined the location where the money was found as a factor in determining whether the money was lost property. <em>Eldridge</em>, 291 N.W.2d at 323; accord 1 Am. Jur. 2d Abandoned Property &sect; 6, at 11-12 ("The place where money or property claimed as lost is found is an important factor in the determination of the question of whether it was lost or only mislaid."). Similarly, in <em>Ritz</em>, we considered the manner in which the money had been secreted in deciding that it had not been abandoned. <em>Ritz</em>, 467 N.W.2d at 269.</p>
+<p class="written">The place where Benjamin found the money and the manner in which it was hidden are also important here. The bills were carefully tied and wrapped and then concealed in a location that was accessible only by removing screws and a panel. These circumstances support an inference that the money was placed there intentionally. This inference supports the conclusion that the money was mislaid. <em>Jackson v. Steinberg</em>, 186 Ore. 129, 200 P.2d 376, 378 (Or. 1948) (fact that $800 in currency was found concealed beneath the paper lining of a dresser indicates that money was intentionally concealed with intention of reclaiming it; therefore, property was mislaid, not lost); <em>Schley v. Couch</em>, 155 Tex. 195, 284 S.W.2d 333, 336 (Tex. 1955) (holding that money found buried under garage floor was mislaid property as a matter of law because circumstances showed that money was placed there deliberately and court presumed that owner had either forgotten where he hid the money or had died before retrieving it).</p>
+<p class="written">The same facts that support the trial court's conclusion that the money was mislaid prevent us from ruling as a matter of law that the property was lost. Property is not considered lost unless considering the place where and the conditions under which the property is found, there is an inference that the property was left there unintentionally. 1 Am. Jur. 2d Abandoned Property &sect; 6, at 12; see <em>Sovern</em>, 20 P. at 105 (holding that coins found in a jar under a wooden floor of a barn were not lost property because the circumstances showed that the money was hidden there intentionally); see <em>Farrare v. City of Pasco</em>, 68 Wash. App. 459, 843 P.2d 1082, 1084 (Wash. Ct. App. 1993) (where currency was deliberately concealed, it cannot be characterized as lost property). Contrary to Benjamin's position the circumstances here do not support a conclusion that the money was placed in the wing of the airplane unintentionally. Additionally, as the trial court concluded, there was no evidence suggesting that the money was placed in the wing by someone other than the owner of the money and that its location was unknown to the owner. For these reasons, we reject Benjamin's argument that the trial court was obligated to find that the currency Benjamin discovered was lost property.</p>
+<p class="written">We also reject Benjamin's assertion that as a matter of law this money was abandoned property. Both logic and common sense suggest that it is unlikely someone would voluntarily part with over $18,000 with the intention of terminating his ownership. The location where this money was found is much more consistent with the conclusion that the owner of the property was placing the money there for safekeeping. See <em>Ritz</em>, 467 N.W.2d at 269 (property not abandoned where money was buried in jars and tin cans, indicating a desire by the owner to preserve it); <em>Jackson</em>, 200 P.2d at 378 (because currency was concealed intentionally and deliberately, the bills could not be regarded as abandoned property); 1 Am. Jur. 2d Abandoned Property &sect; 13, at 17 (where property is concealed in such a way that the concealment appears intentional and deliberate, there can be no abandonment). We will not presume that an owner has abandoned his property when his conduct is consistent with a continued claim to the property. <em>Linscomb v. Goodyear Tire &amp; Rubber Co.</em>, 199 F.2d 431, 435 (8th Cir. 1952) (applying Missouri law); <em>Hoffman Management Corp. v. S.L.C. of N. Am., Inc.</em>, 800 S.W.2d 755, 762 (Mo. Ct. App. 1990); <em>Foulke v. New York Consolidated R.R.</em>, 228 N.Y. 269, 127 N.E. 237, 238 (N.Y. 1920); 1 Am. Jur. 2d Abandoned Property &sect;&sect; 14, 42, at 20, 49; cf. <em>Bennett</em>, 238 Iowa at 706, 28 N.W.2d at 620 (stating that there is no presumption that real property is abandoned). Therefore, we cannot rule that the district court erred in failing to find that the currency discovered by Benjamin was abandoned property.</p>
+<p class="written">Finally, we also conclude that the trial court was not obligated to decide that this money was treasure trove. Based on the dates of the currency, the money was no older than thirty-five years. The mint dates, the musty odor and the rusty condition of a few of the panel screws indicate that the money may have been hidden for some time. However, there was no evidence of the age of the airplane or the date of its last inspection. These facts may have shown that the money was concealed for a much shorter period of time.</p>
+<p class="written">Moreover, it is also significant that the airplane had a well-documented ownership history. The record reveals that there were only two owners of the plane prior to the bank. One was the person from whom the bank repossessed the plane; the other was the original purchaser of the plane when it was manufactured. Nevertheless, there is no indication that Benjamin or any other party attempted to locate and notify the prior owners of the plane, which could very possibly have led to the identification of the true owner of the money. Under these circumstances, we cannot say as a matter of law that the money meets the antiquity requirement or that it is probable that the owner of the money is not discoverable.</p>
+<p class="written">We think the district court had substantial evidence to support its finding that the money found by Benjamin was mislaid. The circumstances of its concealment and the location where it was found support inferences that the owner intentionally placed the money there and intended to retain ownership. We are bound by this factual finding.</p>
+</div>
+
+<div class="section">
+<p class="section-title">VI. Is the Airplane Or the Hangar the &ldquo;Premises&rdquo; Where the Money Was Discovered?</p>
+<p class="written">Because the money discovered by Benjamin was properly found to be mislaid property, it belongs to the owner of the premises where it was found. Mislaid property is entrusted to the owner of the premises where it is found rather than the finder of the property because it is assumed that the true owner may eventually recall where he has placed his property and return there to reclaim it. <em>Willsmore</em>, 308 N.W.2d at 802; <em>Foster</em>, 174 S.W. at 378; <em>Foulke</em>, 127 N.E. at 238-39.</p>
+<p class="written">We think that the premises where the money was found is the airplane, not Lindner Aviation's hangar where the airplane happened to be parked when the money was discovered. The policy behind giving ownership of mislaid property to the owner of the premises where the property was mislaid supports this conclusion. If the true owner of the money attempts to locate it, he would initially look for the plane; it is unlikely he would begin his search by contacting businesses where the airplane might have been inspected. Therefore, we affirm the trial court's judgment that the bank, as the owner of the plane, has the right to possession of the property as against all but the true owner (note to reader: footnote excerpted out).</p>
+</div>
+
+<div class="section">
+<p class="section-title">VII. Is Benjamin Entitled to a Finder's Fee?</p>
+<p class="written">Benjamin claims that if he is not entitled to the money, he should be paid a ten percent finder's fee under section 644.13. The problem with this claim is that only the finder of "lost goods, money, bank notes, and other things" is rewarded with a finder's fee under chapter 644. Iowa Code &sect; 644.13 (1991). Because the property found by Benjamin was mislaid property, not lost property, section 644.13 does not apply here. The trial court erred in awarding Benjamin a finder's fee.</p>
+</div>
+
+<div class="section">
+<p class="section-title">VIII. Summary</p>
+<p class="written">We conclude that the district court's finding that the money discovered by Benjamin was mislaid property is supported by substantial evidence. Therefore, we affirm the district court's judgment that the bank has the right to the money as against all but the true owner. This decision makes it unnecessary to decide whether Benjamin or Lindner Aviation was the finder of the property. We reverse the court's decision awarding a finder's fee to Benjamin.</p>
+<p class="written" style="font-weight:500;">AFFIRMED IN PART; REVERSED IN PART.</p>
+<p class="written">All justices concur except Harris, Snell, and Andreasen, who dissent.</p>
+</div>
+
+<div class="section">
+<p class="section-title">Dissent</p>
+<p class="written">SNELL, Justice (dissenting).</p>
+<p class="written">I respectfully dissent.</p>
+<p class="written">The life of the law is logic, it has been said. See <em>Davis v. Aiken</em>, 111 Ga. App. 505, 142 S.E.2d 112, 119 (Ga. Ct. App. 1965) (quoting Sir Edward Coke). If so, it should be applied here.</p>
+<p class="written">The majority quotes with approval the general rule that whether money found is treasure trove, mislaid, abandoned, or lost property is a fact question. 1 Am. Jur. 2d Abandoned, Lost, and Unclaimed Property &sect; 41, at 49 (2d ed. 1994). In deciding a fact question, we are to consider the facts as known and all reasonable inferences to be drawn from them. <em>Wright v. Thompson</em>, 254 Iowa 342, 347, 117 N.W.2d 520, 523 (1962). Thus does logic, reason, and common sense enter in.</p>
+<p class="written">After considering the four categories of found money, the majority decides that Benjamin found mislaid money. The result is that the bank gets all the money; Benjamin, the finder, gets nothing. Apart from the obvious unfairness in result, I believe this conclusion fails to come from logical analysis.</p>
+<p class="written">Mislaid property is property voluntarily put in a certain place by the owner who then overlooks or forgets where the property is. <em>Ritz v. Selma United Methodist Church</em>, 467 N.W.2d 266, 268 (Iowa 1991). The property here consisted of two packets of paper currency totalling $18,910, three to four inches high, wrapped in aluminum foil. Inside the foil, the paper currency, predominantly twenty dollar bills, was tied with string and wrapped in handkerchiefs. Most of the mint dates were in the 1950s with one dated 1934. These packets were found in the left wing of the Mooney airplane after Benjamin removed a panel held in by rusty screws.</p>
+<p class="written">These facts satisfy the requirement that the property was voluntarily put in a certain place by the owner. But the second test for determining that property is mislaid is that the owner "overlooks or forgets where the property is." See <em>Ritz</em>, 467 N.W.2d at 269. I do not believe that the facts, logic or common sense lead to a finding that this requirement is met. It is not likely or reasonable to suppose that a person would secrete $18,000 in an airplane wing and then forget where it was.</p>
+<p class="written">Cases cited by the majority contrasting "mislaid" property and "lost" property are appropriate for a comparison of these principles but do not foreclose other considerations. After finding the money, Benjamin proceeded to give written notice of finding the property as prescribed in Iowa Code chapter 644 (1993), "Lost Property." As set out in section 556F.8, notices were posted on the courthouse door and in three other public places in the county. In addition, notice was published once each week for three consecutive weeks in a newspaper of general circulation in the county. Also, affidavits of publication were filed with the county auditor who then had them published as part of the board of supervisors' proceedings. Iowa Code &sect; 556.9. After twelve months, if no person appears to claim and prove ownership of the property, the right to the property rests irrevocably in the finder. Iowa Code &sect; 556F.11.</p>
+<p class="written">The purpose of this type of legal notice is to give people the opportunity to assert a claim if they have one. See, e.g., <em>Neeley v. Murchison</em>, 815 F.2d 345, 347 (5th Cir. 1987). If no claim is made, the law presumes there is none or for whatever reason it is not asserted. Thus, a failure to make a claim after legal notice is given is a bar to a claim made thereafter. See, e.g., <em>Tulsa Professional Collection Servs., Inc. v. Pope</em>, 485 U.S. 478, 481, 108 S. Ct. 1340, 1343, 99 L. Ed. 2d 565, 572-73 (1988).</p>
+<p class="written">Benjamin followed the law in giving legal notice of finding property. None of the parties dispute this. The suggestion that Benjamin should have initiated a further search for the true owner is not a requirement of the law, is therefore irrelevant, and in no way diminishes Benjamin's rights as finder.</p>
+<p class="written">The scenario unfolded in this case convinces me that the money found in the airplane wing was abandoned. Property is abandoned when the owner no longer wants to possess it. See <em>Ritz</em>, 467 N.W.2d at 269; <em>Pearson v. City of Guttenberg</em>, 245 N.W.2d 519, 529 (Iowa 1976). The money had been there for years, possibly thirty. No owner had claimed it in that time. No claim was made by the owner after legally prescribed notice was given that it had been found. Thereafter, logic and the law support a finding that the owner has voluntarily relinquished all right, title, and interest in the property. Whether the money was abandoned due to its connection to illegal drug trafficking or is otherwise contraband property is a matter for speculation. In any event, abandonment by the true owner has legally occurred and been established.</p>
+<p class="written">I would hold that Benjamin is legally entitled to the entire amount of money that he found in the airplane wing as the owner of abandoned property.</p>
+<p class="written">Harris and Andreasen, JJ. join this dissent.</p>
+</div>
+
+<div class="section" style="text-align: center; margin-top: 2rem;">
+  <a href="benjamin_practice.html" class="case-btn">Practice Question</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just Mercy — Introduction &amp; Chapter One: Study Companion</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.9rem 1.1rem;font-size:13px;color:var(--warn-text);line-height:1.6;margin-bottom:1.5rem;}
+.brief-row{display:flex;gap:10px;align-items:flex-start;padding:0.65rem 0;border-bottom:0.5px solid var(--border);}
+.brief-row:last-child{border-bottom:none;}
+.brief-num{font-size:12px;font-weight:500;color:var(--text-sub);min-width:20px;}
+.brief-text{font-size:13px;line-height:1.6;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>Just Mercy — Introduction &amp; Chapter One</h1>
+<p class="subtitle">Law, Identity, and Lawyering &bull; Bryan Stevenson, <em>Just Mercy: A Story of Justice and Redemption</em> (2014)</p>
+
+<div class="section">
+<div class="info-box"><strong style="font-weight:500;">A note on what this is.</strong> <em>Just Mercy</em> works as reading because of Bryan Stevenson's own voice &mdash; the specific way he chooses to tell these stories. That's exactly what copyright protects, and it's also, honestly, the point of assigning it: reading his actual prose is part of the assignment, not a formality around it. What follows is not a replacement for the pages you were given. It's a map of what happens and why it matters, so the throughlines are easier to catch &mdash; read the real chapters for the thing itself.</div>
+</div>
+
+<div class="section">
+<p class="section-title">How Stevenson gets there</p>
+<p class="written">The book opens with the encounter that set Stevenson's whole career in motion. As a twenty-three-year-old Harvard Law student on an internship with the Southern Prisoners Defense Committee, he's sent &mdash; with almost no preparation and no real grasp of death penalty law &mdash; to deliver one message to a man on Georgia's death row: you are not at risk of execution this year. He expects a bitter, resentful man. Instead the prisoner, Henry, is simply relieved to talk to someone who isn't a guard for an hour, and at the end of the visit, still shackled, he sings a hymn to Stevenson through tears. That encounter &mdash; not a five-year plan &mdash; is what convinces Stevenson to become a death penalty lawyer.</p>
+<p class="written">Two ideas from that chapter recur through the rest of the book. <strong>Proximity</strong>: you don't come to understand a system of injustice from a distance; you have to get close to the people living inside it. And <strong>mercy</strong>: Stevenson's test for a society isn't how it treats the rich and powerful, it's how it treats the poor, the accused, the incarcerated, the condemned &mdash; "the opposite of poverty is not wealth; the opposite of poverty is justice."</p>
+</div>
+
+<div class="section">
+<p class="section-title">The case that anchors the book: Walter McMillian</p>
+<p class="written">Most of what you were assigned centers on one wrongful conviction. In November 1986, a young white woman named Ronda Morrison was found shot dead inside a dry cleaner in Monroeville, Alabama. Monroe County is Harper Lee's hometown, and the town markets itself hard around <em>To Kill a Mockingbird</em> &mdash; tourists come for the courthouse from the film adaptation, and there's an annual community stage production, the "Mockingbird Players," that Stevenson describes touring internationally. He leans on that irony deliberately: a town that celebrates a fictional white lawyer defending a wrongly accused Black man spent real effort convicting an actually innocent Black man in the same courthouse.</p>
+<p class="written">The murder went unsolved for months under mounting pressure to close it. Eventually Ralph Myers &mdash; himself a suspect, facing charges of his own, after prolonged questioning by investigators &mdash; named Walter McMillian as involved. There was no physical evidence tying Walter to the crime. What there was: Walter, a Black man in his mid-forties who had built a successful pulpwood business, was having an affair with a white woman, Karen Kelly, and it had already become the subject of local gossip and a bitter custody dispute. Stevenson traces this directly to Alabama's history of anti-miscegenation law &mdash; interracial marriage was a felony in Alabama until <em>Loving v. Virginia</em> struck those bans down nationwide in 1967, and Alabama's own constitution kept an unenforceable ban on the books until voters finally removed it in a 2000 referendum that still drew roughly 40 percent opposition. The "crime" of interracial intimacy, as Stevenson lays it out, is what made Walter legible as a suspect in a way actual evidence never did.</p>
+<p class="written">Walter was arrested, held in conditions Stevenson later details as unusually severe &mdash; including time on death row before he was even convicted, a legal impossibility that happened anyway &mdash; tried, convicted largely on Myers's testimony, and sentenced to death.</p>
+</div>
+
+<div class="section">
+<p class="section-title">Why it's assigned here</p>
+<p class="written">For a course about law, identity, and lawyering specifically, the McMillian story is doing several things at once. It shows how race operates inside a legal system that is formally colorblind on paper. It shows how someone's identity &mdash; a poor, Black, self-made businessman who crossed a line the state had spent a century deliberately policing &mdash; shapes what does and doesn't count as evidence against him. And it puts a face on the line you already read in the introduction: the closer we get to condemned and incarcerated people, the more we see what our systems of justice actually reward and punish, rather than what they claim to. Stevenson isn't writing a legal brief. He's writing about what it costs, as a young lawyer, to sit across from someone the system has already decided isn't worth protecting.</p>
+</div>
+
+<div class="section">
+<p class="section-title">Worth being ready to discuss</p>
+<div class="card">
+<div class="brief-row"><span class="brief-num">1</span><span class="brief-text">How does the proximity principle show up concretely in the scene with Henry &mdash; and what would that opening chapter lose if it started with mass incarceration statistics instead of that one visit?</span></div>
+<div class="brief-row"><span class="brief-num">2</span><span class="brief-text">Once Myers named Walter, which specific facts made him "suspectable"? Which of those facts would fail to qualify as admissible evidence under rules you'll be studying later this year?</span></div>
+<div class="brief-row"><span class="brief-num">3</span><span class="brief-text">Is the <em>Mockingbird</em> irony a coincidence, or is Stevenson arguing something structural &mdash; that communities use a comforting story about justice to avoid confronting an actual injustice happening in the same courthouse?</span></div>
+<div class="brief-row"><span class="brief-num">4</span><span class="brief-text">What is Stevenson's implicit definition of mercy in this opening section, and how does it sit next to &mdash; or complicate &mdash; the "rule of law" ideal you'll hear invoked constantly in your first year?</span></div>
+</div>
+</div>
+
+<div class="section" style="text-align:center; margin-top:2rem;">
+  <a href="kerr_reading.html" class="case-btn">Next: How to Read a Legal Opinion</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>

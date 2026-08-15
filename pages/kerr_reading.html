@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Read a Legal Opinion — Study Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>How to Read a Legal Opinion</h1>
+<p class="subtitle">Case Reading Workshop &bull; Rebuilt from Orin S. Kerr, <em>A Guide for New Law Students</em> (11 Green Bag 2d 51, 2007) &mdash; same sequence and examples, original wording</p>
+
+<div class="section">
+<div class="info-box">Kerr's original essay is short and freely distributable (CC BY-NC-ND) &mdash; worth reading straight from the source too. This page rewrites it in full, in the same order, so it reads start to finish rather than as a bullet-point summary.</div>
+</div>
+
+<div class="section">
+<p class="section-title">I. What's actually in an opinion</p>
+<p class="written">When a lawsuit ends with a judge ruling in favor of one side, that judge writes the ruling down as an "opinion" &mdash; a document that explains what the case is about, works through the relevant law, and applies that law to the facts to reach a result. Modern opinions follow a fairly predictable formula, starting with introductory material at the top and moving into the body.</p>
+
+<h3>The caption</h3>
+<p class="written">The title of the case &mdash; <em>Brown v. Board of Education</em>, <em>Miranda v. Arizona</em> &mdash; is the "caption." It gives you the last names of the two sides, usually called the "parties" or "litigants": whoever brought the suit and whoever is being sued. If Ms. Smith sues Mr. Jones, the caption is <em>Smith v. Jones</em> (or, on appeal, sometimes flipped depending on the court's convention). In criminal cases there's no private plaintiff &mdash; the government itself brings the charges &mdash; so the caption names the government: <em>United States v. Doe</em> in federal court, <em>State v. Doe</em>, <em>People v. Doe</em>, or <em>Commonwealth v. Doe</em> depending on the state.</p>
+
+<h3>The citation</h3>
+<p class="written">Below the case name sits a string of letters and numbers &mdash; the citation &mdash; telling you which court decided the case, which reporter (the bound volume where opinions get published) it appears in, and the year. "U.S. Supreme Court, 485 U.S. 759 (1988)" means a Supreme Court case decided in 1988, printed in Volume 485 of the <em>United States Reports</em> starting at page 759.</p>
+
+<h3>The author</h3>
+<p class="written">Next comes the name of the judge who wrote the opinion, useful because most courts have more than one judge and you need to know whose reasoning you're reading. Older opinions often just print a last name followed by "J." &mdash; that's short for "Judge" or "Justice," not a first initial. Occasionally you'll see "per curiam" instead of a name, Latin for "by the court," signaling that the opinion speaks for the court collectively rather than for one identified judge.</p>
+
+<h3>The facts</h3>
+<p class="written">The body of the opinion opens with the facts &mdash; what actually happened. There's no fixed rule for how long or complete this section has to be; some judges are thorough and precise, others vague or incomplete. Facts sections are usually paired with the procedural history: how the dispute moved through the legal system to land in front of this particular court. That history matters most for Civil Procedure, less so for your other first-year classes.</p>
+
+<h3>The law of the case</h3>
+<p class="written">After the facts, the opinion turns to the law, usually in two stages. First, general background &mdash; the history of the relevant area of law, or a discussion of past decisions ("precedents") bearing on the current dispute &mdash; which gives you context for why the case matters. Second, the application of those general principles to this case's specific facts. That second stage is, in most opinions, the real center of gravity: it's where the court explains exactly why it ruled for one side and against the other.</p>
+
+<h3>Concurring and dissenting opinions</h3>
+<p class="written">Most assigned opinions are "majority" opinions &mdash; joined by more than half the judges deciding the case. Not every decision is unanimous. A judge who agrees with the winning side but for different legal reasons writes a "concurring opinion" (or "concurrence"); a judge who disagrees with the outcome entirely writes a "dissenting opinion" ("dissent"). Both appear after the majority opinion.</p>
+</div>
+
+<div class="section">
+<p class="section-title">II. Vocabulary you'll keep tripping over</p>
+<p class="written">A quick history lesson explains why so much legal language feels foreign even though you already speak English. In 1066, William the Conqueror invaded from Normandy and took over the English court system; French became the language of English law for centuries, and even after English courts went back to English, a huge amount of that French vocabulary stuck. Plaintiff, defendant, tort, contract, crime, judge, attorney, counsel, court, verdict, party, appeal, evidence, jury &mdash; all everyday words in American legal opinions, all inherited from French by way of the Norman Conquest.</p>
+
+<h3>Civil vs. criminal</h3>
+<p class="written">There are two basic kinds of disputes. In a <strong>civil</strong> case, one person files a lawsuit asking a court to order the other side to pay money ("damages") or to do or stop doing something (an "injunction"); the person suing is the "plaintiff," the person sued is the "defendant." In a <strong>criminal</strong> case there's no plaintiff at all &mdash; a government prosecutor files charges on behalf of the state, asking the court to punish the accused with jail time or a fine, and the accused is still called the "defendant." The prosecutor is usually referred to as "the state," "the prosecution," or simply "the government."</p>
+
+<h3>Lawyers and the court</h3>
+<p class="written">Each side is ordinarily represented by a lawyer, called an "attorney" or "counsel" &mdash; different words historically, but functionally interchangeable for the last century or so. In the courtroom, a lawyer always addresses the judge as "your honor"; in a written opinion, judges typically refer to themselves collectively as "the Court."</p>
+
+<h3>Appellate terms</h3>
+<p class="written">Most of what you'll read in law school are appellate opinions &mdash; decisions on appeals. An "appeal" asks a higher court to review whether a lower court's ruling was legally correct. The court where the case was first heard is the "trial court" (because that's where any trial happens); the higher court reviewing it is the "appellate" or "appeals" court. Trial courts run on a single judge; appeals are decided by panels &mdash; three judges at the federal circuit level, all nine at the U.S. Supreme Court, where one Justice is the "Chief Justice" and the other eight are technically "Associate Justices," though everyone just says "Justice." The side that lost below and is appealing is the "appellant"; the side defending the win below is the "appellee" (stress on the last syllable). Some courts instead frame an appeal as a "petition," in which case the losing party asking for review is the "petitioner" and the winning party responding is the "respondent."</p>
+</div>
+
+<div class="section">
+<p class="section-title">III. What you're actually supposed to get out of a case</p>
+
+<h3>Know the facts</h3>
+<p class="written">Professors love the facts, and cold calls almost always start there. Law is highly fact-sensitive &mdash; the right outcome usually depends on the exact details of what happened &mdash; and issue-spotter exams are entirely built around dense, specific fact patterns you have to parse under time pressure. If you don't know the facts, none of what follows is even reachable.</p>
+
+<h3>Know exactly what each side argued</h3>
+<p class="written">Judges only issue opinions because two parties disagree on a specific legal question, and it's the lawyers &mdash; not the judges &mdash; who frame that disagreement in the first place. Understanding a case means understanding precisely what each side's lawyer argued, which is also why the best lawyers are the ones most skilled at framing an issue persuasively.</p>
+
+<h3>Know the disposition</h3>
+<p class="written">The "disposition" is the concrete action the court took, usually announced at the very end. An appeals court can "affirm" a lower ruling (the lower court got it right), "reverse" it (the lower court got it wrong, opposite result), or "vacate" it (wipe the ruling away entirely) and "remand" the case (send it back down for further proceedings) &mdash; often combined, as in "reversed and remanded."</p>
+
+<h3>Understand the reasoning</h3>
+<p class="written">Start by identifying the source of law the judge applied: the Constitution, a statute (a written law passed by a legislature), or the common law (the accumulated body of judge-made precedent tracing back to pre-1776 English law). American law follows a strict hierarchy here &mdash; constitutional rules outrank statutory rules, which outrank common-law rules. Torts, Contracts, and Property mostly interpret common law; Criminal Law mostly interprets common law or statutes; Civil Procedure mostly interprets statutes or the Constitution.</p>
+<p class="written">Then identify the method of reasoning. When a statute governs, courts generally just follow what it says. When precedent controls, courts follow the doctrine of "stare decisis" &mdash; Latin for "that which has been decided should remain settled" &mdash; meaning they consider themselves bound by how earlier courts already answered the same question. And where neither a statute nor binding precedent controls, courts sometimes justify a ruling directly on public policy, morality, or fairness grounds &mdash; picking the rule they think is best and explaining why. Many opinions blend all three.</p>
+
+<h3>Understand the significance</h3>
+<p class="written">When an opinion announces a clear new rule and applies it to resolve the dispute, that rule is the "holding." Anything the court says that wasn't strictly necessary to reach the result is "dicta" (short for <em>obiter dictum</em>, "a remark by the way") &mdash; dicta might be persuasive later, but it was never binding. Once you've found a holding, test it against hypotheticals &mdash; professors do this constantly in class, both because a rule that looks clean in one fact pattern can reveal problems in another, and because judges themselves reason by analogy, extending an old rule to new facts that resemble the old ones closely enough. And accept, genuinely, that some opinions are just vague &mdash; a court that doesn't explain its reasoning well leaves you without a clean holding to extract, and that's not a failure of your reading comprehension. Recognizing an unsettled legal question, instead of forcing false certainty onto it, is itself one of the marks of a strong law student.</p>
+
+<h3>Understand any concurrences or dissents</h3>
+<p class="written">Concurrences and dissents deserve careful reading, not a skim. Casebook editors routinely cut the unimportant ones, so if one made it into your assigned reading, it's there because it does real work &mdash; usually by sharpening exactly what's contested in the majority's reasoning, and reminding you that law is made by people who can look at the same facts and disagree.</p>
+</div>
+
+<div class="section">
+<p class="section-title">IV. Why professors teach this way at all</p>
+<p class="written">Two reasons explain the case method. The <strong>historical</strong> reason: American law inherited a judge-centered English system in which judges can only announce law by deciding real disputes &mdash; courts can't hold a press conference and declare a rule out of nowhere (this is sometimes called the "case or controversy" requirement). To understand law shaped this way, you have to study the actual decisions judges wrote, not a textbook restatement of the rules.</p>
+<p class="written">The <strong>practical</strong> reason: reading real cases trains a skill practicing lawyers genuinely need &mdash; taking an abstract rule and figuring out, given a real client's specific facts, whether and how it applies. A sign reading "No vehicles in the park" plainly bans a car, but does it ban a bicycle? A wheelchair? A toy car? An ambulance? Rules that look airtight in the abstract get murky fast in application, and constant use of hypotheticals in the case method is built specifically to train that muscle before you're doing it for a real client.</p>
+</div>
+
+<div class="section" style="text-align:center; margin-top:2rem;">
+  <a href="benjamin_case.html" class="case-btn">Next: Benjamin v. Lindner Aviation</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>

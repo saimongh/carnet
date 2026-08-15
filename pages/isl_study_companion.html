@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISL Packer — Study Companion</title>
+<style>
+  :root{
+    --bg:#0f1113;
+    --bg-elev:#161a1e;
+    --bg-elev-2:#1c2126;
+    --border:#2a2f36;
+    --text:#e7e5e0;
+    --text-dim:#a8aab0;
+    --text-faint:#767a82;
+    --accent:#c9a15a;
+    --accent-soft:#c9a15a33;
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+    --c1:hsl(0,55%,62%);   --c1-bg:hsl(0,55%,62%,0.16);
+    --c2:hsl(28,60%,62%);  --c2-bg:hsl(28,60%,62%,0.16);
+    --c3:hsl(45,60%,58%);  --c3-bg:hsl(45,60%,58%,0.16);
+    --c4:hsl(72,40%,52%);  --c4-bg:hsl(72,40%,52%,0.16);
+    --c5:hsl(150,35%,50%); --c5-bg:hsl(150,35%,50%,0.16);
+    --c6:hsl(175,40%,48%); --c6-bg:hsl(175,40%,48%,0.16);
+    --c7:hsl(200,55%,62%); --c7-bg:hsl(200,55%,62%,0.16);
+    --c8:hsl(220,55%,68%); --c8-bg:hsl(220,55%,68%,0.16);
+    --c9:hsl(255,50%,72%); --c9-bg:hsl(255,50%,72%,0.16);
+    --c10:hsl(285,40%,66%);--c10-bg:hsl(285,40%,66%,0.16);
+    --c11:hsl(325,50%,66%);--c11-bg:hsl(325,50%,66%,0.16);
+    --cdc:hsl(0,0%,70%);   --cdc-bg:hsl(0,0%,70%,0.16);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.6;
+  }
+
+  a{color:var(--accent);}
+
+  /* ---------- layout ---------- */
+  .shell{display:flex; min-height:100vh;}
+
+  nav.sidebar{
+    width:260px;
+    flex-shrink:0;
+    background:var(--bg-elev);
+    border-right:1px solid var(--border);
+    padding:28px 20px;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+  }
+  nav.sidebar .brand{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    color:var(--text);
+    margin-bottom:4px;
+  }
+  nav.sidebar .brand-sub{
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:28px;
+  }
+  nav.sidebar .navgroup{margin-bottom:22px;}
+  nav.sidebar .navgroup-label{
+    font-size:0.68rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  nav.sidebar ul{list-style:none; margin:0; padding:0;}
+  nav.sidebar li{margin-bottom:2px;}
+  nav.sidebar a{
+    display:block;
+    color:var(--text-dim);
+    text-decoration:none;
+    font-size:0.88rem;
+    padding:6px 10px;
+    border-radius:6px;
+    border-left:2px solid transparent;
+  }
+  nav.sidebar a:hover{color:var(--text); background:var(--bg-elev-2);}
+
+  main{
+    flex:1;
+    min-width:0;
+    padding:48px 56px 120px;
+    max-width:840px;
+  }
+  @media (max-width:900px){
+    nav.sidebar{position:static; height:auto; width:100%;}
+    .shell{flex-direction:column;}
+    main{padding:32px 22px 90px; max-width:100%;}
+  }
+
+  section{margin-bottom:88px;}
+  section:first-of-type{margin-top:0;}
+
+  .kicker{
+    font-size:0.72rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:2.1rem;
+    margin:0 0 6px;
+    color:var(--text);
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:1.6rem;
+    margin:0 0 18px;
+    color:var(--text);
+    border-bottom:1px solid var(--border);
+    padding-bottom:12px;
+  }
+  h3{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:1.2rem;
+    margin:34px 0 10px;
+    color:var(--accent);
+  }
+  h4{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:0.95rem;
+    margin:22px 0 8px;
+    color:var(--text);
+  }
+  p{
+    font-family:var(--serif);
+    font-size:1.03rem;
+    color:var(--text);
+    margin:0 0 16px;
+  }
+  .lede{
+    font-family:var(--serif);
+    font-size:1.1rem;
+    color:var(--text-dim);
+    margin-bottom:26px;
+  }
+
+  .callout{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-left:3px solid var(--accent);
+    border-radius:8px;
+    padding:18px 20px;
+    margin:0 0 32px;
+    font-family:var(--sans);
+    font-size:0.92rem;
+    color:var(--text-dim);
+  }
+  .callout strong{color:var(--text);}
+
+  .discuss{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:22px 24px;
+    margin-top:30px;
+  }
+  .discuss h4{margin-top:0; color:var(--accent);}
+  .discuss ol{margin:0; padding-left:22px;}
+  .discuss li{
+    font-family:var(--serif);
+    color:var(--text);
+    margin-bottom:14px;
+    font-size:0.98rem;
+  }
+
+  /* ---------- diagrams ---------- */
+  .diagram{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:28px;
+    margin:28px 0;
+  }
+  .diagram-label{
+    font-family:var(--sans);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:18px;
+  }
+  .ladder{display:flex; flex-direction:column; align-items:center; gap:0;}
+  .ladder-box{
+    width:100%;
+    max-width:360px;
+    background:var(--bg-elev-2);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:14px 18px;
+    text-align:center;
+    font-family:var(--sans);
+  }
+  .ladder-box .t{font-weight:600; font-size:0.95rem; color:var(--text);}
+  .ladder-box .s{font-size:0.78rem; color:var(--text-faint); margin-top:2px;}
+  .ladder-arrow{
+    font-size:1.3rem;
+    color:var(--accent);
+    line-height:1;
+    padding:6px 0;
+  }
+  .ladders-row{display:flex; gap:36px; justify-content:center; flex-wrap:wrap;}
+  .ladder-col{flex:1; min-width:260px;}
+  .ladder-col-title{
+    text-align:center;
+    font-family:var(--sans);
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+
+  /* ---------- circuit grid map ---------- */
+  .map-wrap{overflow-x:auto; padding-bottom:6px;}
+  .us-grid{
+    display:grid;
+    grid-template-columns: repeat(11, 40px);
+    grid-template-rows: repeat(8, 40px);
+    gap:4px;
+    margin:0 auto 14px;
+    width:max-content;
+  }
+  .inset-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 40px);
+    grid-template-rows: repeat(2, 40px);
+    gap:4px;
+    width:max-content;
+    margin-top:10px;
+  }
+  .state{
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--sans);
+    font-size:0.68rem;
+    font-weight:600;
+    border-radius:5px;
+    color:#12130f;
+  }
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin-top:18px;
+    font-family:var(--sans);
+    font-size:0.78rem;
+    color:var(--text-dim);
+  }
+  .legend-item{display:flex; align-items:center; gap:7px;}
+  .legend-swatch{width:12px; height:12px; border-radius:3px; flex-shrink:0;}
+
+  .s-c1{background:var(--c1);} .s-c2{background:var(--c2);} .s-c3{background:var(--c3);}
+  .s-c4{background:var(--c4);} .s-c5{background:var(--c5);} .s-c6{background:var(--c6);}
+  .s-c7{background:var(--c7);} .s-c8{background:var(--c8);} .s-c9{background:var(--c9);}
+  .s-c10{background:var(--c10);} .s-c11{background:var(--c11);} .s-cdc{background:var(--cdc);}
+
+  /* ---------- case page ---------- */
+  .case-header{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:24px 28px;
+    margin-bottom:30px;
+  }
+  .case-header .logo-row{
+    font-family:var(--sans);
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin-bottom:14px;
+  }
+  .case-title{
+    font-family:var(--serif);
+    font-size:1.5rem;
+    color:var(--text);
+    margin:0 0 4px;
+  }
+  .case-cite{
+    font-family:var(--sans);
+    font-size:0.85rem;
+    color:var(--text-dim);
+  }
+  .case-body h4{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:400;
+    font-size:1.1rem;
+    color:var(--accent);
+    margin:30px 0 12px;
+  }
+  .case-body p{margin-bottom:14px;}
+  .dissent-marker{
+    display:inline-block;
+    font-family:var(--sans);
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:3px 10px;
+    border-radius:20px;
+    margin:36px 0 14px;
+  }
+  .verbatim-tag{
+    font-family:var(--sans);
+    font-size:0.7rem;
+    color:var(--text-faint);
+    margin-top:24px;
+  }
+
+  /* ---------- practice question ---------- */
+  .practice{
+    background:var(--bg-elev);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:26px 28px;
+    margin-top:36px;
+  }
+  .practice .tag{
+    font-family:var(--sans);
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  details.reveal{
+    margin-top:18px;
+    border-top:1px solid var(--border);
+    padding-top:16px;
+  }
+  details.reveal summary{
+    cursor:pointer;
+    font-family:var(--sans);
+    font-weight:600;
+    color:var(--accent);
+    font-size:0.92rem;
+    list-style:none;
+  }
+  details.reveal summary::-webkit-details-marker{display:none;}
+  details.reveal summary::before{content:"▸ ";}
+  details.reveal[open] summary::before{content:"▾ ";}
+  .model-answer{margin-top:16px;}
+  .model-answer h5{
+    font-family:var(--sans);
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--text-faint);
+    margin:16px 0 6px;
+  }
+  .model-answer p{font-size:0.98rem;}
+
+  /* footer */
+  footer{
+    font-family:var(--sans);
+    font-size:0.78rem;
+    color:var(--text-faint);
+    border-top:1px solid var(--border);
+    padding-top:20px;
+    margin-top:40px;
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <nav class="sidebar">
+    <div class="brand">ISL Packer</div>
+    <div class="brand-sub">Study Companion</div>
+
+    <div class="navgroup">
+      <div class="navgroup-label">Part 1</div>
+      <ul>
+        <li><a href="#just-mercy">Just Mercy — Higher Ground</a></li>
+      </ul>
+    </div>
+
+    <div class="navgroup">
+      <div class="navgroup-label">Part 2 — Case Reading Workshop</div>
+      <ul>
+        <li><a href="#kerr">How to Read a Legal Opinion</a></li>
+        <li><a href="#benjamin">Benjamin v. Lindner Aviation</a></li>
+      </ul>
+    </div>
+
+    <div class="navgroup">
+      <div class="navgroup-label">Part 3</div>
+      <ul>
+        <li><a href="#slocum">Intro to the American Legal System</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <section id="intro">
+      <div class="kicker">Before you start</div>
+      <h1>What this document is</h1>
+      <p class="lede">This follows the packet's own structure — Part 1 through Part 3 — but each piece is handled differently depending on what it actually is.</p>
+      <div class="callout">
+        <strong>Just Mercy</strong> is a memoir; the writing itself is the point, and it's under copyright, so what's here is a narrative and thematic walkthrough, not a substitute for Stevenson's prose — read the actual chapters.<br><br>
+        <strong>Kerr's essay and the Slocum chapter</strong> are teaching material — explanations of how opinions and courts work. Those are rebuilt here in full, same sequence and examples, in original wording.<br><br>
+        <strong>Benjamin v. Lindner Aviation</strong> is a public-domain judicial opinion, reproduced verbatim, with a practice question added at the end.
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 1 — JUST MERCY -->
+    <!-- ============================================================ -->
+    <section id="just-mercy">
+      <div class="kicker">Part 1 · Law, Identity, and Lawyering</div>
+      <h2>Just Mercy — Introduction &amp; Chapter One</h2>
+
+      <div class="callout">
+        <strong>A note on what this is.</strong> <em>Just Mercy</em> works as reading because of Bryan Stevenson's own voice — the specific way he chooses to tell these stories. That's exactly what copyright protects, and it's also, honestly, the point of assigning it: reading his actual prose is part of the assignment, not a formality around it. What follows is not a replacement for the pages you were given. It's a map of what happens and why it matters, so the throughlines are easier to catch — read the real chapters for the thing itself.
+      </div>
+
+      <h3>How Stevenson gets there</h3>
+      <p>The book opens with the encounter that set Stevenson's whole career in motion. As a twenty-three-year-old Harvard Law student on an internship with the Southern Prisoners Defense Committee, he's sent — with almost no preparation and no real grasp of death penalty law — to deliver one message to a man on Georgia's death row: you are not at risk of execution this year. He expects a bitter, resentful man. Instead the prisoner, Henry, is simply relieved to talk to someone who isn't a guard for an hour, and at the end of the visit, still shackled, he sings a hymn to Stevenson through tears. That encounter — not a five-year plan — is what convinces Stevenson to become a death penalty lawyer.</p>
+      <p>Two ideas from that chapter recur through the rest of the book. <strong>Proximity</strong>: you don't come to understand a system of injustice from a distance; you have to get close to the people living inside it. And <strong>mercy</strong>: Stevenson's test for a society isn't how it treats the rich and powerful, it's how it treats the poor, the accused, the incarcerated, the condemned — "the opposite of poverty is not wealth; the opposite of poverty is justice."</p>
+
+      <h3>The case that anchors the book: Walter McMillian</h3>
+      <p>Most of what you were assigned centers on one wrongful conviction. In November 1986, a young white woman named Ronda Morrison was found shot dead inside a dry cleaner in Monroeville, Alabama. Monroe County is Harper Lee's hometown, and the town markets itself hard around <em>To Kill a Mockingbird</em> — tourists come for the courthouse from the film adaptation, and there's an annual community stage production, the "Mockingbird Players," that Stevenson describes touring internationally. He leans on that irony deliberately: a town that celebrates a fictional white lawyer defending a wrongly accused Black man spent real effort convicting an actually innocent Black man in the same courthouse.</p>
+      <p>The murder went unsolved for months under mounting pressure to close it. Eventually Ralph Myers — himself a suspect, facing charges of his own, after prolonged questioning by investigators — named Walter McMillian as involved. There was no physical evidence tying Walter to the crime. What there was: Walter, a Black man in his mid-forties who had built a successful pulpwood business, was having an affair with a white woman, Karen Kelly, and it had already become the subject of local gossip and a bitter custody dispute. Stevenson traces this directly to Alabama's history of anti-miscegenation law — interracial marriage was a felony in Alabama until <em>Loving v. Virginia</em> struck those bans down nationwide in 1967, and Alabama's own constitution kept an unenforceable ban on the books until voters finally removed it in a 2000 referendum that still drew roughly 40 percent opposition. The "crime" of interracial intimacy, as Stevenson lays it out, is what made Walter legible as a suspect in a way actual evidence never did.</p>
+      <p>Walter was arrested, held in conditions Stevenson later details as unusually severe — including time on death row before he was even convicted, a legal impossibility that happened anyway — tried, convicted largely on Myers's testimony, and sentenced to death.</p>
+
+      <h3>Why it's assigned here</h3>
+      <p>For a course about law, identity, and lawyering specifically, the McMillian story is doing several things at once. It shows how race operates inside a legal system that is formally colorblind on paper. It shows how someone's identity — a poor, Black, self-made businessman who crossed a line the state had spent a century deliberately policing — shapes what does and doesn't count as evidence against him. And it puts a face on the line you already read in the introduction: the closer we get to condemned and incarcerated people, the more we see what our systems of justice actually reward and punish, rather than what they claim to. Stevenson isn't writing a legal brief. He's writing about what it costs, as a young lawyer, to sit across from someone the system has already decided isn't worth protecting.</p>
+
+      <div class="discuss">
+        <h4>Worth being ready to discuss</h4>
+        <ol>
+          <li>How does the proximity principle show up concretely in the scene with Henry — and what would that opening chapter lose if it started with mass incarceration statistics instead of that one visit?</li>
+          <li>Once Myers named Walter, which specific facts made him "suspectable"? Which of those facts would fail to qualify as admissible evidence under rules you'll be studying later this year?</li>
+          <li>Is the <em>Mockingbird</em> irony a coincidence, or is Stevenson arguing something structural — that communities use a comforting story about justice to avoid confronting an actual injustice happening in the same courthouse?</li>
+          <li>What is Stevenson's implicit definition of mercy in this opening section, and how does it sit next to — or complicate — the "rule of law" ideal you'll hear invoked constantly in your first year?</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 2 — KERR -->
+    <!-- ============================================================ -->
+    <section id="kerr">
+      <div class="kicker">Part 2 · Case Reading Workshop</div>
+      <h2>How to Read a Judicial Opinion</h2>
+      <p class="lede">Rebuilt from Orin Kerr's <em>How to Read a Legal Opinion: A Guide for New Law Students</em> (11 Green Bag 2d 51, 2007) — same sequence and examples, in original wording, meant to be read start to finish the way you'd read the original.</p>
+
+      <h3>I. What's actually in an opinion</h3>
+      <p>When a lawsuit ends with a judge ruling in favor of one side, that judge writes the ruling down as an "opinion" — a document that explains what the case is about, works through the relevant law, and applies that law to the facts to reach a result. Modern opinions follow a fairly predictable formula, starting with introductory material at the top and moving into the body.</p>
+
+      <h4>The caption</h4>
+      <p>The title of the case — <em>Brown v. Board of Education</em>, <em>Miranda v. Arizona</em> — is the "caption." It gives you the last names of the two sides, usually called the "parties" or "litigants": whoever brought the suit and whoever is being sued. If Ms. Smith sues Mr. Jones, the caption is <em>Smith v. Jones</em> (or, on appeal, sometimes flipped depending on the court's convention). In criminal cases there's no private plaintiff — the government itself brings the charges — so the caption names the government: <em>United States v. Doe</em> in federal court, <em>State v. Doe</em>, <em>People v. Doe</em>, or <em>Commonwealth v. Doe</em> depending on the state.</p>
+
+      <h4>The citation</h4>
+      <p>Below the case name sits a string of letters and numbers — the citation — telling you which court decided the case, which reporter (the bound volume where opinions get published) it appears in, and the year. "U.S. Supreme Court, 485 U.S. 759 (1988)" means a Supreme Court case decided in 1988, printed in Volume 485 of the <em>United States Reports</em> starting at page 759.</p>
+
+      <h4>The author</h4>
+      <p>Next comes the name of the judge who wrote the opinion, useful because most courts have more than one judge and you need to know whose reasoning you're reading. Older opinions often just print a last name followed by "J." — that's short for "Judge" or "Justice," not a first initial. Occasionally you'll see "per curiam" instead of a name, Latin for "by the court," signaling that the opinion speaks for the court collectively rather than for one identified judge.</p>
+
+      <h4>The facts</h4>
+      <p>The body of the opinion opens with the facts — what actually happened. There's no fixed rule for how long or complete this section has to be; some judges are thorough and precise, others vague or incomplete. Facts sections are usually paired with the procedural history: how the dispute moved through the legal system to land in front of this particular court. That history matters most for Civil Procedure, less so for your other first-year classes.</p>
+
+      <h4>The law of the case</h4>
+      <p>After the facts, the opinion turns to the law, usually in two stages. First, general background — the history of the relevant area of law, or a discussion of past decisions ("precedents") bearing on the current dispute — which gives you context for why the case matters. Second, the application of those general principles to this case's specific facts. That second stage is, in most opinions, the real center of gravity: it's where the court explains exactly why it ruled for one side and against the other.</p>
+
+      <h4>Concurring and dissenting opinions</h4>
+      <p>Most assigned opinions are "majority" opinions — joined by more than half the judges deciding the case. Not every decision is unanimous. A judge who agrees with the winning side but for different legal reasons writes a "concurring opinion" (or "concurrence"); a judge who disagrees with the outcome entirely writes a "dissenting opinion" ("dissent"). Both appear after the majority opinion.</p>
+
+      <h3>II. Vocabulary you'll keep tripping over</h3>
+      <p>A quick history lesson explains why so much legal language feels foreign even though you already speak English. In 1066, William the Conqueror invaded from Normandy and took over the English court system; French became the language of English law for centuries, and even after English courts went back to English, a huge amount of that French vocabulary stuck. Plaintiff, defendant, tort, contract, crime, judge, attorney, counsel, court, verdict, party, appeal, evidence, jury — all everyday words in American legal opinions, all inherited from French by way of the Norman Conquest.</p>
+
+      <h4>Civil vs. criminal</h4>
+      <p>There are two basic kinds of disputes. In a <strong>civil</strong> case, one person files a lawsuit asking a court to order the other side to pay money ("damages") or to do or stop doing something (an "injunction"); the person suing is the "plaintiff," the person sued is the "defendant." In a <strong>criminal</strong> case there's no plaintiff at all — a government prosecutor files charges on behalf of the state, asking the court to punish the accused with jail time or a fine, and the accused is still called the "defendant." The prosecutor is usually referred to as "the state," "the prosecution," or simply "the government."</p>
+
+      <h4>Lawyers and the court</h4>
+      <p>Each side is ordinarily represented by a lawyer, called an "attorney" or "counsel" — different words historically, but functionally interchangeable for the last century or so. In the courtroom, a lawyer always addresses the judge as "your honor"; in a written opinion, judges typically refer to themselves collectively as "the Court."</p>
+
+      <h4>Appellate terms</h4>
+      <p>Most of what you'll read in law school are appellate opinions — decisions on appeals. An "appeal" asks a higher court to review whether a lower court's ruling was legally correct. The court where the case was first heard is the "trial court" (because that's where any trial happens); the higher court reviewing it is the "appellate" or "appeals" court. Trial courts run on a single judge; appeals are decided by panels — three judges at the federal circuit level, all nine at the U.S. Supreme Court, where one Justice is the "Chief Justice" and the other eight are technically "Associate Justices," though everyone just says "Justice." The side that lost below and is appealing is the "appellant"; the side defending the win below is the "appellee" (stress on the last syllable). Some courts instead frame an appeal as a "petition," in which case the losing party asking for review is the "petitioner" and the winning party responding is the "respondent."</p>
+
+      <h3>III. What you're actually supposed to get out of a case</h3>
+
+      <h4>Know the facts</h4>
+      <p>Professors love the facts, and cold calls almost always start there. Law is highly fact-sensitive — the right outcome usually depends on the exact details of what happened — and issue-spotter exams are entirely built around dense, specific fact patterns you have to parse under time pressure. If you don't know the facts, none of what follows is even reachable.</p>
+
+      <h4>Know exactly what each side argued</h4>
+      <p>Judges only issue opinions because two parties disagree on a specific legal question, and it's the lawyers — not the judges — who frame that disagreement in the first place. Understanding a case means understanding precisely what each side's lawyer argued, which is also why the best lawyers are the ones most skilled at framing an issue persuasively.</p>
+
+      <h4>Know the disposition</h4>
+      <p>The "disposition" is the concrete action the court took, usually announced at the very end. An appeals court can "affirm" a lower ruling (the lower court got it right), "reverse" it (the lower court got it wrong, opposite result), or "vacate" it (wipe the ruling away entirely) and "remand" the case (send it back down for further proceedings) — often combined, as in "reversed and remanded."</p>
+
+      <h4>Understand the reasoning</h4>
+      <p>Start by identifying the source of law the judge applied: the Constitution, a statute (a written law passed by a legislature), or the common law (the accumulated body of judge-made precedent tracing back to pre-1776 English law). American law follows a strict hierarchy here — constitutional rules outrank statutory rules, which outrank common-law rules. Torts, Contracts, and Property mostly interpret common law; Criminal Law mostly interprets common law or statutes; Civil Procedure mostly interprets statutes or the Constitution.</p>
+      <p>Then identify the method of reasoning. When a statute governs, courts generally just follow what it says. When precedent controls, courts follow the doctrine of "stare decisis" — Latin for "that which has been decided should remain settled" — meaning they consider themselves bound by how earlier courts already answered the same question. And where neither a statute nor binding precedent controls, courts sometimes justify a ruling directly on public policy, morality, or fairness grounds — picking the rule they think is best and explaining why. Many opinions blend all three.</p>
+
+      <h4>Understand the significance</h4>
+      <p>When an opinion announces a clear new rule and applies it to resolve the dispute, that rule is the "holding." Anything the court says that wasn't strictly necessary to reach the result is "dicta" (short for <em>obiter dictum</em>, "a remark by the way") — dicta might be persuasive later, but it was never binding. Once you've found a holding, test it against hypotheticals — professors do this constantly in class, both because a rule that looks clean in one fact pattern can reveal problems in another, and because judges themselves reason by analogy, extending an old rule to new facts that resemble the old ones closely enough. And accept, genuinely, that some opinions are just vague — a court that doesn't explain its reasoning well leaves you without a clean holding to extract, and that's not a failure of your reading comprehension. Recognizing an unsettled legal question, instead of forcing false certainty onto it, is itself one of the marks of a strong law student.</p>
+
+      <h4>Understand any concurrences or dissents</h4>
+      <p>Concurrences and dissents deserve careful reading, not a skim. Casebook editors routinely cut the unimportant ones, so if one made it into your assigned reading, it's there because it does real work — usually by sharpening exactly what's contested in the majority's reasoning, and reminding you that law is made by people who can look at the same facts and disagree.</p>
+
+      <h3>IV. Why professors teach this way at all</h3>
+      <p>Two reasons explain the case method. The <strong>historical</strong> reason: American law inherited a judge-centered English system in which judges can only announce law by deciding real disputes — courts can't hold a press conference and declare a rule out of nowhere (this is sometimes called the "case or controversy" requirement). To understand law shaped this way, you have to study the actual decisions judges wrote, not a textbook restatement of the rules.</p>
+      <p>The <strong>practical</strong> reason: reading real cases trains a skill practicing lawyers genuinely need — taking an abstract rule and figuring out, given a real client's specific facts, whether and how it applies. A sign reading "No vehicles in the park" plainly bans a car, but does it ban a bicycle? A wheelchair? A toy car? An ambulance? Rules that look airtight in the abstract get murky fast in application, and constant use of hypotheticals in the case method is built specifically to train that muscle before you're doing it for a real client.</p>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 2 — BENJAMIN CASE -->
+    <!-- ============================================================ -->
+    <section id="benjamin">
+      <div class="kicker">Part 2 · Case Reading Workshop</div>
+      <h2>Case Study: Benjamin v. Lindner Aviation, Inc.</h2>
+
+      <div class="case-header">
+        <div class="logo-row">Brooklyn Law School · Case Reading Workshop</div>
+        <div class="case-title">Heath Benjamin v. Lindner Aviation, Inc.</div>
+        <div class="case-cite">534 N.W.2d 400 (Iowa 1995) · Considered en banc · Opinion by Ternus, J.</div>
+      </div>
+
+      <div class="case-body">
+        <p><em>Reproduced verbatim — this is a public-domain judicial opinion.</em></p>
+
+        <h4>Opinion</h4>
+        <p>Considered en banc.</p>
+        <p>TERNUS, Justice.</p>
+        <p>Appellant, Heath Benjamin, found over $18,000 in currency inside the wing of an airplane. At the time of this discovery, appellee, State Central Bank, owned the plane and it was being serviced by appellee, Lindner Aviation, Inc. All three parties claimed the money as against the true owner. After a bench trial, the district court held that the currency was mislaid property and belonged to the owner of the plane. The court awarded a finder's fee to Benjamin. Benjamin appealed and Lindner Aviation and State Central Bank cross-appealed. We reverse on the bank's cross-appeal and otherwise affirm the judgment of the district court.</p>
+
+        <h4>I. Background Facts and Proceedings.</h4>
+        <p>In April of 1992, State Central Bank became the owner of an airplane when the bank repossessed it from its prior owner who had defaulted on a loan. In August of that year, the bank took the plane to Lindner Aviation for a routine annual inspection. Benjamin worked for Lindner Aviation and did the inspection.</p>
+        <p>As part of the inspection, Benjamin removed panels from the underside of the wings. Although these panels were to be removed annually as part of the routine inspection, a couple of the screws holding the panel on the left wing were so rusty that Benjamin had to use a drill to remove it. Benjamin testified that the panel probably had not been removed for several years.</p>
+        <p>Inside the left wing Benjamin discovered two packets approximately four inches high and wrapped in aluminum foil. He removed the packets from the wing and took off the foil wrapping. Inside the foil was paper currency, tied in string and wrapped in handkerchiefs. The currency was predominately twenty-dollar bills with mint dates before the 1960s, primarily in the 1950s. The money smelled musty.</p>
+        <p>Benjamin took one packet to his jeep and then reported what he had found to his supervisor, offering to divide the money with him. However, the supervisor reported the discovery to the owner of Lindner Aviation, William Engle. Engle insisted that they contact the authorities and he called the Department of Criminal Investigation. The money was eventually turned over to the Keokuk police department.</p>
+        <p>Two days later, Benjamin filed an affidavit with the county auditor claiming that he was the finder of the currency under the provisions of Iowa Code chapter 644 (1991). Lindner Aviation and the bank also filed claims to the money. The notices required by chapter 644 were published and posted. See Iowa Code § 644.8 (1991). No one came forward within twelve months claiming to be the true owner of the money. See id. §644.11 (if true owner does not claim property within twelve months, the right to the property vests in the finder).</p>
+        <p>Benjamin filed this declaratory judgment action against Lindner Aviation and the bank to establish his right to the property. The parties tried the case to the court. The district court held that chapter 644 applies only to "lost" property and the money here was mislaid property. The court awarded the money to the bank, holding that it was entitled to possession of the money to the exclusion of all but the true owner. The court also held that Benjamin was a "finder" within the meaning of chapter 644 and awarded him a ten-percent finder's fee. See id. § 644.13 (a finder of lost property is entitled to ten percent of the value of the lost property as a reward).</p>
+        <p>Benjamin appealed. He claims that chapter 644 governs the disposition of all found property and any common law distinctions between various types of found property are no longer valid. He asserts alternatively that even under the common law classes of found property, he is entitled to the money he discovered. He claims that the trial court should have found that the property was treasure trove or was lost or abandoned rather than mislaid, thereby entitling the finder to the property.</p>
+        <p>The bank and Lindner Aviation cross-appealed. Lindner Aviation claims that if the money is mislaid property, it is entitled to the money as the owner of the premises on which the money was found, the hangar where the plane was parked. It argues in the alternative that it is the finder, not Benjamin, because Benjamin discovered the money during his work for Lindner Aviation. The bank asserts in its cross-appeal that it owns the premises where the money was found — the airplane — and that no one is entitled to a finder's fee because chapter 644 does not apply to mislaid property.</p>
+
+        <h4>II. Standard of Review</h4>
+        <p>This case was tried as an ordinary proceeding at law. Therefore, the standard of review is for correction of errors at law. Iowa R. App. P. 4; <em>Kuehl v. Freeman Bros. Agency, Inc.</em>, 521 N.W.2d 714, 717 (Iowa 1994); <em>Eldridge v. Herman</em>, 291 N.W.2d 319, 321 (Iowa 1980).</p>
+        <p>Whether the money found by Benjamin was treasure trove or was mislaid, abandoned or lost property is a fact question. 1 Am. Jur. 2d Abandoned, Lost, and Unclaimed Property § 41, at 49 (2d ed. 1994) (hereinafter "1 Am. Jur. 2d Abandoned Property"); cf. <em>Bennett v. Bowers</em>, 238 Iowa 702, 706, 28 N.W.2d 618, 620 (1947) (whether realty has been abandoned is a question of fact); <em>Roberson v. Ellis</em>, 58 Ore. 219, 114 P. 100, 103 (Or. 1911) (whether money was hidden long enough to be classified as treasure trove was a fact question for the jury). Therefore, the trial court's finding that the money was mislaid is binding on us if supported by substantial evidence. Iowa R. App. P. 14(f)(1); see <em>Eldridge</em>, 291 N.W.2d at 323 (affirming trial court's finding that property was lost property because supported by substantial evidence).</p>
+
+        <h4>III. Does Chapter 644 Supersede the Common Law Classifications of Found Property?</h4>
+        <p>Benjamin argues that chapter 644 governs the rights of finders of property and abrogates the common law distinctions between types of found property. As he points out, lost property statutes are intended "to encourage and facilitate the return of property to the true owner, and then to reward a finder for his honesty if the property remains unclaimed." <em>Paset v. Old Orchard Bank &amp; Trust Co.</em>, 62 Ill. App. 3d 534, 378 N.E.2d 1264, 1268, 19 Ill. Dec. 389 (Ill. App. Ct. 1978) (interpreting a statute similar to chapter 644); accord <em>Flood v. City Nat'l Bank</em>, 218 Iowa 898, 908, 253 N.W. 509, 514 (1934), cert. denied, 298 U.S. 666, 80 L. Ed. 1390, 56 S. Ct. 749 (1936) (public policy reflected in lost property statute is "to provide a reward to the finder of lost goods"); <em>Willsmore v. Township of Oceola</em>, 106 Mich. App. 671, 308 N.W.2d 796, 804 (Mich. Ct. App. 1981) (lost goods act "provides protection to the finder, a reasonable method of uniting goods with their true owner, and a plan which benefits the people of the state through their local governments"). These goals, Benjamin argues, can best be achieved by applying such statutes to all types of found property.</p>
+        <p>The Michigan Court of Appeals had an additional reason in <em>Willsmore</em> to apply the Michigan statute to all classes of discovered property. The Michigan court noted that the common law distinctions between categories of found property were embraced in Michigan after the enactment of its lost property statute. <em>Willsmore</em>, 308 N.W.2d at 803. Based on this fact, the Michigan court concluded that the legislature could not have intended to reflect in the term "lost property" distinctions not then in existence. <em>Id.</em> However, the Michigan court did not address the fact that the common law distinctions were first developed in England, before the enactment of most states' lost property statutes. See <em>Goddard v. Winchell</em>, 86 Iowa 71, 52 N.W. 1124 (1892) (citing to English common law); <em>Hurley v. City of Niagara Falls</em>, 30 A.D.2d 89, 289 N.Y.S.2d 889, 891 (App. Div. 1968) (stating that common law principles relating to lost property were established as early as 1722).</p>
+        <p>Although a few courts have adopted an expansive view of lost property statutes, we think Iowa law is to the contrary. In 1937, we quoted and affirmed a trial court ruling that "the old law of treasure trove is not merged in the statutory law of chapter 515, 1935 Code of Iowa." <em>Zornes v. Bowen</em>, 223 Iowa 1141, 1145, 274 N.W. 877, 879 (1937). Chapter 515 of the 1935 Iowa Code was eventually renumbered as chapter 644. The relevant sections of chapter 644 are unchanged since our 1937 decision. As recently as 1991, we stated that "the rights of finders of property vary according to the characterization of the property found." <em>Ritz v. Selma United Methodist Church</em>, 467 N.W.2d 266, 268 (Iowa 1991). We went on to define and apply the common law classifications of found property in deciding the rights of the parties. <em>Id.</em> at 269. As our prior cases show, we have continued to use the common law distinctions between classes of found property despite the legislature's enactment of chapter 644 and its predecessors.</p>
+        <p>The legislature has had many opportunities since our decision in <em>Zornes</em> to amend the statute so that it clearly applies to all types of found property. However, it has not done so. When the legislature leaves a statute unchanged after the supreme court has interpreted it, we presume that the legislature has acquiesced in our interpretation. <em>State v. Sheffey</em>, 234 N.W.2d 92, 97 (Iowa 1975). Therefore, we presume here that the legislature approves of our application of chapter 644 to lost property only. Consequently, we hold that chapter 644 does not abrogate the common law classifications of found property. We note this position is consistent with that taken by most jurisdictions. See, e.g., <em>Bishop v. Ellsworth</em>, 91 Ill. App. 2d 386, 234 N.E.2d 49, 51 (Ill. App. Ct. 1968) (holding lost property statute does not apply to abandoned or mislaid property); <em>Foster v. Fidelity Safe Deposit Co.</em>, 264 Mo. 89, 174 S.W. 376, 379 (Mo. 1915) (refusing to apply lost property statute to property that would not be considered lost under the common law); <em>Sovern v. Yoran</em>, 16 Ore. 269, 20 P. 100, 105 (Or. 1888) (same); <em>Zech v. Accola</em>, 253 Wis. 80, 33 N.W.2d 232, 235 (Wis. 1948) (concluding that if legislature had intended to include treasure trove within lost property statute, it would have specifically mentioned treasure trove).</p>
+        <p>In summary, chapter 644 applies only if the property discovered can be categorized as "lost" property as that term is defined under the common law. Thus, the trial court correctly looked to the common law classifications of found property to decide who had the right to the money discovered here.</p>
+
+        <h4>IV. Classification of Found Property.</h4>
+        <p>Under the common law, there are four categories of found property: (1) abandoned property, (2) lost property, (3) mislaid property, and (4) treasure trove. <em>Ritz</em>, 467 N.W.2d at 269. The rights of a finder of property depend on how the found property is classified. <em>Id.</em> at 268-69.</p>
+        <p><strong>A. Abandoned property.</strong> Property is abandoned when the owner no longer wants to possess it. Cf. <em>Pearson v. City of Guttenberg</em>, 245 N.W.2d 519, 529 (Iowa 1976) (considering abandonment of real estate). Abandonment is shown by proof that the owner intends to abandon the property and has voluntarily relinquished all right, title and interest in the property. <em>Ritz</em>, 467 N.W.2d at 269; 1 Am. Jur. 2d Abandoned Property §§ 11-14, at 15-20. Abandoned property belongs to the finder of the property against all others, including the former owner. <em>Ritz</em>, 467 N.W.2d at 269.</p>
+        <p><strong>B. Lost property.</strong> "Property is lost when the owner unintentionally and involuntarily parts with its possession and does not know where it is." <em>Id.</em> (citing <em>Eldridge v. Herman</em>, 291 N.W.2d 319, 323 (Iowa 1980)); accord 1 Am. Jur. 2d Abandoned Property § 4, at 9-10. Stolen property found by someone who did not participate in the theft is lost property. <em>Flood</em>, 218 Iowa at 905, 253 N.W. at 513; 1 Am. Jur. 2d Abandoned Property § 5, at 11. Under chapter 644, lost property becomes the property of the finder once the statutory procedures are followed and the owner makes no claim within twelve months. Iowa Code § 644.11 (1991).</p>
+        <p><strong>C. Mislaid property.</strong> Mislaid property is voluntarily put in a certain place by the owner who then overlooks or forgets where the property is. <em>Ritz</em>, 467 N.W.2d at 269. It differs from lost property in that the owner voluntarily and intentionally places mislaid property in the location where it is eventually found by another. 1 Am. Jur. 2d Abandoned Property § 10, at 14. In contrast, property is not considered lost unless the owner parts with it involuntarily. <em>Ritz</em>, 467 N.W.2d at 269; 1 Am. Jur. 2d Abandoned Property § 10, at 14; see <em>Hill v. Schrunk</em>, 207 Ore. 71, 292 P.2d 141, 143 (Or. 1956) (carefully concealed currency was mislaid property, not lost property). The finder of mislaid property acquires no rights to the property. 1 Am. Jur. 2d Abandoned Property § 24, at 30. The right of possession of mislaid property belongs to the owner of the premises upon which the property is found, as against all persons other than the true owner. <em>Ritz</em>, 467 N.W.2d at 269.</p>
+        <p><strong>D. Treasure trove.</strong> Treasure trove consists of coins or currency concealed by the owner. <em>Id.</em> It includes an element of antiquity. <em>Id.</em> To be classified as treasure trove, the property must have been hidden or concealed for such a length of time that the owner is probably dead or undiscoverable. <em>Id.</em>; 1 Am. Jur. 2d Abandoned Property § 8, at 13. Treasure trove belongs to the finder as against all but the true owner. <em>Zornes</em>, 223 Iowa at 1145, 274 N.W. at 879.</p>
+
+        <h4>V. Is There Substantial Evidence to Support the Trial Court's Finding That the Money Found by Benjamin Was Mislaid?</h4>
+        <p>We think there was substantial evidence to find that the currency discovered by Benjamin was mislaid property. In the <em>Eldridge</em> case, we examined the location where the money was found as a factor in determining whether the money was lost property. <em>Eldridge</em>, 291 N.W.2d at 323; accord 1 Am. Jur. 2d Abandoned Property § 6, at 11-12 ("The place where money or property claimed as lost is found is an important factor in the determination of the question of whether it was lost or only mislaid."). Similarly, in <em>Ritz</em>, we considered the manner in which the money had been secreted in deciding that it had not been abandoned. <em>Ritz</em>, 467 N.W.2d at 269.</p>
+        <p>The place where Benjamin found the money and the manner in which it was hidden are also important here. The bills were carefully tied and wrapped and then concealed in a location that was accessible only by removing screws and a panel. These circumstances support an inference that the money was placed there intentionally. This inference supports the conclusion that the money was mislaid. <em>Jackson v. Steinberg</em>, 186 Ore. 129, 200 P.2d 376, 378 (Or. 1948) (fact that $800 in currency was found concealed beneath the paper lining of a dresser indicates that money was intentionally concealed with intention of reclaiming it; therefore, property was mislaid, not lost); <em>Schley v. Couch</em>, 155 Tex. 195, 284 S.W.2d 333, 336 (Tex. 1955) (holding that money found buried under garage floor was mislaid property as a matter of law because circumstances showed that money was placed there deliberately and court presumed that owner had either forgotten where he hid the money or had died before retrieving it).</p>
+        <p>The same facts that support the trial court's conclusion that the money was mislaid prevent us from ruling as a matter of law that the property was lost. Property is not considered lost unless considering the place where and the conditions under which the property is found, there is an inference that the property was left there unintentionally. 1 Am. Jur. 2d Abandoned Property § 6, at 12; see <em>Sovern</em>, 20 P. at 105 (holding that coins found in a jar under a wooden floor of a barn were not lost property because the circumstances showed that the money was hidden there intentionally); see <em>Farrare v. City of Pasco</em>, 68 Wash. App. 459, 843 P.2d 1082, 1084 (Wash. Ct. App. 1993) (where currency was deliberately concealed, it cannot be characterized as lost property). Contrary to Benjamin's position the circumstances here do not support a conclusion that the money was placed in the wing of the airplane unintentionally. Additionally, as the trial court concluded, there was no evidence suggesting that the money was placed in the wing by someone other than the owner of the money and that its location was unknown to the owner. For these reasons, we reject Benjamin's argument that the trial court was obligated to find that the currency Benjamin discovered was lost property.</p>
+        <p>We also reject Benjamin's assertion that as a matter of law this money was abandoned property. Both logic and common sense suggest that it is unlikely someone would voluntarily part with over $18,000 with the intention of terminating his ownership. The location where this money was found is much more consistent with the conclusion that the owner of the property was placing the money there for safekeeping. See <em>Ritz</em>, 467 N.W.2d at 269 (property not abandoned where money was buried in jars and tin cans, indicating a desire by the owner to preserve it); <em>Jackson</em>, 200 P.2d at 378 (because currency was concealed intentionally and deliberately, the bills could not be regarded as abandoned property); 1 Am. Jur. 2d Abandoned Property § 13, at 17 (where property is concealed in such a way that the concealment appears intentional and deliberate, there can be no abandonment). We will not presume that an owner has abandoned his property when his conduct is consistent with a continued claim to the property. <em>Linscomb v. Goodyear Tire &amp; Rubber Co.</em>, 199 F.2d 431, 435 (8th Cir. 1952) (applying Missouri law); <em>Hoffman Management Corp. v. S.L.C. of N. Am., Inc.</em>, 800 S.W.2d 755, 762 (Mo. Ct. App. 1990); <em>Foulke v. New York Consolidated R.R.</em>, 228 N.Y. 269, 127 N.E. 237, 238 (N.Y. 1920); 1 Am. Jur. 2d Abandoned Property §§ 14, 42, at 20, 49; cf. <em>Bennett</em>, 238 Iowa at 706, 28 N.W.2d at 620 (stating that there is no presumption that real property is abandoned). Therefore, we cannot rule that the district court erred in failing to find that the currency discovered by Benjamin was abandoned property.</p>
+        <p>Finally, we also conclude that the trial court was not obligated to decide that this money was treasure trove. Based on the dates of the currency, the money was no older than thirty-five years. The mint dates, the musty odor and the rusty condition of a few of the panel screws indicate that the money may have been hidden for some time. However, there was no evidence of the age of the airplane or the date of its last inspection. These facts may have shown that the money was concealed for a much shorter period of time.</p>
+        <p>Moreover, it is also significant that the airplane had a well-documented ownership history. The record reveals that there were only two owners of the plane prior to the bank. One was the person from whom the bank repossessed the plane; the other was the original purchaser of the plane when it was manufactured. Nevertheless, there is no indication that Benjamin or any other party attempted to locate and notify the prior owners of the plane, which could very possibly have led to the identification of the true owner of the money. Under these circumstances, we cannot say as a matter of law that the money meets the antiquity requirement or that it is probable that the owner of the money is not discoverable.</p>
+        <p>We think the district court had substantial evidence to support its finding that the money found by Benjamin was mislaid. The circumstances of its concealment and the location where it was found support inferences that the owner intentionally placed the money there and intended to retain ownership. We are bound by this factual finding.</p>
+
+        <h4>VI. Is the Airplane Or the Hangar the "Premises" Where the Money Was Discovered?</h4>
+        <p>Because the money discovered by Benjamin was properly found to be mislaid property, it belongs to the owner of the premises where it was found. Mislaid property is entrusted to the owner of the premises where it is found rather than the finder of the property because it is assumed that the true owner may eventually recall where he has placed his property and return there to reclaim it. <em>Willsmore</em>, 308 N.W.2d at 802; <em>Foster</em>, 174 S.W. at 378; <em>Foulke</em>, 127 N.E. at 238-39.</p>
+        <p>We think that the premises where the money was found is the airplane, not Lindner Aviation's hangar where the airplane happened to be parked when the money was discovered. The policy behind giving ownership of mislaid property to the owner of the premises where the property was mislaid supports this conclusion. If the true owner of the money attempts to locate it, he would initially look for the plane; it is unlikely he would begin his search by contacting businesses where the airplane might have been inspected. Therefore, we affirm the trial court's judgment that the bank, as the owner of the plane, has the right to possession of the property as against all but the true owner <em>(note to reader: footnote excerpted out)</em>.</p>
+
+        <h4>VII. Is Benjamin Entitled to a Finder's Fee?</h4>
+        <p>Benjamin claims that if he is not entitled to the money, he should be paid a ten percent finder's fee under section 644.13. The problem with this claim is that only the finder of "lost goods, money, bank notes, and other things" is rewarded with a finder's fee under chapter 644. Iowa Code § 644.13 (1991). Because the property found by Benjamin was mislaid property, not lost property, section 644.13 does not apply here. The trial court erred in awarding Benjamin a finder's fee.</p>
+
+        <h4>VIII. Summary.</h4>
+        <p>We conclude that the district court's finding that the money discovered by Benjamin was mislaid property is supported by substantial evidence. Therefore, we affirm the district court's judgment that the bank has the right to the money as against all but the true owner. This decision makes it unnecessary to decide whether Benjamin or Lindner Aviation was the finder of the property. We reverse the court's decision awarding a finder's fee to Benjamin.</p>
+        <p><strong>AFFIRMED IN PART; REVERSED IN PART.</strong></p>
+        <p>All justices concur except Harris, Snell, and Andreasen, who dissent.</p>
+
+        <div class="dissent-marker">Dissent</div>
+        <p>SNELL, Justice (dissenting).</p>
+        <p>I respectfully dissent.</p>
+        <p>The life of the law is logic, it has been said. See <em>Davis v. Aiken</em>, 111 Ga. App. 505, 142 S.E.2d 112, 119 (Ga. Ct. App. 1965) (quoting Sir Edward Coke). If so, it should be applied here.</p>
+        <p>The majority quotes with approval the general rule that whether money found is treasure trove, mislaid, abandoned, or lost property is a fact question. 1 Am. Jur. 2d Abandoned, Lost, and Unclaimed Property § 41, at 49 (2d ed. 1994). In deciding a fact question, we are to consider the facts as known and all reasonable inferences to be drawn from them. <em>Wright v. Thompson</em>, 254 Iowa 342, 347, 117 N.W.2d 520, 523 (1962). Thus does logic, reason, and common sense enter in.</p>
+        <p>After considering the four categories of found money, the majority decides that Benjamin found mislaid money. The result is that the bank gets all the money; Benjamin, the finder, gets nothing. Apart from the obvious unfairness in result, I believe this conclusion fails to come from logical analysis.</p>
+        <p>Mislaid property is property voluntarily put in a certain place by the owner who then overlooks or forgets where the property is. <em>Ritz v. Selma United Methodist Church</em>, 467 N.W.2d 266, 268 (Iowa 1991). The property here consisted of two packets of paper currency totalling $18,910, three to four inches high, wrapped in aluminum foil. Inside the foil, the paper currency, predominantly twenty dollar bills, was tied with string and wrapped in handkerchiefs. Most of the mint dates were in the 1950s with one dated 1934. These packets were found in the left wing of the Mooney airplane after Benjamin removed a panel held in by rusty screws.</p>
+        <p>These facts satisfy the requirement that the property was voluntarily put in a certain place by the owner. But the second test for determining that property is mislaid is that the owner "overlooks or forgets where the property is." See <em>Ritz</em>, 467 N.W.2d at 269. I do not believe that the facts, logic or common sense lead to a finding that this requirement is met. It is not likely or reasonable to suppose that a person would secrete $18,000 in an airplane wing and then forget where it was.</p>
+        <p>Cases cited by the majority contrasting "mislaid" property and "lost" property are appropriate for a comparison of these principles but do not foreclose other considerations. After finding the money, Benjamin proceeded to give written notice of finding the property as prescribed in Iowa Code chapter 644 (1993), "Lost Property." As set out in section 556F.8, notices were posted on the courthouse door and in three other public places in the county. In addition, notice was published once each week for three consecutive weeks in a newspaper of general circulation in the county. Also, affidavits of publication were filed with the county auditor who then had them published as part of the board of supervisors' proceedings. Iowa Code § 556.9. After twelve months, if no person appears to claim and prove ownership of the property, the right to the property rests irrevocably in the finder. Iowa Code § 556F.11.</p>
+        <p>The purpose of this type of legal notice is to give people the opportunity to assert a claim if they have one. See, e.g., <em>Neeley v. Murchison</em>, 815 F.2d 345, 347 (5th Cir. 1987). If no claim is made, the law presumes there is none or for whatever reason it is not asserted. Thus, a failure to make a claim after legal notice is given is a bar to a claim made thereafter. See, e.g., <em>Tulsa Professional Collection Servs., Inc. v. Pope</em>, 485 U.S. 478, 481, 108 S. Ct. 1340, 1343, 99 L. Ed. 2d 565, 572-73 (1988).</p>
+        <p>Benjamin followed the law in giving legal notice of finding property. None of the parties dispute this. The suggestion that Benjamin should have initiated a further search for the true owner is not a requirement of the law, is therefore irrelevant, and in no way diminishes Benjamin's rights as finder.</p>
+        <p>The scenario unfolded in this case convinces me that the money found in the airplane wing was abandoned. Property is abandoned when the owner no longer wants to possess it. See <em>Ritz</em>, 467 N.W.2d at 269; <em>Pearson v. City of Guttenberg</em>, 245 N.W.2d 519, 529 (Iowa 1976). The money had been there for years, possibly thirty. No owner had claimed it in that time. No claim was made by the owner after legally prescribed notice was given that it had been found. Thereafter, logic and the law support a finding that the owner has voluntarily relinquished all right, title, and interest in the property. Whether the money was abandoned due to its connection to illegal drug trafficking or is otherwise contraband property is a matter for speculation. In any event, abandonment by the true owner has legally occurred and been established.</p>
+        <p>I would hold that Benjamin is legally entitled to the entire amount of money that he found in the airplane wing as the owner of abandoned property.</p>
+        <p>Harris and Andreasen, JJ. join this dissent.</p>
+
+        <div class="verbatim-tag">534 N.W.2d 400 (Iowa 1995) — reproduced from the packet's Case Reading Workshop excerpt.</div>
+      </div>
+
+      <div class="practice">
+        <div class="tag">Practice question</div>
+        <p><strong>Priya</strong> buys a secondhand file cabinet at an estate sale. Six months later, while cleaning it out, she finds a manila envelope taped to the underside of the bottom drawer, hidden beneath the drawer's liner. Inside is $4,000 in cash, bundled with a rubber band, mixing bills from three different decades — the newest dated eight years ago. The estate sale was run by the deceased owner's adult children, who inherited the cabinet along with the rest of the house's contents and sold it without opening the drawers.</p>
+        <p>Classify the money under <em>Benjamin</em>'s four categories and explain your reasoning, referencing the test the majority applies and the disagreement in the dissent.</p>
+
+        <details class="reveal">
+          <summary>Reveal a model answer</summary>
+          <div class="model-answer">
+            <h5>Issue</h5>
+            <p>Whether cash concealed inside a piece of furniture belongs to the finder, to the current owner of the furniture, or to neither — turning on whether it's classified as lost, mislaid, abandoned, or treasure trove property.</p>
+            <h5>Rule</h5>
+            <p>Absent an applicable "lost property" statute, <em>Benjamin</em> applies four common-law categories: abandoned (owner voluntarily relinquished all interest — goes to the finder against everyone, including the former owner), lost (owner unintentionally and involuntarily parted with it and doesn't know where it is — eventually goes to the finder under most lost-property statutes), mislaid (owner voluntarily placed it somewhere and then forgot or overlooked the location — the finder gets no rights; the property goes to the owner of the "premises" where it was found), and treasure trove (concealed currency with an element of antiquity, such that the true owner is probably dead or undiscoverable — goes to the finder against all but the true owner).</p>
+            <h5>Application</h5>
+            <p>The manner of concealment here — taped under a drawer liner, bundled deliberately — mirrors <em>Benjamin</em>'s packets wrapped in foil and handkerchiefs. Courts read careful, deliberate concealment like this as evidence the owner intended to retain and later reclaim the property, which cuts against both "lost" and "abandoned." That points toward mislaid property, which under <em>Benjamin</em> belongs not to the finder but to the owner of the "premises" — here, most plausibly the cabinet itself, echoing the majority's holding that the airplane, not the surrounding hangar, was the relevant premises. That would favor the estate (as the party that owned and sold the cabinet) over Priya. A treasure-trove argument is weaker than in <em>Benjamin</em> itself: eight years is a far cry from even the thirty-five-year outer bound the majority found inconclusive, and there's no indication the true owner — presumably the deceased — is unidentifiable; quite the opposite, the estate's heirs are known.</p>
+            <h5>Counter (channeling the dissent)</h5>
+            <p>Justice Snell's dissent would push toward abandonment: if the family cleared the house without ever finding the money, and there's no indication anyone still intends to claim it, logic could support treating it as relinquished. But Snell's reasoning leaned heavily on the fact that Benjamin gave legally required public notice and no owner responded within the statutory window — nothing in this hypothetical shows that process happened, which is a real factual gap an advocate would have to close for the abandonment argument to carry the same weight it did in the dissent.</p>
+            <h5>Conclusion</h5>
+            <p>Most likely mislaid property, belonging to the estate/heirs as owners of the "premises," not to Priya as finder — though a well-argued treasure trove or abandonment claim isn't frivolous, it's simply on thinner factual ground than the deliberate, extended concealment at issue in <em>Benjamin</em>.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PART 3 — SLOCUM -->
+    <!-- ============================================================ -->
+    <section id="slocum">
+      <div class="kicker">Part 3 · Fundamentals of Law</div>
+      <h2>Introduction to the American Legal System</h2>
+      <p class="lede">Rebuilt from Robin Wellford Slocum, <em>Legal Reasoning, Writing, and Other Lawyering Skills</em> (3d ed., LexisNexis 2011), Chapter 2 — same sequence, in original wording, with the diagrams rebuilt as real graphics.</p>
+
+      <h3>A. Two court systems, one country</h3>
+      <p>Think about your first day of orientation: before anything else mattered, you needed to know you were in the actual law school building, not the college of arts and sciences next door — even if a room number happened to match. Figuring out "where you are" turns out to matter just as much once you're researching a legal question. The United States runs two parallel court systems, federal and state, each with its own laws and its own courts, operating side by side and largely independently of one another.</p>
+      <p>When a client asks for legal advice, one of the first things you have to figure out is which system — and which set of laws — controls their situation. Some conduct is governed solely by state law, some solely by federal law, and some by both. That answer also tells you which courthouse you'd walk into: as a general rule, federal courts interpret federal law and state courts resolve disputes arising from state law, though a few important exceptions to that clean split come up later, in Civil Procedure.</p>
+
+      <h3>B. Where law comes from</h3>
+      <p>Both the federal and state systems draw their law from the same three sources.</p>
+
+      <h4>1. Constitutions</h4>
+      <p>Constitutional provisions are relatively few in number, but they carry outsized weight because they protect the rights a society treats as most fundamental — freedom from unreasonable searches and seizures, for instance. An entire first-year course, Constitutional Law, is built around how courts interpret these provisions.</p>
+
+      <h4>2. Statutes and administrative regulations</h4>
+      <p>In both systems, the legislative branch — Congress federally, a state legislature at the state level — creates law by passing statutes that define people's rights and duties. Legislatures also delegate authority to administrative agencies to write regulations that interpret and give practical effect to a statute. Title VII, for example, is the statute making it illegal for an employer to discriminate based on race, religion, gender, or national origin; the Equal Employment Opportunity Commission is the federal agency Congress empowered to issue the regulations that put that statute into practice day to day.</p>
+
+      <h4>3. Common law</h4>
+      <p>Some law has no constitutional or statutory source at all — it comes entirely from accumulated court decisions, and it's called the "common law." Judges built it starting from a handful of broadly accepted medieval principles, refining and extending those principles case by case as new factual disputes arose, always reasoning from similarities to and differences from earlier decisions. The common law originated in England and crossed the Atlantic with British colonists, becoming the founding body of law in every state. Statutes have since displaced a fair amount of it, but the common law's central method — reasoning by analogy from one case to the next — remains the primary tool lawyers use to evaluate a case and predict how the law will treat a client's conduct.</p>
+
+      <h3>C. Why precedent binds at all: stare decisis</h3>
+      <p>Judges face a genuine tension. On one hand, they want rulings that are fair and that further the policy goals behind the law. On the other, the whole system depends on predictability: it would be nearly impossible, as citizens, to know what conduct is lawful unless we could trust that the law would be interpreted consistently over time. Judges resolve that tension by looking to the decisions of earlier courts for guidance — a practice known as "stare decisis," Latin for "let the decision stand," under which courts are expected to interpret the law the same way earlier courts already have.</p>
+
+      <h3>D. Not all precedent binds equally: mandatory vs. persuasive</h3>
+      <p>Judges actually work with two different kinds of precedent: "mandatory," which a court is required to follow, and "persuasive," which a court may or may not be swayed by. Telling the two apart depends on two questions — the jurisdiction the earlier case came out of, and that court's position in the hierarchy of that jurisdiction. A previous case only binds a new court if (1) it arose within the <em>same jurisdiction</em> as the dispute now before the court, and (2) it was decided by a <em>higher-level court</em> within that same jurisdiction.</p>
+
+      <h4>The jurisdictional half of the test</h4>
+      <p><strong>Federal courts</strong> have jurisdiction over disputes involving the U.S. Constitution, federal statutes, and federal regulations, plus certain state-law disputes that satisfy special jurisdictional requirements (diversity of citizenship, pendent jurisdiction). Because the country is so large and the volume of litigation so vast, Congress has divided it into thirteen federal judicial circuits — eleven numbered circuits, plus the D.C. Circuit and the Federal Circuit, the latter of which resolves patent disputes, certain international trade cases, and damage claims against the federal government rather than covering a fixed geographic region. A ruling from one circuit binds only future federal cases arising within that same circuit; a panel in the Second Circuit is entirely free to disagree with how the First Circuit has read an identical federal statute.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">Rebuilt graphic — The Federal Judicial Circuits (state-to-circuit assignment)</div>
+        <div class="map-wrap">
+          <div class="us-grid">
+            <div class="state s-c1" style="grid-column:9; grid-row:1;">ME</div>
+            <div class="state s-c7" style="grid-column:6; grid-row:2;">WI</div>
+            <div class="state s-c2" style="grid-column:9; grid-row:2;">VT</div>
+            <div class="state s-c1" style="grid-column:10; grid-row:2;">NH</div>
+            <div class="state s-c9" style="grid-column:1; grid-row:3;">WA</div>
+            <div class="state s-c9" style="grid-column:2; grid-row:3;">ID</div>
+            <div class="state s-c9" style="grid-column:3; grid-row:3;">MT</div>
+            <div class="state s-c8" style="grid-column:4; grid-row:3;">ND</div>
+            <div class="state s-c8" style="grid-column:5; grid-row:3;">MN</div>
+            <div class="state s-c6" style="grid-column:7; grid-row:3;">MI</div>
+            <div class="state s-c2" style="grid-column:9; grid-row:3;">NY</div>
+            <div class="state s-c1" style="grid-column:10; grid-row:3;">MA</div>
+            <div class="state s-c1" style="grid-column:11; grid-row:3;">RI</div>
+            <div class="state s-c9" style="grid-column:1; grid-row:4;">OR</div>
+            <div class="state s-c9" style="grid-column:2; grid-row:4;">NV</div>
+            <div class="state s-c10" style="grid-column:3; grid-row:4;">WY</div>
+            <div class="state s-c8" style="grid-column:4; grid-row:4;">SD</div>
+            <div class="state s-c8" style="grid-column:5; grid-row:4;">IA</div>
+            <div class="state s-c7" style="grid-column:6; grid-row:4;">IL</div>
+            <div class="state s-c7" style="grid-column:7; grid-row:4;">IN</div>
+            <div class="state s-c6" style="grid-column:8; grid-row:4;">OH</div>
+            <div class="state s-c3" style="grid-column:9; grid-row:4;">PA</div>
+            <div class="state s-c3" style="grid-column:10; grid-row:4;">NJ</div>
+            <div class="state s-c2" style="grid-column:11; grid-row:4;">CT</div>
+            <div class="state s-c9" style="grid-column:1; grid-row:5;">CA</div>
+            <div class="state s-c10" style="grid-column:2; grid-row:5;">UT</div>
+            <div class="state s-c10" style="grid-column:3; grid-row:5;">CO</div>
+            <div class="state s-c8" style="grid-column:4; grid-row:5;">NE</div>
+            <div class="state s-c8" style="grid-column:5; grid-row:5;">MO</div>
+            <div class="state s-c6" style="grid-column:6; grid-row:5;">KY</div>
+            <div class="state s-c4" style="grid-column:7; grid-row:5;">WV</div>
+            <div class="state s-c4" style="grid-column:8; grid-row:5;">VA</div>
+            <div class="state s-c4" style="grid-column:9; grid-row:5;">MD</div>
+            <div class="state s-c3" style="grid-column:10; grid-row:5;">DE</div>
+            <div class="state s-c9" style="grid-column:2; grid-row:6;">AZ</div>
+            <div class="state s-c10" style="grid-column:3; grid-row:6;">NM</div>
+            <div class="state s-c10" style="grid-column:4; grid-row:6;">KS</div>
+            <div class="state s-c8" style="grid-column:5; grid-row:6;">AR</div>
+            <div class="state s-c6" style="grid-column:6; grid-row:6;">TN</div>
+            <div class="state s-c4" style="grid-column:7; grid-row:6;">NC</div>
+            <div class="state s-c4" style="grid-column:8; grid-row:6;">SC</div>
+            <div class="state s-cdc" style="grid-column:9; grid-row:6;">DC</div>
+            <div class="state s-c9" style="grid-column:1; grid-row:7;">HI</div>
+            <div class="state s-c10" style="grid-column:3; grid-row:7;">OK</div>
+            <div class="state s-c5" style="grid-column:4; grid-row:7;">TX</div>
+            <div class="state s-c5" style="grid-column:5; grid-row:7;">LA</div>
+            <div class="state s-c5" style="grid-column:6; grid-row:7;">MS</div>
+            <div class="state s-c11" style="grid-column:7; grid-row:7;">AL</div>
+            <div class="state s-c11" style="grid-column:8; grid-row:7;">GA</div>
+            <div class="state s-c9" style="grid-column:1; grid-row:8;">AK</div>
+            <div class="state s-c11" style="grid-column:8; grid-row:8;">FL</div>
+          </div>
+          <div class="legend">
+            <div class="legend-item"><span class="legend-swatch s-c1"></span>1st — ME, NH, MA, RI</div>
+            <div class="legend-item"><span class="legend-swatch s-c2"></span>2nd — NY, VT, CT</div>
+            <div class="legend-item"><span class="legend-swatch s-c3"></span>3rd — PA, NJ, DE</div>
+            <div class="legend-item"><span class="legend-swatch s-c4"></span>4th — MD, VA, WV, NC, SC</div>
+            <div class="legend-item"><span class="legend-swatch s-c5"></span>5th — TX, LA, MS</div>
+            <div class="legend-item"><span class="legend-swatch s-c6"></span>6th — OH, MI, KY, TN</div>
+            <div class="legend-item"><span class="legend-swatch s-c7"></span>7th — WI, IL, IN</div>
+            <div class="legend-item"><span class="legend-swatch s-c8"></span>8th — ND, SD, MN, IA, NE, MO, AR</div>
+            <div class="legend-item"><span class="legend-swatch s-c9"></span>9th — WA, OR, CA, NV, ID, MT, AZ, AK, HI</div>
+            <div class="legend-item"><span class="legend-swatch s-c10"></span>10th — CO, KS, OK, NM, UT, WY</div>
+            <div class="legend-item"><span class="legend-swatch s-c11"></span>11th — AL, GA, FL</div>
+            <div class="legend-item"><span class="legend-swatch s-cdc"></span>D.C. Circuit</div>
+          </div>
+        </div>
+        <p style="font-family:var(--sans); font-size:0.78rem; color:var(--text-faint); margin:14px 0 0;">Schematic tile grid, not to scale — the layout is meant to preserve relative position, not geography. The Federal Circuit (patents, international trade, claims against the U.S.) isn't tied to a region, so it isn't shown here.</p>
+      </div>
+
+      <p><strong>State courts</strong> are the mirror image: each individual state has sole jurisdiction over its own constitution, statutes, and common law, so an earlier decision only binds future disputes within that same state. A case from the Illinois courts interpreting Illinois' burglary statute carries essentially no weight — and likely wouldn't even be persuasive — for a Wisconsin judge interpreting Wisconsin's own burglary statute. Unlike federal law, which is uniform nationwide, each state's law is its own, shaped by that state's own legislature and courts.</p>
+
+      <h4>The hierarchy half of the test</h4>
+      <p>Even within the correct jurisdiction, an earlier case only has mandatory effect if it was decided by a <em>higher-level</em> court. Higher-level courts bind lower-level courts; lower-level courts never bind higher ones — and courts sitting at the same level never bind each other, which is exactly how circuit splits happen at the federal level, and how appellate districts can end up disagreeing within a single state.</p>
+
+      <h3>Federal court structure</h3>
+      <p>The federal system has three tiers. <strong>District Courts</strong> are the trial-level courts, where a federal case is actually tried; each circuit contains a number of district courts, sized to that circuit's caseload. One level up, the <strong>U.S. Courts of Appeals</strong> — the intermediate appellate courts — hear appeals from the district courts within their own circuit, ordinarily through a three-judge panel, though unusually significant cases are sometimes heard by the full circuit together, called an "en banc" decision (French for "the full bench"). At the top sits the <strong>U.S. Supreme Court</strong>, whose decisions bind every other federal court in the country. The Supreme Court doesn't have to hear your case — it receives thousands of petitions annually and grants review to only about 100 to 200, generally reserving that docket for cases of major constitutional or statutory significance or ones where circuits have split on how to read the same federal law. A declined petition is written up as "cert. denied," short for "certiorari," the formal name for the Court's review.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">Rebuilt graphic — Federal Court Structure</div>
+        <div class="ladder">
+          <div class="ladder-box"><div class="t">U.S. Supreme Court</div><div class="s">Highest level court</div></div>
+          <div class="ladder-arrow">↑</div>
+          <div class="ladder-box"><div class="t">U.S. Courts of Appeals</div><div class="s">1st–11th Circuits, plus D.C. Circuit — intermediate courts of appeal</div></div>
+          <div class="ladder-arrow">↑</div>
+          <div class="ladder-box"><div class="t">U.S. District Courts</div><div class="s">Trial level courts</div></div>
+        </div>
+      </div>
+
+      <h3>State court structure</h3>
+      <p>Most states, though not all, mirror this three-tier shape — trial courts, an intermediate appellate court, and a final appellate court — though naming conventions vary widely from state to state (a state's "Supreme Court" is sometimes its highest court, sometimes only an intermediate one, and a few states skip the intermediate tier entirely). Missouri is a clean, typical example.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">Rebuilt graphic — Typical State Court Structure (Missouri)</div>
+        <div class="ladder">
+          <div class="ladder-box"><div class="t">Missouri Supreme Court</div><div class="s">Final court of appeal</div></div>
+          <div class="ladder-arrow">↑</div>
+          <div class="ladder-box"><div class="t">Missouri Courts of Appeals</div><div class="s">Eastern, Southern &amp; Western Districts — intermediate courts of appeal</div></div>
+          <div class="ladder-arrow">↑</div>
+          <div class="ladder-box"><div class="t">Missouri Circuit Courts</div><div class="s">Trial courts</div></div>
+        </div>
+      </div>
+
+      <p>Like the federal system, the highest appellate court binds every lower court statewide, and intermediate appellate courts bind every trial court within the state, not just the ones in their own district — a decision from the Western District Court of Appeals binds all Missouri trial courts, including ones sitting in the Eastern District. The catch: because Missouri's three appellate districts sit at the same level, they can disagree with each other. If the Western and Eastern districts read the same issue differently, which one binds a given trial court depends entirely on which district that trial court physically sits in — the trial judge must follow their own district's precedent even if they personally find the other district more persuasive.</p>
+
+      <h3>Putting the two ladders together</h3>
+      <p>The type of law actually in dispute decides which ladder a lawyer is climbing in the first place. A dispute resting on the Constitution, a federal statute, federal administrative rules, or a state-law claim that independently qualifies for federal jurisdiction (diversity of citizenship, pendent jurisdiction) goes up the federal ladder — district court, circuit court of appeals, Supreme Court. A dispute resting on a state's own constitution, statutes, administrative rules, or common law goes up that state's own ladder instead — trial court, intermediate appeals court, state supreme court. The two systems run in parallel and mostly independently, and only rarely — when a case makes it all the way to the U.S. Supreme Court — does one sit in direct review above the other.</p>
+
+      <div class="diagram">
+        <div class="diagram-label">Rebuilt graphic — Two Ladders, One Dispute</div>
+        <div class="ladders-row">
+          <div class="ladder-col">
+            <div class="ladder-col-title">Federal law disputes</div>
+            <div class="ladder">
+              <div class="ladder-box"><div class="t">U.S. Supreme Court</div><div class="s">Final appeal</div></div>
+              <div class="ladder-arrow">↑</div>
+              <div class="ladder-box"><div class="t">U.S. Court of Appeals</div><div class="s">Circuit — multiple judges</div></div>
+              <div class="ladder-arrow">↑</div>
+              <div class="ladder-box"><div class="t">U.S. District Court</div><div class="s">Trial level — one judge</div></div>
+            </div>
+          </div>
+          <div class="ladder-col">
+            <div class="ladder-col-title">State law disputes</div>
+            <div class="ladder">
+              <div class="ladder-box"><div class="t">State Supreme Court</div><div class="s">Final appeal</div></div>
+              <div class="ladder-arrow">↑</div>
+              <div class="ladder-box"><div class="t">State Court of Appeals</div><div class="s">Intermediate — multiple judges</div></div>
+              <div class="ladder-arrow">↑</div>
+              <div class="ladder-box"><div class="t">State Trial Court</div><div class="s">County/city — one judge</div></div>
+            </div>
+          </div>
+        </div>
+        <p style="font-family:var(--sans); font-size:0.78rem; color:var(--text-faint); margin:20px 0 0; text-align:center;">Which ladder a case climbs depends on whether the claim rests on federal or state constitutional/statutory/common law — civil and criminal claims each follow their own governing source of law within whichever ladder applies.</p>
+      </div>
+    </section>
+
+    <footer>
+      Built from your uploaded ISL Packer (59 pp.) — Just Mercy narrated, not reproduced; Kerr and Slocum rewritten in full; Benjamin v. Lindner Aviation reproduced verbatim as public domain.
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
