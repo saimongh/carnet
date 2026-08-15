@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Legality Principle</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<span class="tag tag-amber">Criminal Law &middot; Assigned Reading</span>
+<h1>The Legality Principle</h1>
+<p class="subtitle">Part I, Section 2 &middot; Adapted from Robinson, Baughman &amp; Cahill, <em>Criminal Law: Case Studies &amp; Controversies</em> (6th ed.) &mdash; same sequence, original wording</p>
+
+<div class="section">
+<div class="info-box">This page is a rewritten, paraphrased summary of Section 2 of the casebook's introductory materials &mdash; it is not a copy of the assigned pages, and it substitutes original wording and organization for the authors' own prose. Its narrative spine is a real, publicly reported criminal case (the 2002 Tri-State Crematory scandal in Noble, Georgia). Read the actual assigned PDF pages too &mdash; this is a study aid, not a substitute.</div>
+</div>
+
+<div class="section">
+<p class="section-title">I. The Case of Ray Brent Marsh</p>
+<p class="written">Tommy Ray Marsh opened Tri-State Crematory in Noble, Georgia in 1982, reportedly the first Black-owned crematory business in the country. He undercut the competition hard, charging as little as $250 a cremation against a going rate of $600 or more at other facilities, and built a loyal client base of funeral homes across three states that trusted him with their families' remains. In 1996 a stroke left him unable to run the business, and his son, Ray Brent Marsh, took over. The son had every appearance of being the last person you'd suspect of anything: a former standout high school athlete, well liked in the community, and the treasurer of his church.</p>
+<p class="written">Georgia's crematory industry had gone essentially unregulated until 1990. When the state's Funeral Service Board later discovered that Tri-State was operating without the license the new rules required and moved to shut it down, the Marshes found a way around the order: the licensing requirement, as written, only reached facilities that were "open to the public," and Tri-State's argued that it wasn't, technically, that kind of place. The loophole held, and the business kept running.</p>
+<p class="written">The turning point came in August 1997, when the crematory's incinerator broke down. Rather than pay for repairs or turn away business he could not afford to lose, Ray Brent Marsh kept accepting bodies from funeral homes, kept collecting the standard $200 cremation fee from grieving families, and kept handing back urns of "ashes" that were, in fact, crushed concrete and limestone. The bodies themselves he simply got rid of &mdash; dumped in the wooded grove behind the crematory property, left in whatever condition they arrived in, for more than five years. What finally exposed it was almost incidental: in February 2002 a person walking a dog on the property found a human skull. When investigators searched the grove, the storage vaults, and even the small lake on site, they eventually recovered more than 340 bodies. Some had been there for decades; others were recent. More than twenty were crammed into a single vault. A baby's corpse turned up in an abandoned, rusted-out hearse.</p>
+<p class="written">Georgia's chief medical examiner, Dr. Kris Sperry, had to call in the Federal Disaster Mortuary Team to help process the scene, and the governor declared a state of emergency for the county. Marsh was arrested and eventually charged with more than 100 counts, held on bail that climbed as the scope of the discovery grew. The excavation and identification effort cost the state of Georgia roughly $8.5 million.</p>
+<p class="written">Nobody seriously doubted that Marsh could be prosecuted for defrauding the families who paid him for services he never performed &mdash; that is ordinary theft by deception, and the case study takes that piece of it as a given. The harder question, and the one this section of the casebook is built to raise, is different: setting the fraud aside, what liability &mdash; if any &mdash; attaches to what Marsh actually did to the bodies themselves, and under what law? Georgia had abolished common-law crimes by statute: Ga. Code &sect; 16-1-4 provides that "no conduct constitutes a crime unless it is described as a crime in this title or another statute of this state," meaning a prosecutor cannot simply invoke some judge-made notion of decency &mdash; there has to be an actual statute on the books. The statute prosecutors reached for was Ga. Code &sect; 31-21-44.1, "Abuse of a Dead Body," which makes it a felony to willfully deface a body before interment or to fail to timely notify authorities of a death. Whether that statute's text actually covered what Marsh did &mdash; letting bodies decompose, unburied and unburned, in a wooded field &mdash; is exactly the kind of question the legality principle is designed to force courts to take seriously, rather than simply punishing conduct because it is obviously wrong.</p>
+<p class="written">A handful of comparison cases sharpen the point. <em>Glover v. State</em>, 272 Ga. 639 (2000), applied Georgia's rule of strict construction to block a sentence enhancement that went beyond what the statute's actual text authorized &mdash; a reminder that Georgia courts take the "no crime without a statute" principle seriously even when it produces a more lenient result than common sense might want. Contrast that with two older, non-Georgia cases that predate this kind of statutory strictness: in <em>State v. Hartzler</em> (N.M. Ct. App. 1967), a court upheld a conviction for refusing to bury a body on the ground that the conduct "shocks the public sense of decency," with no need to show the defendant intended any harm; and in <em>State v. Bradbury</em> (Me. 1939), a court convicted a man at common law for burning his sister's corpse in a furnace, reasoning broadly that "any disposal of a dead body contrary to common decency is an offense at common law." Those two cases show a system willing to punish shocking conduct even without a precise statute describing it in advance &mdash; precisely the approach that the legality principle, discussed next, is designed to rule out.</p>
+<p class="written">The casebook builds several practice problems on this same material worth flagging briefly. "The Human Puppet Master" asks whether a woman who conceals a boarder's death and props up his corpse to keep collecting his welfare checks can be prosecuted for a common-law-style offense under the Model Penal Code's framework. "Is a Fetus a Human Being?" tracks the real case <em>Keeler v. Superior Court</em> closely: a man's assault on his pregnant ex-wife causes a stillbirth, and because California's murder statute never defined "human being," the case tests whether a defendant had fair notice that killing a viable fetus counted as murder at all. And "Gangsters Can't Stop" tracks <em>City of Chicago v. Morales</em>, testing an anti-gang-loitering ordinance that criminalized standing around with "no apparent purpose." All three are, at bottom, legality problems wearing different fact patterns.</p>
+</div>
+
+<div class="section">
+<p class="section-title">II. The Doctrines of Legality</p>
+<p class="written">"Legality" is the umbrella term for a cluster of related doctrines that all enforce one basic idea: <em>nullum crimen sine lege</em>, no crime without a (clear, pre-existing) law. Marsh's case shows why this matters practically &mdash; it is not enough that what he did was appalling; a prosecutor still has to point to a specific statute that fairly covered it, enacted before he acted, and clear enough that a reasonable person could have known the line was there.</p>
+
+<h3>1. Vagueness</h3>
+<p class="written">The vagueness doctrine is rooted in due process. A criminal statute must give, in the Supreme Court's words in <em>Rose v. Locke</em>, 423 U.S. 48 (1975), "sufficient warning that men may conform their conduct so as to avoid that which is forbidden." A law that fails this test is void for vagueness regardless of how badly the underlying conduct deserves punishment. The classic illustrations are old vagrancy and loitering ordinances. In <em>Papachristou v. City of Jacksonville</em>, 405 U.S. 156 (1972), the Supreme Court struck down a vagrancy ordinance that had been used, among other things, to arrest interracial ("mixed") couples for the crime of simply being seen together; the Court explained that such laws "fail to give a person of ordinary intelligence fair notice," quoting the same standard from <em>United States v. Harris</em>, 347 U.S. 612 (1954). A statute doesn't escape this problem just by cross-referencing an old common-law offense instead of defining the crime itself: in <em>State v. Palendrano</em>, 293 A.2d 747 (N.J. Super. 1972), a New Jersey court rejected a prosecution for the common-law offense of being a "common scold," reasoning that few modern defendants could be expected to know what that archaic label even covered &mdash; the court's memorable line was that the average citizen would be obliged to carry a pocket edition of Blackstone to have any idea. Vagueness is not just an antique problem, either: the modern Supreme Court has struck down vague sentencing and immigration provisions on the same theory, invalidating the Armed Career Criminal Act's "residual clause" in <em>Johnson v. United States</em>, 576 U.S. 591 (2015), and a materially identical clause in the immigration code in <em>Sessions v. Dimaya</em>, 584 U.S. 148 (2018).</p>
+
+<h3>2. Vague vs. Ambiguous</h3>
+<p class="written">It helps to keep vagueness distinct from mere ambiguity. A vague statute is unclear even in the abstract &mdash; you can't say what conduct it reaches without more information. An ambiguous statute is specific enough in general, but its text supports more than one reading when applied to a particular set of facts. <em>People v. Nunez</em>, 208 Cal. Rptr. 450 (Cal. App. 1984), illustrates the difference well: a California statute punished assault committed by a "person undergoing a life sentence in a state prison." The defendant, a prisoner serving a life sentence, assaulted a guard while being transported outside the prison walls. Nobody doubted what the statute was generally aimed at (violence by long-term inmates) &mdash; the question was narrower: did "undergoing a life sentence in a state prison" require the defendant to be physically inside the prison at the moment of the assault, or did it just describe his legal status? That's an ambiguity problem, not a vagueness problem.</p>
+
+<h3>3. The Rule of Lenity / Strict Construction</h3>
+<p class="written">American law, unlike English law, does not allow courts to invent new common-law crimes on their own &mdash; contrast the House of Lords' willingness to do exactly that in <em>Shaw v. DPP</em>, [1962] A.C. 220 (H.L.), recognizing a novel "conspiracy to corrupt public morals." Where a statute exists but is genuinely ambiguous in the <em>Nunez</em> sense, American courts traditionally apply the rule of lenity (also called strict construction): ties go to the defendant. In <em>Nunez</em> itself, that principle favored the narrower reading requiring physical presence inside prison walls. It's worth remembering that lenity is a rule of statutory interpretation, not a constitutional command, so a legislature is free to displace it. Many modern criminal codes do exactly that, adopting instead the Model Penal Code's "rule of fair import" (MPC &sect; 1.02(3)), which instructs courts to give an ambiguous statute its most natural, ordinary reading rather than automatically favoring the defendant. Lenity nonetheless still gets real work done in modern courts: in <em>State v. Carey</em>, 831 S.E.2d 597 (N.C. Ct. App. 2019), a North Carolina court applied lenity to hold that flash-bang grenades did not qualify as a "weapon of mass death and destruction" under the state's statute.</p>
+
+<h3>4. Ban on Ex Post Facto Laws</h3>
+<p class="written">The Constitution bars ex post facto laws outright, for both Congress and the states, in Article I, Sections 9 and 10. <em>Calder v. Bull</em>, 3 U.S. (3 Dall.) 386 (1798), remains the foundational case defining the doctrine's scope, identifying four categories of forbidden retroactive criminal laws: (1) making an act criminal that was innocent when done; (2) increasing the grade or severity of a crime after the fact; (3) increasing the punishment for a crime after the fact; and (4) altering the rules of evidence to make it easier to convict a defendant than the law allowed at the time of the offense. All four share the same underlying worry as vagueness and lenity: the state should not be able to move the goalposts after a person has already acted.</p>
+
+<p class="written">Taken together, these doctrines rest on a handful of overlapping rationales. The first is <strong>procedural fairness and notice</strong>: people are entitled to know, in advance, what conduct will subject them to punishment &mdash; though the law only requires that the opportunity to know existed, not that a given defendant actually read the statute. The second is <strong>effective deterrence</strong>: a law can't shape behavior if nobody can tell what it prohibits, and a law that's too uncertain risks the opposite problem too &mdash; overdeterrence, chilling conduct that was never actually illegal because people play it safe around a blurry line. The third is <strong>democratic legitimacy</strong>: legality keeps the power to define crimes in the hands of elected legislatures rather than individual judges after the fact, preserving the separation of powers. The fourth is the concern, raised again in <em>Papachristou</em>, that vague statutes hand police and prosecutors dangerously broad discretion, which in practice tends to fall unevenly and discriminatorily on disfavored groups.</p>
+
+<p class="written">Legality's precision requirement is not free of costs, though, and the casebook flags several countervailing interests worth holding in mind. Precise statutes can be inflexible, unable to anticipate every future scheme; an early American court captured this in <em>Commonwealth v. Taylor</em>, 5 Binn. 277 (Pa. 1812), warning that the law must be able to keep pace with "the malicious ingenuity of mankind." That tension shows up in a very modern guise in the question of whether cryptocurrency counts as "money": <em>State v. Espinoza</em>, 264 So.3d 1055 (Fla. App. 2019), held that bitcoin qualifies as "money" under a Florida money-services statute, while <em>United States v. Murgio</em>, 209 F.Supp.3d 698 (S.D.N.Y. 2016), held bitcoin qualifies as "funds" under a federal statute &mdash; both courts stretching older statutory language to reach conduct the drafters never imagined. Precision can also produce technicalities that frustrate the legislature's obvious underlying intent, as when a favorable ruling for the defendant prompts a quick legislative fix: California amended Penal Code &sect; 4500 after <em>Nunez</em> specifically to close the physical-presence loophole the decision had opened. And courts generally decline to stretch a statute by analogy to cover conduct it doesn't list, even when the omission looks like a drafting oversight: in <em>Lewis v. Commonwealth</em>, 34 S.E.2d 389 (Va. 1945), a statute punishing "riotous conduct on a railway car," written before buses existed, was not extended by analogy to riotous conduct on a bus.</p>
+</div>
+
+<div class="section">
+<p class="section-title">III. Statutory Interpretation</p>
+<p class="written">Once a court has decided a statute really is ambiguous (not vague, and not just inconveniently worded), it needs tools to resolve that ambiguity. The starting point is the plain-meaning rule, stated classically in <em>Caminetti v. United States</em>, 242 U.S. 470, 485 (1917): where statutory language is clear, courts apply it as written without looking further. Even committed plain-meaning courts allow two narrow escape hatches, though &mdash; they will fix an obvious drafting error, and they will recognize an exception the legislature would clearly have intended even though it never wrote the exception down, on the theory that a truly absurd literal reading was never really what "plain meaning" meant in the first place.</p>
+<p class="written">Beyond the bare text, courts draw on a standard toolkit of interpretive canons. "Different language implies different meaning" &mdash; if a legislature used one word in one section and a different word in another, courts generally assume the choice was deliberate. <em>Ejusdem generis</em> ("of the same kind") limits a catch-all phrase to items sharing a common thread with the specific items listed before it &mdash; a statute reaching "dogs, cats, or other such animals" is read to cover domesticated pets, not, say, farm livestock or wild animals, because the catch-all takes its color from what precedes it. <em>Expressio unius est exclusio alterius</em> ("the expression of one thing excludes others") treats a specific list as deliberately exclusive &mdash; naming some things is read as an implicit choice to leave others out. Where two provisions conflict, "the specific controls the general," and where two enactments conflict, "the later controls the earlier." When these textual tools run dry, courts turn to legislative history &mdash; committee reports, drafting records, and the like. In criminal law specifically, the Model Penal Code's official commentaries carry unusual weight as a source of "legislative history," because so many state criminal codes were drafted by borrowing directly from the MPC's structure and language; interpreting a state provision often means asking what the MPC drafters said they meant by the near-identical provision they wrote first.</p>
+<p class="written">Criminal statutes get an extra layer of interpretive caution that a typical civil statute doesn't, simply because the stakes of getting it wrong &mdash; a person's liberty &mdash; are so much higher than in an ordinary contract or tort dispute. That's the policy engine behind the rule of lenity discussed above. Lenity has real strengths: it reinforces the notice rationale (defendants get the benefit of any genuine doubt about what the law actually reaches) and keeps the job of defining new crimes with the legislature rather than the courts. But it has real weaknesses too &mdash; taken too far, it can turn criminal justice into a search for statutory technicalities, letting a defendant escape liability the legislature obviously meant to impose, which is part of why the modern "rule of fair import" alternative has gained ground in state codes.</p>
+<p class="written">In practice, the two approaches converge more than they diverge, because courts treat lenity as a tiebreaker of last resort rather than a rule you reach for first. The Supreme Court made this explicit in <em>Callanan v. United States</em>, 364 U.S. 587, 596 (1961), holding that lenity only applies after a court has exhausted every other tool of construction and genuine ambiguity remains. And courts have a further way to sidestep lenity even then: they can simply declare that a defendant's proposed reading isn't a "genuine" ambiguity at all, just an implausible one, and decline to apply the rule &mdash; an approach traceable to Chief Justice Marshall's opinion in <em>United States v. Wiltberger</em>, 5 Wheat. 76, 95 (1820), and reaffirmed in <em>United States v. Brown</em>, 333 U.S. 18, 25-26 (1948).</p>
+<p class="written">Finally, the Model Penal Code supplies one more safety valve worth knowing: the "de minimis infractions" defense, MPC &sect; 2.12. It lets a court dismiss a prosecution &mdash; even where the statute's text technically covers the defendant's conduct &mdash; where that conduct didn't actually cause or threaten the harm the statute was written to prevent, or where it falls so far outside anything the legislature could plausibly have had in mind that punishing it would be unjust. <em>State v. Viernes</em>, 988 P.2d 195 (Hawaii 1999), applied the defense to dismiss a drug-possession charge over what the court called a "miniscule" quantity of the drug. In practice, though, courts grant the de minimis defense sparingly &mdash; it functions less as a reliable escape hatch for defendants than as a backstop that quietly shapes how prosecutors exercise charging discretion in marginal cases, since a prosecutor who suspects a case might draw a de minimis dismissal has an incentive not to bring it in the first place.</p>
+</div>
+
+<div class="section" style="text-align:center; margin-top:2rem;">
+  <a href="crimlaw_punishment_reading.html" class="case-btn">Next: Theories of Punishment</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>

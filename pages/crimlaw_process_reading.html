@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Criminal Justice Process</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:0.75rem;}
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.section-title .num{color:var(--amber-text);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
+.amber-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--amber-text);line-height:1.5;margin:0.75rem 0 1.25rem;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>The Criminal Justice Process</h1>
+<p class="subtitle">Background Materials &middot; Adapted from Wayne LaFave, Jerold Israel &amp; Nancy King, <em>Criminal Procedure</em> &sect; 1.3 (3d ed. 2000), as excerpted in Robinson, Baughman &amp; Cahill, <em>Criminal Law: Case Studies &amp; Controversies</em> (6th ed.) &mdash; same sequence, original wording</p>
+<div><span class="tag tag-amber">Criminal Law &middot; Assigned Reading</span></div>
+
+<div class="section" style="margin-top:1.5rem;">
+<div class="info-box">This page is a paraphrased, reorganized summary written in original language &mdash; not a copy of the LaFave/Israel/King text or the Robinson/Baughman/Cahill casebook excerpt, both of which remain under copyright. Facts, figures, and citations are reproduced because they're just that &mdash; facts &mdash; but the explanations below are rewritten from scratch. Read the actual assigned pages too; this is a study aid, not a substitute.</div>
+</div>
+
+<div class="section">
+<p class="section-title"><span class="num">I.</span> The Steps in the Process</p>
+<p class="written">Criminal Procedure is best understood as an assembly line with roughly eighteen stations, running from the moment a crime is reported to the exhaustion of postconviction remedies years later. The single biggest lesson buried in the sequence is attrition: a case that starts as a police report is enormously more likely to end quietly &mdash; screened out, pled out, dismissed &mdash; than to reach a jury verdict. Keep an eye on the numbers below as you move through each step; they tell a consistent story about a system that filters constantly.</p>
+
+<h3>1. The Reported Crime</h3>
+<p class="written">Everything starts, or fails to start, with a report. Victims and witnesses report fewer than half of all crimes committed, and what does get reported skews heavily toward property and drug offenses rather than violence &mdash; violent crime makes up only around 7% of reported offenses. That means the crimes law students spend the most time studying (homicide, rape, robbery) are actually a thin slice of what police departments process day to day, and a huge amount of criminal activity never enters the system at all because nobody calls it in.</p>
+
+<h3>2. Prearrest Investigation</h3>
+<p class="written">Once a crime is on the books, investigation can proceed in three different postures. <strong>Reactive</strong> investigation responds to a specific reported incident, trying to identify a suspect after the fact. <strong>Proactive</strong> investigation flips that around &mdash; police target a type of criminal activity (undercover drug buys, sting operations) without waiting for a victim's complaint. And a third track relies on compulsory process &mdash; grand jury subpoenas, administrative subpoenas &mdash; to compel testimony or records, mostly useful for complex or white-collar investigations where evidence sits in third-party hands.</p>
+
+<h3>3. Arrest</h3>
+<p class="written">An arrest requires probable cause &mdash; a reasonable basis to believe the person committed the offense &mdash; and can happen with or without a warrant depending on the circumstances. Arrests clear only a fraction of reported crime: the FBI Index crime clearance rate sits around 21% overall, but that average hides huge variation by offense &mdash; roughly 65% of homicides get cleared by arrest against just 13% of burglaries, reflecting how much easier violent crimes with an identifiable victim are to solve than property crimes. It's also worth remembering that arrests are not dominated by the serious felonies casebooks focus on: something like 60-80% of all arrests are for misdemeanors, not felonies.</p>
+
+<h3>4. Booking</h3>
+<p class="written">Booking is the administrative intake that follows an arrest: a search of the arrestee, creation of a clerical record (name, charge, arresting officer, time), and a decision about whether the person can post stationhouse bail and walk out, or instead goes into the lockup to await the next stage. It's largely clerical, but it's also the point where the arrest becomes an official, trackable event in the system rather than just something that happened on the street.</p>
+
+<h3>5. Post-Arrest Investigation</h3>
+<p class="written">Investigation doesn't stop at arrest. Police commonly gather identification evidence afterward &mdash; lineups, "showups" (a one-on-one viewing, typically done quickly after the crime), or photo arrays &mdash; along with physical exemplars like handwriting or hair samples, and they may continue interrogating the suspect, all in an effort to firm up the case before it moves to a charging decision.</p>
+
+<h3>6. The Decision to Charge</h3>
+<p class="written">Charging is not one decision but four layered ones, each of which can end the case. First, the arresting officer decides on the spot whether to arrest and what to charge. Second, before any paperwork is filed, police departments themselves screen cases &mdash; sometimes releasing arrestees through informal "stationhouse adjustments," at rates commonly in the 4-10% range. Third comes prosecutorial screening before filing, where a prosecutor can decline to bring charges for any of roughly six recurring reasons: insufficient evidence, problems getting or keeping cooperative witnesses, due process concerns with how the evidence was obtained, the availability of an adequate disposition elsewhere (a civil remedy, treatment program, referral to another jurisdiction), the interests of justice more broadly, or an anticipated diversion into a non-criminal track. Studies of prosecutorial rejection rates found tremendous variation &mdash; from 0% to 38% across thirteen federal districts studied, and an average of roughly 11% across six states. Fourth, after a case is filed, prosecutors can still screen it out post-filing through a nolle prosequi (formal dismissal) or by reducing the charge, with dismissal rates in the 19-37% range in various studies. Stack all four screening points together and the combined attrition is dramatic: something like 31-46% of arrests never survive to conviction because of these charging decisions alone, and in some California years the figure reportedly ran as high as 50%.</p>
+
+<h3>7. Filing the Complaint</h3>
+<p class="written">The complaint is the formal document that opens a criminal case in court &mdash; typically signed by a complainant (often the arresting officer or the victim) under oath, alleging that the defendant committed a specific offense. Filing the complaint is also the moment the arrestee formally becomes a "defendant" in the legal sense. Some arrestees never show up again after release, landing their cases on an inactive docket pending eventual apprehension. The compounding effect of steps six and seven is visible in the numbers: felony arrests, which might make up 20-40% of all arrests, shrink down to roughly 10-20% of complaints actually filed, because charging screening disproportionately thins out the felony pool.</p>
+
+<h3>8. Magistrate Review of the Arrest ("Gerstein Review")</h3>
+<p class="written">For anyone arrested without a warrant, the Constitution still requires a prompt, independent check on probable cause. Under <em>Gerstein v. Pugh</em>, that check can be done ex parte &mdash; a magistrate reviewing the police paperwork without the defendant or defense counsel present &mdash; and is typically combined administratively with other early proceedings rather than held as its own separate hearing.</p>
+
+<h3>9. The First Appearance</h3>
+<p class="written">The first appearance is where the defendant is formally advised of the charges and of the right to counsel, and where bail gets set. Bail-setting has many possible forms: cash bail, a surety bond, release on personal recognizance (a promise to return, no money required), an unsecured bond (money owed only if the defendant fails to appear), non-financial conditions (travel restrictions, check-ins), or a 10% deposit-bail system letting the defendant post just a fraction of the full bond amount. Roughly half of jurisdictions also permit outright preventive detention &mdash; holding a defendant pretrial specifically because of danger to the community, not just flight risk. Nationally, upward of 85% of felony defendants are released at some point before disposition, but that overall figure masks how many stay in custody the whole way through: about 37% of felony defendants remain detained until their case is resolved, and that number climbs past 50% for murder, rape, and robbery charges specifically, offenses judges treat as the highest flight and danger risks. For those who are released, the record isn't spotless either: about 25% fail to appear for a scheduled court date at some point, 14% are rearrested or have release conditions revoked, and roughly 8% are still fugitives by the end of the year.</p>
+
+<h3>10. Preliminary Hearing</h3>
+<p class="written">A preliminary hearing is an adversary proceeding before a neutral magistrate testing whether probable cause supports moving the case forward &mdash; the defendant's first real opportunity, with counsel, to test the prosecution's evidence before trial. In jurisdictions that route serious cases through a grand jury instead, prosecutors can bypass the preliminary hearing entirely, and in some places that bypass eliminates 50-80% of hearings that would otherwise happen. Waiver is also common: where a defendant already intends to plead guilty, waiver rates run above 50%, since there's little point contesting probable cause on a case headed for a plea anyway. Actual dismissals at this stage are rare, well under 5% of felony complaints, reflecting how low the probable-cause bar is compared to the reasonable-doubt standard used at trial.</p>
+
+<h3>11. Grand Jury Review</h3>
+<p class="written">Grand jury review is not universal. It's mandatory only in the 18 states classified as "indictment" jurisdictions, plus the federal system and the District of Columbia; four additional "limited indictment" states require it only for capital cases or offenses carrying a possible life sentence. Where it applies, the proceeding is closed to the public, the prosecution presents evidence without the defense in the room, and historically a grand jury of 23 members voted by majority to return a "true bill" (an indictment) or decline to indict. Refusal to indict is uncommon &mdash; under 10% of cases presented in indictment jurisdictions &mdash; which has fueled long-running criticism that grand juries mostly rubber-stamp the prosecutor's charging decision rather than independently screening it.</p>
+
+<h3>12. Filing of the Indictment or Information</h3>
+<p class="written">Whichever charging document controls &mdash; a grand jury's indictment, or a prosecutor's information where indictment isn't required &mdash; it now replaces the original complaint as the operative charging instrument in the trial court, and it's this document, not the complaint, that the case proceeds on from here forward.</p>
+
+<h3>13. Arraignment on the Information or Indictment</h3>
+<p class="written">At arraignment, the defendant is formally read the charges from the indictment or information and enters a plea. Historically, a not-guilty plea was the default and expected move here, before plea negotiations had run their course; today, arraignment often comes after informal plea discussions have already started. Between arraignment and trial, a further 5-15% of cases get dismissed via nolle prosequi. But the dominant outcome by far is a guilty plea, negotiated through plea bargaining, which resolves something like 60-85% of cases that reach this stage &mdash; making the guilty plea, not the trial, the system's actual normal mode of resolving guilt.</p>
+
+<h3>14. Pretrial Motions</h3>
+<p class="written">Before trial, the defense can challenge the sufficiency or validity of the charging instrument, seek discovery of the prosecution's evidence, or move to suppress evidence obtained in violation of constitutional rights (an illegal search, an involuntary confession). These motions matter enormously when they succeed, but outright case-ending wins are uncommon: motions rarely produce a dismissal in more than about 5% of felony cases, and success rates run even lower in misdemeanor cases, where the stakes rarely justify heavy pretrial litigation.</p>
+
+<h3>15. The Trial</h3>
+<p class="written">Trial carries the core constitutional protections of American criminal procedure: the presumption of innocence, a prosecution burden of proof beyond a reasonable doubt, the defendant's right not to testify, and the exclusionary rule barring illegally obtained evidence. Given everything filtered out at the earlier stages, it should be no surprise that only about 4-8% of filed complaints ever reach trial. The typical case that does get there takes a while: median time from arrest to trial runs 5-8 months. Defendants have a right to a jury trial for felony charges and for misdemeanors carrying more than six months of possible incarceration. Roughly 70% of felony trials are jury trials, while bench trials (judge alone) dominate the misdemeanor caseload. Hung juries &mdash; unable to reach unanimous agreement &mdash; happen in roughly 3-6% of jury trials. Overall, convictions outnumber acquittals by something like three to one. Zoom out across the whole process, though, and the filtering effect is stark: somewhere between 30% and 50% of people arrested for felonies are never convicted of anything at all, whether because of screening, dismissal, or acquittal.</p>
+
+<h3>16. Sentencing</h3>
+<p class="written">Sentencing options span financial sanctions (fines, restitution), community-based release (probation, community service), and incarceration. Imprisonment rates vary sharply by offense: violent crimes draw the highest rates of imprisonment, with well over 90% of murder convictions resulting in prison and roughly 70% for rape. Sentencing systems themselves vary by structure: <strong>determinate</strong> sentencing fixes a specific term (subject to good-time credit), while <strong>indeterminate</strong> sentencing sets a range and lets a parole board decide actual release timing. <strong>Mandatory minimums</strong> remove judicial discretion below a statutory floor for specified offenses. Many jurisdictions also use <strong>sentencing guidelines</strong>, which set a presumptively correct sentence based on the offense and the defendant's criminal history; guidelines can be voluntary (advisory only) or mandatory, and even mandatory guideline systems typically allow departures only in limited, specified circumstances. Feeding into all of this is the presentence report, typically prepared by a probation officer, which gives the sentencing judge a detailed picture of the defendant's background, the offense, and relevant risk factors.</p>
+
+<h3>17. Appeals</h3>
+<p class="written">A convicted defendant can appeal to an intermediate appellate court or, in states without one, directly to the court of last resort. Despite the fact that up to 90% of defendants who are imprisoned after a trial conviction actually file an appeal, appeals overall are a small share of the total caseload &mdash; under 10% of general-trial-court convictions and under 1% of misdemeanor convictions, because so few cases are resolved by trial conviction in the first place rather than by plea. When appeals are filed, reversal is far from automatic: federal circuit courts reversed roughly 7.4% to 15% of criminal appeals in 1990 depending on the circuit, averaging around 10.4% overall.</p>
+
+<h3>18. Postconviction Remedies</h3>
+<p class="written">Once direct appeals are exhausted, a state prisoner can still seek federal habeas corpus review, arguing that the conviction or sentence violates federal constitutional rights. The volume is large &mdash; roughly 18,000 federal habeas petitions are filed each year &mdash; but success is rare, with relief granted in under 3% of cases. It functions less as a routine second chance than as a narrow safety valve for the exceptional case.</p>
+
+<div class="amber-box">The throughline across all eighteen steps: at every single stage, cases fall away. Fewer than half of crimes get reported; of those, only about a fifth are cleared by arrest; of those, screening removes roughly a third to a half; of what's left, the overwhelming majority end in a guilty plea rather than a trial. A criminal trial, dramatic as it looks in a casebook, is actually the least common way a criminal case ends.</div>
+</div>
+
+<div class="section">
+<p class="section-title"><span class="num">II.</span> Proving It: The Three Burdens</p>
+<p class="written">Once a case does reach trial, "proof" isn't a single undifferentiated concept &mdash; it splits into three distinct burdens, each doing different work, and each allocated between prosecution and defense according to different constitutional rules.</p>
+
+<h3>The Burden of Pleading</h3>
+<p class="written">The burden of pleading is simply the obligation to raise an issue in the first place &mdash; to put a fact or defense formally into the case. The state carries this burden for every element of the charged offense, since it's the state's job to specify what it's accusing the defendant of doing. The defendant, by contrast, generally carries the burden of pleading for affirmative defenses: if the defendant wants to argue self-defense, insanity, or duress, it's ordinarily the defendant who has to raise it &mdash; the prosecution doesn't have to anticipate and negate every conceivable defense in its own case just to plead a charge.</p>
+
+<h3>The Burden of Production</h3>
+<p class="written">The burden of production asks a narrower, more mechanical question: has enough evidence come in for a particular issue to legitimately go to the jury at all, or should the judge decide it as a matter of law? For every element of the offense, the prosecution bears the burden of production &mdash; and that includes producing enough evidence to rebut defenses like alibi, mistake of fact, or mental illness once the defendant has put them in play, because those defenses typically operate by negating an element the prosecution must prove. The constitutional floor here comes from <em>Jackson v. Virginia</em>, 443 U.S. 307 (1979): a conviction must be reversed on appeal if, viewing the evidence in the light most favorable to the prosecution, no rational trier of fact could have found the essential elements of the crime beyond a reasonable doubt. The Model Penal Code takes a narrower view of when this burden shifts to the defendant, assigning the defendant the production burden only for defenses the Code specifically labels "affirmative defenses" under MPC § 1.12(2)-(3) &mdash; a defined list that includes involuntary intoxication, duress, following military orders, the various justification defenses, insanity, and renunciation of criminal purpose. Everything outside that specific list stays on the prosecution.</p>
+
+<h3>The Burden of Persuasion</h3>
+<p class="written">The burden of persuasion is the one most people mean when they talk about "proof beyond a reasonable doubt" &mdash; it asks how convinced the factfinder actually has to be to convict. <em>In re Winship</em>, 397 U.S. 358 (1970), constitutionalized the rule that the prosecution must prove every element of the offense beyond a reasonable doubt; due process forbids convicting on anything less. The hard question <em>Winship</em> left open is what counts as an "element" in the first place, since legislatures can sometimes reshuffle the same substantive facts between "elements" (which the state must disprove beyond a reasonable doubt) and "mitigating" or "affirmative defense" facts (which a state can constitutionally place on the defendant). Two companion cases show how differently that question can come out. In <em>Mullaney v. Wilbur</em>, 421 U.S. 684 (1975), the Court required the prosecution to disprove provocation/heat-of-passion beyond a reasonable doubt, because Maine's murder statute defined malice aforethought in a way that provocation directly negated &mdash; provocation wasn't really a separate mitigating fact, it was the absence of an element. Two years later, in <em>Patterson v. New York</em>, 432 U.S. 197 (1977), the Court reached the opposite result for New York's "extreme emotional disturbance" mitigation, because New York had structured it as an independent, freestanding mitigating circumstance rather than as a fact that negated an element of the murder charge &mdash; so New York could constitutionally put the burden of persuasion on the defendant for it. Insanity gets its own separate constitutional pass: <em>Leland v. Oregon</em>, 343 U.S. 790 (1952), and <em>Rivera v. Delaware</em>, 429 U.S. 877 (1976), both allow a state to place the persuasion burden for the insanity defense on the defendant, even though insanity bears on culpability in a way that looks a lot like it should be the state's to disprove. The Model Penal Code takes the more defendant-protective position categorically: MPC § 1.12(1) requires the prosecution to prove every element beyond a reasonable doubt, and MPC § 1.13(9) defines "element" broadly enough to sweep in most of the facts that determine guilt or the grade of the offense, leaving less room for a legislature to reclassify an element as a mitigation simply to shift the burden.</p>
+
+<h3>Presumptions and Inferences</h3>
+<p class="written">A related wrinkle is how a judge may instruct the jury to move from a proved fact to an unproved one. A <strong>mandatory presumption</strong> &mdash; an instruction telling the jury it must find fact B once fact A is proved, effectively removing the issue from the jury's independent judgment &mdash; unconstitutionally shifts the burden of persuasion away from the prosecution and is forbidden; <em>Sandstrom v. Montana</em>, 442 U.S. 510 (1979), struck down exactly this kind of instruction where a jury was told a person "is presumed to intend" the ordinary consequences of voluntary acts. A <strong>permissive inference</strong>, by contrast &mdash; telling the jury it <em>may</em>, but need not, infer fact B from fact A &mdash; survives constitutional scrutiny so long as the presumed fact more likely than not actually follows from the proved fact; the Model Penal Code codifies the same basic more-likely-than-not test for permissive presumptions under MPC § 1.12(5)-(6).</p>
+
+<h3>A Sentencing Postscript: United States v. Booker</h3>
+<p class="written">The same beyond-a-reasonable-doubt logic eventually reached sentencing. In <em>United States v. Booker</em>, 543 U.S. 220 (2005), the Supreme Court held that mandatory sentencing guidelines requiring a judge &mdash; not the jury &mdash; to find facts by a mere preponderance of the evidence, in order to increase a sentence above what the jury's actual verdict alone would support, violate the Sixth Amendment jury-trial right and the reasonable-doubt principle underlying <em>Winship</em>. Rather than strike the federal guidelines down outright, the Court's remedy was to make them advisory rather than mandatory: judges must still calculate and consider the guideline range, but they are no longer bound by it, which lets judge-found facts inform a sentence without constitutionally requiring jury findings or a higher standard of proof for every fact that pushes a sentence upward.</p>
+</div>
+
+<div class="section" style="text-align:center; margin-top:2rem;">
+  <a href="crimlaw_legality_reading.html" class="case-btn">Next: The Legality Principle</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>

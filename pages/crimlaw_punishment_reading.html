@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theories of Punishment</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<span class="tag tag-amber">Criminal Law &middot; Assigned Reading</span>
+<h1>Theories of Punishment</h1>
+<p class="subtitle">Part I, Section 3 &middot; Adapted from Robinson, Baughman &amp; Cahill, <em>Criminal Law: Case Studies &amp; Controversies</em> (6th ed.) &mdash; same sequence, original wording</p>
+
+<div class="section">
+<div class="info-box">This page is a paraphrased, rewritten summary of a copyrighted casebook excerpt &mdash; not a verbatim reproduction of Robinson, Baughman &amp; Cahill's text. It follows the same order of topics and cites the same authorities, but the explanations below are original wording. Read the actual assigned PDF pages too; this is a study aid, not a substitute.</div>
+</div>
+
+<div class="section">
+<p class="section-title">I. The Distributive Principles</p>
+<p class="written">Before criminal law can answer any specific question &mdash; how long should a sentence be, should this defendant go to prison at all, does this excuse reduce liability &mdash; it needs an answer to a much more basic question: why does the state get to punish people at all, and how much punishment does any given case call for? The theories that answer this are usually called "distributive principles," because they distribute punishment across offenders. None of them are self-evidently correct, and which one (or combination) a legal system adopts changes the outcome in real cases, not just the philosophical framing.</p>
+
+<h3>Retributivism: punishment because it's deserved</h3>
+<p class="written">Retributivism looks backward. On this view, punishment is justified because the offender did something wrong in the past and deserves to suffer consequences proportionate to how blameworthy that conduct was &mdash; full stop, independent of whatever good or bad effects the punishment might produce going forward. A retributivist doesn't ask "will this sentence make society safer?" The relevant question is simply "how much blame does this person's past conduct warrant?" Desert, on this view, is a moral fact about the offender's culpability, and the state's job is to match punishment to it as precisely as it can &mdash; not more, and not less.</p>
+
+<h3>Utilitarianism: punishment because it reduces future crime</h3>
+<p class="written">Utilitarianism looks forward. It treats punishment as justified only to the extent it actually reduces future crime; inflicting suffering on someone for a past act that can't be undone is, standing alone, just a cost, and a utilitarian is willing to bear that cost only if it buys enough crime reduction to be worth it. Utilitarian punishment theory usually gets broken into four separate mechanisms by which punishing an offender might reduce future offending:</p>
+<p class="written"><strong>General deterrence</strong> punishes this offender in order to send a signal to everyone else &mdash; the broader public sees the consequence and is discouraged from committing the same crime. <strong>Special (or specific) deterrence</strong> punishes this offender in order to discourage that same individual, personally, from reoffending once released. <strong>Incapacitation</strong> doesn't rely on anyone being deterred at all &mdash; it simply removes the dangerous offender from the general public, typically through imprisonment, so that for as long as the sentence lasts, that person is physically unable to victimize anyone outside the institution. <strong>Rehabilitation</strong> aims to change the offender through treatment, education, or therapy so that, once released, they no longer want to commit further crimes or no longer need to (for example, because an underlying addiction or lack of job skills that drove the offending has been addressed).</p>
+
+<h3>Two flavors of desert</h3>
+<p class="written">Even among people who agree that desert matters, there's a live disagreement about how you figure out what any given offender actually deserves. <strong>Deontological desert</strong> is the moral-philosophy answer: an offender's "true" desert is fixed by correct moral reasoning about culpability and harm, whatever any particular community happens to believe about it &mdash; on this view, popular opinion could simply be wrong about what justice requires. <strong>Empirical desert</strong> takes a different approach: instead of asking what philosophers conclude, it asks what ordinary members of the community actually and intuitively believe a just punishment would be, and behavioral-science studies suggest these shared community intuitions are more precise and more consistent, across demographic groups, than you might expect. The distinction isn't just academic. Empirical-desert proponents argue for using community intuitions on a practical, institutional ground: when the criminal law's sentences visibly depart from what ordinary people perceive as just, the law loses "moral credibility" with the public, and a criminal-justice system that has lost moral credibility loses its ability to lean on social norms and voluntary compliance &mdash; people stop deferring to the law's judgments and start treating it as arbitrary or illegitimate, which undermines the system's practical effectiveness at preventing crime in the first place.</p>
+
+<h3>Restorative justice: a different lens entirely</h3>
+<p class="written">Restorative justice doesn't fit neatly into the retributivist/utilitarian split at all, because it isn't really organized around inflicting deserved suffering or around preventing future crime as its primary goal. Instead it centers on repairing the harm the offense caused &mdash; to the direct victim, to the victim's family, and to the surrounding community &mdash; through practices like sentencing circles, victim-offender mediation, and family group conferences that bring the affected parties together to work out what repair actually requires. It's less a theory of how much punishment is warranted than an alternative to punishment as the primary institutional response.</p>
+
+<h3>Toward pluralism</h3>
+<p class="written">Contemporary punishment theory increasingly resists picking just one of these principles and discarding the rest. Instead, most current scholarship leans pluralistic or hybrid: desert, crime control, and sometimes restorative concerns are all treated as legitimate considerations that a well-designed system should weigh, rather than as mutually exclusive foundations where only one can be "correct." The genuinely hard question isn't whether to consider more than one principle &mdash; it's what to do when desert and utilitarian crime-control goals point toward different outcomes for the same offender. That tension, and how to resolve it, is the subject of the scholarly debate in Section II below.</p>
+
+<h3>Why it matters: the case of Devon, Erie, and Fina</h3>
+<p class="written">To see the stakes concretely, imagine a family entangled in a single tragic episode. Devon, elderly and terminally ill, has been begging his adult children to end his suffering. Erie, his daughter, finally agrees and puts a lethal dose of poison in his food, believing she is granting a mercy he's repeatedly and clearly requested. Fina, Erie's sibling, discovers what happened only after the fact, says nothing to the authorities, and helps clean up rather than turning Erie in.</p>
+<p class="written">Now run each distributive principle over this fact pattern in isolation, and notice how differently each one would resolve it. Pure retribution asks only how blameworthy Erie's act was, judged against her intent and the culpability of what she did &mdash; likely still substantial punishment, since taking a life deliberately is exactly the kind of conduct retributivism treats as serious, regardless of motive. Pure general deterrence asks what sentence best discourages other people in similar caretaking situations from taking the law into their own hands &mdash; which might counsel a harsh, visible sentence for Erie precisely to broadcast a strong signal, even if her personal culpability seems mitigated by compassion. Pure incapacitation asks whether Erie is likely to pose a future danger to anyone &mdash; and since a one-time mercy killing of a specific, consenting, terminally ill parent suggests essentially no risk of future violence against the general public, incapacitation might counsel little to no confinement at all. Pure rehabilitation asks whether Erie needs to be changed to stop offending &mdash; and if she shows no criminal disposition beyond this singular episode, there may be nothing to "rehabilitate," again pointing toward minimal intervention. Pure deontological desert might reach a similar answer to retribution, or might diverge from it depending on how the philosopher weighs mercy and consent as morally mitigating; pure empirical desert asks what ordinary community members would actually think Erie deserves, and mercy killings of this kind often provoke considerably more public sympathy than the formal law reflects, which could mean empirical desert and formal legal doctrine point in different directions entirely. And Fina, who did nothing but conceal, raises the whole question again in miniature for accomplice liability: how much (if any) punishment Fina deserves, and how much punishing Fina would actually deter future concealment by family members in similar situations, are two different questions that can generate two very different answers. The point isn't that one principle is right and the others wrong &mdash; it's that the choice of distributive principle isn't an abstract classroom exercise. It changes what happens to Devon's family, concretely and by a lot.</p>
+</div>
+
+<div class="section">
+<p class="section-title">II. The Discussion: Pluralism vs. Desert</p>
+<p class="written">The casebook stages a three-way scholarly conversation about how &mdash; or whether &mdash; desert and utilitarian crime-control goals can be combined into a single workable approach to sentencing.</p>
+
+<h3>Cahill: "Punishment Pluralism"</h3>
+<p class="written">Michael T. Cahill's essay <em>Punishment Pluralism</em> (in <em>Retributivism: Essays on Theory and Policy</em>, Mark D. White ed., Oxford Univ. Press 2011) argues that punishment theory has moved past the old framing of retributivism and utilitarianism as two rival, mutually exclusive "theories" competing for the single correct answer. Instead, Cahill suggests, desert and harm-prevention are better understood as two independent <em>reasons</em> to punish that coexist rather than compete &mdash; each one is, on its own, a sufficient basis for punishing, so a case where both reasons line up (the offender deserves punishment <em>and</em> punishing them will meaningfully reduce future crime) is not a coincidence to be explained away but simply a strong, "overdetermined" case for punishment, and overdetermination in that direction is a feature, not a problem. The genuinely hard cases are the ones where the two reasons diverge &mdash; where desert calls for one outcome and crime control calls for another (much like Erie's case above). Cahill's central claim is that no single, unitary theory can honestly resolve that divergence without distorting one of the two values to make it fit; an "overtly pluralistic" account that admits both reasons matter, and admits they sometimes conflict, is more honest even though it's harder to apply &mdash; it doesn't hand a decisionmaker a mechanical formula, but it also doesn't pretend away a real tension between values that may simply be incommensurable.</p>
+
+<h3>The Model Penal Code's "limiting retributivism"</h3>
+<p class="written">Model Penal Code &sect; 1.02(2)(a), as revised in the American Law Institute's Tentative Draft No. 1 (2007), builds a specific structural compromise along these lines, generally associated with the legal theorist Norval Morris and often called "limiting retributivism." The idea: desert sets the outer boundaries of a permissible sentence &mdash; a sentence must be proportionate to the gravity of the offense and the offender's blameworthiness, and it may never exceed what desert allows, no matter how much additional crime-reduction a harsher sentence might buy. But <em>within</em> that desert-set range, courts are free to pursue utilitarian goals: rehabilitating the offender, general deterrence, incapacitating offenders who present an ongoing danger, restoring victims and communities, and helping the offender reintegrate into society afterward. Even inside the permissible range, though, the MPC's guidance is to impose no sentence more severe than necessary to accomplish whatever utilitarian purpose justifies it. The Reporter's Note accompanying the revision explains the history behind this shift: the original 1962 Model Penal Code leaned heavily utilitarian, built around confidence that rehabilitation programs could reliably reform offenders. That confidence collapsed over the following decades as rehabilitative programs underperformed and, at the same time, incarceration rates exploded across the country by the late twentieth century &mdash; prompting the 2007 revision to build explicit proportionality constraints back into the structure, so that utilitarian ambitions could no longer push sentences past what desert would tolerate.</p>
+
+<h3>Robinson's critique: is "limiting retributivism" really different from pure desert?</h3>
+<p class="written">Paul H. Robinson's article <em>The A.L.I.'s Proposed Distributive Principle of "Limiting Retributivism": Does It Mean in Practice Anything Other than Pure Desert?</em> (7 Buffalo Criminal Law Review 3 (2003)) pushes back on the Model Penal Code's compromise, arguing that in practice it collapses into something very close to pure desert-based sentencing, for two reasons. First, Robinson argues the traditional utilitarian goals are each much less reliably achievable than the "limiting retributivism" model assumes. Citing behavioral research, he points out that potential offenders frequently don't actually know what the legal rules are, don't perceive a realistic probability of getting caught and punished even when they do know the rules, and often don't make decisions through anything resembling a rational cost-benefit calculation even when both of those things are true. If deterrence, rehabilitation, and incapacitation rarely work as cleanly as assumed, then the "if effective" condition that's supposed to gate utilitarian sentencing within the desert range almost never actually triggers &mdash; there's rarely solid evidence that pursuing a given utilitarian goal in a given case will actually accomplish anything. Second, Robinson argues desert isn't really just a loose outer boundary the way "limiting retributivism" treats it. Desert has specific <em>ordinal</em>-ranking demands: a more blameworthy offender must receive more punishment than a less blameworthy offender, and that ranking requirement narrows the range of permissible sentences for any individual case far more tightly than a simple floor-and-ceiling model suggests. Combine both points, Robinson argues, and utilitarian purposes will rarely have room to operate without conflicting with desert's more specific demands. He closes by suggesting that both camps in the broader debate are mistaken: people who think desert-based punishment is too harsh, and people who think crime-reduction goals should simply outweigh justice, are both overestimating how much non-desert punishment could realistically achieve. In the absence of solid proof about which distribution of punishment actually minimizes crime most effectively, Robinson's practical answer for the interim is simply to "do justice" &mdash; that is, follow desert.</p>
+</div>
+
+<div class="section">
+<p class="section-title">III. Discussion Issue: Should Incarceration Be Abolished?</p>
+<p class="written">The casebook closes this section with a debate that goes further than desert-versus-utility: whether incarceration itself, as the default institutional response to crime, should be abolished.</p>
+
+<h3>McLeod: prison abolition as gradual decarceration</h3>
+<p class="written">Allegra McLeod's <em>Prison Abolition and Grounded Justice</em> (62 UCLA Law Review 1156 (2015)) reframes what "abolition" actually means. On her account, abolition is not a demand to immediately and indiscriminately open every prison door tomorrow; it's a gradual, deliberate project of "decarceration" that replaces criminal-law enforcement, piece by piece, with other institutional forms better suited to the underlying problem. She points to several concrete mechanisms: justice reinvestment, meaning redirecting resources currently spent on incarceration into social welfare programs that address the conditions driving crime in the first place; decriminalizing less serious infractions so fewer people enter the system at all; redesigning physical and urban spaces to reduce the opportunities for offending in the first place; expanding restorative-justice mechanisms as a form of redress in place of punishment; and creating safe harbors and alternative livelihoods for people at risk of committing violence or fleeing it. On the question of "the dangerous few" &mdash; people who might genuinely be too dangerous to safely live among others &mdash; McLeod doesn't deny that category exists, but argues it's considerably smaller than commonly assumed. Many people convicted of offenses officially classified as "violent" (she points to gun-possession offenses and statutory rape as examples) didn't actually commit an act of violence in the ordinary sense of the word. And a large share of homicide, she argues, stems from disputes within illegal markets &mdash; drug markets especially &mdash; that could be substantially reduced through decriminalization and by providing alternative livelihoods, rather than addressed through incarceration after the fact.</p>
+
+<h3>Barkow's response: what replaces incarceration's functions?</h3>
+<p class="written">Rachel E. Barkow's <em>Promise or Peril? The Political Path of Prison Abolition in America</em> (58 Wake Forest Law Review 245 (2023)) responds with a more skeptical, policy-focused critique. Her core worry is that abolition, if actually achieved, removes incarceration as a tool entirely &mdash; but a meaningful subset of people, she argues, will act on ordinary self-interested human dispositions (greed, lust, boredom, anger, ambition, and the like) regardless of how society is otherwise structured, which means some form of hard-treatment deterrent will always be necessary for at least some cases. Barkow argues abolitionist writing tends to underspecify exactly what would replace incarceration's deterrent and incapacitative functions if incarceration itself is off the table &mdash; noting that even countries celebrated for humane conditions, like Norway, still rely on confinement; they've simply made it far more humane, not eliminated it. She also raises a retributive-justice concern that she thinks abolitionist proposals underweight: restorative or transformative models may not satisfy the public's, and survivors', legitimate demand for accountability and condemnation proportionate to serious harm. Not every survivor of violence wants a restorative encounter with the person who harmed them, and financial penalties alone are often a poor substitute for incarceration's severity in the most serious cases.</p>
+
+<h3>No assigned answer</h3>
+<p class="written">Like the pluralism-versus-desert debate before it, the casebook doesn't hand you a resolution to the abolition question &mdash; it's presented as genuinely contested, meant to be argued from both directions rather than settled on the page. It's worth forming a tentative view of your own on where you land, because punishment theory isn't just an abstract preliminary topic: it's the analytical toolkit you'll be reaching for, explicitly or implicitly, every time you evaluate a substantive criminal offense for the rest of the semester.</p>
+</div>
+
+<div class="section" style="text-align:center; margin-top:2rem;">
+  <a href="crimlaw_culpability_reading.html" class="case-btn">Next: Culpability Requirements</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>
