@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pierson v. Post - Supreme Court of New York</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.written sup{font-size:10px;color:var(--text-sub);margin-left:2px;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
+
+/* toggle & nav button styles */
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>Pierson v. Post</h1>
+<p class="subtitle">Supreme Court of New York &bull; 3 Cai. R. 175 &bull; August Term, 1805</p>
+
+<div class="section">
+
+<div class="info-box"><strong style="font-weight:500;">Holding:</strong> Pursuit alone gives no right of property in animals feræ naturæ (wild by nature). An action will not lie against a person for killing and taking an animal pursued by, and in the view of, another who had started and chased it but had not yet captured or mortally wounded it. Occupancy of a wild animal requires possession &mdash; not manucaption (actual manual seizure) necessarily, but some act, such as netting, snaring, or mortal wounding, that so circumvents the animal that it cannot escape.</div>
+
+<p class="written">THIS was an action of trespass on the case commenced in a justice's court, by the present defendant against the now plaintiff.</p>
+<p class="written">The declaration stated that Post, being in possession of certain dogs and hounds under his command, did, "upon a certain wild and uninhabited, unpossessed and waste land, called the beach, find and start one of those noxious beasts called a fox," and whilst there hunting, chasing and pursuing the same with his dogs and hounds, and when in view thereof, Pierson, well knowing the fox was so hunted and pursued, did, in the sight of Post, to prevent his catching the same, kill and carry it off. A verdict having been rendered for the plaintiff below, the defendant there sued out a certiorari, and now assigned for error, that the declaration and the matters therein contained were not sufficient in law to maintain an action.</p>
+
+<p class="written" style="font-weight:500;">Arguments of counsel</p>
+<p class="written">Sanford, for the now plaintiff. It is firmly settled that animals, feræ naturæ, belong not to any one. If, then, Post had not acquired any property in the fox, when it was killed by Pierson, he had no right in it which could be the subject of injury. As, however, a property may be gained in such an animal, it will be necessary to advert to the facts set forth, to see whether they are such as could give a legal interest in the creature, that was the cause of the suit below. Finding, hunting, and pursuit, are all that the plaint enumerates. To create a title to an animal feræ naturæ, occupancy is indispensable. It is the only mode recognised by our system. The reason of the thing shows it to be so. For whatever is not appropriated by positive institutions, can be exclusively possessed by natural law alone. Occupancy is the sole method this code acknowledges. There must be a taking; and even that is not in all cases sufficient, for natural liberty may be regained even if in sight of the pursuer. It is manifest, then, from the record, that there was no title in Post, and the action, therefore, not maintainable.</p>
+<p class="written">Colden, contra. I admit that pursuit alone does not give a right of property in animals feræ naturæ, and I admit also that occupancy is to give a title to them. But then, what kind of occupancy? and here I shall contend it is not such as is derived from manucaption alone. Manucaption is only one of many means to declare the intention of exclusively appropriating that, which was before in a state of nature. Any continued act which does this, is equivalent to occupancy. Pursuit, therefore, by a person who starts a wild animal, gives an exclusive right whilst it is followed. It is all the possession the nature of the subject admits; it declares the intention of acquiring dominion, and is as much to be respected as manucaption itself.</p>
+<p class="written">Sanford, in reply. The only authority relied on is that of an annotator. On the question now before the court, we have taken our principles from the civil code, and nothing has been urged to impeach those quoted from the authors referred to.</p>
+
+<p class="written" style="text-align:center; font-weight:500;">Opinion</p>
+<p class="written">TOMPKINS, J. delivered the opinion of the court.</p>
+<p class="written">This cause comes before us on a return to a certiorari directed to one of the justices of Queens county.</p>
+<p class="written">The question submitted by the counsel in this cause for our determination is, whether Lodowick Post, by the pursuit with his hounds in the manner alleged in his declaration, acquired such a right to, or property in, the fox, as will sustain an action against Pierson for killing and taking him away?</p>
+<p class="written">The cause was argued with much ability by the counsel on both sides, and presents for our decision a novel and nice question. It is admitted that a fox is an animal feræ naturæ, and that property in such animals is acquired by occupancy only. These admissions narrow the discussion to the simple question of what acts amount to occupancy, applied to acquiring right to wild animals?</p>
+<p class="written">If we have recourse to the ancient writers upon general principles of law, the judgment below is obviously erroneous. Justinian's Institutes adopt the principle that pursuit alone vests no property or right in the huntsman; and that even pursuit, accompanied with wounding, is equally ineffectual for that purpose, unless the animal be actually taken. Puffendorf defines occupancy of beasts feræ naturæ to be the actual corporal possession of them. The foregoing authorities are decisive to show that mere pursuit gave Post no legal right to the fox, but that he became the property of Pierson, who intercepted and killed him.</p>
+<p class="written">It therefore only remains to inquire whether there are any contrary principles, or authorities, to be found in other books, which ought to induce a different decision. Barbeyrac, in his notes on Puffendorf, does not accede to the definition of occupancy by the latter, but affirms that actual bodily seizure is not, in all cases, necessary to constitute possession of wild animals &mdash; that the mortal wounding of such beasts, by one not abandoning his pursuit, may with the utmost propriety be deemed possession of him, since thereby the pursuer manifests an unequivocal intention of appropriating the animal to his individual use, has deprived him of his natural liberty, and brought him within his certain control. So also, encompassing and securing such animals with nets and toils, or otherwise intercepting them in such a manner as to deprive them of their natural liberty, and render escape impossible, may justly be deemed to give possession of them to those persons who, by their industry and labour, have used such means of apprehending them.</p>
+<p class="written">The case now under consideration is one of mere pursuit, and presents no circumstances or acts which can bring it within the definition of occupancy by Puffendorf, or Grotius, or the ideas of Barbeyrac upon that subject.</p>
+<p class="written">We are the more readily inclined to confine possession or occupancy of beasts feræ naturæ, within the limits prescribed by the learned authors above cited, for the sake of certainty, and preserving peace and order in society. If the first seeing, starting, or pursuing such animals, without having so wounded, circumvented or ensnared them, so as to deprive them of their natural liberty, and subject them to the control of their pursuer, should afford the basis of actions against others for intercepting and killing them, it would prove a fertile source of quarrels and litigation.</p>
+<p class="written">However uncourteous or unkind the conduct of Pierson towards Post, in this instance, may have been, yet his act was productive of no injury or damage for which a legal remedy can be applied. We are of opinion the judgment below was erroneous, and ought to be reversed.</p>
+
+<p class="written" style="text-align:center; font-weight:500;">Dissent</p>
+<p class="written">LIVINGSTON, J. My opinion differs from that of the court.</p>
+<p class="written">Whether a person who, with his own hounds, starts and hunts a fox on waste and uninhabited ground, and is on the point of seizing his prey, acquires such an interest in the animal, as to have a right of action against another, who in view of the huntsman and his dogs in full pursuit, and with knowledge of the chase, shall kill and carry him away?</p>
+<p class="written">This is a knotty point, and should have been submitted to the arbitration of sportsmen, without poring over Justinian, Fleta, Bracton, Puffendorf, Locke, Barbeyrac, or Blackstone, all of whom have been cited; they would have had no difficulty in coming to a prompt and correct conclusion. But the parties have referred the question to our judgment, and we must dispose of it as well as we can. Our decision should have in view the greatest possible encouragement to the destruction of an animal so cunning and ruthless in his career &mdash; but who would keep a pack of hounds, or mount his steed at peep of day to pursue this wily quadruped for hours, if, just as night came on, and his stratagems and strength were nearly exhausted, a saucy intruder, who had not shared in the honours or labours of the chase, were permitted to come in at the death, and bear away in triumph the object of pursuit?</p>
+<p class="written">After mature deliberation, I embrace the view that property in animals feræ naturæ may be acquired without bodily touch or manucaption, provided the pursuer be within reach, or have a reasonable prospect (which certainly existed here) of taking what he has thus discovered an intention of converting to his own use.</p>
+<p class="written">When we reflect also that the interest of our husbandmen will be advanced by the destruction of a beast so pernicious, we cannot greatly err in saying that a pursuit like the present, through waste and unoccupied lands, and which must inevitably and speedily have terminated in corporal possession, confers such a right to the object of it, as to make any one a wrongdoer, who shall interfere and shoulder the spoil. The justice's judgment ought, therefore, in my opinion, to be affirmed.</p>
+
+<p class="written" style="font-weight:500;">Judgment of reversal.</p>
+
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>
