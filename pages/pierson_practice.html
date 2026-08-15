@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pierson v. Post — Practice Question</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg:#fff;--text:#2C2C2A;--text-muted:#5F5E5A;--text-sub:#888780;
+  --border:#D3D1C7;--card-bg:#fff;--phase-bg:#F1EFE8;
+  --teal-bg:#E1F5EE;--teal-text:#0F6E56;--teal-border:#1D9E75;
+  --purple-bg:#EEEDFE;--purple-text:#3C3489;--purple-border:#3C3489;
+  --amber-bg:#FAEEDA;--amber-text:#854F0B;--amber-border:#EF9F27;--amber-dot:#BA7517;
+  --coral-bg:#FAECE7;--coral-text:#993C1D;--coral-border:#993C1D;
+  --blue-bg:#E6F1FB;--blue-text:#185FA5;--blue-border:#378ADD;
+  --success-text:#085041;--warn-text:#633806;--info-text:#0C447C;
+}
+[data-theme="dark"] {
+  --bg:#222;--text:#f0f0f0;--text-muted:#bbb;--text-sub:#aaa;
+  --border:#444;--card-bg:#2d2d2d;--phase-bg:#333;
+  --teal-bg:#11332a;--teal-text:#4adeb2;--teal-border:#1a8f69;
+  --purple-bg:#1c1a3b;--purple-text:#a8a0f0;--purple-border:#564cba;
+  --amber-bg:#3b280b;--amber-text:#f0b767;--amber-border:#c4801c;--amber-dot:#d69436;
+  --coral-bg:#3b170c;--coral-text:#f28b6b;--coral-border:#bd4821;
+  --blue-bg:#0b2238;--blue-text:#73b3f0;--blue-border:#2c72b8;
+  --success-text:#59dcb1;--warn-text:#f5c487;--info-text:#88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition:background .3s,color .3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:.5rem;border-bottom:.5px solid var(--border);}
+.card{background:var(--card-bg);border:.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:.75rem;}
+.warn-box{background:var(--amber-bg);border:.5px solid var(--amber-border);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--warn-text);margin-bottom:.75rem;line-height:1.5;}
+.success-box{background:var(--teal-bg);border:.5px solid var(--teal-border);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--success-text);line-height:1.5;margin-top:.75rem;}
+.info-box{background:var(--blue-bg);border:.5px solid var(--blue-border);border-radius:8px;padding:.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:.75rem;}
+.fact-box{background:var(--phase-bg);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;border-left:3px solid var(--purple-border);}
+.fact-box p{font-size:14px;line-height:1.8;margin-bottom:.75rem;}
+.fact-box p:last-child{margin-bottom:0;}
+.brief-row{display:flex;gap:8px;align-items:flex-start;padding:.5rem 0;border-bottom:.5px solid var(--border);}
+.brief-row:last-child{border-bottom:none;}
+.brief-num{font-size:12px;font-weight:500;color:var(--text-sub);min-width:20px;}
+.brief-text{font-size:13px;line-height:1.5;}
+textarea{width:100%;border:.5px solid var(--border);border-radius:8px;padding:.75rem;font-size:13px;font-family:inherit;color:var(--text);background:var(--bg);resize:vertical;min-height:220px;line-height:1.6;transition:border-color .2s;}
+textarea:focus{outline:none;border-color:var(--purple-border);}
+.btn{font-size:13px;font-weight:500;padding:8px 16px;border-radius:6px;border:.5px solid var(--border);background:var(--phase-bg);color:var(--text);cursor:pointer;transition:all .2s;}
+.btn:hover{filter:brightness(.95);}
+[data-theme="dark"] .btn:hover{filter:brightness(1.15);}
+.btn-primary{background:var(--purple-border);color:#fff;border-color:var(--purple-border);}
+.btn-primary:hover{filter:brightness(.9);}
+.btn-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem;}
+.timer-bar{display:flex;align-items:center;justify-content:space-between;background:var(--phase-bg);border-radius:8px;padding:.75rem 1rem;margin-bottom:1.5rem;}
+.timer-display{font-size:22px;font-weight:500;font-variant-numeric:tabular-nums;}
+.timer-display.warning{color:var(--coral-text);}
+.timer-label{font-size:12px;color:var(--text-sub);}
+.irac-bar{display:flex;gap:6px;margin:.75rem 0 1.25rem;}
+.irac-seg{flex:1;text-align:center;padding:4px 0;font-size:11px;font-weight:500;border-radius:4px;}
+.irac-i{background:var(--teal-bg);color:var(--teal-text);}
+.irac-r{background:var(--purple-bg);color:var(--purple-text);}
+.irac-a{background:var(--coral-bg);color:var(--coral-text);}
+.irac-c{background:var(--blue-bg);color:var(--blue-text);}
+.answer-section{display:none;margin-top:2rem;border-top:.5px solid var(--border);padding-top:1.5rem;}
+.answer-section.visible{display:block;}
+.answer-block{border-left:3px solid;padding:.75rem 1rem;margin-bottom:.75rem;border-radius:0;}
+.ab-i{border-color:var(--teal-border);background:var(--teal-bg);}
+.ab-r{border-color:var(--purple-border);background:var(--purple-bg);}
+.ab-a{border-color:var(--coral-border);background:var(--coral-bg);}
+.ab-c{border-color:var(--blue-border);background:var(--blue-bg);}
+.ab-label{font-size:11px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px;}
+.ab-text{font-size:13px;line-height:1.75;}
+.ab-text p{margin-bottom:.6rem;}
+.ab-text p:last-child{margin-bottom:0;}
+.rubric-row{display:flex;gap:10px;align-items:flex-start;padding:.5rem 0;border-bottom:.5px solid var(--border);}
+.rubric-row:last-child{border-bottom:none;}
+.rubric-pts{font-size:12px;font-weight:500;color:var(--purple-text);min-width:44px;background:var(--purple-bg);border-radius:6px;padding:2px 6px;text-align:center;flex-shrink:0;margin-top:2px;}
+.rubric-desc{font-size:13px;line-height:1.5;}
+.hidden{display:none;}
+#nav-arrows{position:fixed;top:1.5rem;left:1.5rem;display:flex;gap:8px;z-index:1000;}
+.action-btn{background:var(--card-bg);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .2s;text-decoration:none;padding:0;}
+.action-btn:hover{background:var(--phase-bg);}
+.action-btn svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+#theme-toggle{position:fixed;top:1.5rem;right:1.5rem;}
+#sun-icon{display:block;}#moon-icon{display:none;}
+[data-theme="dark"] #sun-icon{display:none;}[data-theme="dark"] #moon-icon{display:block;}
+@media print{body{padding:1rem;}#theme-toggle,#nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <a href="pierson_case.html" class="action-btn" aria-label="Back to case">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </a>
+  <a href="../index.html" class="action-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+  </a>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle dark mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>Pierson v. Post — Practice Question</h1>
+<p class="subtitle">1L Property &bull; First possession &amp; occupancy &bull; Wild animals &bull; Timed exam format</p>
+
+<!-- INTRO PAGE -->
+<div id="page-intro">
+  <div class="section">
+    <p class="section-title">Before you begin</p>
+    <div class="info-box">This is a closed-book practice exam. You should have already read the Pierson v. Post opinion (both the Tompkins majority and the Livingston dissent) and written a case brief before opening this file. If you haven't, go back and do that first.</div>
+    <div class="card">
+      <div class="brief-row"><span class="brief-num">Q</span><span class="brief-text">One multi-part essay question testing doctrine from Pierson v. Post (1805).</span></div>
+      <div class="brief-row"><span class="brief-num">T</span><span class="brief-text">30 minutes suggested. The timer is visible but not enforced. First-possession questions are usually shorter than multi-element negligence essays — practice being concise.</span></div>
+      <div class="brief-row"><span class="brief-num">F</span><span class="brief-text">IRAC structure required. Graded on issue spotting, rule accuracy, depth of analysis, and conclusion precision.</span></div>
+      <div class="brief-row"><span class="brief-num">R</span><span class="brief-text">A model answer and grading rubric unlock after you submit. Read your own answer first — then compare.</span></div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="startExam(true)">Start — begin 30-minute timer</button>
+      <button class="btn" onclick="startExam(false)">Start without timer</button>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM PAGE -->
+<div id="page-exam" class="hidden">
+
+  <div class="timer-bar" id="timer-bar">
+    <div>
+      <p class="timer-label">Time remaining</p>
+      <p class="timer-display" id="timer-display">30:00</p>
+    </div>
+    <button class="btn" id="pause-btn" onclick="togglePause()">Pause</button>
+  </div>
+
+  <div class="section">
+    <p class="section-title">Fact pattern</p>
+    <div class="fact-box">
+      <p>Jules is an experienced hunter on a large tract of unposted, unfenced rural land open to public hunting. Jules spots a buck, tracks its prints for nearly two hours, and eventually gets within range. Jules fires a rifle shot that grazes the buck's flank — the wound is real but not disabling; the buck bolts and keeps running at full speed, still fully capable of evading capture. Jules immediately begins following the blood trail, rifle in hand, continuing the chase.</p>
+      <p>Casey, another hunter on the same land, has been watching Jules's pursuit from a nearby ridge. Realizing Jules is closing in on the wounded buck, Casey moves to intercept, gets a clean shot first, kills the buck outright, and field-dresses the carcass before Jules arrives.</p>
+      <p>Jules sues Casey to recover the deer (or its value), arguing that the sustained two-hour pursuit plus the graze shot gave Jules a right of possession that Casey's last-second interception violated.</p>
+      <p>Casey defends on the ground that the buck was still alive, unwounded in any disabling sense, and fully at liberty to escape at the moment Casey fired — meaning Jules never actually established possession of the animal at all.</p>
+    </div>
+
+    <div class="warn-box"><strong style="font-weight:500;">Instructions:</strong> Using Pierson v. Post as your controlling authority, analyze whether Jules acquired a property right in the buck sufficient to sustain an action against Casey. Address the case under both the Tompkins majority rule and the Livingston dissent, and reach a conclusion under each. Your answer should be approximately 350–550 words. Do not assume any facts not stated above.</div>
+
+    <div class="irac-bar">
+      <div class="irac-seg irac-i">I — Issue</div>
+      <div class="irac-seg irac-r">R — Rule</div>
+      <div class="irac-seg irac-a">A — Analysis</div>
+      <div class="irac-seg irac-c">C — Conclusion</div>
+    </div>
+
+    <textarea id="answer" placeholder="Write your IRAC answer here..."></textarea>
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="submit()">Submit and reveal model answer</button>
+      <button class="btn" onclick="clearAnswer()">Clear</button>
+    </div>
+  </div>
+
+  <!-- ANSWER REVEAL -->
+  <div class="answer-section" id="answer-section">
+
+    <div class="section">
+      <p class="section-title">Model answer</p>
+
+      <div class="answer-block ab-i">
+        <p class="ab-label" style="color:var(--teal-text);">Issue</p>
+        <p class="ab-text">Whether Jules, by tracking the buck for two hours and inflicting a non-disabling graze wound, acquired a property right in the animal sufficient to maintain an action against Casey, who killed and took the buck while it was still alive and capable of escape.</p>
+      </div>
+
+      <div class="answer-block ab-r">
+        <p class="ab-label" style="color:var(--purple-text);">Rule</p>
+        <div class="ab-text">
+          <p>Property in animals feræ naturæ is acquired by occupancy, not by pursuit alone. Under the Pierson majority (Tompkins, J.), occupancy requires that the pursuer deprive the animal of its natural liberty and bring it within certain control — through mortal wounding, or through nets, traps, or other means that render escape impossible. Mere pursuit, even sustained and intentional pursuit, vests no right of property; a rival who intercepts and kills first-in-time does not commit a wrong.</p>
+          <p>Under the Livingston dissent, a stricter capture requirement is unnecessary; it is enough that the pursuer has a reasonable prospect of taking the animal, given the pursuit undertaken and the labor invested, even absent a mortal wound or physical restraint.</p>
+        </div>
+      </div>
+
+      <div class="answer-block ab-a">
+        <p class="ab-label" style="color:var(--coral-text);">Analysis</p>
+        <div class="ab-text">
+          <p><strong style="font-weight:500;">Under the majority rule:</strong> Jules's claim fails. A graze wound that leaves the animal at "full speed" and "fully capable of evading capture" does not deprive the buck of its natural liberty — this is precisely the line Pierson draws. The court was explicit that even wounding is "equally ineffectual" to establish possession "unless the animal be actually taken," and drew a contrast with wounds that are mortal or that bring the animal within the pursuer's certain control. A non-disabling graze is closer to Pierson's mere pursuit than to Barbeyrac's mortal-wounding exception that the majority was willing to accept. Jules never possessed the buck; Casey, who killed it outright, is the first to reduce it to occupancy, and under Pierson that makes Casey the rightful owner, however "uncourteous or unkind" the interception may have been.</p>
+          <p><strong style="font-weight:500;">Under the Livingston dissent:</strong> The result is closer, but still likely favors Casey on these facts. Livingston's more permissive test asks whether the pursuer had a reasonable prospect of taking the animal given the pursuit already undertaken. Two hours of tracking plus a solid hit is meaningful investment of exactly the kind Livingston wanted to protect from a "saucy intruder." But Livingston's own formulation still contemplates a pursuit that "must inevitably and speedily have terminated in corporal possession" — and here, the buck was not slowing or cornered; it was running at full speed after the graze, meaning the outcome of Jules's pursuit was genuinely uncertain, not "inevitable." A wounded-but-mobile deer that could still escape into miles of unfenced land is a materially weaker case for Livingston than an animal being run down and nearly caught.</p>
+          <p><strong style="font-weight:500;">Casey's defense:</strong> Casey's argument — that the buck remained at liberty and Jules never established control — tracks the majority rule directly and is likely successful regardless of which test applies, given how far from capture the buck still was.</p>
+        </div>
+      </div>
+
+      <div class="answer-block ab-c">
+        <p class="ab-label" style="color:var(--blue-text);">Conclusion</p>
+        <p class="ab-text">Under the Tompkins majority rule, Jules did not acquire a property right in the buck; a non-disabling graze wound that leaves the animal fully mobile is mere pursuit, and Casey's clean kill vests title in Casey. Under the Livingston dissent, the case is closer but likely reaches the same result, since the buck's continued full-speed flight undercuts any claim that Jules's capture was imminent or inevitable. Jules's claim against Casey fails under either standard.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Grading rubric — 100 points</p>
+      <div class="card">
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Issue statement:</strong> Identifies that the question is whether pursuit plus a non-disabling wound establishes occupancy — not simply "who owns the deer." A vague issue earns 4 pts maximum.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">20 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Rule — majority standard:</strong> States accurately that occupancy requires depriving the animal of natural liberty via mortal wounding, capture, or equivalent control — and that mere pursuit, even sustained, is insufficient.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">15 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Rule — dissent standard:</strong> States Livingston's more permissive "reasonable prospect of taking" test accurately, distinguishing it from the majority's stricter control requirement.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">20 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Analysis — majority applied:</strong> Correctly concludes the graze wound is insufficient because the buck remains at full liberty, directly paralleling Pierson's fox that could still escape after being merely pursued.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">20 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Analysis — dissent applied:</strong> Engages seriously with the closer call under Livingston, rather than assuming the dissent automatically favors the pursuer — and explains why "full speed" flight undercuts the "reasonable prospect" / "inevitable" language Livingston himself used.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">10 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Conclusion and legal writing:</strong> Reaches a conclusion under both standards separately. IRAC structure maintained throughout. Signal phrases used to transition from rule to application.</span>
+        </div>
+        <div class="rubric-row">
+          <span class="rubric-pts">5 pts</span>
+          <span class="rubric-desc"><strong style="font-weight:500;">Citation discipline:</strong> Attributes the majority rule to Tompkins and the alternative test to Livingston by name, rather than citing "the court" undifferentiated.</span>
+        </div>
+      </div>
+
+      <div class="success-box"><strong style="font-weight:500;">What separates an A from a B:</strong> Most students get the majority result right — a graze wound obviously isn't capture. The move that earns an A is taking the dissent seriously as a genuinely different (and closer) analysis, rather than treating it as a throwaway "the dissent would rule the other way" line. Recognizing that even Livingston's looser test still requires the pursuit to be near-certain of success — and that a deer running at full speed defeats that — is the sophisticated move.</div>
+
+      <div class="warn-box" style="margin-top:.75rem;"><strong style="font-weight:500;">Common mistakes to check against:</strong> (1) Treating the graze wound as automatically equivalent to Pierson's "mortal wounding" exception — a wound that doesn't disable the animal is not the same thing. (2) Assuming the Livingston dissent categorically favors whichever party pursued first, without applying his actual "reasonable prospect" language to the facts. (3) Skipping straight to a single conclusion instead of analyzing both standards, which the prompt explicitly requires.</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const root = document.documentElement;
+const toggleBtn = document.getElementById('theme-toggle');
+if (localStorage.getItem('theme') === 'dark') root.setAttribute('data-theme','dark');
+else if (window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) root.setAttribute('data-theme','dark');
+toggleBtn.addEventListener('click', () => {
+  const isDark = root.getAttribute('data-theme') === 'dark';
+  isDark ? root.removeAttribute('data-theme') : root.setAttribute('data-theme','dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+});
+
+let seconds = 30 * 60;
+let paused = false;
+let interval = null;
+let timerEnabled = false;
+
+function startExam(withTimer) {
+  timerEnabled = withTimer;
+  document.getElementById('page-intro').classList.add('hidden');
+  document.getElementById('page-exam').classList.remove('hidden');
+  if (!withTimer) {
+    document.getElementById('timer-bar').style.display = 'none';
+  } else {
+    interval = setInterval(() => {
+      if (paused) return;
+      seconds--;
+      const m = Math.floor(seconds / 60);
+      const s = seconds % 60;
+      const el = document.getElementById('timer-display');
+      el.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+      if (seconds <= 300) el.classList.add('warning');
+      if (seconds <= 0) {
+        clearInterval(interval);
+        el.textContent = '0:00';
+        document.getElementById('pause-btn').textContent = 'Time up';
+        document.getElementById('pause-btn').disabled = true;
+      }
+    }, 1000);
+  }
+  window.scrollTo(0, 0);
+}
+
+function togglePause() {
+  paused = !paused;
+  document.getElementById('pause-btn').textContent = paused ? 'Resume' : 'Pause';
+}
+
+function submit() {
+  if (timerEnabled) { paused = true; clearInterval(interval); }
+  if (document.getElementById('pause-btn')) {
+    document.getElementById('pause-btn').textContent = 'Submitted';
+    document.getElementById('pause-btn').disabled = true;
+  }
+  const section = document.getElementById('answer-section');
+  section.classList.add('visible');
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearAnswer() {
+  if (confirm('Clear your answer? This cannot be undone.')) {
+    document.getElementById('answer').value = '';
+  }
+}
+</script>
+</body>
+</html>
