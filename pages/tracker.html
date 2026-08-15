@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task &amp; Event Tracker - Carnet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;border-radius:8px;padding:3px 10px;margin-right:8px;margin-bottom:6px;}
+.tag-teal{background:var(--teal-bg);color:var(--teal-text);}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+.tag-coral{background:var(--coral-bg);color:var(--coral-text);}
+.tag-blue{background:var(--blue-bg);color:var(--blue-text);}
+.tag-gray{background:var(--gray-bg);color:var(--gray-text);}
+.tag-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;}
+
+.next-banner{font-family:'SF Mono','IBM Plex Mono',ui-monospace,Consolas,monospace;font-size:12.5px;color:var(--text-muted);background:var(--phase-bg);border-radius:8px;padding:0.6rem 1rem;margin-bottom:0.5rem;}
+
+/* event cards */
+.event-card{background:var(--card-bg);border:0.5px solid var(--border);border-left:3px solid var(--text-sub);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.event-card.status-green{border-left-color:var(--teal-border);}
+.event-card.status-amber{border-left-color:var(--amber-border);}
+.event-card.status-coral{border-left-color:var(--coral-border);}
+.event-card.status-blue{border-left-color:var(--blue-border);}
+.event-card.past{opacity:0.5;}
+.event-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;}
+.event-date{font-family:'SF Mono','IBM Plex Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--text-sub);letter-spacing:0.02em;}
+.event-title{font-size:15px;font-weight:500;margin-top:4px;}
+.event-time{font-family:'SF Mono','IBM Plex Mono',ui-monospace,Consolas,monospace;font-size:12px;color:var(--text-muted);margin-top:3px;}
+.event-body{margin-top:12px;padding-top:12px;border-top:0.5px solid var(--border);font-size:13px;line-height:1.6;}
+.meta-row{display:flex;gap:8px;margin-bottom:6px;}
+.meta-label{color:var(--text-sub);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;width:70px;flex-shrink:0;padding-top:2px;}
+.meta-value{color:var(--text-muted);}
+.meta-value.warn{color:var(--warn-text);font-weight:500;}
+.event-notes{margin-top:8px;list-style:none;}
+.event-notes li{color:var(--text-muted);padding-left:14px;position:relative;margin-bottom:4px;font-size:12.5px;}
+.event-notes li::before{content:"\2013";position:absolute;left:0;color:var(--text-sub);}
+
+/* weekly course rows */
+.course-list{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;overflow:hidden;}
+.course-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0.9rem 1.25rem;border-bottom:0.5px solid var(--border);flex-wrap:wrap;}
+.course-row:last-child{border-bottom:none;}
+.course-title{font-size:14px;font-weight:500;}
+.course-prof{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.course-meta{font-family:'SF Mono','IBM Plex Mono',ui-monospace,Consolas,monospace;font-size:12px;color:var(--text-sub);text-align:right;}
+
+/* task list */
+.task-list{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;overflow:hidden;}
+.task-row{display:flex;align-items:center;gap:14px;padding:0.9rem 1.25rem;border-bottom:0.5px solid var(--border);cursor:pointer;user-select:none;}
+.task-row:last-child{border-bottom:none;}
+.task-row:hover{background:var(--phase-bg);}
+.task-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.task-main{flex:1;min-width:0;}
+.task-title{font-size:14px;font-weight:500;}
+.task-title.done{color:var(--text-muted);text-decoration:line-through;text-decoration-color:var(--text-sub);}
+.task-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+
+.footnote{font-size:12px;color:var(--text-sub);line-height:1.6;margin-top:0.5rem;}
+
+/* toggle & nav button styles */
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>1L Task &amp; Event Tracker</h1>
+<p class="subtitle">Fall 2026 &bull; Group 13, Livingston Cohort &bull; statuses recompute live against today's date</p>
+
+<div class="next-banner" id="nextEvent">—</div>
+
+<div class="section" id="legend">
+<p class="section-title">Legend</p>
+<span class="tag tag-teal"><span class="tag-dot"></span>Done / upcoming, no action needed</span>
+<span class="tag tag-amber"><span class="tag-dot"></span>Pending / prep needed</span>
+<span class="tag tag-coral"><span class="tag-dot"></span>Overdue / urgent / today-tomorrow</span>
+<span class="tag tag-blue"><span class="tag-dot"></span>Upcoming, further out</span>
+<span class="tag tag-gray"><span class="tag-dot"></span>Past / optional</span>
+</div>
+
+<div class="section" id="events">
+<p class="section-title">Fall 2026 - key events</p>
+<div id="eventList"></div>
+</div>
+
+<div class="section" id="weekly">
+<p class="section-title">Weekly class schedule - begins Mon Aug 24</p>
+<div class="course-list" id="courseList"></div>
+</div>
+
+<div class="section" id="tasks">
+<p class="section-title">Administrative tasks</p>
+<div class="task-list" id="taskList"></div>
+<p class="footnote">Click a task to cycle its status (done / pending / overdue) - for your own tracking, nothing is saved between visits.</p>
+</div>
+
+<p class="footnote">Fall term end date is an estimate carried over from the general BLS calendar - confirm the exact last day of classes / reading period / finals window with the Registrar once posted. See the <a href="../index.html#dates" style="color:var(--text);font-weight:500;">key dates</a> section on the home page for the semester-long timeline.</p>
+
+<script>
+/* ---------------- DATA ---------------- */
+
+const events = [
+  {
+    date: "2026-08-16T15:00:00",
+    endHint: "3:00 – 6:00 PM",
+    title: "Convocation",
+    location: "US District Court, EDNY — 225 Cadman Plaza East, Brooklyn, NY 11201 (Ceremonial Courtroom)",
+    purpose: "Formal welcome ceremony marking the start of your JD. Mandatory for all incoming 1L JD students.",
+    attire: "Casual business attire (federal courthouse decorum)",
+    attireWarn: false,
+    notes: [
+      "Check-in opens 3:00 PM — arrive no later than 3:40 PM",
+      "Ceremony begins sharply at 4:00 PM (~1 hr), reception follows to ~6:00 PM",
+      "No guests permitted — space is extremely limited",
+      "Security: metal detector screening, no large bags/backpacks, phone silenced",
+      "Report directly to the courthouse — not the 250 Joralemon St. building",
+      "No on-site parking — use public transit",
+      "ID cards distributed at check-in",
+      "Read the orientation packet materials beforehand if you can"
+    ]
+  },
+  {
+    date: "2026-08-17T08:00:00",
+    endHint: "8:00 AM – ~4:05 PM",
+    title: "Orientation Day 1 — Your Brooklyn Story Begins Here",
+    location: "BLS, 250 Joralemon St. — Room 603 (Livingston Cohort)",
+    purpose: "Meet classmates and the key support offices; SAMP welcome social.",
+    attire: "Casual",
+    attireWarn: false,
+    notes: [
+      "8:00–9:00 Light refreshments",
+      "9:00–9:30 \"Your Brooklyn Story Begins Here\"",
+      "9:35–11:50 Rotating intros: Campus Safety → IT → Student Affairs → Academic Success",
+      "12:00–1:00 Lunch — explore Downtown Brooklyn",
+      "1:00–2:00 SAMP Welcome Social — Courtyard (ice cream)",
+      "Your library tour is Wednesday, not today"
+    ]
+  },
+  {
+    date: "2026-08-18T08:00:00",
+    endHint: "8:00 AM – 5:00 PM",
+    title: "Orientation Day 2 — Professional Formation Day",
+    location: "BLS, 250 Joralemon St.",
+    purpose: "Career Development & Public Service Law Center sessions, required Title IX training, alumni panel, headshots.",
+    attire: "Professional attire required — suit or equivalent",
+    attireWarn: true,
+    notes: [
+      "8:30–9:30 \"Your Career, Your Path & Law for Good\" (PSLC) — Moot Court",
+      "9:45–10:45 \"Building Bridges: My Story/Through Another Lens\" — Student Lounge",
+      "11:30–1:00 Lunch (sandwiches, Student Lounge)",
+      "1:15–2:15 Title IX Training — REQUIRED — Room 603",
+      "2:15–3:15 \"The Profession Speaks\": BLS Alumni Attorneys — Room 603",
+      "Book a headshot slot today via the Dean of Students link — ideal day (11:00–1:15 or 3:15–4:30)"
+    ]
+  },
+  {
+    date: "2026-08-19T09:00:00",
+    endHint: "9:00 AM – 6:00 PM",
+    title: "Orientation Day 3 — Intro to the Study of Law, Day 1",
+    location: "BLS, 250 Joralemon St. — Room 603",
+    purpose: "First doctrinal-style sessions: legal identity & lawyering discussion, case reading workshop, your library tour.",
+    attire: "Casual",
+    attireWarn: false,
+    actionNeeded: "Read the Just Mercy excerpt + packet materials before today",
+    notes: [
+      "10:00–10:35 \"Law, Identity & Lawyering\" — Prof. Joy Kanwar",
+      "10:45–12:30 Discussion Group",
+      "2:15–3:45 Case Reading Workshop — Prof. John Reilly",
+      "4:00–6:00 Headshots + YOUR library tour (Section 4)"
+    ]
+  },
+  {
+    date: "2026-08-20T09:00:00",
+    endHint: "9:00 AM – 3:45 PM",
+    title: "Orientation Day 4 — Intro to the Study of Law, Day 2",
+    location: "BLS, 250 Joralemon St. — Room 603",
+    purpose: "Fundamentals of American Law, AI & Professional Responsibility, mock doctrinal class.",
+    attire: "Casual",
+    attireWarn: false,
+    notes: [
+      "10:00–11:20 \"Fundamentals of American Law\" — Prof. Joy Kanwar",
+      "11:35–12:35 \"AI and Professional Responsibility\"",
+      "2:00–3:45 Mock Class — Prof. Joshi Yuvraj",
+      "Your library tour already happened Wednesday"
+    ]
+  },
+  {
+    date: "2026-08-21T09:00:00",
+    endHint: "9:00 AM – 5:00 PM · optional",
+    title: "Optional Service Day",
+    location: "Off-campus volunteer site — TBD",
+    purpose: "Volunteer with classmates through the Public Service Law Center.",
+    attire: "Casual / activity-appropriate",
+    attireWarn: false,
+    optional: true,
+    notes: [
+      "Sign-up and site details shared by PSLC",
+      "Not mandatory"
+    ]
+  },
+  {
+    date: "2026-08-24T10:00:00",
+    endHint: "10:00 AM",
+    title: "Fall Semester Classes Begin",
+    location: "BLS, 250 Joralemon St.",
+    purpose: "First day of 1L doctrinal classes — see weekly schedule below.",
+    attire: "Casual",
+    attireWarn: false,
+    notes: [
+      "Confirm exact last day of classes with the Registrar once posted"
+    ]
+  }
+];
+
+const weeklyClasses = [
+  { course: "Criminal Law", code: "CRM-100-D1", prof: "Prof. Michael Cahill", days: "MON / WED", time: "10:00 – 11:55 AM", room: "Rm 501" },
+  { course: "Property", code: "PTE-100-D2", prof: "Prof. Brian Lee", days: "MON / WED", time: "1:50 – 3:45 PM", room: "Rm 603" },
+  { course: "Torts", code: "TRT-100-D2S", prof: "Prof. Cristina Tilley", days: "TUE / THU", time: "1:50 – 3:45 PM", room: "Rm 503" },
+  { course: "Gateway to Lawyering I", code: "LWR-100-D13", prof: "Prof. Alba Morales", days: "TUE / THU", time: "4:00 – 5:50 PM", room: "Rm 504" }
+];
+
+const adminTasks = [
+  { title: "Fall tuition & fee payment", sub: "Was due Jul 15, 2026 — paid / payment plan enrolled", status: "green" },
+  { title: "Student ID card photo", sub: "Submitted — confirmation requested from idcard@brooklaw.edu, awaiting reply", status: "amber" },
+  { title: "Vaccination & immunization forms", sub: "Was due Aug 1, 2026 — physician contacted repeatedly; final step is a phone call to the office", status: "coral" },
+  { title: "2026 Incoming Class Deposition", sub: "Submitted", status: "green" },
+  { title: "Section / schedule assignment", sub: "Received — Group 13, Livingston Cohort", status: "green" },
+  { title: "Professional headshot booking", sub: "Not yet booked — sign up via Dean of Students link, ideally Tue Aug 18", status: "amber" }
+];
+
+/* ---------------- RENDER ---------------- */
+
+const now = new Date();
+
+function fmtDate(d){
+  return d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric' }).toUpperCase();
+}
+function isSameDay(a,b){
+  return a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
+}
+function statusFor(ev, d){
+  if (d < now && !isSameDay(d, now)) return { cls: 'gray', label: 'PAST', past: true };
+  if (ev.optional) return { cls: 'gray', label: 'OPTIONAL' };
+  if (ev.actionNeeded) return { cls: 'amber', label: 'PREP NEEDED' };
+  const diffDays = Math.ceil((d - now) / 86400000);
+  if (diffDays <= 1) return { cls: 'coral', label: diffDays <= 0 ? 'TODAY' : 'TOMORROW' };
+  return { cls: 'blue', label: `IN ${diffDays} DAYS` };
+}
+
+function renderEvents(){
+  const list = document.getElementById('eventList');
+  list.innerHTML = '';
+  events.forEach(ev => {
+    const d = new Date(ev.date);
+    const st = statusFor(ev, d);
+
+    const card = document.createElement('div');
+    card.className = `event-card status-${st.cls}${st.past ? ' past' : ''}`;
+
+    card.innerHTML = `
+      <div class="event-top">
+        <div>
+          <div class="event-date">${fmtDate(d)}</div>
+          <div class="event-title">${ev.title}</div>
+          <div class="event-time">${ev.endHint}</div>
+        </div>
+        <span class="tag tag-${st.cls}">${st.label}</span>
+      </div>
+      <div class="event-body">
+        <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">${ev.location}</div></div>
+        <div class="meta-row"><div class="meta-label">Purpose</div><div class="meta-value">${ev.purpose}</div></div>
+        <div class="meta-row"><div class="meta-label">Attire</div><div class="meta-value ${ev.attireWarn ? 'warn' : ''}">${ev.attire}</div></div>
+        ${ev.actionNeeded ? `<div class="meta-row"><div class="meta-label">Before</div><div class="meta-value warn">${ev.actionNeeded}</div></div>` : ''}
+        <ul class="event-notes">${ev.notes.map(n => `<li>${n}</li>`).join('')}</ul>
+      </div>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function renderCourses(){
+  const list = document.getElementById('courseList');
+  list.innerHTML = '';
+  weeklyClasses.forEach(c => {
+    const row = document.createElement('div');
+    row.className = 'course-row';
+    row.innerHTML = `
+      <div>
+        <div class="course-title">${c.course} <span style="color:var(--text-sub);font-size:11px;">${c.code}</span></div>
+        <div class="course-prof">${c.prof}</div>
+      </div>
+      <div class="course-meta">${c.days}<br>${c.time}<br>${c.room}</div>
+    `;
+    list.appendChild(row);
+  });
+}
+
+const statusColor = { green: 'var(--teal-border)', amber: 'var(--amber-border)', coral: 'var(--coral-border)' };
+const statusCycle = { green: 'amber', amber: 'coral', coral: 'green' };
+const statusWord = { green: 'Done', amber: 'Pending', coral: 'Overdue' };
+
+function renderTasks(){
+  const list = document.getElementById('taskList');
+  list.innerHTML = '';
+  adminTasks.forEach((t, i) => {
+    const row = document.createElement('div');
+    row.className = 'task-row';
+    row.innerHTML = `
+      <div class="task-dot" style="background:${statusColor[t.status]}"></div>
+      <div class="task-main">
+        <div class="task-title ${t.status === 'green' ? 'done' : ''}">${t.title}</div>
+        <div class="task-sub">${t.sub}</div>
+      </div>
+      <span class="tag tag-${t.status === 'green' ? 'teal' : t.status === 'amber' ? 'amber' : 'coral'}">${statusWord[t.status]}</span>
+    `;
+    row.addEventListener('click', () => {
+      adminTasks[i].status = statusCycle[adminTasks[i].status];
+      renderTasks();
+    });
+    list.appendChild(row);
+  });
+}
+
+function renderNextEvent(){
+  const upcoming = events
+    .map(ev => ({ ...ev, d: new Date(ev.date) }))
+    .filter(ev => ev.d >= now || isSameDay(ev.d, now))
+    .sort((a,b) => a.d - b.d)[0];
+
+  const el = document.getElementById('nextEvent');
+  if (!upcoming){ el.textContent = 'No upcoming events'; return; }
+  const diffDays = Math.ceil((upcoming.d - now) / 86400000);
+  const when = diffDays <= 0 ? 'today' : diffDays === 1 ? 'tomorrow' : `in ${diffDays} days`;
+  el.textContent = `next: ${upcoming.title} — ${when}`;
+}
+
+renderEvents();
+renderCourses();
+renderTasks();
+renderNextEvent();
+
+/* ---------------- THEME ---------------- */
+const toggleBtn = document.getElementById('theme-toggle');
+const root = document.documentElement;
+if (localStorage.getItem('theme') === 'dark') {
+  root.setAttribute('data-theme', 'dark');
+} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+  root.setAttribute('data-theme', 'dark');
+}
+toggleBtn.addEventListener('click', () => {
+  const currentTheme = root.getAttribute('data-theme');
+  if (currentTheme === 'dark') {
+    root.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+});
+</script>
+</body>
+</html>

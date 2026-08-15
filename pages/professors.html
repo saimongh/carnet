@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professors &amp; Reading Prep - Carnet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-teal{background:var(--teal-bg);color:var(--teal-text);}
+.tag-purple{background:var(--purple-bg);color:var(--purple-text);}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+.tag-coral{background:var(--coral-bg);color:var(--coral-text);}
+.tag-blue{background:var(--blue-bg);color:var(--blue-text);}
+.tag-gray{background:var(--gray-bg);color:var(--gray-text);}
+.warn-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--warn-text);margin-bottom:0.75rem;line-height:1.5;}
+.success-box{background:var(--teal-bg);border:0.5px solid var(--teal-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--success-text);line-height:1.5;margin-bottom:0.75rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:0.75rem;}
+
+/* professor cards */
+.prof-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:0.85rem;}
+.prof-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;}
+.prof-name{font-size:16px;font-weight:500;}
+.prof-sub{font-size:12px;color:var(--text-sub);margin-top:3px;}
+.prof-course{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.05em;white-space:nowrap;}
+.prof-rows{margin-top:14px;padding-top:14px;border-top:0.5px solid var(--border);}
+.info-row{display:flex;gap:10px;margin-bottom:9px;font-size:13px;line-height:1.6;}
+.info-row .label{width:96px;flex-shrink:0;color:var(--text-sub);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;padding-top:2px;}
+.info-row .value{color:var(--text-muted);}
+.info-row .value b{color:var(--text);font-weight:500;}
+.takeaway{margin-top:10px;padding:0.75rem 1rem;background:var(--phase-bg);border-left:3px solid var(--teal-border);border-radius:0 8px 8px 0;font-size:13px;color:var(--text);line-height:1.6;}
+.takeaway .tag-label{font-size:10px;font-weight:500;color:var(--teal-text);text-transform:uppercase;letter-spacing:0.07em;display:block;margin-bottom:6px;}
+
+/* class prep cards */
+.class-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1.1rem 1.25rem;margin-bottom:0.85rem;}
+.class-name{font-size:15px;font-weight:500;}
+.class-code{font-size:11px;color:var(--text-sub);margin-top:2px;}
+.caselist{margin-top:14px;padding-top:14px;border-top:0.5px solid var(--border);}
+.cat{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:0.06em;color:var(--blue-text);margin:14px 0 8px;}
+.cat:first-child{margin-top:0;}
+.case{display:flex;gap:8px;font-size:13px;line-height:1.55;margin-bottom:6px;flex-wrap:wrap;}
+.case .name{color:var(--text);font-style:italic;font-weight:500;flex-shrink:0;}
+.case .why{color:var(--text-muted);}
+.prepmove{margin-top:10px;padding:0.75rem 1rem;background:var(--phase-bg);border-left:3px solid var(--amber-border);border-radius:0 8px 8px 0;font-size:13px;color:var(--text);line-height:1.6;}
+.prepmove .tag-label{font-size:10px;font-weight:500;color:var(--amber-text);text-transform:uppercase;letter-spacing:0.07em;display:block;margin-bottom:6px;}
+
+/* general list */
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.brief-row{display:flex;gap:8px;align-items:flex-start;padding:0.6rem 0;border-bottom:0.5px solid var(--border);}
+.brief-row:last-child{border-bottom:none;}
+.brief-text{font-size:13px;line-height:1.55;color:var(--text-muted);}
+.brief-text strong{font-weight:500;color:var(--text);}
+
+.footnote{font-size:12px;color:var(--text-sub);line-height:1.6;margin-top:0.5rem;}
+
+/* toggle & nav button styles */
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>Professors &amp; Reading Prep Guide</h1>
+<p class="subtitle">Fall 2026 &bull; Group 13, Livingston Cohort &bull; compiled from faculty pages, CVs, and SSRN/BrooklynWorks listings</p>
+
+<div class="section" id="prof-caveats">
+<div class="warn-box">Everything below is built from each professor's public scholarship and the standard 1L curriculum — not a confirmed syllabus. Treat case lists as "things to recognize," not gospel, and swap in whatever your actual syllabus assigns once Canvas posts it.</div>
+<div class="info-box">On reviews: RateMyProfessors blocks automated access for all four professors, and no substantive Reddit/forum threads turned up for any of them by name. What's below is the real signal that did surface — treat gaps as gaps, not as "nothing to find." Your most reliable source is internal: <strong>BLSConnect → Academics → Registrar → Exams &amp; Grading → Exams on File</strong> for actual past exams by professor, plus just asking 2Ls/3Ls or your SAMP advisor directly.</div>
+</div>
+
+<div class="section" id="profiles">
+<p class="section-title">Professor profiles</p>
+
+<div class="prof-card">
+  <div class="prof-head">
+    <div>
+      <div class="prof-name">Michael T. Cahill</div>
+      <div class="prof-sub">Professor of Law &middot; President &amp; Dean Emeritus (2019–23)</div>
+    </div>
+    <span class="tag tag-amber">CRIMINAL LAW &middot; CRM-100-D1</span>
+  </div>
+  <div class="prof-rows">
+    <div class="info-row"><div class="label">Education</div><div class="value">J.D. <b>magna cum laude</b> &amp; M.P.P., University of Michigan (note editor, <i>Michigan Law Review</i>); B.A., Yale. Clerked for Judge James B. Loken, 8th Circuit.</div></div>
+    <div class="info-row"><div class="label">Path to BLS</div><div class="value">13 years on faculty (2003–16) → Co-Dean, Rutgers Law (2016–19) → President &amp; Dean, Brooklyn Law (2019–23) → returned to full-time teaching in 2023.</div></div>
+    <div class="info-row"><div class="label">Scholarship</div><div class="value">Criminal law theory (desert/retributive justice), criminal code drafting, sentencing policy, criminal juries. Consulted on criminal-code reform in Illinois and Kentucky.</div></div>
+    <div class="info-row"><div class="label">Key works</div><div class="value"><i>Law Without Justice</i> (Oxford, 2006, w/ Paul H. Robinson); <i>Criminal Law</i> treatise (Aspen, 2nd ed. 2012); <i>Criminal Law: Case Studies and Controversies</i> casebook (Wolters Kluwer, 4th ed. 2016, w/ Shima Baradaran Baughman).</div></div>
+    <div class="info-row"><div class="label">Reviews</div><div class="value">RMP page exists but is blocked from scraping. One third-party aggregator lists 4.6/5 with the note "strong leadership in criminal law" — that phrasing reads like a dean-bio blurb, not classroom feedback, so treat it as low-confidence at best.</div></div>
+  </div>
+  <div class="takeaway">
+    <span class="tag-label">What this means for you</span>
+    His own casebook pairs black-letter doctrine with real-world "controversies" — if it's assigned, expect class to pivot from "what's the rule" to "should the law be this way." His retributive-justice lens means recurring "why do we punish" questions. His code-drafting background makes the Model Penal Code essential — get the MPC excerpts before day one.
+  </div>
+</div>
+
+<div class="prof-card">
+  <div class="prof-head">
+    <div>
+      <div class="prof-name">Brian A. Lee</div>
+      <div class="prof-sub">Professor of Law &middot; ALI Member &middot; Assoc. Reporter, Restatement (Fourth) of Property</div>
+    </div>
+    <span class="tag tag-purple">PROPERTY &middot; PTE-100-D2</span>
+  </div>
+  <div class="prof-rows">
+    <div class="info-row"><div class="label">Education</div><div class="value">Ph.D. Philosophy, Princeton (1999, dissertation on moral obligations to past generations); J.D., Yale (2008, <i>Yale Law Journal</i> editor); undergrad Classics, Berkeley.</div></div>
+    <div class="info-row"><div class="label">At BLS</div><div class="value">Faculty since 2015. Also teaches Remedies, Intellectual Property, and International Law.</div></div>
+    <div class="info-row"><div class="label">Scholarship</div><div class="value">Takings/eminent domain, philosophy of property, compensation mechanisms and relational justice. Published in Columbia, Texas, and Michigan law reviews.</div></div>
+    <div class="info-row"><div class="label">Key works</div><div class="value">"Uncompensated Takings: Insurance, Efficiency, and Relational Justice"; "Coasean Property" (w/ Henry E. Smith).</div></div>
+    <div class="info-row"><div class="label">Reviews</div><div class="value">RMP page exists but is blocked from scraping, and no forum discussion turned up. The one concrete artifact found: his Spring 2019 Property final (via a student-uploaded outline) was open-book and essay-based — multiple substantive questions plus one complex multi-part fact pattern, with an explicit instruction not to over-invest time in any single question. Useful pacing signal even without a "review" attached.</div></div>
+  </div>
+  <div class="takeaway">
+    <span class="tag-label">What this means for you</span>
+    A philosopher-lawyer — expect doctrine taught through theory (Locke's labor theory, Demsetz's economic account, Blackstone's "bundle of sticks") rather than pure rule memorization. Given his takings specialty, don't be surprised if regulatory takings gets outsized attention even at the 1L level.
+  </div>
+</div>
+
+<div class="prof-card">
+  <div class="prof-head">
+    <div>
+      <div class="prof-name">Cristina Carmody Tilley</div>
+      <div class="prof-sub">Professor &amp; Claire Ferguson-Carlson Faculty Fellow, University of Iowa College of Law</div>
+    </div>
+    <span class="tag tag-teal">TORTS &middot; TRT-100-D2S</span>
+  </div>
+  <div class="prof-rows">
+    <div class="info-row"><div class="label">Education</div><div class="value">J.D. <b>cum laude</b>, Northwestern (Order of the Coif, Lowden-Wigmore Prize).</div></div>
+    <div class="info-row"><div class="label">Current post</div><div class="value">Primary public appointment is still University of Iowa; also a 2024–25 Visiting Fellow at Princeton's Center for Human Values. Her CV doesn't yet list Brooklyn Law — this looks like a new or visiting appointment for Fall 2026, worth a quick confirm once on campus.</div></div>
+    <div class="info-row"><div class="label">Scholarship</div><div class="value">Tort theory &amp; social justice, dignitary torts, defamation, First Amendment/tort intersections, private law &amp; policing/technology. Already published in the <i>Brooklyn Law Review</i> ("A New Private Law of Policing," 2024).</div></div>
+    <div class="info-row"><div class="label">Key works</div><div class="value">Co-author, <i>Cases and Materials on the Law of Torts</i> (7th ed.); "Tort Law Inside Out" (<i>Yale L.J.</i>, 2017); "(Re)categorizing Defamation" (<i>Tulane L. Rev.</i>, 2020) — specifically on the history of <i>NYT v. Sullivan</i>.</div></div>
+    <div class="info-row"><div class="label">Reviews</div><div class="value">RMP page exists under her Iowa listing but is blocked from scraping. No substantive review text surfaced anywhere, and since this appears to be her first BLS semester, even her Iowa reputation may not transfer directly — the classroom experience here is genuinely unknown territory.</div></div>
+  </div>
+  <div class="takeaway">
+    <span class="tag-label">What this means for you</span>
+    Given her published critique of <i>NYT v. Sullivan</i>, expect defamation and dignitary torts to get real weight, not treated as a con-law afterthought. Her "law and social justice" framing means expect discussion of who tort law protects — and who it doesn't.
+  </div>
+</div>
+
+<div class="prof-card">
+  <div class="prof-head">
+    <div>
+      <div class="prof-name">Alba Morales</div>
+      <div class="prof-sub">Assistant Professor of Legal Writing &middot; joined BLS 2024</div>
+    </div>
+    <span class="tag tag-blue">GATEWAY TO LAWYERING I &middot; LWR-100-D13</span>
+  </div>
+  <div class="prof-rows">
+    <div class="info-row"><div class="label">Education</div><div class="value">B.A. History (Latin America focus), Brown (1996); J.D., NYU (2001, Senior Articles Editor, <i>Review of Law and Social Change</i>); Paul &amp; Daisy Soros Fellow. Clerked for Judge Rosemary Barkett, 11th Circuit.</div></div>
+    <div class="info-row"><div class="label">Practice</div><div class="value">Public defender, Legal Aid Society (2003–06); civil rights litigation, Emery Celli (2006–07); directed Cardozo's Innocence Project clinic (2007–12); criminal justice researcher, Human Rights Watch (2012–15); capital habeas work; supervised the NY Office of the Appellate Defender's Domestic Violence Justice Survivors' Act practice.</div></div>
+    <div class="info-row"><div class="label">Prior teaching</div><div class="value">NYU School of Law, Lawyering Program.</div></div>
+    <div class="info-row"><div class="label">Reviews</div><div class="value">No RateMyProfessors page found for her at all, and no reviews surfaced elsewhere — expected for newer faculty (joined 2024) teaching a skills course, which typically gets far less public review traffic than doctrinal classes.</div></div>
+  </div>
+  <div class="takeaway">
+    <span class="tag-label">What this means for you</span>
+    Her whole career is advocacy and appellate practice, not doctrinal scholarship — expect Gateway to Lawyering to be genuinely practice-oriented, with writing exercises that may skew toward criminal or appellate-style fact patterns given her background.
+  </div>
+</div>
+
+</div>
+
+<div class="section" id="reading-prep">
+<p class="section-title">Class-by-class reading prep</p>
+
+<div class="class-card">
+  <div class="class-name">Criminal Law</div>
+  <div class="class-code">CRM-100-D1 &middot; Cahill &middot; Mon/Wed 10:00–11:55 &middot; Rm 501</div>
+  <div class="caselist">
+    <div class="cat">Act &amp; mental state</div>
+    <div class="case"><span class="name">Martin v. State</span><span class="why">— the voluntary act requirement</span></div>
+    <div class="case"><span class="name">Robinson v. California</span><span class="why">— can't criminalize status alone</span></div>
+    <div class="case"><span class="name">Regina v. Cunningham</span><span class="why">— recklessness</span></div>
+    <div class="case"><span class="name">Morissette v. United States</span><span class="why">— courts read intent into silent statutes</span></div>
+    <div class="cat">Homicide</div>
+    <div class="case"><span class="name">Commonwealth v. Carroll</span><span class="why">— premeditation</span></div>
+    <div class="case"><span class="name">State v. Guthrie</span><span class="why">— adequate provocation / heat of passion</span></div>
+    <div class="case"><span class="name">People v. Stamp</span><span class="why">— felony murder</span></div>
+    <div class="cat">Causation &amp; defenses</div>
+    <div class="case"><span class="name">Regina v. Dudley and Stephens</span><span class="why">— necessity</span></div>
+    <div class="case"><span class="name">People v. Goetz</span><span class="why">— subjective vs. objective self-defense (NY case — likely emphasized)</span></div>
+    <div class="case"><span class="name">State v. Norman</span><span class="why">— imperfect self-defense</span></div>
+    <div class="cat">Inchoate crimes</div>
+    <div class="case"><span class="name">People v. Rizzo</span><span class="why">— attempt / dangerous proximity</span></div>
+    <div class="case"><span class="name">Pinkerton v. United States</span><span class="why">— conspiracy liability</span></div>
+  </div>
+  <div class="prepmove">
+    <span class="tag-label">Prep move</span>
+    Read MPC §2.02 (the purposely/knowingly/recklessly/negligently ladder) before week one — Cahill's whole scholarly output is built around MPC structure, and this section underlies almost everything else in the course.
+  </div>
+</div>
+
+<div class="class-card">
+  <div class="class-name">Property</div>
+  <div class="class-code">PTE-100-D2 &middot; Lee &middot; Mon/Wed 1:50–3:45 &middot; Rm 603</div>
+  <div class="caselist">
+    <div class="cat">First possession &amp; found property</div>
+    <div class="case"><span class="name">Pierson v. Post</span><span class="why">— wild animals, capture vs. pursuit</span></div>
+    <div class="case"><span class="name">Ghen v. Rich</span><span class="why">— custom as law (whaling)</span></div>
+    <div class="case"><span class="name">Popov v. Hayashi</span><span class="why">— qualified possession (the baseball case)</span></div>
+    <div class="case"><span class="name">Armory v. Delamirie</span><span class="why">— finders' rights</span></div>
+    <div class="cat">Estates, adverse possession, landlord-tenant</div>
+    <div class="case"><span class="name">White v. Brown</span><span class="why">— fee simple vs. life estate interpretation</span></div>
+    <div class="case"><span class="name">Van Valkenburgh v. Lutz</span><span class="why">— adverse possession elements</span></div>
+    <div class="case"><span class="name">Javins v. First National Realty</span><span class="why">— implied warranty of habitability</span></div>
+    <div class="cat">Land use &amp; takings</div>
+    <div class="case"><span class="name">Boomer v. Atlantic Cement Co.</span><span class="why">— nuisance, damages vs. injunction</span></div>
+    <div class="case"><span class="name">Penn Central Transportation Co. v. NYC</span><span class="why">— regulatory takings test</span></div>
+    <div class="case"><span class="name">Kelo v. City of New London</span><span class="why">— public use / eminent domain</span></div>
+  </div>
+  <div class="prepmove">
+    <span class="tag-label">Prep move</span>
+    Property is vocabulary-heavy before it's rule-heavy. Learn the estates &amp; future interests system (fee simple, life estate, remainder, reversion) cold before diving into cases, or the first few weeks read as noise. Given Lee's takings specialty, don't skim Penn Central / Kelo even if your syllabus treats them as a brief unit — he may linger there.
+  </div>
+</div>
+
+<div class="class-card">
+  <div class="class-name">Torts</div>
+  <div class="class-code">TRT-100-D2S &middot; Tilley &middot; Tue/Thu 1:50–3:45 &middot; Rm 503</div>
+  <div class="caselist">
+    <div class="cat">Intentional torts (you've already drilled these)</div>
+    <div class="case"><span class="name">Vosburg v. Putney</span><span class="why">— unlawful-act doctrine</span></div>
+    <div class="case"><span class="name">Garratt v. Dailey</span><span class="why">— transferred/constructive intent</span></div>
+    <div class="cat">Negligence &amp; duty</div>
+    <div class="case"><span class="name">Palsgraf v. Long Island R.R.</span><span class="why">— Cardozo vs. Andrews on scope of duty</span></div>
+    <div class="case"><span class="name">Tarasoff v. Regents of Univ. of California</span><span class="why">— duty to warn third parties</span></div>
+    <div class="case"><span class="name">United States v. Carroll Towing</span><span class="why">— Learned Hand's BPL formula</span></div>
+    <div class="case"><span class="name">Byrne v. Boadle</span><span class="why">— res ipsa loquitur</span></div>
+    <div class="cat">Causation, strict liability, products</div>
+    <div class="case"><span class="name">Eggshell plaintiff rule</span><span class="why">— you've already got this doctrine covered</span></div>
+    <div class="case"><span class="name">Rylands v. Fletcher</span><span class="why">— strict liability origins</span></div>
+    <div class="case"><span class="name">MacPherson v. Buick</span><span class="why">— privity collapses in products liability</span></div>
+    <div class="cat">Defamation &amp; dignitary torts — likely emphasized</div>
+    <div class="case"><span class="name">New York Times v. Sullivan</span><span class="why">— actual-malice standard; Tilley has published specifically reframing this case's history</span></div>
+    <div class="case"><span class="name">Gertz v. Robert Welch, Inc.</span><span class="why">— private vs. public figure defamation standards</span></div>
+  </div>
+  <div class="prepmove">
+    <span class="tag-label">Prep move</span>
+    Given Tilley's own published work on <i>NYT v. Sullivan</i>, read that case closely rather than treating it as a con-law crossover to skim. Keep building on your existing Cardozo/Andrews and Vosburg work — that foundation carries straight into her negligence unit. (You've already got <a href="vosburg_case.html" style="color:var(--text);font-weight:500;">Vosburg</a> and <a href="palsgraf_case.html" style="color:var(--text);font-weight:500;">Palsgraf</a> read on this site.)
+  </div>
+</div>
+
+<div class="class-card">
+  <div class="class-name">Gateway to Lawyering I</div>
+  <div class="class-code">LWR-100-D13 &middot; Morales &middot; Tue/Thu 4:00–5:50 &middot; Rm 504</div>
+  <div class="caselist">
+    <div class="cat">Not a doctrinal course — no fixed case list</div>
+    <div class="case"><span class="name">IRAC / CREAC</span><span class="why">— learn this structure before day one, not during week one (see the <a href="../index.html#irac" style="color:var(--text);font-weight:500;">IRAC framework</a> section on the home page)</span></div>
+    <div class="case"><span class="name">Case briefing</span><span class="why">— practice on 2–3 cases from your other classes: facts, issue, holding, rule, reasoning, dicta</span></div>
+    <div class="case"><span class="name">Bluebook basics</span><span class="why">— case citation format, you'll be graded on it fast</span></div>
+    <div class="case"><span class="name">Westlaw / Lexis access</span><span class="why">— set up your student accounts early, research exercises come quick</span></div>
+  </div>
+  <div class="prepmove">
+    <span class="tag-label">Prep move</span>
+    Morales's whole career is public defense and appellate advocacy — expect writing prompts that skew toward criminal or appellate-style fact patterns rather than generic contract disputes.
+  </div>
+</div>
+
+</div>
+
+<div class="section" id="general">
+<p class="section-title">General things to look into</p>
+<div class="card">
+<div class="brief-row"><span class="brief-text"><strong>Confirm the real syllabi.</strong> Everything above is informed prediction from each professor's scholarship plus the standard 1L curriculum — not a confirmed reading list. Swap in whatever Canvas actually posts.</span></div>
+<div class="brief-row"><span class="brief-text"><strong>Start a rolling outline per class from week one.</strong> Don't wait until finals — outlining as you go is what actually works for issue-spotting exams.</span></div>
+<div class="brief-row"><span class="brief-text"><strong>Learn cold-call / Socratic-method norms.</strong> Know how to state a case's facts and holding cold, out loud, without notes.</span></div>
+<div class="brief-row"><span class="brief-text"><strong>Watch for NY-specific doctrine.</strong> BLS is in New York, and Cahill in particular is likely to bring in NY Penal Law and NY cases like <i>People v. Goetz</i> alongside the majority-rule cases.</span></div>
+<div class="brief-row" style="border-bottom:none"><span class="brief-text"><strong>Get the Model Penal Code excerpts now.</strong> It's foundational for Criminal Law and cheap/free in excerpt form (Foundation Press) — no reason to wait.</span></div>
+</div>
+</div>
+
+<p class="footnote">Compiled from Brooklyn Law School faculty pages, university faculty bios, SSRN/BrooklynWorks publication listings, and each professor's public CV.</p>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>
