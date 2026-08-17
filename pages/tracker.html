@@ -104,6 +104,8 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 .task-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
 
 .footnote{font-size:12px;color:var(--text-sub);line-height:1.6;margin-top:0.5rem;}
+.success-box{background:var(--teal-bg);border:0.5px solid var(--teal-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--success-text);line-height:1.5;}
+.success-box strong{font-weight:600;}
 
 /* toggle & nav button styles */
 #nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
@@ -166,6 +168,32 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 <div id="eventList"></div>
 </div>
 
+<div class="section" id="archived">
+<p class="section-title">Archived</p>
+<div class="event-card past">
+  <div class="event-top">
+    <div>
+      <div class="event-date">SAT AUG 16</div>
+      <div class="event-title">Convocation</div>
+      <div class="event-time">3:00 – 6:00 PM</div>
+    </div>
+    <span class="tag tag-gray">COMPLETED</span>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">US District Court, EDNY — 225 Cadman Plaza East, Brooklyn, NY 11201 (Ceremonial Courtroom)</div></div>
+    <div class="meta-row"><div class="meta-label">Purpose</div><div class="meta-value">Formal welcome ceremony marking the start of your JD.</div></div>
+    <ul class="event-notes">
+      <li>Check-in opened 3:00 PM, ceremony ran ~4:00–5:00 PM, reception followed to ~6:00 PM</li>
+      <li>No guests permitted, courthouse security screening in effect</li>
+      <li>ID cards distributed at check-in</li>
+    </ul>
+    <div class="success-box" style="margin-top:12px;">
+      <strong>Main lesson: you belong here.</strong> Convocation was the formal marker that you're no longer a prospective student — the seat is yours. Everything from Aug 17 onward builds on that.
+    </div>
+  </div>
+</div>
+</div>
+
 <div class="section" id="weekly">
 <p class="section-title">Weekly class schedule - begins Mon Aug 24</p>
 <div class="course-list" id="courseList"></div>
@@ -183,25 +211,6 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 /* ---------------- DATA ---------------- */
 
 const events = [
-  {
-    date: "2026-08-16T15:00:00",
-    endHint: "3:00 – 6:00 PM",
-    title: "Convocation",
-    location: "US District Court, EDNY — 225 Cadman Plaza East, Brooklyn, NY 11201 (Ceremonial Courtroom)",
-    purpose: "Formal welcome ceremony marking the start of your JD. Mandatory for all incoming 1L JD students.",
-    attire: "Casual business attire (federal courthouse decorum)",
-    attireWarn: false,
-    notes: [
-      "Check-in opens 3:00 PM — arrive no later than 3:40 PM",
-      "Ceremony begins sharply at 4:00 PM (~1 hr), reception follows to ~6:00 PM",
-      "No guests permitted — space is extremely limited",
-      "Security: metal detector screening, no large bags/backpacks, phone silenced",
-      "Report directly to the courthouse — not the 250 Joralemon St. building",
-      "No on-site parking — use public transit",
-      "ID cards distributed at check-in",
-      "Read the orientation packet materials beforehand if you can"
-    ]
-  },
   {
     date: "2026-08-17T08:00:00",
     endHint: "8:00 AM – ~4:05 PM",
