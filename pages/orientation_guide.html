@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orientation Guide - Carnet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:1.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;border-radius:8px;padding:3px 10px;margin-right:8px;margin-bottom:6px;}
+.tag-teal{background:var(--teal-bg);color:var(--teal-text);}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+.tag-coral{background:var(--coral-bg);color:var(--coral-text);}
+.tag-blue{background:var(--blue-bg);color:var(--blue-text);}
+.tag-gray{background:var(--gray-bg);color:var(--gray-text);}
+
+.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.5rem;}
+.pill{background:var(--phase-bg);border:0.5px solid var(--border);border-radius:20px;padding:6px 12px;font-size:12px;color:var(--text-muted);}
+.pill strong{color:var(--text);font-weight:500;}
+
+.event-card{background:var(--card-bg);border:0.5px solid var(--border);border-left:3px solid var(--text-sub);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.event-card.teal{border-left-color:var(--teal-border);}
+.event-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;}
+.event-date{font-family:'SF Mono','IBM Plex Mono',ui-monospace,Consolas,monospace;font-size:11.5px;color:var(--text-sub);letter-spacing:0.02em;}
+.event-title{font-size:15px;font-weight:500;margin-top:4px;}
+.event-time{font-family:'SF Mono','IBM Plex Mono',ui-monospace,Consolas,monospace;font-size:12px;color:var(--text-muted);margin-top:3px;}
+.event-body{margin-top:12px;padding-top:12px;border-top:0.5px solid var(--border);font-size:13px;line-height:1.6;}
+.meta-row{display:flex;gap:8px;margin-bottom:6px;}
+.meta-label{color:var(--text-sub);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;width:60px;flex-shrink:0;padding-top:2px;}
+.meta-value{color:var(--text-muted);}
+.event-notes{margin-top:8px;list-style:none;}
+.event-notes li{color:var(--text-muted);padding-left:14px;position:relative;margin-bottom:4px;font-size:12.5px;}
+.event-notes li::before{content:"\2013";position:absolute;left:0;color:var(--text-sub);}
+
+.checklist{background:var(--phase-bg);border-radius:8px;padding:0.9rem 1.1rem;margin-top:0.75rem;}
+.checklist p.label{font-size:11px;font-weight:500;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;}
+.checklist ul{list-style:none;}
+.checklist li{font-size:13px;color:var(--text);padding:4px 0;}
+.checklist li strong{font-weight:500;}
+.checklist li span.dim{color:var(--text-muted);}
+
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1rem;}
+.success-box{background:var(--teal-bg);border:0.5px solid var(--teal-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--success-text);line-height:1.5;margin-top:0.75rem;}
+.warn-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--warn-text);line-height:1.5;margin-top:0.75rem;}
+
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.card-title{font-size:14px;font-weight:500;margin:0 0 6px;}
+.written{font-size:13.5px;line-height:1.7;color:var(--text-muted);margin:0 0 8px;}
+.written:last-child{margin-bottom:0;}
+
+.case-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:0.5rem;}
+.case-btn{text-decoration:none;font-size:12.5px;font-weight:500;padding:8px 16px;border-radius:6px;border:0.5px solid var(--border);transition:all 0.2s ease;display:inline-flex;align-items:center;justify-content:center;background:var(--phase-bg);color:var(--text);}
+.case-btn:hover{filter:brightness(0.95);border-color:var(--text-sub);}
+[data-theme="dark"] .case-btn:hover{filter:brightness(1.15);}
+
+nav.subnav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem;padding:12px;background:var(--phase-bg);border-radius:12px;}
+nav.subnav a{color:var(--text-muted);text-decoration:none;font-size:12.5px;padding:5px 10px;border-radius:8px;}
+nav.subnav a:hover{background:var(--card-bg);color:var(--text);}
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+
+.footnote{font-size:12px;color:var(--text-sub);line-height:1.6;margin-top:0.5rem;}
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+</style>
+</head>
+<body>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<h1>Orientation Guide</h1>
+<p class="subtitle">Aug 17–20, 2026 &bull; Group 13, Livingston Cohort &bull; your day-by-day walkthrough</p>
+
+<div class="pillrow">
+  <div class="pill">📍 Breakfast every day: <strong>Dining Room, 4th Floor</strong></div>
+  <div class="pill">👔 Tuesday only: <strong>suit or equivalent</strong></div>
+  <div class="pill">🏠 Home room: <strong>603</strong> for almost every Livingston session</div>
+  <div class="pill">📷 Headshots &amp; library tour: sign up via the QR code in your orientation packet</div>
+</div>
+
+<nav class="subnav">
+  <a href="#mon">Mon 8/17</a>
+  <a href="#tue">Tue 8/18</a>
+  <a href="#wed">Wed 8/19</a>
+  <a href="#thu">Thu 8/20</a>
+  <a href="#reading">Reading tie-ins</a>
+  <a href="#tips">General tips</a>
+</nav>
+
+<div class="info-box">Convocation (Aug 16) has already happened — see the <a href="tracker.html#archived" style="color:var(--info-text);font-weight:500;">archived section of the tracker</a> for that record. This guide picks up at orientation Day 1.</div>
+
+<!-- MONDAY -->
+<div class="section" id="mon">
+<p class="section-title">Monday, Aug 17 — Your Brooklyn Story Begins Here</p>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">8:00 – 9:00 AM</div><div class="event-title">Light breakfast &amp; check-in</div></div>
+    <span class="tag tag-teal">All cohorts</span>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">Dining Room, 4th Floor</div></div>
+    <ul class="event-notes"><li>Pick up your welcome gift from Admissions while you're there</li></ul>
+  </div>
+</div>
+
+<div class="event-card teal">
+  <div class="event-top">
+    <div><div class="event-date">9:00 AM – 11:50 AM</div><div class="event-title">Real Talk + office intro rotations</div></div>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">Room 603 — all four rounds stay put, no room-hopping</div></div>
+    <ul class="event-notes">
+      <li>9:00–9:30 "Your Brooklyn Story Begins Here" — Real Talk with Your Peers</li>
+      <li>9:35–10:05 Meet Campus Safety</li>
+      <li>10:10–10:40 Meet IT</li>
+      <li>10:45–11:15 Meet Student Affairs</li>
+      <li>11:20–11:50 Meet Academic Success — Vice Dean Haan · ASP · Registrar</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">12:00 – 2:00 PM</div><div class="event-title">Lunch, then SAMP Welcome Social</div></div>
+    <span class="tag tag-teal">All cohorts</span>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>12:00–1:00 Lunch — explore Downtown Brooklyn</li>
+      <li>1:00–2:00 SAMP Welcome Social — Courtyard, ice cream &amp; refreshments</li>
+    </ul>
+  </div>
+</div>
+
+<div class="warn-box">2:00–4:05 PM is library tour time for SAMP Groups 1–8 only. Your library tour is Wednesday (Section 4) — this afternoon window isn't earmarked for you on the printed schedule, so treat it as open time unless you hear otherwise.</div>
+
+<div class="checklist">
+  <p class="label">Before you sleep tonight</p>
+  <ul>
+    <li><strong>Attire:</strong> <span class="dim">business casual — the suit requirement is Tuesday, not tomorrow.</span></li>
+    <li><strong>Bring:</strong> <span class="dim">something to write with, your ID, a phone charger — breakfast is provided.</span></li>
+    <li><strong>No reading due</strong> <span class="dim">for Monday — it's all intros and admin.</span></li>
+  </ul>
+</div>
+</div>
+
+<!-- TUESDAY -->
+<div class="section" id="tue">
+<p class="section-title">Tuesday, Aug 18 — Professional Formation Day</p>
+<div class="warn-box" style="margin-bottom:0.75rem;">Professional attire required all day — suit or equivalent.</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">8:00 – 9:30 AM</div><div class="event-title">Check-in, then Round 1</div></div>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>8:00–8:30 Light breakfast &amp; check-in — Dining Room, 4th Floor</li>
+      <li>8:30–9:30 "Your Career, Your Path &amp; Law for Good" (PSLC) — Moot Court, with Heather &amp; Amy</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">9:45 – 10:45 AM</div><div class="event-title">Building Bridges: My Story / Through Another Lens</div></div>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">Student Lounge — Assoc. Dean Dominique Fowler</div></div>
+  </div>
+</div>
+
+<div class="event-card teal">
+  <div class="event-top">
+    <div><div class="event-date">11:00 AM – 1:15 PM</div><div class="event-title">Professional Headshots — Session 1</div></div>
+    <span class="tag tag-teal">Sign-up slots</span>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>3 min/student, continues through lunch hour</li>
+      <li>Tuesday is the ideal day — you're already dressed for it</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">11:30 AM – 1:00 PM</div><div class="event-title">Lunch break</div></div>
+  </div>
+  <div class="event-body"><div class="meta-value">Sandwiches provided in the Student Lounge</div></div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">1:15 – 3:15 PM</div><div class="event-title">Title IX Training, then Alumni Panel</div></div>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>1:15–2:15 Title IX Training (required) — Room 603</li>
+      <li>2:15–3:15 "The Profession Speaks": BLS Alumni Attorneys — Room 603</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card teal">
+  <div class="event-top">
+    <div><div class="event-date">3:15 – 4:30 PM</div><div class="event-title">Professional Headshots — Session 2</div></div>
+    <span class="tag tag-teal">Sign-up slots</span>
+  </div>
+</div>
+
+<div class="checklist">
+  <p class="label">Before you sleep Monday night</p>
+  <ul>
+    <li><strong>Lay out your suit</strong> <span class="dim">or equivalent professional attire.</span></li>
+    <li><strong>Pick a headshot slot</strong> <span class="dim">tonight via the QR sign-up — Session 1 (11am) or Session 2 (3:15pm).</span></li>
+    <li><strong>No reading due</strong> <span class="dim">for Tuesday either — it's career/professionalism programming.</span></li>
+  </ul>
+</div>
+</div>
+
+<!-- WEDNESDAY -->
+<div class="section" id="wed">
+<p class="section-title">Wednesday, Aug 19 — Introduction to the Study of Law, Day 1</p>
+
+<div class="event-card teal">
+  <div class="event-top">
+    <div><div class="event-date">10:00 – 12:30 PM</div><div class="event-title">Law, Identity &amp; Lawyering + Discussion Group</div></div>
+    <span class="tag tag-amber">Just Mercy discussion</span>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>9:00 Light breakfast — Dining Room, 4th Floor</li>
+      <li>10:00–10:35 Law, Identity &amp; Lawyering — Room 603 (simulcast)</li>
+      <li>10:45–12:30 Discussion Group — Room 603, Prof. TBD</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">12:30 – 2:00 PM</div><div class="event-title">Lunch, then Library Ice Cream Social</div></div>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>Explore Downtown Brooklyn</li>
+      <li>1:00–2:00 Library Ice Cream Social in the Courtyard — all welcome</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">2:15 – 3:45 PM</div><div class="event-title">Case Reading Workshop</div></div>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">Room 603 — Prof. John Reilly</div></div>
+    <div class="meta-row"><div class="meta-label">Covers</div><div class="meta-value">"How to Read a Legal Opinion" (Orin Kerr) + a practice case, <em>Heath Benjamin v. Lindner Aviation</em></div></div>
+  </div>
+</div>
+
+<div class="event-card teal">
+  <div class="event-top">
+    <div><div class="event-date">4:00 – 6:00 PM</div><div class="event-title">Headshots + your library tour</div></div>
+    <span class="tag tag-teal">Your group</span>
+  </div>
+  <div class="event-body">SAMP Groups 13, 14, 15, 16 — this is your official library tour slot.</div>
+</div>
+
+<div class="checklist">
+  <p class="label">Before you sleep Tuesday night</p>
+  <ul>
+    <li><strong>Read the Just Mercy excerpt</strong> <span class="dim">(Introduction "Higher Ground" + start of Ch. 1) if you haven't yet — full study companion linked below.</span></li>
+    <li><strong>Skim "How to Read a Legal Opinion"</strong> <span class="dim">ahead of the Case Reading Workshop — linked below.</span></li>
+    <li><strong>Attire:</strong> <span class="dim">back to business casual — suit was Tuesday-only.</span></li>
+  </ul>
+</div>
+</div>
+
+<!-- THURSDAY -->
+<div class="section" id="thu">
+<p class="section-title">Thursday, Aug 20 — Introduction to the Study of Law, Day 2</p>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">9:00 – 11:20 AM</div><div class="event-title">Breakfast, then Fundamentals of American Law</div></div>
+  </div>
+  <div class="event-body">
+    <ul class="event-notes">
+      <li>9:00 Light breakfast — Dining Room, 4th Floor</li>
+      <li>10:00–11:20 Fundamentals of American Law — Room 603, Prof. Joy Kanwar</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">11:35 AM – 12:35 PM</div><div class="event-title">AI &amp; Professional Responsibility</div></div>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">Room 603 — starts 11:50 for Livingston (extended break)</div></div>
+    <ul class="event-notes">
+      <li>11:50–12:05 Dean of Students Paula N. Ramos &amp; Margaret Martin</li>
+      <li>12:05–12:20 Vice Dean Sarah Haan</li>
+      <li>12:20–12:35 Prof. Brittany Persson — dismissed to lunch at 12:35</li>
+    </ul>
+  </div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">12:20 – 2:00 PM</div><div class="event-title">Lunch break</div></div>
+  </div>
+  <div class="event-body">Headshots available during lunch — sign-up slots, if you still need one.</div>
+</div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div><div class="event-date">2:00 – 3:45 PM</div><div class="event-title">Mock Class</div></div>
+  </div>
+  <div class="event-body"><div class="meta-value">Room 603 — Prof. Joshi Yuvraj</div></div>
+</div>
+
+<div class="checklist">
+  <p class="label">Before you sleep Wednesday night</p>
+  <ul>
+    <li><strong>Skim the Fundamentals of Law excerpt</strong> <span class="dim">in the packet — American legal system, sources of law, stare decisis, court hierarchy.</span></li>
+    <li><strong>Heads up:</strong> <span class="dim">Criminal Law Assignment 1 (casebook pp. 76–104, NY Penal Law §1.05, MPC §1.02) is due before Aug 20 — that's your first real class reading, separate from orientation itself.</span></li>
+  </ul>
+</div>
+</div>
+
+<!-- READING TIE-INS -->
+<div class="section" id="reading">
+<p class="section-title">Reading tie-ins already on this site</p>
+<div class="card">
+  <p class="card-title">Wednesday morning — Law, Identity &amp; Lawyering</p>
+  <p class="written">Full study companion for the Just Mercy excerpt (Introduction + Chapter One), with discussion talking points for the Discussion Group.</p>
+  <div class="case-links"><a href="just_mercy_reading.html" class="case-btn">Open Just Mercy study companion</a></div>
+</div>
+<div class="card">
+  <p class="card-title">Wednesday afternoon — Case Reading Workshop</p>
+  <p class="written">Study guide for Orin Kerr's "How to Read a Legal Opinion," plus the full case page for the workshop's practice case.</p>
+  <div class="case-links">
+    <a href="kerr_reading.html" class="case-btn">Open Kerr reading guide</a>
+    <a href="benjamin_case.html" class="case-btn">Open Benjamin v. Lindner Aviation</a>
+  </div>
+</div>
+</div>
+
+<!-- GENERAL TIPS -->
+<div class="section" id="tips">
+<p class="section-title">General logistics, all week</p>
+<div class="card">
+  <p class="written"><strong style="color:var(--text);font-weight:500;">Breakfast:</strong> Dining Room, 4th floor, every morning.</p>
+  <p class="written"><strong style="color:var(--text);font-weight:500;">Lunch:</strong> mostly "explore Downtown Brooklyn" — no assigned spot except Tuesday (sandwiches, Student Lounge).</p>
+  <p class="written"><strong style="color:var(--text);font-weight:500;">Room 603</strong> is effectively home base — almost every Livingston-specific session lands there.</p>
+  <p class="written"><strong style="color:var(--text);font-weight:500;">Headshots &amp; library tour sign-ups</strong> run through a QR code printed in the orientation packet — grab that before Tuesday for your pick of slots.</p>
+  <p class="written"><strong style="color:var(--text);font-weight:500;">Mobility needs:</strong> contact the Accessibility Office in advance for library tour accommodations.</p>
+</div>
+</div>
+
+<p class="footnote">Built from the BLS Orientation Packet &amp; Schedule (Aug 17–20, 2026) for Group 13, Livingston Cohort. See the <a href="tracker.html" style="color:var(--text);font-weight:500;">task &amp; event tracker</a> for live status tracking against today's date.</p>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+</body>
+</html>
