@@ -277,9 +277,23 @@ const events = [
     ]
   },
   {
+    date: "2026-08-20T18:00:00",
+    endHint: "6:00 PM onward · no agenda",
+    title: "Group 13 Meet & Greet — Brazen Head",
+    location: "Brazen Head, Atlantic Ave, Brooklyn",
+    purpose: "Casual meet-and-greet with section-mates, hosted by 2L section leader Alex Sternburg.",
+    attire: "Casual",
+    attireWarn: false,
+    notes: [
+      "No agenda — drop by whenever works for you that evening",
+      "Same evening Orientation Day 4 wraps up",
+      "Good chance to put faces to names before classes start Aug 24"
+    ]
+  },
+  {
     date: "2026-08-21T09:00:00",
     endHint: "9:00 AM – 5:00 PM · optional",
-    title: "Optional Service Day",
+    title: "BLS Service Day (Optional)",
     location: "Off-campus volunteer site — TBD",
     purpose: "Volunteer with classmates through the Public Service Law Center.",
     attire: "Casual / activity-appropriate",
@@ -299,7 +313,33 @@ const events = [
     attire: "Casual",
     attireWarn: false,
     notes: [
-      "Confirm exact last day of classes with the Registrar once posted"
+      "Last day of fall classes is confirmed as Tue, Nov 24"
+    ]
+  },
+  {
+    date: "2026-08-28T09:00:00",
+    endHint: "Deadline",
+    title: "Add/Drop Period Ends",
+    location: "Registrar",
+    purpose: "Last day to finalize your Fall course schedule.",
+    attire: "n/a",
+    attireWarn: false,
+    notes: [
+      "Confirmed by the official 2026-2027 Academic Calendar"
+    ]
+  },
+  {
+    date: "2026-09-22T10:00:00",
+    endHint: "Runs on a Monday schedule",
+    title: "Yom Kippur Makeup — Tuesday Follows Monday's Schedule",
+    location: "BLS, 250 Joralemon St.",
+    purpose: "Because Yom Kippur (Mon, Sep 21) suspends Monday's classes, BLS moves Monday's schedule onto Tuesday Sep 22 instead.",
+    attire: "Casual",
+    attireWarn: false,
+    actionNeeded: "Expect Criminal Law & Property (your Mon/Wed courses) — not Torts or Gateway to Lawyering I",
+    notes: [
+      "This is the one Tuesday this fall your normal Tue/Thu schedule does not apply",
+      "Double-check with each professor if the room assignment differs from your usual Mon/Wed rooms"
     ]
   }
 ];
@@ -308,7 +348,8 @@ const weeklyClasses = [
   { course: "Criminal Law", code: "CRM-100-D1", prof: "Prof. Michael Cahill", days: "MON / WED", time: "10:00 – 11:55 AM", room: "Rm 501" },
   { course: "Property", code: "PTE-100-D2", prof: "Prof. Brian Lee", days: "MON / WED", time: "1:50 – 3:45 PM", room: "Rm 603" },
   { course: "Torts", code: "TRT-100-D2S", prof: "Prof. Cristina Tilley", days: "TUE / THU", time: "1:50 – 3:45 PM", room: "Rm 503" },
-  { course: "Gateway to Lawyering I", code: "LWR-100-D13", prof: "Prof. Alba Morales", days: "TUE / THU", time: "4:00 – 5:50 PM", room: "Rm 504" }
+  { course: "Gateway to Lawyering I", code: "LWR-100-D13", prof: "Prof. Alba Morales", days: "TUE / THU", time: "4:00 – 5:50 PM", room: "Rm 504" },
+  { course: "Section Office Hour", code: "Open to all, Group 13", prof: "Alex Sternburg (2L Section Leader)", days: "TUE", time: "10:45 – 11:45 AM", room: "Small Cafeteria, 4th Fl" }
 ];
 
 const adminTasks = [
@@ -317,7 +358,8 @@ const adminTasks = [
   { title: "Vaccination & immunization forms", sub: "Was due Aug 1, 2026 — physician contacted repeatedly; final step is a phone call to the office", status: "coral" },
   { title: "2026 Incoming Class Deposition", sub: "Submitted", status: "green" },
   { title: "Section / schedule assignment", sub: "Received — Group 13, Livingston Cohort", status: "green" },
-  { title: "Professional headshot booking", sub: "Not yet booked — sign up via Dean of Students link, ideally Tue Aug 18", status: "amber" }
+  { title: "Professional headshot booking", sub: "Not yet booked — sign up via Dean of Students link, ideally Tue Aug 18", status: "amber" },
+  { title: "Send syllabi to section leader", sub: "Alex Sternburg (2L) asked for copies of Fall syllabi once professors post them", status: "amber" }
 ];
 
 /* ---------------- RENDER ---------------- */
