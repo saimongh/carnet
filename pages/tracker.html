@@ -192,6 +192,31 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
     </div>
   </div>
 </div>
+
+<div class="event-card">
+  <div class="event-top">
+    <div>
+      <div class="event-date">MON AUG 17</div>
+      <div class="event-title">Orientation Day 1 — Your Brooklyn Story Begins Here</div>
+      <div class="event-time">8:00 AM – ~4:05 PM</div>
+    </div>
+    <span class="tag tag-gray">COMPLETED</span>
+  </div>
+  <div class="event-body">
+    <div class="meta-row"><div class="meta-label">Where</div><div class="meta-value">BLS, 250 Joralemon St. — Room 603 (Livingston Cohort)</div></div>
+    <div class="meta-row"><div class="meta-label">Purpose</div><div class="meta-value">Meet classmates and the key support offices; SAMP welcome social.</div></div>
+    <ul class="event-notes">
+      <li>8:00–9:00 Light refreshments</li>
+      <li>9:00–9:30 "Your Brooklyn Story Begins Here"</li>
+      <li>9:35–11:50 Rotating intros: Campus Safety → IT → Student Affairs → Academic Success</li>
+      <li>12:00–1:00 Lunch — explore Downtown Brooklyn</li>
+      <li>1:00–2:00 SAMP Welcome Social — Courtyard, ice cream (also served as the Group 13 meetup with Alex Sternburg)</li>
+    </ul>
+    <div class="success-box" style="margin-top:12px;">
+      <strong>Main lesson: the logistics are handled.</strong> ID, login, key offices, and a few new faces are behind you — everything from Tuesday on is professional formation and the actual study of law.
+    </div>
+  </div>
+</div>
 </div>
 
 <div class="section" id="weekly">
@@ -212,23 +237,6 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 
 const events = [
   {
-    date: "2026-08-17T08:00:00",
-    endHint: "8:00 AM – ~4:05 PM",
-    title: "Orientation Day 1 — Your Brooklyn Story Begins Here",
-    location: "BLS, 250 Joralemon St. — Room 603 (Livingston Cohort)",
-    purpose: "Meet classmates and the key support offices; SAMP welcome social.",
-    attire: "Casual",
-    attireWarn: false,
-    notes: [
-      "8:00–9:00 Light refreshments",
-      "9:00–9:30 \"Your Brooklyn Story Begins Here\"",
-      "9:35–11:50 Rotating intros: Campus Safety → IT → Student Affairs → Academic Success",
-      "12:00–1:00 Lunch — explore Downtown Brooklyn",
-      "1:00–2:00 SAMP Welcome Social — Courtyard (ice cream)",
-      "Your library tour is Wednesday, not today"
-    ]
-  },
-  {
     date: "2026-08-18T08:00:00",
     endHint: "8:00 AM – 5:00 PM",
     title: "Orientation Day 2 — Professional Formation Day",
@@ -242,7 +250,7 @@ const events = [
       "11:30–1:00 Lunch (sandwiches, Student Lounge)",
       "1:15–2:15 Title IX Training — REQUIRED — Room 603",
       "2:15–3:15 \"The Profession Speaks\": BLS Alumni Attorneys — Room 603",
-      "Book a headshot slot today via the Dean of Students link — ideal day (11:00–1:15 or 3:15–4:30)"
+      "Headshot slots for orientation week are full — skipping for now (Fri Aug 28, 10:00 AM–1:00 PM is listed as a later session)"
     ]
   },
   {
@@ -258,7 +266,7 @@ const events = [
       "10:00–10:35 \"Law, Identity & Lawyering\" — Prof. Joy Kanwar",
       "10:45–12:30 Discussion Group",
       "2:15–3:45 Case Reading Workshop — Prof. John Reilly",
-      "4:00–6:00 Headshots + YOUR library tour (Section 4)"
+      "4:00–6:00 YOUR library tour (Section 4) — headshot slots in this window are full, skipping"
     ]
   },
   {
@@ -358,7 +366,7 @@ const adminTasks = [
   { title: "Vaccination & immunization forms", sub: "Was due Aug 1, 2026 — physician contacted repeatedly; final step is a phone call to the office", status: "coral" },
   { title: "2026 Incoming Class Deposition", sub: "Submitted", status: "green" },
   { title: "Section / schedule assignment", sub: "Received — Group 13, Livingston Cohort", status: "green" },
-  { title: "Professional headshot booking", sub: "Not yet booked — sign up via Dean of Students link, ideally Tue Aug 18", status: "amber" },
+  { title: "Professional headshot booking", sub: "Orientation-week slots are full — skipped; Fri Aug 28, 10am–1pm listed as a later option", status: "amber" },
   { title: "Send syllabi to section leader", sub: "Alex Sternburg (2L) asked for copies of Fall syllabi once professors post them", status: "amber" }
 ];
 
