@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workout Program - Carnet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff; --text: #2C2C2A; --text-muted: #5F5E5A; --text-sub: #888780;
+  --border: #D3D1C7; --card-bg: #fff; --phase-bg: #F1EFE8;
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+  --success-text: #085041; --warn-text: #633806; --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222; --text: #f0f0f0; --text-muted: #bbbbbb; --text-sub: #aaaaaa;
+  --border: #444444; --card-bg: #2d2d2d; --phase-bg: #333333;
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+  --success-text: #59dcb1; --warn-text: #f5c487; --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2rem;}
+.section{margin-bottom:2rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.6;margin-bottom:0.75rem;}
+.warn-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--warn-text);line-height:1.6;margin-bottom:0.75rem;}
+.success-box{background:var(--teal-bg);border:0.5px solid var(--teal-border);border-radius:8px;padding:0.85rem 1rem;font-size:13px;color:var(--success-text);line-height:1.6;margin-top:0.75rem;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-coral{background:var(--coral-bg);color:var(--coral-text);}
+
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.6rem;margin-bottom:1.25rem;}
+.stat{background:var(--card-bg);border:0.5px solid var(--border);border-radius:10px;padding:0.85rem 1rem;}
+.stat .num{font-size:1.15rem;font-weight:600;}
+.stat .label{color:var(--text-sub);font-size:11px;text-transform:uppercase;letter-spacing:0.03em;margin-top:2px;}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:1.25rem;font-size:12px;color:var(--text-muted);}
+.legend span{display:flex;align-items:center;gap:6px;}
+.ldot{width:8px;height:8px;border-radius:50%;display:inline-block;}
+
+.wk-day{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;margin-bottom:0.9rem;overflow:hidden;scroll-margin-top:6rem;}
+.wk-day.today{border-color:var(--coral-border);box-shadow:0 0 0 1px var(--coral-border);}
+.wk-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;padding:0.8rem 1.1rem;border-bottom:0.5px solid var(--border);}
+.wk-day.today .wk-head{background:var(--coral-bg);}
+.wk-head h3{font-size:14.5px;font-weight:500;margin:0;}
+.wk-head .tagline{font-size:11.5px;color:var(--text-sub);text-align:right;}
+.today-pill{background:var(--coral-border);color:#fff;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:20px;margin-left:6px;vertical-align:middle;}
+.wk-sec{padding:0.75rem 1.1rem;border-top:0.5px solid var(--border);}
+.wk-sec:first-of-type{border-top:none;}
+.wk-sec h4{margin:0 0 6px;font-size:10.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-sub);font-weight:500;}
+.ex-row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:5px 0;font-size:13px;border-top:0.5px solid var(--border);}
+.ex-row:first-child{border-top:none;}
+.ex-row .name{font-weight:500;}
+.ex-row .note{color:var(--text-sub);font-size:11.5px;grid-column:1/2;}
+.ex-row .load{color:var(--text-muted);font-size:12.5px;white-space:nowrap;text-align:right;}
+.plain{font-size:13px;color:var(--text);line-height:1.65;}
+.prog{background:var(--phase-bg);border-radius:8px;padding:0.6rem 0.85rem;font-size:12.5px;color:var(--text-muted);line-height:1.6;margin:0 1.1rem 0.9rem;}
+.prog strong{color:var(--text);}
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; } #moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; } [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+
+#sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--card-bg); border-right: 1px solid var(--border); transition: left 0.3s ease; z-index: 2000; padding: 5rem 1.5rem 2rem; overflow-y: auto; box-shadow: 4px 0 15px rgba(0,0,0,0.05); }
+#sidebar.open { left: 0; }
+#sidebar .sidebar-title { font-size: 14px; font-weight: 600; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+#sidebar .sidebar-link { display: block; padding: 0.6rem 0.8rem; color: var(--text); text-decoration: none; font-size: 14px; border-radius: 6px; transition: background 0.2s; margin-bottom: 4px; }
+#sidebar .sidebar-link:hover { background: var(--phase-bg); color: var(--teal-border); font-weight: 500; }
+#sidebar .sidebar-link.active { background: var(--phase-bg); font-weight: 500; }
+#sidebar-scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.25); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1999; }
+#sidebar-scrim.show { opacity: 1; pointer-events: auto; }
+.menu-toggle { position: fixed; top: 1.5rem; left: 1.5rem; z-index: 2001; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; width: 44px; height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; }
+.menu-toggle:hover { background: var(--phase-bg); }
+.menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s ease; }
+.menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+#nav-arrows { left: 5.5rem !important; }
+body { padding-top: 5.75rem !important; }
+@media(max-width:640px){ body { padding-top: 6.25rem !important; } }
+@media print { .menu-toggle, #sidebar, #sidebar-scrim { display: none !important; } }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menu-btn" aria-label="Toggle Directory">
+  <span></span><span></span><span></span>
+</button>
+<div id="sidebar-scrim"></div>
+
+  <nav id="sidebar">
+    <div class="sidebar-title">Directory</div>
+    <a href="../index.html" class="sidebar-link">Home</a>
+    <a href="../pages/case_guide.html" class="sidebar-link">Case guide - IRAC &amp; briefing</a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Readings by class</div>
+    <a href="../pages/crimlaw_readings.html" class="sidebar-link">Criminal Law</a>
+    <a href="../pages/property_readings.html" class="sidebar-link">Property</a>
+    <a href="../pages/torts_readings.html" class="sidebar-link">Torts</a>
+    <a href="../pages/gateway_readings.html" class="sidebar-link">Gateway to Lawyering I</a>
+    <a href="../pages/isl_readings.html" class="sidebar-link">Introduction to the Study of Law</a>
+    <a href="../pages/contracts_readings.html" class="sidebar-link">Contracts <span style="opacity:.6">&middot; S27</span></a>
+    <a href="../pages/civpro_readings.html" class="sidebar-link">Civil Procedure <span style="opacity:.6">&middot; S27</span></a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Tools</div>
+    <a href="../pages/tracker.html" class="sidebar-link">Task &amp; event tracker</a>
+    <a href="../pages/orientation_guide.html" class="sidebar-link">Orientation guide</a>
+    <a href="../pages/professors.html" class="sidebar-link">Professors &amp; reading prep</a>
+    <a href="../pages/isl_study_companion.html" class="sidebar-link">ISL study companion</a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Life &amp; training</div>
+    <a href="../pages/weekly_schedule.html" class="sidebar-link">Weekly schedule</a>
+    <a href="../pages/workout_program.html" class="sidebar-link active">Workout program</a>
+  </nav>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <a href="../index.html" class="action-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>
+  </a>
+</div>
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+  <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+
+<span class="tag tag-coral">Life &amp; training</span>
+<h1>Workout Program</h1>
+<p class="subtitle">Built around BKB's full weight room + climbing walls/hangboard. Blends climbing performance with general strength - not one at the expense of the other. Written for some lifting experience, no current injuries. Opens on today automatically.</p>
+
+<div class="section">
+<div class="stat-grid">
+  <div class="stat"><div class="num">7/7</div><div class="label">Days trained</div></div>
+  <div class="stat"><div class="num">2</div><div class="label">Strength days</div></div>
+  <div class="stat"><div class="num">2</div><div class="label">Climbing days</div></div>
+  <div class="stat"><div class="num">2+1</div><div class="label">Recovery / easy</div></div>
+</div>
+</div>
+
+<div class="section" id="days-wrap">
+<p class="section-title">The week</p>
+<div id="days">
+
+<div class="wk-day" data-day="Monday" id="mon">
+  <div class="wk-head"><h3>Monday - Full-Body Strength (Lower Emphasis)</h3><span class="tagline">90 min &middot; Weight room</span></div>
+  <div class="wk-sec"><h4>Warm-up - 10 min</h4><p class="plain">5 min easy bike/row &middot; leg swings 10/side &middot; hip openers 10/side &middot; band pull-aparts 2&times;15 &middot; bodyweight squats 2&times;10</p></div>
+  <div class="wk-sec"><h4>Main lifts - 55 min</h4>
+    <div class="ex-row"><div class="name">Back Squat<div class="note">rest 2-3 min</div></div><div class="load">4&times;5 @ RPE 7-8</div></div>
+    <div class="ex-row"><div class="name">Romanian Deadlift<div class="note">rest 90s</div></div><div class="load">3&times;8</div></div>
+    <div class="ex-row"><div class="name">Weighted Pull-Ups<div class="note">bodyweight if weighted isn't solid yet</div></div><div class="load">4&times;5</div></div>
+    <div class="ex-row"><div class="name">Standing Overhead Press<div class="note">rest 90s</div></div><div class="load">3&times;6</div></div>
+  </div>
+  <div class="wk-sec"><h4>Core / accessory - 15 min</h4>
+    <div class="ex-row"><div class="name">Hanging Leg Raises</div><div class="load">3&times;10-12</div></div>
+    <div class="ex-row"><div class="name">Face Pulls<div class="note">shoulder health</div></div><div class="load">3&times;15</div></div>
+  </div>
+  <div class="wk-sec"><h4>Cool-down - 10 min</h4><p class="plain">Couch stretch &middot; hamstring stretch &middot; lat stretch</p></div>
+  <div class="prog"><strong>Progression:</strong> double progression - hit the top of the rep range on every set for two sessions in a row, then add 5-10lb. Add weight to pull-ups once 4&times;5 feels clean.</div>
+</div>
+
+<div class="wk-day" data-day="Tuesday" id="tue">
+  <div class="wk-head"><h3>Tuesday - Mobility, Antagonist &amp; Light Cardio</h3><span class="tagline">60 min &middot; Recovery day</span></div>
+  <div class="wk-sec"><h4>Zone 2 cardio - 30 min</h4><p class="plain">Bike, row, or incline treadmill walk. Conversational pace.</p></div>
+  <div class="wk-sec"><h4>Shoulder / antagonist circuit - 15 min &middot; 3 rounds</h4>
+    <div class="ex-row"><div class="name">Band Pull-Aparts</div><div class="load">&times;15</div></div>
+    <div class="ex-row"><div class="name">External Rotations</div><div class="load">&times;12/side</div></div>
+    <div class="ex-row"><div class="name">Scapular Push-Ups</div><div class="load">&times;12</div></div>
+    <div class="ex-row"><div class="name">Reverse Flys (light)</div><div class="load">&times;12</div></div>
+  </div>
+  <div class="wk-sec"><h4>Mobility - 10 min</h4><p class="plain">90/90 hip stretch &middot; thoracic rotations &middot; wrist &amp; forearm stretches &middot; couch stretch</p></div>
+  <div class="prog"><strong>Purpose:</strong> protects shoulders/elbows from the week's lifting + climbing volume - keep effort low, not high.</div>
+</div>
+
+<div class="wk-day" data-day="Wednesday" id="wed">
+  <div class="wk-head"><h3>Wednesday - Climbing Performance (Power &amp; Fingers)</h3><span class="tagline">90 min &middot; Wall + hangboard</span></div>
+  <div class="wk-sec"><h4>Warm-up - 15 min</h4><p class="plain">5 min easy traverse &middot; joint circles &middot; 3-4 easy boulders building intensity</p></div>
+  <div class="wk-sec"><h4>Hangboard - 15 min</h4><p class="plain">3 sets &times; 6 reps of (10s hang / 5s rest), open hand then half crimp &middot; rest 2-3 min between sets &middot; edge where the 10s hang is RPE 7-8. <span style="color:var(--warn-text);font-weight:500;">Skip or halve volume if fingers feel tweaky.</span></p></div>
+  <div class="wk-sec"><h4>Bouldering - 45 min</h4><p class="plain">Technique-focused projecting on 2-4 boulders near your limit. Movement quality over sending.</p></div>
+  <div class="wk-sec"><h4>Cool-down - 15 min</h4>
+    <div class="ex-row"><div class="name">Push-Ups (antagonist)</div><div class="load">2&times;10</div></div>
+    <div class="ex-row"><div class="name">External Rotation</div><div class="load">2&times;12</div></div>
+  </div>
+  <div class="prog"><strong>Progression:</strong> smaller edge or added load every 2-3 weeks, not every session - finger connective tissue adapts far slower than muscle.</div>
+</div>
+
+<div class="wk-day" data-day="Thursday" id="thu">
+  <div class="wk-head"><h3>Thursday - Mobility, Antagonist &amp; Light Cardio</h3><span class="tagline">60 min &middot; Recovery day</span></div>
+  <div class="wk-sec"><h4>Same structure as Tuesday</h4><p class="plain">30 min zone 2 cardio (swap modality for variety) &middot; 15 min shoulder/antagonist circuit &middot; 10 min mobility. Keep it easy - same purpose as Tuesday.</p></div>
+</div>
+
+<div class="wk-day" data-day="Friday" id="fri">
+  <div class="wk-head"><h3>Friday - Full-Body Strength (Upper Emphasis)</h3><span class="tagline">90 min &middot; Weight room</span></div>
+  <div class="wk-sec"><h4>Warm-up - 10 min</h4><p class="plain">Band pull-aparts &middot; arm circles &middot; 5 min row/bike &middot; push-ups 2&times;10</p></div>
+  <div class="wk-sec"><h4>Main lifts - 55 min</h4>
+    <div class="ex-row"><div class="name">Deadlift<div class="note">rest 3 min</div></div><div class="load">4&times;4 @ RPE 7-8</div></div>
+    <div class="ex-row"><div class="name">Bench Press<div class="note">rest 2 min</div></div><div class="load">4&times;6</div></div>
+    <div class="ex-row"><div class="name">Lat Pulldown or Weighted Pull-Ups<div class="note">alternate from Monday</div></div><div class="load">4&times;6</div></div>
+    <div class="ex-row"><div class="name">Bulgarian Split Squat</div><div class="load">3&times;8/leg</div></div>
+  </div>
+  <div class="wk-sec"><h4>Accessory / grip - 15 min</h4>
+    <div class="ex-row"><div class="name">Farmer's Carries<div class="note">grip + core carryover</div></div><div class="load">3&times;40m</div></div>
+    <div class="ex-row"><div class="name">Plank (front + side)</div><div class="load">3&times;45s each</div></div>
+  </div>
+  <div class="wk-sec"><h4>Cool-down - 10 min</h4><p class="plain">Chest/lat stretch &middot; hip flexor stretch</p></div>
+  <div class="prog"><strong>Progression:</strong> same double-progression rule as Monday. Bump farmer's carry load once 40m feels fully controlled.</div>
+</div>
+
+<div class="wk-day" data-day="Saturday" id="sat">
+  <div class="wk-head"><h3>Saturday - Climbing Volume &amp; Projecting</h3><span class="tagline">90 min &middot; Climbing wall</span></div>
+  <div class="wk-sec"><h4>Warm-up - 15 min</h4><p class="plain">Same as Wednesday - easy traverse, joint circles, building boulders</p></div>
+  <div class="wk-sec"><h4>Main session - 60 min</h4><p class="plain"><strong>Technique drills (15 min):</strong> silent feet, flagging.<br><strong>Volume climbing (30 min):</strong> range of grades, moderate rest.<br><strong>Project / limit attempts (15 min):</strong> 1-2 boulders at your limit.</p></div>
+  <div class="wk-sec"><h4>Core finisher - 15 min</h4>
+    <div class="ex-row"><div class="name">Hanging Knee Raises</div><div class="load">3&times;12</div></div>
+    <div class="ex-row"><div class="name">Front Lever Progression Holds</div><div class="load">3&times;15-20s</div></div>
+  </div>
+  <div class="prog"><strong>Note:</strong> the "bigger" climbing day - more volume than Wednesday's power-focused session, since there's no evening class to rush off to.</div>
+</div>
+
+<div class="wk-day" data-day="Sunday" id="sun">
+  <div class="wk-head"><h3>Sunday - Easy Movement / Light Climb</h3><span class="tagline">60 min &middot; Before your 3-8p front desk shift</span></div>
+  <div class="wk-sec"><h4>Warm-up - 10 min</h4><p class="plain">Easy joint mobility</p></div>
+  <div class="wk-sec"><h4>Main - 30 min</h4><p class="plain">ARCing / easy traversing well below your limit - continuous, low-intensity movement. RPE 3-4, nothing that taxes fingers or forearms.</p></div>
+  <div class="wk-sec"><h4>Mobility / stretch - 15 min</h4><p class="plain">Full-body light stretch, easy breathing</p></div>
+  <div class="prog"><strong>Keep it genuinely easy:</strong> you're heading into your front desk shift right after this. The point is to leave you fresher, not more fatigued.</div>
+</div>
+
+</div><!-- /days -->
+</div>
+
+<div class="section">
+<p class="section-title">Watch this</p>
+<div class="warn-box">Mixing heavy lifting with hangboarding in the same week is normal for climbers, but it's also the single most common way climbers develop elbow and finger overuse injuries (golfer's/tennis elbow, pulley strain). Two rules worth keeping without exception: never hangboard on a day where fingers/forearms are already fatigued from the day before, and if any finger or elbow discomfort lingers more than a day, drop the hangboard block entirely - swap in extra bouldering volume or rest instead. Push through muscle fatigue if you want; don't push through joint pain.</div>
+<div class="success-box">Why the split looks like this: strength days (Mon/Fri) land on your two longest academic-plus-workout days because you have the biggest gym windows after class. Climbing days (Wed/Sat) split power (Wed, class-adjacent) from volume (Sat, no class to rush to). Tue/Thu stay low-intensity on purpose - they're your two heaviest class days, and their job is to protect your joints, not add training stress. Sunday stays light since your BKB shift starts right after. This is a starting template - update sets/reps as you progress, and swap a strength day for extra recovery if a hard week of cold-calls has you running on empty.</div>
+</div>
+
+<div class="section" style="text-align:center;">
+  <a href="weekly_schedule.html" class="case-btn">&larr; Back to Weekly schedule</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  if (localStorage.getItem('theme') === 'dark') { root.setAttribute('data-theme', 'dark'); }
+  else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) { root.setAttribute('data-theme', 'dark'); }
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); }
+    else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); }
+  });
+</script>
+
+<script>
+  (function () {
+    var mb = document.getElementById('menu-btn');
+    var sb = document.getElementById('sidebar');
+    var sc = document.getElementById('sidebar-scrim');
+    if (!mb || !sb) return;
+    function toggle() {
+      sb.classList.toggle('open');
+      mb.classList.toggle('open');
+      if (sc) sc.classList.toggle('show');
+    }
+    mb.addEventListener('click', toggle);
+    if (sc) sc.addEventListener('click', toggle);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sb.classList.contains('open')) toggle();
+    });
+  })();
+</script>
+
+<script>
+(function(){
+  // If we arrived via an in-page anchor (e.g. #wed from the schedule), respect it and skip reordering.
+  if (window.location.hash) return;
+  var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var today = names[new Date().getDay()];
+  var container = document.getElementById('days');
+  if(!container) return;
+  var dayEls = Array.prototype.slice.call(container.querySelectorAll('.wk-day'));
+  var todayIdx = dayEls.findIndex(function(d){ return d.getAttribute('data-day') === today; });
+  if(todayIdx > 0){
+    var reordered = dayEls.slice(todayIdx).concat(dayEls.slice(0, todayIdx));
+    reordered.forEach(function(d){ container.appendChild(d); });
+  }
+  var todayEl = container.querySelector('.wk-day[data-day="' + today + '"]');
+  if(todayEl){
+    todayEl.classList.add('today');
+    var h3 = todayEl.querySelector('.wk-head h3');
+    if(h3 && !h3.querySelector('.today-pill')){
+      var badge = document.createElement('span');
+      badge.className = 'today-pill';
+      badge.textContent = 'Today';
+      h3.appendChild(badge);
+    }
+  }
+})();
+</script>
+</body>
+</html>
