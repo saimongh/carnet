@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carnet - Law School</title>
+<title>Carnet - Brooklyn Law School 1L</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
+
 :root {
   --bg: #fff;
   --text: #2C2C2A;
@@ -134,66 +136,77 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 .case-btn.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
 [data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
 
-/* sidebar & nav button styles */
 #sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--card-bg); border-right: 1px solid var(--border); transition: left 0.3s ease; z-index: 2000; padding: 5rem 1.5rem 2rem; overflow-y: auto; box-shadow: 4px 0 15px rgba(0,0,0,0.05); }
 #sidebar.open { left: 0; }
 .sidebar-title { font-size: 14px; font-weight: 600; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
 .sidebar-link { display: block; padding: 0.6rem 0.8rem; color: var(--text); text-decoration: none; font-size: 14px; border-radius: 6px; transition: background 0.2s; margin-bottom: 4px; }
 .sidebar-link:hover { background: var(--phase-bg); color: var(--teal-border); font-weight: 500; }
-
+.sidebar-link.active { background: var(--phase-bg); font-weight: 500; }
+#sidebar-scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.25); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1999; }
+#sidebar-scrim.show { opacity: 1; pointer-events: auto; }
 .menu-toggle { position: fixed; top: 1.5rem; left: 1.5rem; z-index: 2001; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; width: 44px; height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; }
 .menu-toggle:hover { background: var(--phase-bg); }
 .menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s ease; }
 .menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
 .menu-toggle.open span:nth-child(2) { opacity: 0; }
 .menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
-
 #nav-arrows { position: fixed; top: 1.5rem; left: 5.5rem; display: flex; gap: 8px; z-index: 1000; }
 .action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
 .action-btn:hover { background: var(--phase-bg); }
 .action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-
 #theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
 #sun-icon { display: block; }
 #moon-icon { display: none; }
 [data-theme="dark"] #sun-icon { display: none; }
 [data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows, .menu-toggle, #sidebar, #sidebar-scrim, .toolbar, .rd-actions{display:none;}}
+body{padding-top:5.75rem;}
+@media(max-width:640px){ body{padding-top:6.25rem;} }
+@media(max-width:500px){.grid-2,.grid-3,.weekly-grid,.dir-grid{grid-template-columns:1fr;}}
 
-@media print{body{padding:1rem;} #theme-toggle, #nav-arrows, .menu-toggle, #sidebar{display:none;}}
-@media(max-width:500px){.grid-2,.grid-3,.weekly-grid{grid-template-columns:1fr;}}
+
+.footnote{font-size:12px;color:var(--text-sub);line-height:1.6;margin-top:2rem;padding-top:1rem;border-top:0.5px solid var(--border);}
+
+
+/* directory cards */
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:0.75rem;}
+.dir-card{display:block;text-decoration:none;color:var(--text);background:var(--card-bg);border:0.5px solid var(--border);border-left:3px solid var(--border);border-radius:12px;padding:0.9rem 1.1rem;transition:transform 0.15s ease,box-shadow 0.15s ease,border-color 0.15s ease;}
+.dir-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.08);}
+[data-theme="dark"] .dir-card:hover{box-shadow:0 6px 18px rgba(0,0,0,0.4);}
+.dir-card .dir-name{font-size:15px;font-weight:500;margin:0 0 3px;display:flex;align-items:center;gap:8px;}
+.dir-card .dir-code{font-size:11px;color:var(--text-sub);font-weight:400;}
+.dir-card .dir-desc{font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.55;}
+.dir-card i{font-size:13px;width:16px;text-align:center;}
+.dir-teal{border-left-color:var(--teal-border);} .dir-teal i{color:var(--teal-border);}
+.dir-purple{border-left-color:var(--purple-border);} .dir-purple i{color:var(--purple-dot);}
+.dir-amber{border-left-color:var(--amber-border);} .dir-amber i{color:var(--amber-dot);}
+.dir-coral{border-left-color:var(--coral-border);} .dir-coral i{color:var(--coral-border);}
+.dir-blue{border-left-color:var(--blue-border);} .dir-blue i{color:var(--blue-border);}
+.dir-gray{border-left-color:var(--text-sub);} .dir-gray i{color:var(--text-sub);}
+.sub-label{font-size:12px;font-weight:500;color:var(--text-sub);margin:1.25rem 0 0.6rem;}
+
+/* weekly class timetable */
+.tt-wrap{overflow-x:auto;}
+.tt{width:100%;border-collapse:separate;border-spacing:6px;min-width:520px;}
+.tt th{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.06em;text-transform:uppercase;text-align:left;padding:0 6px 2px;}
+.tt td{vertical-align:top;width:20%;}
+.tt-time{font-size:11px;font-weight:500;color:var(--text-sub);white-space:nowrap;padding-top:10px;width:74px;}
+.tt-slot{border-radius:10px;padding:0.6rem 0.7rem;border:0.5px solid var(--border);}
+.tt-slot .n{font-size:12.5px;font-weight:500;line-height:1.35;display:block;}
+.tt-slot .m{font-size:11px;line-height:1.5;display:block;margin-top:2px;opacity:0.85;}
+.tt-amber{background:var(--amber-bg);border-color:var(--amber-border);color:var(--amber-text);}
+.tt-purple{background:var(--purple-bg);border-color:var(--purple-border);color:var(--purple-text);}
+.tt-teal{background:var(--teal-bg);border-color:var(--teal-border);color:var(--teal-text);}
+.tt-blue{background:var(--blue-bg);border-color:var(--blue-border);color:var(--blue-text);}
+.tt-empty{background:transparent;border:0.5px dashed var(--border);border-radius:10px;height:100%;min-height:34px;}
+
 </style>
 </head>
 <body>
-
-  <nav id="sidebar">
-    <div class="sidebar-title">Directory</div>
-    <a href="#dates" class="sidebar-link">Fall 2026 - key dates</a>
-    <a href="#curriculum" class="sidebar-link">Your 1L curriculum</a>
-    <a href="#phases" class="sidebar-link">The semester in phases</a>
-    <a href="#irac" class="sidebar-link">IRAC framework</a>
-    <a href="#irac-example" class="sidebar-link">IRAC worked example</a>
-    <a href="#brief" class="sidebar-link">Case brief structure</a>
-    <div class="sidebar-title" style="margin-top:1.5rem;">Readings by class</div>
-    <a href="#reading" class="sidebar-link">How to use these lists</a>
-    <a href="#crimlaw" class="sidebar-link">Criminal Law</a>
-    <a href="#property" class="sidebar-link">Property</a>
-    <a href="#torts" class="sidebar-link">Torts</a>
-    <a href="#contracts" class="sidebar-link">Contracts</a>
-    <a href="#civpro" class="sidebar-link">Civil Procedure</a>
-    <a href="#isl-packer" class="sidebar-link">ISL Packer readings</a>
-    <div class="sidebar-title" style="margin-top:1.5rem;">Rest of the guide</div>
-    <a href="#schedule" class="sidebar-link">Model weekly schedule</a>
-    <a href="#prep" class="sidebar-link">Pre-semester prep</a>
-    <a href="#resources" class="sidebar-link">BLS resources</a>
-    <div class="sidebar-title" style="margin-top:1.5rem;">Tools</div>
-    <a href="pages/tracker.html" class="sidebar-link">Task &amp; event tracker</a>
-    <a href="pages/orientation_guide.html" class="sidebar-link">Orientation guide</a>
-    <a href="pages/professors.html" class="sidebar-link">Professors &amp; reading prep</a>
-  </nav>
-
 <button class="menu-toggle" id="menu-btn" aria-label="Toggle Directory">
   <span></span><span></span><span></span>
 </button>
+<div id="sidebar-scrim"></div>
 
 <div id="nav-arrows">
   <button onclick="window.history.back()" class="action-btn" aria-label="Go Back">
@@ -221,14 +234,63 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
   </svg>
 </button>
 
-<h1>Brooklyn Law School - 1L Fall 2026 Prep Guide</h1>
-<p class="subtitle">Full-time day program &bull; Starting August 2026 &bull; Compiled from BLS resources, 1L preparation guides, and case law canon research &bull; v4</p>
+  <nav id="sidebar">
+    <div class="sidebar-title">Directory</div>
+    <a href="index.html" class="sidebar-link active">Home</a>
+    <a href="pages/case_guide.html" class="sidebar-link">Case guide - IRAC &amp; briefing</a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Readings by class</div>
+    <a href="pages/crimlaw_readings.html" class="sidebar-link">Criminal Law</a>
+    <a href="pages/property_readings.html" class="sidebar-link">Property</a>
+    <a href="pages/torts_readings.html" class="sidebar-link">Torts</a>
+    <a href="pages/gateway_readings.html" class="sidebar-link">Gateway to Lawyering I</a>
+    <a href="pages/isl_readings.html" class="sidebar-link">Introduction to the Study of Law</a>
+    <a href="pages/contracts_readings.html" class="sidebar-link">Contracts <span style="opacity:.6">&middot; S27</span></a>
+    <a href="pages/civpro_readings.html" class="sidebar-link">Civil Procedure <span style="opacity:.6">&middot; S27</span></a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Tools</div>
+    <a href="pages/tracker.html" class="sidebar-link">Task &amp; event tracker</a>
+    <a href="pages/orientation_guide.html" class="sidebar-link">Orientation guide</a>
+    <a href="pages/professors.html" class="sidebar-link">Professors &amp; reading prep</a>
+    <a href="pages/isl_study_companion.html" class="sidebar-link">ISL study companion</a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">On this page</div>
+    <a href="#dates" class="sidebar-link">Fall 2026 - key dates</a>
+    <a href="#timetable" class="sidebar-link">Weekly class timetable</a>
+    <a href="#curriculum" class="sidebar-link">Your 1L curriculum</a>
+    <a href="#phases" class="sidebar-link">The semester in phases</a>
+    <a href="#schedule" class="sidebar-link">Model weekly schedule</a>
+    <a href="#prep" class="sidebar-link">Pre-semester prep</a>
+    <a href="#resources" class="sidebar-link">BLS resources</a>
+  </nav>
+
+<h1>Carnet &mdash; Brooklyn Law School, 1L</h1>
+<p class="subtitle">Fall 2026 &bull; Full-time day program &bull; Group 13, Livingston Cohort &bull; v5</p>
+
+<div class="section" id="directory">
+<p class="section-title">Readings by class</p>
+<div class="dir-grid">
+<a href="pages/crimlaw_readings.html" class="dir-card dir-amber"><p class="dir-name"><i class="fa-solid fa-gavel"></i>Criminal Law</p><p class="dir-code">CRM-100-D1</p><p class="dir-desc">Cahill &middot; Mon/Wed 10:00am, Rm 501. Four assigned casebook readings plus Dudley &amp; Stephens, Conley, and Gideon.</p></a>
+<a href="pages/property_readings.html" class="dir-card dir-purple"><p class="dir-name"><i class="fa-solid fa-key"></i>Property</p><p class="dir-code">PTE-100-D2</p><p class="dir-desc">Lee &middot; Mon/Wed 1:50pm, Rm 603. Pierson v. Post and Hawkins v. McGee. Nothing read yet &mdash; start here.</p></a>
+<a href="pages/torts_readings.html" class="dir-card dir-teal"><p class="dir-name"><i class="fa-solid fa-scale-balanced"></i>Torts</p><p class="dir-code">TRT-100-D2S</p><p class="dir-desc">Tilley &middot; Tue/Thu 1:50pm, Rm 503. Vosburg, Palsgraf, Byrne, Summers &mdash; all with full case pages and timed practice.</p></a>
+<a href="pages/gateway_readings.html" class="dir-card dir-blue"><p class="dir-name"><i class="fa-solid fa-pen-nib"></i>Gateway to Lawyering I</p><p class="dir-code">LWR-100-D13</p><p class="dir-desc">Morales &middot; Tue/Thu 4:00pm, Rm 504. Legal research, objective analysis, citation. Two graded memos.</p></a>
+<a href="pages/isl_readings.html" class="dir-card dir-gray"><p class="dir-name"><i class="fa-solid fa-book-open-reader"></i>Introduction to the Study of Law</p><p class="dir-code">ISL packet</p><p class="dir-desc">The orientation packet: Just Mercy, Kerr on reading opinions, Slocum on the legal system, and Benjamin v. Lindner Aviation.</p></a>
+</div>
+<p class="sub-label">Spring 2027 preview &mdash; a head start, not urgent</p>
+<div class="dir-grid">
+<a href="pages/contracts_readings.html" class="dir-card dir-coral"><p class="dir-name"><i class="fa-solid fa-file-signature"></i>Contracts</p><p class="dir-code">Spring 2027</p><p class="dir-desc">O&rsquo;Connor &middot; Carlill, Hamer, Hadley, Frigaliment. A head start, not urgent.</p></a>
+<a href="pages/civpro_readings.html" class="dir-card dir-blue"><p class="dir-name"><i class="fa-solid fa-landmark"></i>Civil Procedure</p><p class="dir-code">Spring 2027</p><p class="dir-desc">Lupo &middot; Pennoyer, International Shoe, Erie. A head start, not urgent.</p></a>
+</div>
+<p class="sub-label">Guides &amp; tools</p>
+<div class="dir-grid">
+<a href="pages/case_guide.html" class="dir-card dir-teal"><p class="dir-name"><i class="fa-solid fa-diagram-project"></i>Case guide</p><p class="dir-code">IRAC &amp; briefing</p><p class="dir-desc">The IRAC framework, a fully worked negligence example, and the 8-part case brief structure. Plus every timed practice exam.</p></a>
+<a href="pages/tracker.html" class="dir-card dir-amber"><p class="dir-name"><i class="fa-solid fa-list-check"></i>Task &amp; event tracker</p><p class="dir-code">live</p><p class="dir-desc">Dated events with times, rooms, attire and what to bring, plus a running task list checked against today.</p></a>
+<a href="pages/professors.html" class="dir-card dir-purple"><p class="dir-name"><i class="fa-solid fa-user-tie"></i>Professors &amp; reading prep</p><p class="dir-code">deep dive</p><p class="dir-desc">Bios, scholarship, how each professor runs a room, and what that means for how you prepare.</p></a>
+<a href="pages/orientation_guide.html" class="dir-card dir-gray"><p class="dir-name"><i class="fa-solid fa-compass"></i>Orientation guide</p><p class="dir-code">Aug 2026</p><p class="dir-desc">Your Livingston Cohort walkthrough for Introduction to the Study of Law, with reading tie-ins and logistics.</p></a>
+<a href="pages/isl_study_companion.html" class="dir-card dir-gray"><p class="dir-name"><i class="fa-solid fa-graduation-cap"></i>ISL study companion</p><p class="dir-code">59 pp. packet</p><p class="dir-desc">Part-by-part walkthrough of the ISL packet with discussion prompts and self-check questions.</p></a>
+</div>
+</div>
 
 <div class="section" id="dates">
 <p class="section-title">Fall 2026 - key dates</p>
-<div class="success-box" style="margin-bottom:1rem;">Orientation dates below are confirmed from BLS enrollment emails and the orientation packet. See the <a href="pages/tracker.html" style="color:var(--success-text);font-weight:500;">task &amp; event tracker</a> for full per-day detail (times, room, attire, what to bring), or open the <a href="pages/orientation_guide.html" style="color:var(--success-text);font-weight:500;">orientation guide</a> for your personalized Livingston Cohort schedule.</div>
-<div style="margin-bottom:1rem;"><a href="pages/orientation_guide.html" class="case-btn">Open Orientation Guide</a></div>
-<div class="timeline-item"><span class="tl-date">Aug 19</span><div class="tl-dot active"></div><div class="tl-content">Orientation Day 3 - "Introduction to the Study of Law" begins, case reading workshop, library tour</div></div>
+<div class="success-box" style="margin-bottom:1rem;">Dates below are confirmed from BLS enrollment emails, the orientation packet, and the official 2026-2027 Academic Calendar. See the <a href="pages/tracker.html" style="color:var(--success-text);font-weight:500;">task &amp; event tracker</a> for full per-day detail (times, room, attire, what to bring), or open the <a href="pages/orientation_guide.html" style="color:var(--success-text);font-weight:500;">orientation guide</a> for your Livingston Cohort schedule.</div>
 <div class="timeline-item"><span class="tl-date">Aug 20</span><div class="tl-dot active"></div><div class="tl-content">Orientation Day 4 - Fundamentals of American Law, AI &amp; Professional Responsibility, mock class</div></div>
 <div class="timeline-item"><span class="tl-date">Aug 20 (eve)</span><div class="tl-dot"></div><div class="tl-content">Group 13 meet &amp; greet - 6:00pm at Brazen Head (Atlantic Ave), hosted by 2L section leader Alex Sternburg. No agenda, drop by whenever.</div></div>
 <div class="timeline-item"><span class="tl-date">Aug 21</span><div class="tl-dot"></div><div class="tl-content">BLS Service Day - volunteer with classmates via the Public Service Law Center (not mandatory)</div></div>
@@ -246,19 +308,48 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 <div class="timeline-item"><span class="tl-date">Dec 2-16</span><div class="tl-dot active"></div><div class="tl-content">Fall semester examination period</div></div>
 <div class="timeline-item"><span class="tl-date">Dec 23-Jan 1</span><div class="tl-dot"></div><div class="tl-content">Winter recess - Law School holiday</div></div>
 <div class="timeline-item"><span class="tl-date">Jan 11, 2027</span><div class="tl-dot"></div><div class="tl-content">First day of Spring semester</div></div>
-<div class="success-box" style="margin-top:0.75rem;">All dates above are confirmed against the official Brooklyn Law School 2026-2027 Academic Calendar.</div>
+</div>
+
+<div class="section" id="timetable">
+<p class="section-title">Weekly class timetable</p>
+<div class="info-box" style="margin-bottom:1rem;">Your fixed Fall 2026 blocks. Nothing meets on Friday &mdash; that's your outlining and catch-up day. On Sep 22 (a Tuesday) the school runs a Monday schedule, so you'll have Criminal Law and Property that day instead of Torts and Gateway.</div>
+<div class="tt-wrap"><table class="tt">
+<thead><tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+<tbody>
+<tr><td class="tt-time">10:00<br>11:55am</td>
+<td><div class="tt-slot tt-amber"><span class="n">Criminal Law</span><span class="m">Cahill &middot; Rm 501</span></div></td>
+<td><div class="tt-empty"></div></td>
+<td><div class="tt-slot tt-amber"><span class="n">Criminal Law</span><span class="m">Cahill &middot; Rm 501</span></div></td>
+<td><div class="tt-empty"></div></td>
+<td><div class="tt-empty"></div></td>
+</tr>
+<tr><td class="tt-time">1:50<br>3:45pm</td>
+<td><div class="tt-slot tt-purple"><span class="n">Property</span><span class="m">Lee &middot; Rm 603</span></div></td>
+<td><div class="tt-slot tt-teal"><span class="n">Torts</span><span class="m">Tilley &middot; Rm 503</span></div></td>
+<td><div class="tt-slot tt-purple"><span class="n">Property</span><span class="m">Lee &middot; Rm 603</span></div></td>
+<td><div class="tt-slot tt-teal"><span class="n">Torts</span><span class="m">Tilley &middot; Rm 503</span></div></td>
+<td><div class="tt-empty"></div></td>
+</tr>
+<tr><td class="tt-time">4:00<br>5:50pm</td>
+<td><div class="tt-empty"></div></td>
+<td><div class="tt-slot tt-blue"><span class="n">Gateway to Lawyering I</span><span class="m">Morales &middot; Rm 504</span></div></td>
+<td><div class="tt-empty"></div></td>
+<td><div class="tt-slot tt-blue"><span class="n">Gateway to Lawyering I</span><span class="m">Morales &middot; Rm 504</span></div></td>
+<td><div class="tt-empty"></div></td>
+</tr>
+</tbody></table></div>
 </div>
 
 <div class="section" id="curriculum">
 <p class="section-title">Your 1L curriculum</p>
 <div class="info-box">Your confirmed Fall 2026 schedule - Group 13, Livingston Cohort:</div>
 <div class="grid-2">
-<div class="card"><p class="card-title">Criminal Law <span style="color:var(--text-sub);font-weight:400;">· CRM-100-D1</span></p><p class="card-sub">Prof. Michael Cahill &bull; Mon/Wed 10:00-11:55am &bull; Rm 501</p><div style="margin-top:8px"><span class="tag tag-amber">Criminal Law</span></div></div>
-<div class="card"><p class="card-title">Property <span style="color:var(--text-sub);font-weight:400;">· PTE-100-D2</span></p><p class="card-sub">Prof. Brian Lee &bull; Mon/Wed 1:50-3:45pm &bull; Rm 603</p><div style="margin-top:8px"><span class="tag tag-purple">Property</span></div></div>
-<div class="card"><p class="card-title">Torts <span style="color:var(--text-sub);font-weight:400;">· TRT-100-D2S</span></p><p class="card-sub">Prof. Cristina Tilley &bull; Tue/Thu 1:50-3:45pm &bull; Rm 503</p><div style="margin-top:8px"><span class="tag tag-teal">Torts</span></div></div>
-<div class="card"><p class="card-title">Gateway to Lawyering I <span style="color:var(--text-sub);font-weight:400;">· LWR-100-D13</span></p><p class="card-sub">Prof. Alba Morales &bull; Tue/Thu 4:00-5:50pm &bull; Rm 504. Legal research, objective analysis, and citation - two graded memos plus an early Research Skills Assessment.</p><div style="margin-top:8px"><span class="tag tag-blue">Legal research</span><span class="tag tag-blue">Memo writing</span></div></div>
+<div class="card"><p class="card-title">Criminal Law <span style="color:var(--text-sub);font-weight:400;">&middot; CRM-100-D1</span></p><p class="card-sub">Prof. Michael Cahill &bull; Mon/Wed 10:00-11:55am &bull; Rm 501</p><div style="margin-top:8px"><span class="tag tag-amber">Criminal Law</span></div></div>
+<div class="card"><p class="card-title">Property <span style="color:var(--text-sub);font-weight:400;">&middot; PTE-100-D2</span></p><p class="card-sub">Prof. Brian Lee &bull; Mon/Wed 1:50-3:45pm &bull; Rm 603</p><div style="margin-top:8px"><span class="tag tag-purple">Property</span></div></div>
+<div class="card"><p class="card-title">Torts <span style="color:var(--text-sub);font-weight:400;">&middot; TRT-100-D2S</span></p><p class="card-sub">Prof. Cristina Tilley &bull; Tue/Thu 1:50-3:45pm &bull; Rm 503</p><div style="margin-top:8px"><span class="tag tag-teal">Torts</span></div></div>
+<div class="card"><p class="card-title">Gateway to Lawyering I <span style="color:var(--text-sub);font-weight:400;">&middot; LWR-100-D13</span></p><p class="card-sub">Prof. Alba Morales &bull; Tue/Thu 4:00-5:50pm &bull; Rm 504. Legal research, objective analysis, and citation - two graded memos plus an early Research Skills Assessment.</p><div style="margin-top:8px"><span class="tag tag-blue">Legal research</span><span class="tag tag-blue">Memo writing</span></div></div>
 </div>
-<div class="warn-box" style="margin-top:0.75rem;">Civil Procedure, Contracts, Constitutional Law, and Gateway to Lawyering II are on your <strong>Spring 2027</strong> schedule, not this fall - see the reading list note below before you spend August on the wrong subjects.</div>
+<div class="warn-box" style="margin-top:0.75rem;">Civil Procedure, Contracts, Constitutional Law, and Gateway to Lawyering II are on your <strong>Spring 2027</strong> schedule, not this fall - their reading pages are in the directory above, marked as a preview.</div>
 <div class="card" style="margin-top:0.75rem;"><p class="card-title">Full profiles &amp; reading prep</p><p class="card-sub">Deep-dive professor bios, scholarship, "what this means for you," and a full case-by-case reading list for each of the four classes above.</p><div style="margin-top:8px;"><a href="pages/professors.html" class="case-btn">Open Professors &amp; Reading Prep</a></div></div>
 </div>
 
@@ -267,490 +358,7 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 <div class="phase-bar"><span class="phase-label">Phase 1 - Foundation (Aug 24 - Sep 28)</span><span class="phase-desc">Read, brief, attend, absorb. Build your briefing habit.</span></div>
 <div class="phase-bar"><span class="phase-label">Phase 2 - Build (Sep 29 - Oct 31)</span><span class="phase-desc">Start outlining. Midterms hit here. Memo 1 due. Begin career prep.</span></div>
 <div class="phase-bar"><span class="phase-label">Phase 3 - Synthesize (Nov 1 - Nov 24)</span><span class="phase-desc">Condense outlines. Memo 2 due. Practice exams. Attack outline mode.</span></div>
-<div class="phase-bar"><span class="phase-label">Phase 4 - Finals (Nov 30 - Dec 16)</span><span class="phase-desc">Reading period then exams. Execute. Don’t learn new material.</span></div>
-</div>
-
-<div class="section" id="irac">
-<p class="section-title">IRAC - the framework for everything</p>
-<div class="warn-box">Every exam answer, memo, and in-class response runs on IRAC. Master this before day one.</div>
-<div class="irac-box irac-i"><p class="irac-letter" style="color:var(--teal-text)">I</p><p class="irac-name" style="color:var(--teal-text)">Issue</p><p class="irac-detail">Identify the precise legal question the facts raise. Phrase it specifically - not “Is there a contract?” but “Did a valid contract form when Smith emailed acceptance three days after the offer?” The more specific your issue, the better.</p></div>
-<div class="irac-box irac-r"><p class="irac-letter" style="color:var(--purple-text)">R</p><p class="irac-name" style="color:var(--purple-text)">Rule</p><p class="irac-detail">State the governing law completely and accurately, without tying it to the facts yet. Example: “A contract requires offer, acceptance, and consideration. Acceptance must be communicated before the offer lapses or is revoked.” You must know rules cold - this is what you memorize.</p></div>
-<div class="irac-box irac-a"><p class="irac-letter" style="color:var(--coral-text)">A</p><p class="irac-name" style="color:var(--coral-text)">Analysis / Application</p><p class="irac-detail">This is where you earn your points. Apply the rule to the specific facts. Use signal phrases: “Here...” or “In this case, because...” Professors reward thorough analysis even when your conclusion is wrong. Address borderline issues - they’re included intentionally.</p></div>
-<div class="irac-box irac-c"><p class="irac-letter" style="color:var(--blue-text)">C</p><p class="irac-name" style="color:var(--blue-text)">Conclusion</p><p class="irac-detail">One to two sentences. Directly answer the issue. The conclusion is the least important section if your analysis is strong. “Therefore, a valid contract was formed when Smith sent the acceptance email.”</p></div>
-</div>
-
-<div class="section" id="irac-example">
-<p class="section-title">IRAC worked example - negligence (Torts)</p>
-<div class="info-box"><strong style="font-weight:500;">Fact pattern:</strong> Marcus owns a coffee shop. On a rainy Tuesday morning, a customer tracked water onto the tile floor near the entrance. A wet puddle formed and was visible to shop employees for approximately 25 minutes before Elena, a customer, slipped on it, fell, and fractured her wrist. No warning sign was placed near the puddle. Marcus argues he was busy with the morning rush and did not have time to address it. Elena sues Marcus for negligence.</div>
-
-<div class="irac-worked-header" style="background:var(--teal-header-bg);">
-  <span style="font-size:20px;font-weight:500;color:var(--teal-header-text);min-width:24px;">I</span>
-  <span style="font-size:13px;font-weight:500;color:var(--teal-header-text);flex:1;">Issue</span>
-  <span style="font-size:11px;font-weight:500;background:var(--teal-tag-bg);color:var(--teal-tag-text);padding:2px 8px;border-radius:20px;">Spot the legal question</span>
-</div>
-<div class="irac-worked-body" style="border-left-color:var(--teal-border);">
-  <p class="written">Whether Marcus, the owner of a coffee shop, is liable to Elena for negligence when a puddle was visible to his employees for 25 minutes before she slipped and fractured her wrist, and no warning was provided.</p>
-  <div class="annotation"><strong>Why it’s written this way:</strong> The issue is specific - it names the parties, flags the legally significant facts (25 minutes, no warning, visible to employees), and frames the precise question. A vague issue like “Was Marcus negligent?” earns almost nothing. Specificity shows you already understand what the law will care about.</div>
-</div>
-
-<div class="irac-worked-header" style="background:var(--purple-header-bg);">
-  <span style="font-size:20px;font-weight:500;color:var(--purple-header-text);min-width:24px;">R</span>
-  <span style="font-size:13px;font-weight:500;color:var(--purple-header-text);flex:1;">Rule</span>
-  <span style="font-size:11px;font-weight:500;background:var(--purple-tag-bg);color:var(--purple-tag-text);padding:2px 8px;border-radius:20px;">State the law - no facts yet</span>
-</div>
-<div class="irac-worked-body" style="border-left-color:var(--purple-border);">
-  <p class="written">To establish negligence, a plaintiff must prove four elements: (1) the defendant owed a duty of care to the plaintiff; (2) the defendant breached that duty; (3) the breach was the actual and proximate cause of the plaintiff’s injury; and (4) the plaintiff suffered damages.</p>
-  <p class="written">A business owner owes a duty of reasonable care to invitees - those who enter the premises for a business purpose. Breach occurs when the owner knew or should have known of a hazardous condition and failed to remedy it or warn of it within a reasonable time.</p>
-  <div class="annotation"><strong>Why it’s written this way:</strong> The rule is stated in pure blackletter law - no mention of Marcus, Elena, or the puddle. You are telling the professor: “I know the doctrine.” The second paragraph adds the specific invitee/premises liability sub-rule because that’s what will drive the analysis. Always include the sub-rule that applies to your specific issue.</div>
-</div>
-
-<div class="irac-worked-header" style="background:var(--coral-header-bg);">
-  <span style="font-size:20px;font-weight:500;color:var(--coral-header-text);min-width:24px;">A</span>
-  <span style="font-size:13px;font-weight:500;color:var(--coral-header-text);flex:1;">Analysis</span>
-  <span style="font-size:11px;font-weight:500;background:var(--coral-tag-bg);color:var(--coral-tag-text);padding:2px 8px;border-radius:20px;">This is where points are earned</span>
-</div>
-<div class="irac-worked-body" style="border-left-color:var(--coral-border);">
-  <p style="font-size:13px;font-weight:500;color:var(--text-sub);margin-bottom:10px;">Working through each element:</p>
-  <div class="el-row"><div class="el-dot" style="background:var(--teal-border);"></div><div style="font-size:13px;line-height:1.6;"><strong style="font-weight:500;">Duty:</strong> Elena entered Marcus’s coffee shop as a paying customer, making her a business invitee. Marcus therefore owed her a duty of reasonable care to maintain the premises in a reasonably safe condition.</div></div>
-  <div class="el-row"><div class="el-dot" style="background:var(--coral-border);"></div><div style="font-size:13px;line-height:1.6;"><strong style="font-weight:500;">Breach:</strong> Here, the puddle was visible to Marcus’s employees for approximately 25 minutes before Elena fell. A court would likely find that 25 minutes is sufficient time for a reasonably careful business owner to notice the hazard, place a warning sign, or clean it up. Marcus’s argument that the morning rush prevented action does not negate the breach - the standard is objective reasonableness, not personal convenience. The absence of any warning sign further supports a finding of breach.</div></div>
-  <div class="el-row"><div class="el-dot" style="background:var(--purple-dot);"></div><div style="font-size:13px;line-height:1.6;"><strong style="font-weight:500;">Causation:</strong> The puddle was the actual cause of Elena’s fall - but for the unaddressed hazard, she would not have slipped. It is also the proximate cause: it is entirely foreseeable that a customer walking near a wet entrance on a rainy morning would slip if no warning was given.</div></div>
-  <div class="el-row" style="margin-bottom:0"><div class="el-dot" style="background:var(--amber-dot);"></div><div style="font-size:13px;line-height:1.6;"><strong style="font-weight:500;">Damages:</strong> Elena suffered a fractured wrist - a concrete, documentable physical injury. This satisfies the damages element.</div></div>
-  <div class="annotation" style="margin-top:1rem;"><strong>Why it’s written this way:</strong> Every element of the rule is addressed in order. The word “Here” signals the transition from rule to application. The breach section is the longest because that’s where the real dispute lives. Marcus’s counterargument is acknowledged and refuted - professors reward students who engage with the strongest counterargument rather than ignoring it.</div>
-</div>
-
-<div class="irac-worked-header" style="background:var(--blue-header-bg);">
-  <span style="font-size:20px;font-weight:500;color:var(--blue-header-text);min-width:24px;">C</span>
-  <span style="font-size:13px;font-weight:500;color:var(--blue-header-text);flex:1;">Conclusion</span>
-  <span style="font-size:11px;font-weight:500;background:var(--blue-tag-bg);color:var(--blue-tag-text);padding:2px 8px;border-radius:20px;">Brief - one or two sentences</span>
-</div>
-<div class="irac-worked-body" style="border-left-color:var(--blue-border);">
-  <p class="written">Therefore, Marcus is likely liable to Elena for negligence. All four elements are satisfied: he owed her a duty as a business invitee, breached it by failing to address a known hazard for an unreasonable amount of time, that breach caused her fall, and she suffered actual damages.</p>
-  <div class="annotation"><strong>Why it’s written this way:</strong> The conclusion is short and direct. It answers the issue and briefly ties back to the elements - but does not re-argue anything. Notice “likely” - epistemic humility is appropriate because reasonable people could disagree on breach. Absolute certainty can cost you points if the professor sees the issue as close.</div>
-</div>
-
-<div class="verdict-box"><strong style="font-weight:500;">Grading takeaway:</strong> The analysis section - especially breach - is where an A separates from a B. Raising and refuting the “morning rush” defense, citing the objective standard, and flagging the missing warning sign all show issue-spotting depth. Total length is roughly one page, which is the target for a single-issue IRAC on an exam.</div>
-</div>
-
-<div class="section" id="brief">
-<p class="section-title">Case brief structure</p>
-<div class="card">
-<div class="brief-row"><span class="brief-num">1</span><span class="brief-text"><strong>Case name + citation</strong> - parties and legal reporter. Tracks the exact opinion.</span></div>
-<div class="brief-row"><span class="brief-num">2</span><span class="brief-text"><strong>Procedural history</strong> - how the dispute arrived here. Who won at trial? Who appealed?</span></div>
-<div class="brief-row"><span class="brief-num">3</span><span class="brief-text"><strong>Facts</strong> - the events causing the conflict. Only include facts that affect the legal outcome.</span></div>
-<div class="brief-row"><span class="brief-num">4</span><span class="brief-text"><strong>Issue</strong> - the exact legal question, phrased as a yes/no question.</span></div>
-<div class="brief-row"><span class="brief-num">5</span><span class="brief-text"><strong>Rule</strong> - the law or legal test the court applies. Written in general terms, no facts mixed in.</span></div>
-<div class="brief-row"><span class="brief-num">6</span><span class="brief-text"><strong>Reasoning / analysis</strong> - how the court applies the rule to the facts. Professors target this section during Socratic cold calls.</span></div>
-<div class="brief-row"><span class="brief-num">7</span><span class="brief-text"><strong>Holding</strong> - the court’s final decision. This is the “C” in IRAC.</span></div>
-<div class="brief-row" style="border-bottom:none"><span class="brief-num">8</span><span class="brief-text"><strong>Concurrences + dissents</strong> - judges who agreed via different logic, or disagreed entirely. Professors use these for policy discussion.</span></div>
-</div>
-<div class="success-box">Target: half a page to one page per brief. Anything longer becomes unusable in real-time class discussion. Full briefing is a 1L training tool - by 2L most students book-brief or skip it entirely.</div>
-</div>
-
-<div class="section" id="reading">
-<p class="section-title">Readings by class</p>
-<div class="warn-box">Read primary sources, not summaries. For every case below, practice writing a one-page brief using the 8-part structure above before reading any analysis. Each class is split into <strong>case readings</strong> (primary-source opinions) and <strong>assigned readings</strong> (background/doctrine material assigned alongside them, rewritten in full from the actual casebook or packet excerpts).</div>
-<div class="info-box">Jump to a class from the directory on the left, or scroll straight through: Criminal Law and Property first, since nothing's been read for either yet; Torts second, since you already have full case text <em>and</em> a graded practice exam for it; ISL Packer readings (orientation packet, not tied to a single class) after that; Spring 2027 courses last.</div>
-</div>
-
-<div class="section" id="crimlaw">
-<p class="section-title">Criminal Law <span style="color:var(--text-sub);font-weight:400;text-transform:none;letter-spacing:normal;">&middot; Prof. Michael Cahill &middot; CRM-100-D1</span></p>
-
-<p class="tier-label">Case readings</p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--amber-text);">Criminal Law</p></div>
-<p class="case-name">Regina v. Dudley and Stephens</p>
-<p class="case-year">Queen&rsquo;s Bench Division, 1884</p>
-<p class="case-why">Four shipwrecked sailors are stranded at sea. After weeks without food, three of them kill and eat the weakest - a 17-year-old orphan - to survive. When rescued, two are tried for murder. They argue necessity. The court rejects it and convicts. This case is the foundation of the necessity defense in criminal law and establishes that necessity cannot justify killing an innocent person. The facts are unforgettable. The moral questions will carry into class discussion.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Necessity defense</span><span class="tag tag-amber">Murder</span><span class="tag tag-amber">Criminal liability</span></div>
-<div class="case-links">
-  <span class="case-meta">6 pages &bull; ~15 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Regina+v.+Dudley+and+Stephens" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--amber-text);">Criminal Law</p></div>
-<p class="case-name">People v. Conley</p>
-<p class="case-year">Illinois Appellate Court, 1989</p>
-<p class="case-why">A teenager hits another with a wine bottle at a party, causing permanent nerve damage. The issue is whether the defendant acted with the specific intent required for aggravated battery. The court examines how intent is inferred from conduct and circumstance, not mind-reading. This is the go-to case for understanding the mental state (mens rea) requirement - a concept that runs through every criminal law issue you will encounter.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Mens rea</span><span class="tag tag-amber">Intent</span><span class="tag tag-amber">Specific intent</span></div>
-<div class="case-links">
-  <span class="case-meta">5 pages &bull; ~15 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=People+v.+Conley+1989" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="card">
-  <div class="case-head" style="margin-bottom:6px;"><span class="rank">3</span><p class="card-title" style="font-size:14px;margin:0;">Gideon v. Wainwright (1963)</p></div>
-  <p class="card-sub">The Supreme Court rules that states must provide counsel to defendants who cannot afford an attorney. The Sixth Amendment right to counsel applied to the states. Short, readable, and historically significant. Optional - read once the case readings above and the assigned readings below are done.</p>
-  <span class="tag tag-amber">Right to counsel</span><span class="tag tag-amber">Sixth Amendment</span>
-  <div class="case-links">
-    <span class="case-meta">10 pages &bull; ~25 min</span>
-    <div class="btn-group">
-      <a href="https://scholar.google.com/scholar?q=Gideon+v.+Wainwright" target="_blank" class="case-btn">Google Scholar</a>
-      <a href="#" class="case-btn disabled">Read Case</a>
-    </div>
-  </div>
-</div>
-
-<p class="tier-label" style="margin-top:1.5rem;">Assigned readings <span class="n">&middot; parsed from the two uploaded casebook excerpts (Robinson, Baughman &amp; Cahill, <em>Criminal Law: Case Studies &amp; Controversies</em>, 6th ed.) &mdash; rewritten in full, not reproduced verbatim</span></p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--amber-text);">Background Materials</p></div>
-<p class="case-name">The Criminal Justice Process</p>
-<p class="case-year">Adapted from LaFave, Israel &amp; King, <em>Criminal Procedure</em> &sect; 1.3 (3d ed.)</p>
-<p class="case-why">The 18 steps a felony case actually goes through, from reported crime to postconviction relief - arrest, booking, charging screening, bail, preliminary hearing, grand jury, trial, sentencing, appeal - plus the three burdens of proof (pleading, production, persuasion) that govern who has to prove what at trial.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Criminal procedure</span><span class="tag tag-amber">Burdens of proof</span></div>
-<div class="case-links">
-  <span class="case-meta">Rewritten in full</span>
-  <div class="btn-group">
-    <a href="pages/crimlaw_process_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--amber-text);">Part I, Section 2</p></div>
-<p class="case-name">The Legality Principle</p>
-<p class="case-year">The Case of Ray Brent Marsh &middot; vagueness, lenity &amp; ex post facto</p>
-<p class="case-why">Built around the real Tri-State Crematory scandal - over 340 bodies dumped in a Georgia grove instead of cremated. The vehicle for teaching why criminal liability requires a clearly pre-existing law: vagueness, the rule of lenity, ex post facto bans, and the canons courts use to resolve genuine statutory ambiguity.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Legality principle</span><span class="tag tag-amber">Statutory interpretation</span></div>
-<div class="case-links">
-  <span class="case-meta">Rewritten in full</span>
-  <div class="btn-group">
-    <a href="pages/crimlaw_legality_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">3</span><p class="case-subject" style="color:var(--amber-text);">Part I, Section 3</p></div>
-<p class="case-name">Theories of Punishment</p>
-<p class="case-year">Retributivism, utilitarianism &amp; the abolition debate</p>
-<p class="case-why">Why does the state punish at all, and how much? Retributivism vs. deterrence vs. incapacitation vs. rehabilitation vs. restorative justice, Cahill's "punishment pluralism," the MPC's "limiting retributivism," Robinson's desert-based critique, and the McLeod/Barkow debate over prison abolition.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Retributivism</span><span class="tag tag-amber">Deterrence</span><span class="tag tag-amber">Desert</span></div>
-<div class="case-links">
-  <span class="case-meta">Rewritten in full</span>
-  <div class="btn-group">
-    <a href="pages/crimlaw_punishment_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">4</span><p class="case-subject" style="color:var(--amber-text);">Part II, Section 4</p></div>
-<p class="case-name">Culpability Requirements</p>
-<p class="case-year">The Case of Thomas Fungwe &middot; purpose, knowledge, recklessness &amp; negligence</p>
-<p class="case-why">The mens rea unit: a tragic 1999 Michigan case opens the doctrine, then the MPC's four-level culpability hierarchy (purpose, knowledge, recklessness, negligence), strict liability, the concurrence requirement, and the interpretive rules for figuring out which culpability level attaches to which element of an offense.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Mens rea</span><span class="tag tag-amber">Model Penal Code</span></div>
-<div class="case-links">
-  <span class="case-meta">Rewritten in full</span>
-  <div class="btn-group">
-    <a href="pages/crimlaw_culpability_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="section" id="property">
-<p class="section-title">Property <span style="color:var(--text-sub);font-weight:400;text-transform:none;letter-spacing:normal;">&middot; Prof. Brian Lee &middot; PTE-100-D2</span></p>
-
-<p class="tier-label">Case readings</p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--purple-text);">Property</p></div>
-<p class="case-name">Pierson v. Post</p>
-<p class="case-year">New York Supreme Court, 1805</p>
-<p class="case-why">A fox hunter chases a fox across open land. A stranger swoops in and kills it. Who owns the fox? The court rules that pursuit alone does not create possession - you need actual capture or mortal wounding. This sounds trivial until you realize it opens every question in property law: what does it mean to &ldquo;own&rdquo; something, and how is ownership established? The dissent argues for the hunter. Know both arguments.</p>
-<div style="margin-top:8px;"><span class="tag tag-purple">Possession</span><span class="tag tag-purple">Wild animals</span><span class="tag tag-purple">First possession</span></div>
-<div class="case-links">
-  <span class="case-meta">4 pages &bull; ~10 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Pierson+v.+Post" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="pages/pierson_case.html" class="case-btn">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--purple-text);">Property</p></div>
-<p class="case-name">Hawkins v. McGee</p>
-<p class="case-year">New Hampshire Supreme Court, 1929</p>
-<p class="case-why">A doctor promises to give a patient a &ldquo;100% perfect hand&rdquo; via skin graft surgery. The surgery goes wrong - badly. The patient is left with a hand covered in chest hair. The court awards expectation damages: the difference between what was promised and what was delivered. This is technically a Contracts case, but it appears in Property and Contracts courses alike, and it appears in &ldquo;The Paper Chase,&rdquo; the definitive law school film you should watch before August.</p>
-<div style="margin-top:8px;"><span class="tag tag-purple">Expectation damages</span><span class="tag tag-coral">Breach of contract</span></div>
-<div class="case-links">
-  <span class="case-meta">3 pages &bull; ~10 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Hawkins+v.+McGee" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<p class="tier-label" style="margin-top:1.5rem;">Assigned readings</p>
-<div class="info-box" style="margin-bottom:0;">None uploaded yet for Property. Once a casebook excerpt or packet is shared, it'll show up here in the same format as Criminal Law's assigned readings above.</div>
-</div>
-
-<div class="section" id="torts">
-<p class="section-title">Torts <span style="color:var(--text-sub);font-weight:400;text-transform:none;letter-spacing:normal;">&middot; Prof. Cristina Tilley &middot; TRT-100-D2S</span></p>
-
-<p class="tier-label">Case readings <span class="n">&middot; already read &amp; drilled here (review pass)</span></p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--teal-text);">Torts</p></div>
-<p class="case-name">Vosburg v. Putney</p>
-<p class="case-year">Wisconsin Supreme Court, 1891</p>
-<p class="case-why">A schoolboy kicks another in the leg - seemingly minor - and causes serious permanent injury due to a pre-existing condition. This case introduces the &ldquo;eggshell plaintiff&rdquo; rule (you take your victim as you find them) and the doctrine of intent for intentional torts. The facts are simple but the doctrine is foundational - it's why this one anchors the Torts sequence below.</p>
-<div style="margin-top:8px;"><span class="tag tag-teal">Intentional torts</span><span class="tag tag-teal">Eggshell plaintiff</span><span class="tag tag-teal">Intent</span></div>
-<div class="case-links">
-  <span class="case-meta">8 pages &bull; ~20 min read</span>
-  <div class="btn-group">
-    <a href="https://www.courtlistener.com/opinion/8220335/vosburg-v-putney/pdf/" target="_blank" class="case-btn">Case Link</a>
-    <a href="pages/vosburg_case.html" class="case-btn">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--teal-text);">Torts</p></div>
-<p class="case-name">Palsgraf v. Long Island Railroad Co.</p>
-<p class="case-year">New York Court of Appeals, 1928</p>
-<p class="case-why">The single most famous Torts case you will read. A railroad employee&rsquo;s negligent act caused a chain reaction that injured a bystander. Judge Cardozo&rsquo;s majority opinion established the &ldquo;zone of danger&rdquo; test for proximate cause: a defendant owes a duty only to foreseeable plaintiffs. Justice Andrews&rsquo;s dissent argues for a broader view of liability. You will be cold-called on both opinions.</p>
-<div style="margin-top:8px;"><span class="tag tag-teal">Proximate cause</span><span class="tag tag-teal">Duty</span><span class="tag tag-teal">Foreseeability</span></div>
-<div class="case-links">
-  <span class="case-meta">13 pages &bull; ~30 min read</span>
-  <div class="btn-group">
-    <a href="https://www.jstor.org/stable/1115080" target="_blank" class="case-btn">Case Link</a>
-    <a href="pages/palsgraf_case.html" class="case-btn">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">3</span><p class="case-subject" style="color:var(--teal-text);">Torts</p></div>
-<p class="case-name">Byrne v. Boadle</p>
-<p class="case-year">Court of Exchequer, 1863</p>
-<p class="case-why">A barrel of flour rolls out of a warehouse window and injures a passerby. The plaintiff has no way to prove exactly how it happened. The court creates the doctrine of res ipsa loquitur - &ldquo;the thing speaks for itself&rdquo; - allowing negligence to be inferred from the mere fact of the accident. A short but essential read.</p>
-<div style="margin-top:8px;"><span class="tag tag-teal">Res ipsa loquitur</span><span class="tag tag-teal">Negligence</span></div>
-<div class="case-links">
-  <span class="case-meta">2 pages &bull; ~5 min read</span>
-  <div class="btn-group">
-    <a href="https://law.justia.com/cases/foreign/united-kingdom/159-eng-rep-299-1863.html" target="_blank" class="case-btn">Case Link</a>
-    <a href="pages/byrne_case.html" class="case-btn">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="card">
-  <div class="case-head" style="margin-bottom:6px;"><span class="rank">4</span><p class="card-title" style="font-size:14px;margin:0;">Summers v. Tice (1948)</p></div>
-  <p class="card-sub">Two hunters negligently fire at once. Only one bullet hits the plaintiff. Neither can be identified as the shooter. The court holds both jointly liable. The case that created &ldquo;alternative liability&rdquo; and still sparks debate. Optional - read once the three case readings above are done.</p>
-  <span class="tag tag-teal">Causation</span><span class="tag tag-teal">Joint liability</span>
-  <div class="case-links">
-    <span class="case-meta">6 pages &bull; ~15 min</span>
-    <div class="btn-group">
-      <a href="https://scholar.google.com/scholar?q=Summers+v.+Tice" target="_blank" class="case-btn">Google Scholar</a>
-      <a href="#" class="case-btn disabled">Read Case</a>
-    </div>
-  </div>
-</div>
-
-<p class="tier-label" style="margin-top:1.5rem;">Assigned readings</p>
-<div class="info-box" style="margin-bottom:0;">None uploaded yet for Torts.</div>
-</div>
-
-<div class="section" id="contracts">
-<p class="section-title">Contracts <span style="color:var(--text-sub);font-weight:400;text-transform:none;letter-spacing:normal;">&middot; Spring 2027 preview &mdash; a head start, not urgent</span></p>
-
-<p class="tier-label">Case readings</p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--coral-text);">Contracts</p></div>
-<p class="case-name">Carlill v. Carbolic Smoke Ball Co.</p>
-<p class="case-year">Court of Appeal, 1892</p>
-<p class="case-why">A company advertises that anyone who uses their product and still gets the flu will receive &pound;100. A woman buys it, uses it, gets the flu, and sues. The company claims the ad was mere puffery. The court holds it was a binding offer accepted by performance. This case defines what constitutes an offer, the nature of acceptance, and consideration in one clean ruling. Arguably the most entertaining case you&rsquo;ll read all semester - a good one to start this tier with.</p>
-<div style="margin-top:8px;"><span class="tag tag-coral">Offer &amp; acceptance</span><span class="tag tag-coral">Consideration</span><span class="tag tag-coral">Unilateral contract</span></div>
-<div class="case-links">
-  <span class="case-meta">6 pages &bull; ~15 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Carlill+v.+Carbolic+Smoke+Ball+Co." target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--coral-text);">Contracts</p></div>
-<p class="case-name">Hamer v. Sidway</p>
-<p class="case-year">New York Court of Appeals, 1891</p>
-<p class="case-why">An uncle promises his nephew $5,000 if he refrains from drinking, tobacco, swearing, and card-playing until age 21. The nephew complies. The uncle dies without paying. The court holds that the nephew&rsquo;s forbearance of a legal right constitutes valid consideration. This is the foundational American case on consideration as forbearance - you will cite it constantly.</p>
-<div style="margin-top:8px;"><span class="tag tag-coral">Consideration</span><span class="tag tag-coral">Forbearance</span></div>
-<div class="case-links">
-  <span class="case-meta">4 pages &bull; ~10 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Hamer+v.+Sidway" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">3</span><p class="case-subject" style="color:var(--coral-text);">Contracts</p></div>
-<p class="case-name">Hadley v. Baxendale</p>
-<p class="case-year">Court of Exchequer, 1854</p>
-<p class="case-why">A mill owner hires a carrier to deliver a broken crankshaft for repair. The carrier delays. The mill owner sues for lost profits. The court holds that consequential damages are only recoverable if they were foreseeable to both parties at the time of contracting - establishing the cornerstone rule of contract damages that still governs today. Every Contracts student memorizes the phrase &ldquo;arising naturally or in contemplation of both parties.&rdquo;</p>
-<div style="margin-top:8px;"><span class="tag tag-coral">Consequential damages</span><span class="tag tag-coral">Foreseeability</span><span class="tag tag-coral">Breach of contract</span></div>
-<div class="case-links">
-  <span class="case-meta">5 pages &bull; ~15 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Hadley+v.+Baxendale" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="card">
-  <div class="case-head" style="margin-bottom:6px;"><span class="rank">4</span><p class="card-title" style="font-size:14px;margin:0;">Frigaliment Importing Co. v. BNS Int&rsquo;l (1960)</p></div>
-  <p class="card-sub">What is a &ldquo;chicken&rdquo;? Seriously - the entire case turns on whether the word means any chicken or only a young broiling chicken. Judge Friendly&rsquo;s opinion on contract interpretation is a masterclass in how courts resolve ambiguity. Optional - read once the three case readings above are done.</p>
-  <span class="tag tag-coral">Contract interpretation</span>
-  <div class="case-links">
-    <span class="case-meta">8 pages &bull; ~20 min</span>
-    <div class="btn-group">
-      <a href="https://scholar.google.com/scholar?q=Frigaliment+Importing+Co.+v.+BNS+Intl" target="_blank" class="case-btn">Google Scholar</a>
-      <a href="#" class="case-btn disabled">Read Case</a>
-    </div>
-  </div>
-</div>
-
-<p class="tier-label" style="margin-top:1.5rem;">Assigned readings</p>
-<div class="info-box" style="margin-bottom:0;">None uploaded yet for Contracts.</div>
-</div>
-
-<div class="section" id="civpro">
-<p class="section-title">Civil Procedure <span style="color:var(--text-sub);font-weight:400;text-transform:none;letter-spacing:normal;">&middot; Spring 2027 preview &mdash; a head start, not urgent</span></p>
-
-<p class="tier-label">Case readings</p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--blue-text);">Civil Procedure</p></div>
-<p class="case-name">Pennoyer v. Neff</p>
-<p class="case-year">U.S. Supreme Court, 1877</p>
-<p class="case-why">The foundational case on personal jurisdiction. A man is sued in Oregon while living in California. The court sets out the territorial theory of jurisdiction: a state court can only haul someone in if they are physically present in the state or have property there. This case is dense and old, but it establishes the baseline that every subsequent jurisdiction case reacts to. Read it slowly - your professor will assume you struggled with it, which is part of why they assign it.</p>
-<div style="margin-top:8px;"><span class="tag tag-blue">Personal jurisdiction</span><span class="tag tag-blue">Due process</span></div>
-<div class="case-links">
-  <span class="case-meta">25 pages &bull; ~60 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=Pennoyer+v.+Neff" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--blue-text);">Civil Procedure</p></div>
-<p class="case-name">International Shoe Co. v. Washington</p>
-<p class="case-year">U.S. Supreme Court, 1945</p>
-<p class="case-why">Read this immediately after Pennoyer. A shoe company with traveling salespeople in Washington refuses to pay state unemployment taxes. The Supreme Court replaces Pennoyer&rsquo;s rigid territorial test with the modern &ldquo;minimum contacts&rdquo; standard: a defendant may be sued wherever they have sufficient contacts with the state such that jurisdiction would not offend &ldquo;traditional notions of fair play and substantial justice.&rdquo; This phrase will come up in every Civ Pro class for months.</p>
-<div style="margin-top:8px;"><span class="tag tag-blue">Minimum contacts</span><span class="tag tag-blue">Personal jurisdiction</span><span class="tag tag-blue">Due process</span></div>
-<div class="case-links">
-  <span class="case-meta">15 pages &bull; ~40 min read</span>
-  <div class="btn-group">
-    <a href="https://scholar.google.com/scholar?q=International+Shoe+Co.+v.+Washington" target="_blank" class="case-btn">Google Scholar</a>
-    <a href="#" class="case-btn disabled">Read Case</a>
-  </div>
-</div>
-</div>
-
-<div class="card">
-  <div class="case-head" style="margin-bottom:6px;"><span class="rank">3</span><p class="card-title" style="font-size:14px;margin:0;">Erie Railroad Co. v. Tompkins (1938)</p></div>
-  <p class="card-sub">Federal courts must apply state substantive law in diversity cases. The case that ended &ldquo;general federal common law.&rdquo; The longest and densest case on this list - saved for last on purpose. Optional - read once the two case readings above are done.</p>
-  <span class="tag tag-blue">Federal vs. state law</span>
-  <div class="case-links">
-    <span class="case-meta">15 pages &bull; ~40 min</span>
-    <div class="btn-group">
-      <a href="https://scholar.google.com/scholar?q=Erie+Railroad+Co.+v.+Tompkins" target="_blank" class="case-btn">Google Scholar</a>
-      <a href="#" class="case-btn disabled">Read Case</a>
-    </div>
-  </div>
-</div>
-
-<p class="tier-label" style="margin-top:1.5rem;">Assigned readings</p>
-<div class="info-box" style="margin-bottom:0;">None uploaded yet for Civil Procedure.</div>
-
-<div class="success-box" style="margin-top:1.5rem;">
-<strong style="font-weight:500;">How to use these lists:</strong> Find each primary opinion on Google Scholar (scholar.google.com) - search the case name and filter to &ldquo;case law.&rdquo; Read the opinion first without any guide. Then write a one-page brief using the 8-part structure above. Then read a summary on Casebriefs.com or Quimbee to check your understanding. Do not start with the summary. The struggle of reading the raw opinion is the skill you are building.
-</div>
-</div>
-
-<div class="section" id="isl-packer">
-<p class="section-title">ISL Packer readings <span style="color:var(--text-sub);font-weight:400;text-transform:none;letter-spacing:normal;">&middot; orientation packet, not tied to a single Fall/Spring class</span></p>
-<div class="info-box">From the uploaded ISL Packer (59 pp.), assigned across three parts. Each piece is handled differently depending on what it actually is: <em>Just Mercy</em> is a memoir under copyright, so it's narrated and discussed, not reproduced &mdash; read Stevenson's actual chapters. Kerr's essay and the Slocum chapter are teaching material, rewritten in full, same sequence as the originals. Benjamin v. Lindner Aviation is a public-domain opinion, reproduced verbatim, with its own practice exam.</div>
-
-<p class="tier-label">Case readings</p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--purple-text);">Part 2 &middot; Property</p></div>
-<p class="case-name">Benjamin v. Lindner Aviation, Inc.</p>
-<p class="case-year">Supreme Court of Iowa, 534 N.W.2d 400, considered en banc (1995)</p>
-<p class="case-why">$18,000+ found inside an airplane wing. A clean vehicle for the common law's found-property categories &mdash; mislaid vs. lost vs. abandoned vs. treasure trove &mdash; with a three-justice dissent worth reading closely.</p>
-<div style="margin-top:8px;"><span class="tag tag-purple">Found property</span><span class="tag tag-purple">Mislaid vs. abandoned</span></div>
-<div class="case-links">
-  <span class="case-meta">8 pages &bull; verbatim opinion + dissent</span>
-  <div class="btn-group">
-    <a href="pages/benjamin_case.html" class="case-btn">Read Case</a>
-  </div>
-</div>
-</div>
-
-<p class="tier-label" style="margin-top:1.5rem;">Assigned readings</p>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">1</span><p class="case-subject" style="color:var(--amber-text);">Part 1 &middot; Law, Identity &amp; Lawyering</p></div>
-<p class="case-name">Just Mercy &mdash; Introduction &amp; Chapter One</p>
-<p class="case-year">Bryan Stevenson, <em>Just Mercy: A Story of Justice and Redemption</em> (2014)</p>
-<p class="case-why">Stevenson's death-row origin story and the wrongful conviction of Walter McMillian &mdash; the case anchoring the whole book. A narrative and thematic walkthrough, plus discussion questions, clearly flagged as not a substitute for the real chapters.</p>
-<div style="margin-top:8px;"><span class="tag tag-amber">Race &amp; the legal system</span><span class="tag tag-amber">Wrongful conviction</span></div>
-<div class="case-links">
-  <span class="case-meta">Narrated, not reproduced</span>
-  <div class="btn-group">
-    <a href="pages/just_mercy_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">2</span><p class="case-subject" style="color:var(--blue-text);">Part 2 &middot; Case Reading Workshop</p></div>
-<p class="case-name">How to Read a Legal Opinion</p>
-<p class="case-year">Orin S. Kerr, <em>A Guide for New Law Students</em>, 11 Green Bag 2d 51 (2007)</p>
-<p class="case-why">Caption, citation, facts, holding vs. dicta, mandatory vs. persuasive precedent, and why professors use the case method at all. Rewritten in full, same sequence and examples as the original.</p>
-<div style="margin-top:8px;"><span class="tag tag-blue">Case reading skills</span></div>
-<div class="case-links">
-  <span class="case-meta">Rewritten in full</span>
-  <div class="btn-group">
-    <a href="pages/kerr_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
-
-<div class="case-card">
-<div class="case-head"><span class="rank">3</span><p class="case-subject" style="color:var(--teal-text);">Part 3 &middot; Fundamentals of Law</p></div>
-<p class="case-name">Introduction to the American Legal System</p>
-<p class="case-year">Robin Wellford Slocum, <em>Legal Reasoning, Writing, and Other Lawyering Skills</em>, Ch. 2 (3d ed. 2011)</p>
-<p class="case-why">Federal vs. state courts, sources of law, stare decisis, and mandatory vs. persuasive precedent. Rewritten in full, with the federal circuit map and court-hierarchy diagrams rebuilt as real graphics instead of scanned images.</p>
-<div style="margin-top:8px;"><span class="tag tag-teal">Court structure</span><span class="tag tag-teal">Stare decisis</span></div>
-<div class="case-links">
-  <span class="case-meta">Rewritten in full &bull; diagrams rebuilt</span>
-  <div class="btn-group">
-    <a href="pages/slocum_reading.html" class="case-btn">Read</a>
-  </div>
-</div>
-</div>
+<div class="phase-bar"><span class="phase-label">Phase 4 - Finals (Nov 30 - Dec 16)</span><span class="phase-desc">Reading period then exams. Execute. Don&rsquo;t learn new material.</span></div>
 </div>
 
 <div class="section" id="schedule">
@@ -770,11 +378,11 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 <p class="section-title">Pre-semester prep - what to do now</p>
 <div class="grid-2">
 <div class="card"><p class="card-title">Build reading stamina</p><p class="card-sub">Read complex nonfiction for 2+ hours daily without distraction. Law school assigns hundreds of pages of dense text weekly. Your brain needs to be conditioned to retain on a single pass.</p></div>
-<div class="card"><p class="card-title">Read actual opinions</p><p class="card-sub">Use the reading list above. Start with Vosburg, Carlill, and Pierson v. Post - short, readable, foundational. Graduate to Palsgraf and Pennoyer by late July.</p></div>
-<div class="card"><p class="card-title">Improve typing speed</p><p class="card-sub">Your exam grade depends on how much structured analysis you can type in 3 hours. Target 70+ WPM consistently. Use keybr.com or typingclub.com before August.</p></div>
-<div class="card"><p class="card-title">Build your calendar system now</p><p class="card-sub">Map out your weeks before orientation. Block coaching shifts at Brooklyn Boulders, flag exam windows (Dec 2-16), and build in reading blocks. Automation removes decision fatigue during the semester.</p></div>
-<div class="card"><p class="card-title">Communicate your schedule early</p><p class="card-sub">Give your employer your exam dates - Dec 2-16 - as early as possible. Surprises during finals are manageable conflicts you don’t need.</p></div>
-<div class="card"><p class="card-title">Access BLS resources early</p><p class="card-sub">Log into BLSConnect and Canvas before classes start. Activate Core Grammar for Lawyers with your professor’s class code. Check the 1L library guide at guides.brooklaw.edu/1l.</p></div>
+<div class="card"><p class="card-title">Read actual opinions</p><p class="card-sub">Use the reading pages in the directory above. Start with Vosburg, Carlill, and Pierson v. Post - short, readable, foundational. Graduate to Palsgraf and Pennoyer next.</p></div>
+<div class="card"><p class="card-title">Improve typing speed</p><p class="card-sub">Your exam grade depends on how much structured analysis you can type in 3 hours. Target 70+ WPM consistently. Use keybr.com or typingclub.com.</p></div>
+<div class="card"><p class="card-title">Build your calendar system now</p><p class="card-sub">Map out your weeks. Block coaching shifts at Brooklyn Boulders, flag exam windows (Dec 2-16), and build in reading blocks. Automation removes decision fatigue during the semester.</p></div>
+<div class="card"><p class="card-title">Communicate your schedule early</p><p class="card-sub">Give your employer your exam dates - Dec 2-16 - as early as possible. Surprises during finals are manageable conflicts you don&rsquo;t need.</p></div>
+<div class="card"><p class="card-title">Access BLS resources early</p><p class="card-sub">Log into BLSConnect and Canvas. Activate Core Grammar for Lawyers with your professor&rsquo;s class code. Check the 1L library guide at guides.brooklaw.edu/1l.</p></div>
 </div>
 </div>
 
@@ -786,20 +394,21 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
 <div class="brief-row"><div class="dot dot-amber" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><strong>BLS Library</strong> - open Mon-Fri 9am-5pm and Saturday 12-4pm during the semester. Schedule one-on-one sessions with reference librarians for research help.</span></div>
 <div class="brief-row"><div class="dot dot-coral" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><strong>Academic Success office</strong> - weekly Friday Legal Skills workshops. Go early in the semester, not just before finals.</span></div>
 <div class="brief-row"><div class="dot dot-blue" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><strong>Career Development Center</strong> - start engaging in October. 1L summer internship searches open Dec 1.</span></div>
-<div class="brief-row"><div class="dot dot-teal" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><a href="https://www.justia.com" target="_blank" style="color:var(--text);font-weight:500;">Justia</a> - free access to federal and state case law, statutes, and regulations.</span></div>
-<div class="brief-row" style="border-bottom:none"><div class="dot dot-purple" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><a href="https://www.courtlistener.com" target="_blank" style="color:var(--text);font-weight:500;">CourtListener</a> - an open database of legal opinions and dockets, useful for accessing court records without a paid database.</span></div>
+<div class="brief-row"><div class="dot dot-teal" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><a href="https://www.justia.com" target="_blank" rel="noopener" style="color:var(--text);font-weight:500;">Justia</a> - free access to federal and state case law, statutes, and regulations.</span></div>
+<div class="brief-row" style="border-bottom:none"><div class="dot dot-purple" style="margin-top:6px;flex-shrink:0"></div><span class="brief-text"><a href="https://www.courtlistener.com" target="_blank" rel="noopener" style="color:var(--text);font-weight:500;">CourtListener</a> - an open database of legal opinions and dockets, useful for accessing court records without a paid database.</span></div>
 </div>
 </div>
 
 <script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const menuBtn = document.getElementById('menu-btn');
-  const sidebar = document.getElementById('sidebar');
-  const root = document.documentElement;
-
   // lets sub-pages know a back-navigation will actually land here, rather
   // than falling through browser history to whatever was open before this site
   sessionStorage.setItem('carnetVisitedHome', '1');
+
+  const toggleBtn = document.getElementById('theme-toggle');
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('sidebar-scrim');
+  const root = document.documentElement;
 
   if (localStorage.getItem('theme') === 'dark') {
     root.setAttribute('data-theme', 'dark');
@@ -808,8 +417,7 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
   }
 
   toggleBtn.addEventListener('click', () => {
-    const currentTheme = root.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
+    if (root.getAttribute('data-theme') === 'dark') {
       root.removeAttribute('data-theme');
       localStorage.setItem('theme', 'light');
     } else {
@@ -821,9 +429,14 @@ h1{font-size:22px;font-weight:500;margin-bottom:4px;}
   function toggleMenu() {
     sidebar.classList.toggle('open');
     menuBtn.classList.toggle('open');
+    scrim.classList.toggle('show');
   }
-
   menuBtn.addEventListener('click', toggleMenu);
+  scrim.addEventListener('click', toggleMenu);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) toggleMenu();
+  });
+
 </script>
 </body>
 </html>

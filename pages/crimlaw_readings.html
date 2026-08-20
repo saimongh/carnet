@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Criminal Law readings - Carnet</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+  
+  --teal-header-bg: #E1F5EE; --teal-header-text: #085041; --teal-tag-bg: #9FE1CB; --teal-tag-text: #04342C;
+  --purple-header-bg: #EEEDFE; --purple-header-text: #26215C; --purple-tag-bg: #CECBF6; --purple-tag-text: #26215C;
+  --coral-header-bg: #FAECE7; --coral-header-text: #4A1B0C; --coral-tag-bg: #F5C4B3; --coral-tag-text: #4A1B0C;
+  --blue-header-bg: #E6F1FB; --blue-header-text: #042C53; --blue-tag-bg: #B5D4F4; --blue-tag-text: #042C53;
+}
+
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+  
+  --teal-header-bg: #11332a; --teal-header-text: #59dcb1; --teal-tag-bg: #1a8f69; --teal-tag-text: #ffffff;
+  --purple-header-bg: #1c1a3b; --purple-header-text: #a8a0f0; --purple-tag-bg: #564cba; --purple-tag-text: #ffffff;
+  --coral-header-bg: #3b170c; --coral-header-text: #f28b6b; --coral-tag-bg: #bd4821; --coral-tag-text: #ffffff;
+  --blue-header-bg: #0b2238; --blue-header-text: #73b3f0; --blue-tag-bg: #2c72b8; --blue-tag-text: #ffffff;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;position:relative;}
+.card-title{font-size:15px;font-weight:500;margin:0 0 4px;}
+.card-sub{font-size:13px;color:var(--text-muted);margin:0;line-height:1.6;}
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-teal{background:var(--teal-bg);color:var(--teal-text);}
+.tag-purple{background:var(--purple-bg);color:var(--purple-text);}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+.tag-coral{background:var(--coral-bg);color:var(--coral-text);}
+.tag-blue{background:var(--blue-bg);color:var(--blue-text);}
+.tag-gray{background:var(--gray-bg);color:var(--gray-text);}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.75rem;}
+.timeline-item{display:flex;gap:12px;margin-bottom:0.75rem;}
+.tl-date{font-size:12px;font-weight:500;color:var(--text-sub);min-width:90px;padding-top:2px;}
+.tl-dot{width:8px;height:8px;border-radius:50%;background:var(--text-sub);margin-top:6px;flex-shrink:0;}
+.tl-dot.active{background:var(--teal-border);}
+.tl-content{font-size:14px;line-height:1.6;}
+.phase-bar{background:var(--phase-bg);border-radius:8px;padding:0.75rem 1rem;margin-bottom:0.5rem;display:flex;align-items:center;gap:10px;}
+.phase-label{font-size:13px;font-weight:500;flex:1;}
+.phase-desc{font-size:12px;color:var(--text-muted);}
+.irac-box{border-left:3px solid;padding:0.75rem 1rem;margin-bottom:0.5rem;}
+.irac-i{border-color:var(--teal-border);background:var(--teal-bg);}
+.irac-r{border-color:var(--purple-border);background:var(--purple-bg);}
+.irac-a{border-color:var(--coral-border);background:var(--coral-bg);}
+.irac-c{border-color:var(--blue-border);background:var(--blue-bg);}
+.irac-letter{font-size:18px;font-weight:500;margin:0 0 2px;}
+.irac-name{font-size:12px;font-weight:500;margin:0 0 4px;}
+.irac-detail{font-size:13px;margin:0;line-height:1.5;}
+.brief-row{display:flex;gap:8px;align-items:flex-start;padding:0.6rem 0;border-bottom:0.5px solid var(--border);}
+.brief-num{font-size:12px;font-weight:500;color:var(--text-sub);min-width:20px;}
+.brief-text{font-size:13px;line-height:1.5;}
+.brief-text strong{font-weight:500;}
+.weekly-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.day-card{background:var(--phase-bg);border-radius:8px;padding:0.75rem;}
+.day-name{font-size:12px;font-weight:500;color:var(--text-sub);margin:0 0 6px;}
+.day-block{font-size:12px;margin-bottom:3px;display:flex;gap:6px;}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.dot-teal{background:var(--teal-border);}
+.dot-purple{background:var(--purple-dot);}
+.dot-amber{background:var(--amber-dot);}
+.dot-coral{background:var(--coral-border);}
+.dot-blue{background:var(--blue-border);}
+.warn-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--warn-text);margin-bottom:0.75rem;line-height:1.5;}
+.success-box{background:var(--teal-bg);border:0.5px solid var(--teal-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--success-text);line-height:1.5;margin-top:0.75rem;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:0.75rem;}
+.irac-worked-header{display:flex;align-items:center;gap:12px;padding:0.85rem 1rem;border-radius:8px 8px 0 0;}
+.irac-worked-body{padding:1rem;border-left:3px solid;border-right:0.5px solid var(--border);border-bottom:0.5px solid var(--border);border-radius:0 0 8px 8px;margin-bottom:1rem;}
+.annotation{background:var(--phase-bg);border-radius:8px;padding:0.6rem 0.85rem;font-size:12px;color:var(--text-muted);line-height:1.6;margin-top:0.5rem;}
+.annotation strong{font-weight:500;color:var(--text);}
+.el-row{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;}
+.el-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.written{font-size:14px;line-height:1.75;margin:0 0 0.5rem;}
+.case-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.case-subject{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin:0;}
+.case-head{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.rank{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--phase-bg);border:0.5px solid var(--border);color:var(--text-sub);font-size:10.5px;font-weight:600;flex-shrink:0;}
+.tier-label{font-size:13px;font-weight:500;color:var(--text);margin:1.5rem 0 0.4rem;padding-bottom:0.4rem;border-bottom:0.5px solid var(--border);}
+.tier-label .n{color:var(--text-sub);font-weight:400;}
+.case-name{font-size:15px;font-weight:500;margin:0 0 2px;}
+.case-year{font-size:12px;color:var(--text-sub);margin:0 0 8px;}
+.case-why{font-size:13px;color:var(--text-muted);line-height:1.6;margin:0 0 6px;}
+.month-label{font-size:13px;font-weight:500;color:var(--text);margin:1.5rem 0 0.75rem;padding-bottom:0.4rem;border-bottom:0.5px solid var(--border);}
+.verdict-box{background:var(--teal-bg);border:0.5px solid var(--teal-border);border-radius:8px;padding:0.85rem 1rem;font-size:13px;color:var(--success-text);line-height:1.6;margin-top:1rem;}
+.case-links { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; flex-wrap: wrap; gap: 8px; }
+.case-meta { font-size: 11px; color: var(--text-sub); font-weight: 500; }
+.btn-group { display: flex; gap: 8px; }
+.case-btn { text-decoration: none; font-size: 11px; font-weight: 500; padding: 6px 16px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+.case-btn.disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+
+#sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--card-bg); border-right: 1px solid var(--border); transition: left 0.3s ease; z-index: 2000; padding: 5rem 1.5rem 2rem; overflow-y: auto; box-shadow: 4px 0 15px rgba(0,0,0,0.05); }
+#sidebar.open { left: 0; }
+.sidebar-title { font-size: 14px; font-weight: 600; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+.sidebar-link { display: block; padding: 0.6rem 0.8rem; color: var(--text); text-decoration: none; font-size: 14px; border-radius: 6px; transition: background 0.2s; margin-bottom: 4px; }
+.sidebar-link:hover { background: var(--phase-bg); color: var(--teal-border); font-weight: 500; }
+.sidebar-link.active { background: var(--phase-bg); font-weight: 500; }
+#sidebar-scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.25); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1999; }
+#sidebar-scrim.show { opacity: 1; pointer-events: auto; }
+.menu-toggle { position: fixed; top: 1.5rem; left: 1.5rem; z-index: 2001; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; width: 44px; height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; }
+.menu-toggle:hover { background: var(--phase-bg); }
+.menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s ease; }
+.menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+#nav-arrows { position: fixed; top: 1.5rem; left: 5.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows, .menu-toggle, #sidebar, #sidebar-scrim, .toolbar, .rd-actions{display:none;}}
+body{padding-top:5.75rem;}
+@media(max-width:640px){ body{padding-top:6.25rem;} }
+@media(max-width:500px){.grid-2,.grid-3,.weekly-grid,.dir-grid{grid-template-columns:1fr;}}
+
+
+.footnote{font-size:12px;color:var(--text-sub);line-height:1.6;margin-top:2rem;padding-top:1rem;border-top:0.5px solid var(--border);}
+
+
+/* readings page */
+.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;}
+.tool-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;padding:7px 14px;border-radius:8px;border:0.5px solid var(--border);background:var(--card-bg);color:var(--text);cursor:pointer;font-family:inherit;transition:background 0.15s ease,border-color 0.15s ease;}
+.tool-btn:hover{background:var(--phase-bg);border-color:var(--text-sub);}
+.tool-btn i{font-size:12px;color:var(--text-sub);}
+.tool-btn:hover i{color:var(--text);}
+.count-pill{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:19px;padding:0 6px;border-radius:20px;background:var(--phase-bg);border:0.5px solid var(--border);color:var(--text-sub);font-size:10.5px;font-weight:600;margin-left:8px;vertical-align:middle;}
+.rd-note{font-size:12px;color:var(--text-sub);line-height:1.6;margin:-0.5rem 0 0.9rem;}
+.rd-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:0.5px solid var(--border);}
+.move-btn{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:500;padding:6px 12px;border-radius:6px;border:0.5px solid var(--border);background:var(--phase-bg);color:var(--text-muted);cursor:pointer;font-family:inherit;transition:all 0.15s ease;}
+.move-btn:hover{color:var(--text);border-color:var(--text-sub);}
+.move-btn i{font-size:10.5px;}
+.move-done{color:var(--success-text);border-color:var(--teal-border);background:var(--teal-bg);}
+.move-done:hover{color:var(--success-text);filter:brightness(0.96);}
+[data-theme="dark"] .move-done:hover{filter:brightness(1.2);}
+.rd-empty{font-size:13px;color:var(--text-sub);font-style:italic;border:0.5px dashed var(--border);border-radius:12px;padding:1rem 1.25rem;line-height:1.6;}
+.case-card.is-done{opacity:0.62;}
+.case-card.is-done .case-name{text-decoration:line-through;text-decoration-thickness:1px;}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(120%);background:var(--text);color:var(--bg);font-size:12.5px;font-weight:500;padding:9px 18px;border-radius:20px;z-index:3000;transition:transform 0.25s ease;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* directory cards */
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:0.75rem;}
+.dir-card{display:block;text-decoration:none;color:var(--text);background:var(--card-bg);border:0.5px solid var(--border);border-left:3px solid var(--border);border-radius:12px;padding:0.9rem 1.1rem;transition:transform 0.15s ease,box-shadow 0.15s ease,border-color 0.15s ease;}
+.dir-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,0.08);}
+[data-theme="dark"] .dir-card:hover{box-shadow:0 6px 18px rgba(0,0,0,0.4);}
+.dir-card .dir-name{font-size:15px;font-weight:500;margin:0 0 3px;display:flex;align-items:center;gap:8px;}
+.dir-card .dir-code{font-size:11px;color:var(--text-sub);font-weight:400;}
+.dir-card .dir-desc{font-size:12.5px;color:var(--text-muted);margin:0;line-height:1.55;}
+.dir-card i{font-size:13px;width:16px;text-align:center;}
+.dir-teal{border-left-color:var(--teal-border);} .dir-teal i{color:var(--teal-border);}
+.dir-purple{border-left-color:var(--purple-border);} .dir-purple i{color:var(--purple-dot);}
+.dir-amber{border-left-color:var(--amber-border);} .dir-amber i{color:var(--amber-dot);}
+.dir-coral{border-left-color:var(--coral-border);} .dir-coral i{color:var(--coral-border);}
+.dir-blue{border-left-color:var(--blue-border);} .dir-blue i{color:var(--blue-border);}
+.dir-gray{border-left-color:var(--text-sub);} .dir-gray i{color:var(--text-sub);}
+.sub-label{font-size:12px;font-weight:500;color:var(--text-sub);margin:1.25rem 0 0.6rem;}
+
+/* weekly class timetable */
+.tt-wrap{overflow-x:auto;}
+.tt{width:100%;border-collapse:separate;border-spacing:6px;min-width:520px;}
+.tt th{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.06em;text-transform:uppercase;text-align:left;padding:0 6px 2px;}
+.tt td{vertical-align:top;width:20%;}
+.tt-time{font-size:11px;font-weight:500;color:var(--text-sub);white-space:nowrap;padding-top:10px;width:74px;}
+.tt-slot{border-radius:10px;padding:0.6rem 0.7rem;border:0.5px solid var(--border);}
+.tt-slot .n{font-size:12.5px;font-weight:500;line-height:1.35;display:block;}
+.tt-slot .m{font-size:11px;line-height:1.5;display:block;margin-top:2px;opacity:0.85;}
+.tt-amber{background:var(--amber-bg);border-color:var(--amber-border);color:var(--amber-text);}
+.tt-purple{background:var(--purple-bg);border-color:var(--purple-border);color:var(--purple-text);}
+.tt-teal{background:var(--teal-bg);border-color:var(--teal-border);color:var(--teal-text);}
+.tt-blue{background:var(--blue-bg);border-color:var(--blue-border);color:var(--blue-text);}
+.tt-empty{background:transparent;border:0.5px dashed var(--border);border-radius:10px;height:100%;min-height:34px;}
+
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menu-btn" aria-label="Toggle Directory">
+  <span></span><span></span><span></span>
+</button>
+<div id="sidebar-scrim"></div>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <a href="../index.html" class="action-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>
+  </a>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+  <nav id="sidebar">
+    <div class="sidebar-title">Directory</div>
+    <a href="../index.html" class="sidebar-link">Home</a>
+    <a href="../pages/case_guide.html" class="sidebar-link">Case guide - IRAC &amp; briefing</a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Readings by class</div>
+    <a href="../pages/crimlaw_readings.html" class="sidebar-link active">Criminal Law</a>
+    <a href="../pages/property_readings.html" class="sidebar-link">Property</a>
+    <a href="../pages/torts_readings.html" class="sidebar-link">Torts</a>
+    <a href="../pages/gateway_readings.html" class="sidebar-link">Gateway to Lawyering I</a>
+    <a href="../pages/isl_readings.html" class="sidebar-link">Introduction to the Study of Law</a>
+    <a href="../pages/contracts_readings.html" class="sidebar-link">Contracts <span style="opacity:.6">&middot; S27</span></a>
+    <a href="../pages/civpro_readings.html" class="sidebar-link">Civil Procedure <span style="opacity:.6">&middot; S27</span></a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Tools</div>
+    <a href="../pages/tracker.html" class="sidebar-link">Task &amp; event tracker</a>
+    <a href="../pages/orientation_guide.html" class="sidebar-link">Orientation guide</a>
+    <a href="../pages/professors.html" class="sidebar-link">Professors &amp; reading prep</a>
+    <a href="../pages/isl_study_companion.html" class="sidebar-link">ISL study companion</a>
+  </nav>
+
+<h1>Criminal Law</h1>
+<p class="subtitle">Prof. Michael Cahill &bull; CRM-100-D1 &bull; Mon/Wed 10:00-11:55am &bull; Rm 501</p>
+
+<div class="info-box" style="margin-bottom:1.25rem;">Assigned casebook material first, then the primary-source opinions. Everything below was rewritten in full from the uploaded excerpts &mdash; not reproduced verbatim.</div>
+
+<div class="toolbar">
+  <button class="tool-btn" id="btn-export" title="Download your reading status as a JSON file"><i class="fa-solid fa-file-export"></i>Export status</button>
+  <button class="tool-btn" id="btn-import" title="Load a previously exported JSON file"><i class="fa-solid fa-file-import"></i>Import status</button>
+  <button class="tool-btn" id="btn-reset" title="Put every reading back in its default category"><i class="fa-solid fa-arrow-rotate-left"></i>Reset this class</button>
+  <input type="file" id="file-import" accept="application/json,.json" style="display:none;">
+</div>
+
+<div class="section" id="assigned">
+<p class="section-title">Assigned readings<span class="count-pill" id="count-assigned">0</span></p>
+<p class="rd-note">Parsed from the two uploaded casebook excerpts (Robinson, Baughman &amp; Cahill, <em>Criminal Law: Case Studies &amp; Controversies</em>, 6th ed.) &mdash; rewritten in full, not reproduced verbatim.</p><div id="list-assigned"></div>
+</div>
+
+<div class="section" id="cases">
+<p class="section-title">Case readings<span class="count-pill" id="count-case">0</span></p>
+<div id="list-case"></div>
+</div>
+
+<div class="section" id="completed">
+<p class="section-title">Completed readings<span class="count-pill" id="count-done">0</span></p>
+<div id="list-done"></div>
+</div>
+
+<div class="success-box" style="margin-top:1.5rem;">
+<strong style="font-weight:500;">How to use this list:</strong> Find each primary opinion on Google Scholar (scholar.google.com) - search the case name and filter to &ldquo;case law.&rdquo; Read the opinion first without any guide. Then write a one-page brief using the <a href="case_guide.html#brief" style="color:var(--success-text);font-weight:500;">8-part structure</a> in the case guide. Then read a summary on Casebriefs.com or Quimbee to check your understanding. Do not start with the summary. The struggle of reading the raw opinion is the skill you are building.
+</div>
+
+<p class="footnote">Reading status is saved in this browser only. Use <strong style="font-weight:500;">Export status</strong> to carry it to another device, and <strong style="font-weight:500;">Import status</strong> there &mdash; one export file covers every class, not just this one.</p>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const CLASS_ID = "crimlaw";
+const ITEMS = [{"id": "crim-process", "cat": "assigned", "subject": "Background Materials", "tone": "var(--amber-text)", "name": "The Criminal Justice Process", "year": "Adapted from LaFave, Israel &amp; King, <em>Criminal Procedure<\/em> &sect; 1.3 (3d ed.)", "why": "The 18 steps a felony case actually goes through, from reported crime to postconviction relief - arrest, booking, charging screening, bail, preliminary hearing, grand jury, trial, sentencing, appeal - plus the three burdens of proof (pleading, production, persuasion) that govern who has to prove what at trial.", "tags": [["amber", "Criminal procedure"], ["amber", "Burdens of proof"]], "meta": "Rewritten in full", "links": [["Read", "crimlaw_process_reading.html", "int"]]}, {"id": "crim-legality", "cat": "assigned", "subject": "Part I, Section 2", "tone": "var(--amber-text)", "name": "The Legality Principle", "year": "The Case of Ray Brent Marsh &middot; vagueness, lenity &amp; ex post facto", "why": "Built around the real Tri-State Crematory scandal - over 340 bodies dumped in a Georgia grove instead of cremated. The vehicle for teaching why criminal liability requires a clearly pre-existing law: vagueness, the rule of lenity, ex post facto bans, and the canons courts use to resolve genuine statutory ambiguity.", "tags": [["amber", "Legality principle"], ["amber", "Statutory interpretation"]], "meta": "Rewritten in full", "links": [["Read", "crimlaw_legality_reading.html", "int"]]}, {"id": "crim-punishment", "cat": "assigned", "subject": "Part I, Section 3", "tone": "var(--amber-text)", "name": "Theories of Punishment", "year": "Retributivism, utilitarianism &amp; the abolition debate", "why": "Why does the state punish at all, and how much? Retributivism vs. deterrence vs. incapacitation vs. rehabilitation vs. restorative justice, Cahill's &ldquo;punishment pluralism,&rdquo; the MPC's &ldquo;limiting retributivism,&rdquo; Robinson's desert-based critique, and the McLeod/Barkow debate over prison abolition.", "tags": [["amber", "Retributivism"], ["amber", "Deterrence"], ["amber", "Desert"]], "meta": "Rewritten in full", "links": [["Read", "crimlaw_punishment_reading.html", "int"]]}, {"id": "crim-culpability", "cat": "assigned", "subject": "Part II, Section 4", "tone": "var(--amber-text)", "name": "Culpability Requirements", "year": "The Case of Thomas Fungwe &middot; purpose, knowledge, recklessness &amp; negligence", "why": "The mens rea unit: a tragic 1999 Michigan case opens the doctrine, then the MPC's four-level culpability hierarchy (purpose, knowledge, recklessness, negligence), strict liability, the concurrence requirement, and the interpretive rules for figuring out which culpability level attaches to which element of an offense.", "tags": [["amber", "Mens rea"], ["amber", "Model Penal Code"]], "meta": "Rewritten in full", "links": [["Read", "crimlaw_culpability_reading.html", "int"]]}, {"id": "crim-dudley", "cat": "case", "subject": "Criminal Law", "tone": "var(--amber-text)", "name": "Regina v. Dudley and Stephens", "year": "Queen&rsquo;s Bench Division, 1884", "why": "Four shipwrecked sailors are stranded at sea. After weeks without food, three of them kill and eat the weakest - a 17-year-old orphan - to survive. When rescued, two are tried for murder. They argue necessity. The court rejects it and convicts. This case is the foundation of the necessity defense in criminal law and establishes that necessity cannot justify killing an innocent person. The facts are unforgettable. The moral questions will carry into class discussion.", "tags": [["amber", "Necessity defense"], ["amber", "Murder"], ["amber", "Criminal liability"]], "meta": "6 pages &bull; ~15 min read", "links": [["Google Scholar", "https://scholar.google.com/scholar?q=Regina+v.+Dudley+and+Stephens", "ext"], ["Read Case", "#", "off"]]}, {"id": "crim-conley", "cat": "case", "subject": "Criminal Law", "tone": "var(--amber-text)", "name": "People v. Conley", "year": "Illinois Appellate Court, 1989", "why": "A teenager hits another with a wine bottle at a party, causing permanent nerve damage. The issue is whether the defendant acted with the specific intent required for aggravated battery. The court examines how intent is inferred from conduct and circumstance, not mind-reading. This is the go-to case for understanding the mental state (mens rea) requirement - a concept that runs through every criminal law issue you will encounter.", "tags": [["amber", "Mens rea"], ["amber", "Intent"], ["amber", "Specific intent"]], "meta": "5 pages &bull; ~15 min read", "links": [["Google Scholar", "https://scholar.google.com/scholar?q=People+v.+Conley+1989", "ext"], ["Read Case", "#", "off"]]}, {"id": "crim-gideon", "cat": "case", "subject": "Criminal Law &middot; optional", "tone": "var(--amber-text)", "name": "Gideon v. Wainwright", "year": "U.S. Supreme Court, 1963", "why": "The Supreme Court rules that states must provide counsel to defendants who cannot afford an attorney. The Sixth Amendment right to counsel applied to the states. Short, readable, and historically significant. Optional - read once the other case readings and the assigned readings are done.", "tags": [["amber", "Right to counsel"], ["amber", "Sixth Amendment"]], "meta": "10 pages &bull; ~25 min", "links": [["Google Scholar", "https://scholar.google.com/scholar?q=Gideon+v.+Wainwright", "ext"], ["Read Case", "#", "off"]]}];
+const EMPTY = {"assigned": "Nothing in assigned readings right now.", "case": "Nothing in case readings right now.", "done": "Nothing completed yet. Finish something from the assigned list and mark it complete."};
+
+
+/* ------------------------------------------------------------------ state */
+const STORE_KEY = 'carnetReadings';
+const BUCKETS = ['assigned', 'case', 'done'];
+const LABELS = { assigned: 'Assigned readings', case: 'Case readings', done: 'Completed readings' };
+
+function loadStore() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+function saveStore(store) {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); }
+  catch (e) { toast('Could not save - storage is blocked in this browser'); }
+}
+function bucketOf(item) {
+  const store = loadStore();
+  const mine = store[CLASS_ID] || {};
+  const b = mine[item.id];
+  return BUCKETS.indexOf(b) > -1 ? b : item.cat;
+}
+function setBucket(id, bucket) {
+  const store = loadStore();
+  if (!store[CLASS_ID]) store[CLASS_ID] = {};
+  store[CLASS_ID][id] = bucket;
+  saveStore(store);
+}
+
+/* ----------------------------------------------------------------- render */
+function linkHTML(l) {
+  const [label, href, kind] = l;
+  if (kind === 'off') return '<a href="#" class="case-btn disabled">' + label + '</a>';
+  if (kind === 'ext') return '<a href="' + href + '" target="_blank" rel="noopener" class="case-btn">' + label + '</a>';
+  return '<a href="' + href + '" class="case-btn">' + label + '</a>';
+}
+
+function actionsHTML(item, bucket) {
+  if (bucket === 'assigned') {
+    return '<button class="move-btn" data-move="case" data-id="' + item.id + '">' +
+             '<i class="fa-solid fa-arrow-turn-down"></i>Move to case readings</button>' +
+           '<button class="move-btn move-done" data-move="done" data-id="' + item.id + '">' +
+             '<i class="fa-solid fa-check"></i>Mark complete</button>';
+  }
+  if (bucket === 'case') {
+    return '<button class="move-btn" data-move="assigned" data-id="' + item.id + '">' +
+             '<i class="fa-solid fa-arrow-turn-up"></i>Move to assigned readings</button>' +
+           '<span class="rd-note" style="margin:0;align-self:center;">Complete it from the assigned list.</span>';
+  }
+  return '<button class="move-btn" data-move="assigned" data-id="' + item.id + '">' +
+           '<i class="fa-solid fa-rotate-left"></i>Reopen as assigned</button>';
+}
+
+function cardHTML(item, n, bucket) {
+  const tags = (item.tags || []).map(t => '<span class="tag tag-' + t[0] + '">' + t[1] + '</span>').join('');
+  const links = (item.links || []).map(linkHTML).join('');
+  return '<div class="case-card' + (bucket === 'done' ? ' is-done' : '') + '" data-id="' + item.id + '">' +
+    '<div class="case-head"><span class="rank">' + n + '</span>' +
+      '<p class="case-subject" style="color:' + item.tone + '">' + item.subject + '</p></div>' +
+    '<p class="case-name">' + item.name + '</p>' +
+    (item.year ? '<p class="case-year">' + item.year + '</p>' : '') +
+    '<p class="case-why">' + item.why + '</p>' +
+    (tags ? '<div style="margin-top:8px;">' + tags + '</div>' : '') +
+    (links ? '<div class="case-links"><span class="case-meta">' + (item.meta || '') + '</span>' +
+      '<div class="btn-group">' + links + '</div></div>' : '') +
+    '<div class="rd-actions">' + actionsHTML(item, bucket) + '</div>' +
+  '</div>';
+}
+
+function render() {
+  BUCKETS.forEach(bucket => {
+    const list = ITEMS.filter(i => bucketOf(i) === bucket);
+    const host = document.getElementById('list-' + bucket);
+    const pill = document.getElementById('count-' + bucket);
+    if (pill) pill.textContent = list.length;
+    if (!list.length) {
+      host.innerHTML = '<div class="rd-empty">' + EMPTY[bucket] + '</div>';
+    } else {
+      host.innerHTML = list.map((it, idx) => cardHTML(it, idx + 1, bucket)).join('');
+    }
+  });
+}
+
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.move-btn');
+  if (!btn) return;
+  setBucket(btn.dataset.id, btn.dataset.move);
+  render();
+  toast('Moved to ' + LABELS[btn.dataset.move].toLowerCase());
+});
+
+/* ----------------------------------------------------------- export/import */
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function exportState() {
+  const payload = { app: 'carnet', kind: 'readings', exported: new Date().toISOString(), data: loadStore() };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'carnet-readings-' + new Date().toISOString().slice(0, 10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast('Exported reading status for every class');
+}
+
+function importState(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      const incoming = parsed && parsed.data ? parsed.data : parsed;
+      if (!incoming || typeof incoming !== 'object') throw new Error('bad shape');
+      const store = loadStore();
+      Object.keys(incoming).forEach(cls => {
+        store[cls] = Object.assign({}, store[cls], incoming[cls]);
+      });
+      saveStore(store);
+      render();
+      toast('Imported reading status');
+    } catch (err) {
+      toast('That file is not a carnet readings export');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function resetState() {
+  const store = loadStore();
+  delete store[CLASS_ID];
+  saveStore(store);
+  render();
+  toast('Reset to the default order for this class');
+}
+
+document.getElementById('btn-export').addEventListener('click', exportState);
+document.getElementById('btn-reset').addEventListener('click', resetState);
+document.getElementById('btn-import').addEventListener('click', () => document.getElementById('file-import').click());
+document.getElementById('file-import').addEventListener('change', e => {
+  if (e.target.files && e.target.files[0]) importState(e.target.files[0]);
+  e.target.value = '';
+});
+
+render();
+
+
+  const toggleBtn = document.getElementById('theme-toggle');
+  const menuBtn = document.getElementById('menu-btn');
+  const sidebar = document.getElementById('sidebar');
+  const scrim = document.getElementById('sidebar-scrim');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    if (root.getAttribute('data-theme') === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  function toggleMenu() {
+    sidebar.classList.toggle('open');
+    menuBtn.classList.toggle('open');
+    scrim.classList.toggle('show');
+  }
+  menuBtn.addEventListener('click', toggleMenu);
+  scrim.addEventListener('click', toggleMenu);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) toggleMenu();
+  });
+
+</script>
+</body>
+</html>
