@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghen v. Rich - U.S. District Court, District of Massachusetts</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
+<style>
+:root {
+  --bg: #fff;
+  --text: #2C2C2A;
+  --text-muted: #5F5E5A;
+  --text-sub: #888780;
+  --border: #D3D1C7;
+  --card-bg: #fff;
+  --phase-bg: #F1EFE8;
+
+  --teal-bg: #E1F5EE; --teal-text: #0F6E56; --teal-border: #1D9E75;
+  --purple-bg: #EEEDFE; --purple-text: #3C3489; --purple-border: #3C3489; --purple-dot: #534AB7;
+  --amber-bg: #FAEEDA; --amber-text: #854F0B; --amber-border: #EF9F27; --amber-dot: #BA7517;
+  --coral-bg: #FAECE7; --coral-text: #993C1D; --coral-border: #993C1D;
+  --blue-bg: #E6F1FB; --blue-text: #185FA5; --blue-border: #378ADD;
+  --gray-bg: #F1EFE8; --gray-text: #444441;
+
+  --success-text: #085041;
+  --warn-text: #633806;
+  --info-text: #0C447C;
+}
+[data-theme="dark"] {
+  --bg: #222222;
+  --text: #f0f0f0;
+  --text-muted: #bbbbbb;
+  --text-sub: #aaaaaa;
+  --border: #444444;
+  --card-bg: #2d2d2d;
+  --phase-bg: #333333;
+
+  --teal-bg: #11332a; --teal-text: #4adeb2; --teal-border: #1a8f69;
+  --purple-bg: #1c1a3b; --purple-text: #a8a0f0; --purple-border: #564cba; --purple-dot: #7b72db;
+  --amber-bg: #3b280b; --amber-text: #f0b767; --amber-border: #c4801c; --amber-dot: #d69436;
+  --coral-bg: #3b170c; --coral-text: #f28b6b; --coral-border: #bd4821;
+  --blue-bg: #0b2238; --blue-text: #73b3f0; --blue-border: #2c72b8;
+  --gray-bg: #333333; --gray-text: #dddddd;
+
+  --success-text: #59dcb1;
+  --warn-text: #f5c487;
+  --info-text: #88c2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
+h1{font-size:22px;font-weight:500;margin-bottom:4px;}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2.5rem;}
+.section{margin-bottom:2.5rem;}
+.section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
+.card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
+.written sup{font-size:10px;color:var(--text-sub);margin-left:2px;}
+.case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
+.case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
+[data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.info-box{background:var(--purple-bg);border:0.5px solid var(--purple-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--purple-text);line-height:1.5;margin-bottom:1.25rem;}
+.tag{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:10px;margin-right:6px;margin-bottom:4px;background:var(--purple-bg);color:var(--purple-text);}
+ol.notes-list { margin-bottom: 1rem; padding-left: 1.5rem; }
+ol.notes-list li { font-size: 14px; line-height: 1.75; margin-bottom: 0.85rem; }
+
+#nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
+.action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
+.action-btn:hover { background: var(--phase-bg); }
+.action-btn svg { width: 22px; height: 22px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+#theme-toggle { position: fixed; top: 1.5rem; right: 1.5rem; }
+#sun-icon { display: block; }
+#moon-icon { display: none; }
+[data-theme="dark"] #sun-icon { display: none; }
+[data-theme="dark"] #moon-icon { display: block; }
+
+@media print{body{padding:1rem;} #theme-toggle, #nav-arrows{display:none;}}
+
+/* --- carnet directory sidebar (shared chrome) --- */
+#sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100vh; background: var(--card-bg); border-right: 1px solid var(--border); transition: left 0.3s ease; z-index: 2000; padding: 5rem 1.5rem 2rem; overflow-y: auto; box-shadow: 4px 0 15px rgba(0,0,0,0.05); }
+#sidebar.open { left: 0; }
+#sidebar .sidebar-title { font-size: 14px; font-weight: 600; color: var(--text-sub); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+#sidebar .sidebar-link { display: block; padding: 0.6rem 0.8rem; color: var(--text); text-decoration: none; font-size: 14px; border-radius: 6px; transition: background 0.2s; margin-bottom: 4px; }
+#sidebar .sidebar-link:hover { background: var(--phase-bg); color: var(--teal-border); font-weight: 500; }
+#sidebar .sidebar-link.active { background: var(--phase-bg); font-weight: 500; }
+#sidebar-scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.25); opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 1999; }
+#sidebar-scrim.show { opacity: 1; pointer-events: auto; }
+.menu-toggle { position: fixed; top: 1.5rem; left: 1.5rem; z-index: 2001; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; width: 44px; height: 44px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; }
+.menu-toggle:hover { background: var(--phase-bg); }
+.menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s ease; }
+.menu-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+#nav-arrows { left: 5.5rem !important; }
+body { padding-top: 5.75rem !important; }
+@media(max-width:640px){ body { padding-top: 6.25rem !important; } }
+@media print { .menu-toggle, #sidebar, #sidebar-scrim { display: none !important; } }
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menu-btn" aria-label="Toggle Directory">
+  <span></span><span></span><span></span>
+</button>
+<div id="sidebar-scrim"></div>
+
+  <nav id="sidebar">
+    <div class="sidebar-title">Directory</div>
+    <a href="../index.html" class="sidebar-link">Home</a>
+    <a href="../pages/case_guide.html" class="sidebar-link">Case guide - IRAC &amp; briefing</a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Readings by class</div>
+    <a href="../pages/crimlaw_readings.html" class="sidebar-link">Criminal Law</a>
+    <a href="../pages/property_readings.html" class="sidebar-link">Property</a>
+    <a href="../pages/torts_readings.html" class="sidebar-link">Torts</a>
+    <a href="../pages/gateway_readings.html" class="sidebar-link">Gateway to Lawyering I</a>
+    <a href="../pages/isl_readings.html" class="sidebar-link">Introduction to the Study of Law</a>
+    <a href="../pages/contracts_readings.html" class="sidebar-link">Contracts <span style="opacity:.6">&middot; S27</span></a>
+    <a href="../pages/civpro_readings.html" class="sidebar-link">Civil Procedure <span style="opacity:.6">&middot; S27</span></a>
+    <div class="sidebar-title" style="margin-top:1.5rem;">Tools</div>
+    <a href="../pages/tracker.html" class="sidebar-link">Task &amp; event tracker</a>
+    <a href="../pages/orientation_guide.html" class="sidebar-link">Orientation guide</a>
+    <a href="../pages/professors.html" class="sidebar-link">Professors &amp; reading prep</a>
+    <a href="../pages/isl_study_companion.html" class="sidebar-link">ISL study companion</a>
+  </nav>
+
+<div id="nav-arrows">
+  <button onclick="sessionStorage.getItem('carnetVisitedHome') ? window.history.back() : window.location.href='../index.html'" class="action-btn" aria-label="Go Back">
+    <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button onclick="window.history.forward()" class="action-btn" aria-label="Go Forward">
+    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+  <a href="../index.html" class="action-btn" aria-label="Home">
+    <svg viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg>
+  </a>
+</div>
+
+<button id="theme-toggle" class="action-btn" aria-label="Toggle Dark Mode">
+  <svg id="sun-icon" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+  <svg id="moon-icon" viewBox="0 0 24 24">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<h1>Ghen v. Rich</h1>
+<p class="subtitle">United States District Court, District of Massachusetts &bull; 1881 &bull; 8 F. 159</p>
+
+<div class="section">
+<span class="tag">Custom as law</span><span class="tag">First possession</span><span class="tag">Trade usage &middot; whaling industry</span>
+
+<div class="info-box" style="margin-top:0.75rem;"><strong style="font-weight:500;">Holding:</strong> A local usage confined to a single trade &mdash; here, the decades-old Cape Cod practice that a whaleman who kills a fin-back whale with a marked bomb-lance owns it, even though it is not actually recovered until it strands days later, often miles away &mdash; is valid and will be enforced as law, because it requires the only act of appropriation possible given the nature of the fishery, is necessary to the industry's survival, and still rewards an honest finder with salvage. Ghen recovers the value of the oil, $71.05, without costs.</div>
+</div>
+
+<div class="section">
+<p class="section-title">Opinion</p>
+<p class="written">&#9632; Nelson, D.J. This is a libel to recover the value of a fin-back whale. The libellant lives in Provincetown and the respondent in Wellfleet. The facts, as they appeared at the hearing, are as follows:</p>
+<p class="written">In the early spring months the easterly part of Massachusetts bay is frequented by the species of whale known as the fin-back whale. Fishermen from Provincetown pursue them in open boats from the shore, and shoot them with bomb-lances fired from guns made expressly for the purpose. When killed they sink at once to the bottom, but in the course of from one to three days they rise and float on the surface. Some of them are picked up by vessels and towed into Provincetown. Some float ashore at high water and are left stranded on the beach as the tide recedes. Others float out to sea and are never recovered. The person who happens to find them on the beach usually sends word to Provincetown, and the owner comes to the spot and removes the blubber. The finder usually receives a small salvage for his services. Try-works are established in Provincetown for trying out the oil. The business is of considerable extent, but, since it requires skill and experience, as well as some outlay of capital, and is attended with great exposure and hardship, few persons engage in it. The average yield of oil is about 20 barrels to a whale. It swims with great swiftness, and for that reason cannot be taken by the harpoon and line. Each boat's crew engaged in the business has its peculiar mark or device on its lances, and in this way it is known by whom a whale is killed.</p>
+<p class="written">The usage on Cape Cod, for many years, has been that the person who kills a whale in the manner and under the circumstances described, owns it, and this right has never been disputed until this case. The libellant has been engaged in this business for ten years past. On the morning of April 9, 1880, in Massachusetts bay, near the end of Cape Cod, he shot and instantly killed with a bomb-lance the whale in question. It sunk immediately, and on the morning of the 12th was found stranded on the beach in Brewster, within the ebb and flow of the tide, by one Ellis, 17 miles from the spot where it was killed. Instead of sending word to Provincetown, as is customary, Ellis advertised the whale for sale at auction, and sold it to the respondent, who shipped off the blubber and tried out the oil. The libellant heard of the finding of the whale on the morning of the 15th, and immediately sent one of his boat's crew to the place and claimed it. Neither the respondent nor Ellis knew the whale had been killed by the libellant, but they knew or might have known, if they had wished, that it had been shot and killed with a bomb-lance, by some person engaged in this species of business.</p>
+<p class="written">The libellant claims title to the whale under this usage. The respondent insists that this usage is invalid. It was decided by Judge Sprague, in <em>Taber v. Jenny</em>, 1 Sprague, 315, 23 F. Cas. 605 (D. Mass. 1856), that when a whale has been killed, and is anchored and left with marks of appropriation, it is the property of the captors; and if it is afterwards found, still anchored, by another ship, there is no usage or principle of law by which the property of the original captors is diverted, even though the whale may have dragged from its anchorage. The learned judge says:</p>
+<p class="written" style="padding-left: 2rem; border-left: 3px solid var(--border);">When the whale had been killed and taken possession of by the boat of the Hillman, (the first taker,) it became the property of the owners of that ship, and all was done which was then practicable in order to secure it. They left it anchored, with unequivocal marks of appropriation.</p>
+<p class="written">In <em>Bartlett v. Budd</em>, 1 Low. 223, 2 F. Cas. 966 (D. Mass. 1868), the facts were these: The first officer of the libellant's ship killed a whale in the Okhotsk sea, anchored it, attached a waif to the body, and then left it and went ashore at some distance for the night. The next morning the boats of the respondent's ship found the whale adrift, the anchor not holding, the cable coiled round the body, and no waif or irons attached to it. Judge Lowell held that, as the libellants had killed and taken actual possession of the whale, the ownership vested in them. In his opinion the learned judge says:</p>
+<p class="written" style="padding-left: 2rem; border-left: 3px solid var(--border);">A whale, being ferae naturae, does not become property until a firm possession has been established by the taker. But when such possession has become firm and complete, the right of property is clear, and has all the characteristics of property.</p>
+<p class="written">He doubted whether a usage set up but not proved by the respondents, that a whale found adrift in the ocean is the property of the finder, unless the first taker should appear and claim it before it is cut in, would be valid, and remarked that "there would be great difficulty in upholding a custom that should take the property of A. and give it to B., under so very short and uncertain a substitute for the statute of limitations, and one so open to fraud and deceit." Both the cases cited were decided without reference to usage, upon the ground that the property had been acquired by the first taker by actual possession and appropriation.</p>
+<p class="written">In <em>Swift v. Gifford</em>, 2 Low. 110, 23 F. Cas. 558 (D. Mass. 1872), Judge Lowell decided that a custom among whalemen in the Arctic seas, that the iron holds the whale was reasonable and valid. In that case a boat's crew from the respondent's ship pursued and struck a whale in the Arctic ocean, and the harpoon and the line attached to it remained in the whale, but did not remain fast to the boat. A boat's crew from the libellant's ship continued the pursuit and captured the whale, and the master of the respondent's ship claimed it on the spot. It was held by the learned judge that the whale belonged to the respondents. It was said by Judge Sprague, in <em>Bourne v. Ashley</em>, an unprinted case referred to by Judge Lowell in <em>Swift v. Gifford</em>, that the usage for the first iron, whether attached to the boat or not, to hold the whale was fully established; and he added that, although local usages of a particular port ought not to be allowed to set aside the general maritime law, this objection did not apply to a custom which embraced an entire business, and had been concurred in for a long time by every one engaged in the trade.</p>
+<p class="written">In <em>Swift v. Gifford</em>, Judge Lowell also said:</p>
+<p class="written" style="padding-left: 2rem; border-left: 3px solid var(--border);">The rule of law invoked in this case is one of very limited application. The whale fishery is the only branch of industry of any importance in which it is likely to be much used, and if a usage is found to prevail generally in that business, it will not be open to the objection that it is likely to disturb the general understanding of mankind by the interposition of an arbitrary exception.</p>
+<p class="written">I see no reason why the usage proved in this case is not as reasonable as that sustained in the cases cited. Its application must necessarily be extremely limited, and can affect but a few persons. It has been recognized and acquiesced in for many years. It requires in the first taker the only act of appropriation that is possible in the nature of the case. Unless it is sustained, this branch of industry must necessarily cease, for no person would engage in it if the fruits of his labor could be appropriated by any chance finder. It gives reasonable salvage for securing or reporting the property. That the rule works well in practice is shown by the extent of the industry which has grown up under it, and the general acquiescence of a whole community interested to dispute it. It is by no means clear that without regard to usage the common law would not reach the same result. That seems to be the effect of the decisions in <em>Taber v. Jenny</em> and <em>Bartlett v. Budd</em>. If the fisherman does all that is possible to do to make the animal his own, that would seem to be sufficient. Such a rule might well be applied in the interest of trade, there being no usage or custom to the contrary. Holmes, Com. Law, 217. But be that as it may, I hold the usage to be valid, and that the property in the whale was in the libellant.</p>
+<p class="written">The rule of damages is the market value of the oil obtained from the whale, less the cost of trying it out and preparing it for the market, with interest on the amount so ascertained from the date of conversion. As the question is new and important, and the suit is contested on both sides, more for the purpose of having it settled than for the amount involved, I shall give no costs.</p>
+<p class="written" style="font-weight:500;">Decree for libellant for $71.05, without costs.</p>
+</div>
+
+<div class="section">
+<p class="section-title">Notes and Questions</p>
+<ol class="notes-list">
+<li>Most customary whaling rules are variants on first-in-time. As described by Robert Ellickson, the two major rules were the "fast-fish-loose-fish" rule and the "iron-holds-the-whale" rule. Under the fast-fish-loose-fish rule, a whale belonged to the first harpooner as long as it was attached to his boat, in which case he got to keep the whole whale. This rule applied in particular to right whales, which are relatively slow-moving. Under the iron-holds-the-whale rule, the first harpooner would get exclusive rights to the whale as long as he was in fresh pursuit. The iron-holds-the-whale rule tended to be adopted where sperm whales were predominant. Sperm whales were the most valuable and the most dangerous. Ellickson argues that these customs and the custom for finback whales in the Ghen case make sense in light of the different resources&mdash;types of whales&mdash;to which they applied. He also argues that their efficiency (from the point of view of whalers) confirms the hypothesis that close-knit groups will devise and enforce norms among themselves that maximize their wealth (but may cause uncompensated harm to those outside the group&mdash;or outgroup externalities). See Robert C. Ellickson, <em>A Hypothesis of Wealth-Maximizing Norms: Evidence from the Whaling Industry</em>, 5 J.L. Econ. &amp; Org. 83 (1989). For a famous discussion of the concept of fast fish versus loose fish, see Herman Melville, <em>Moby Dick</em>, Chapter 89 (1851).</li>
+<li>The finder in Ghen was not a whaler. But was he part of a close-knit whaling community? Was he likely to have known of the custom of notifying the owner? If not, should he have known that someone was making a claim to the whale? Does that matter? Norms and customs are more easily known within a community than to outsiders, and enforcing a custom against outsiders may cause unfair surprise and wasteful efforts at avoiding such surprises. See Henry E. Smith, <em>Community and Custom in Property</em>, 10 Theoretical Inquiries L. 5 (2009). Moreover, a custom can be good for insiders but bad for society. Where did the customs of whalers leave conservation values?</li>
+<li>Interestingly, the fast-fish-loose-fish rule seems to have been the "default" custom and the iron-holds-the-whale rule a departure from it only in those areas where sperm whales predominated. The fast-fish-loose-fish rule accords with the general norms of possession. Might this have made it easier to communicate to others?</li>
+<li>What is the difference between a social norm and a custom? Although there is overlap, the idea of a social norm includes informality and being "beyond the law" (even sometimes against the law). Robert C. Ellickson, <em>Order without Law: How Neighbors Settle Disputes</em> (1991). Custom is closer to the law in that it is usually more articulated, and its normative force is close to being "legal" and sometimes winds up actually becoming part of the law. Eugen Ehrlich, <em>Fundamental Principles of the Sociology of Law</em> (Walter L. Moll trans., 1936). Indeed, there was a time when the common law was regarded as the general custom, distinct from the customs pertaining to localities. See David Callies, <em>How Custom Becomes Law in England</em>, in Peter &Oslash;rebech et al., The Role of Customary Law in Sustainable Development 158 (2005). In many countries the extent of official recognition of customary rights is an important political issue. For example, in sub-Saharan Africa there has even a movement to register "customary land rights." This has, however, proven difficult, and where it has been implemented, it has shifted decision-making authority away from families and communities to the state and its officials. See Mekonnen Firew Ayano, <em>Rural Land Registration in Ethiopia: Myths and Realities</em>, 52 Law &amp; Soc'y Rev. 1060 (2018).</li>
+<li>As we will see in Chapter V, property law is more standardized in many respects than contract law: one can tailor one's contract, but the basic forms of ownership come in a small and closed menu. One effect is that people who have to deal with this or similar property&mdash;third parties&mdash;need not understand much idiosyncratic detail about property arrangements. Does the recognition of custom as law threaten to upend this balance? Community members may be well informed, but what about binding third parties? Is that coercive? When is community itself a coercive institution? The mining camps from which customs arose that were later adapted into federal law? The "lobster gangs" of Maine, and some (but not all) of the communities discussed by Ostrom in her book (excerpted in Chapter II) employed coercion, sometimes violent, and their exclusion of outsiders could be highly discriminatory. See Carol M. Rose, <em>Left Brain, Right Brain and History in the New Law and Economics of Property</em>, 79 Or. L. Rev. 479, 487&ndash;88 (2000). For an exploration of the tension between personal autonomy and community norms through a textured account of 1950s Chicago, see Alan Ehrenhalt, <em>The Lost City: The Forgotten Virtues of Community in America</em> (1995); see also Robert D. Putnam, <em>Bowling Alone: The Collapse and Revival of American Community</em> (2001).</li>
+</ol>
+</div>
+
+<div class="section" style="text-align: center; margin-top: 2rem;">
+  <a href="ghen_notes.html" class="case-btn" style="margin-right: 8px;">Case Notes</a>
+  <a href="ghen_practice.html" class="case-btn">Practice Question</a>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localStorage.getItem('theme')) {
+    root.setAttribute('data-theme', 'dark');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+</script>
+
+<script>
+  (function () {
+    var mb = document.getElementById('menu-btn');
+    var sb = document.getElementById('sidebar');
+    var sc = document.getElementById('sidebar-scrim');
+    if (!mb || !sb) return;
+    function toggle() {
+      sb.classList.toggle('open');
+      mb.classList.toggle('open');
+      if (sc) sc.classList.toggle('show');
+    }
+    mb.addEventListener('click', toggle);
+    if (sc) sc.addEventListener('click', toggle);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && sb.classList.contains('open')) toggle();
+    });
+  })();
+</script>
+</body>
+</html>
