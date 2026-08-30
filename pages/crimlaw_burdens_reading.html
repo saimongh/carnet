@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Burdens of Proof &amp; Presumptions</title>
+<title>Burdens of Proof</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path fill='%232C2C2A' d='M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/></svg>">
 <style>
 :root {
@@ -31,25 +31,59 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);padding:2rem;max-width:860px;margin:0 auto;line-height:1.7;font-size:15px;transition: background 0.3s, color 0.3s;}
 h1{font-size:22px;font-weight:500;margin-bottom:4px;}
-.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:0.75rem;}
-.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
-.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
-.tag-purple{background:var(--purple-bg);color:var(--purple-text);}
+.subtitle{font-size:13px;color:var(--text-muted);margin-bottom:2rem;}
 .section{margin-bottom:2.5rem;}
 .section-title{font-size:11px;font-weight:500;color:var(--text-sub);letter-spacing:0.08em;text-transform:uppercase;margin:0 0 1rem;padding-bottom:0.5rem;border-bottom:0.5px solid var(--border);}
 .section-title .num{color:var(--amber-text);}
-h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);}
-h4{font-size:13px;font-weight:500;margin:1.1rem 0 0.4rem;color:var(--purple-text);}
+h3{font-size:15px;font-weight:500;margin:1.25rem 0 0.5rem;color:var(--text);display:flex;align-items:center;gap:9px;}
+h4{font-size:13.5px;font-weight:500;margin:1.1rem 0 0.5rem;color:var(--text);}
 .card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.card-title{font-size:14.5px;font-weight:500;margin:0 0 8px;line-height:1.5;}
 .written{font-size:14px;line-height:1.75;margin:0 0 1rem;}
-.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.6;margin-bottom:1.25rem;}
-.amber-box{background:var(--amber-bg);border:0.5px solid var(--amber-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--amber-text);line-height:1.6;margin:0.75rem 0 1.25rem;}
-.example-card{background:var(--phase-bg);border-left:3px solid var(--purple-border);border-radius:0 8px 8px 0;padding:0.85rem 1rem;margin-bottom:0.85rem;}
-.example-card .claim{font-size:13.5px;font-weight:500;margin-bottom:6px;}
-.example-card .eval{font-size:13px;color:var(--text-muted);line-height:1.65;}
+.written:last-child{margin-bottom:0;}
+.info-box{background:var(--blue-bg);border:0.5px solid var(--blue-border);border-radius:8px;padding:0.75rem 1rem;font-size:13px;color:var(--info-text);line-height:1.5;margin-bottom:1.25rem;}
 .case-btn { text-decoration: none; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 6px; border: 0.5px solid var(--border); transition: all 0.2s ease; display: inline-flex; align-items: center; justify-content: center; background: var(--phase-bg); color: var(--text); }
 .case-btn:hover { filter: brightness(0.95); border-color: var(--text-sub); }
 [data-theme="dark"] .case-btn:hover { filter: brightness(1.15); }
+.tag{display:inline-block;font-size:11px;font-weight:500;border-radius:8px;padding:2px 8px;margin-right:6px;margin-bottom:4px;}
+.tag-amber{background:var(--amber-bg);color:var(--amber-text);}
+.tag-teal{background:var(--teal-bg);color:var(--teal-text);}
+.tag-gray{background:var(--gray-bg);color:var(--gray-text);}
+
+/* label badges (Q1/Q2/Q3, A-E) */
+.rank{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding:0 4px;border-radius:50%;background:var(--amber-bg);border:0.5px solid var(--amber-border);color:var(--amber-text);font-size:11px;font-weight:600;flex-shrink:0;}
+.q-label{font-size:11px;font-weight:600;color:var(--amber-text);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;}
+.eyebrow{font-size:11px;font-weight:600;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.05em;margin:0.85rem 0 0.3rem;}
+.eyebrow:first-child{margin-top:0;}
+
+/* contents box */
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;}
+.toc-label{font-size:11px;font-weight:600;color:var(--text-sub);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
+.toc-link{display:block;font-size:13px;color:var(--text-muted);text-decoration:none;padding:3px 0;}
+.toc-link:hover{color:var(--teal-border);}
+
+/* comparison table */
+.cmp-wrap{overflow-x:auto;margin-bottom:0.25rem;}
+.cmp{width:100%;border-collapse:collapse;font-size:12.5px;min-width:640px;}
+.cmp th{background:var(--phase-bg);color:var(--text-sub);font-weight:500;text-align:left;padding:0.55rem 0.7rem;font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;border-bottom:1px solid var(--border);}
+.cmp td{padding:0.65rem 0.7rem;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.55;}
+.cmp tr:last-child td{border-bottom:none;}
+.cmp td:first-child{font-weight:500;white-space:nowrap;}
+
+/* case-law callouts */
+.case-note{border-left:3px solid var(--purple-border);background:var(--purple-bg);border-radius:0 8px 8px 0;padding:0.75rem 1rem;margin:0.85rem 0;}
+.case-note .cn-title{font-size:13px;font-weight:600;color:var(--purple-text);margin-bottom:4px;}
+.case-note p{font-size:13px;line-height:1.65;color:var(--text);margin:0;}
+
+/* element-style rows (mandatory/permissive) */
+.el-row{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px;}
+.el-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+
+/* inference example cards */
+.inf-card{background:var(--card-bg);border:0.5px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:0.75rem;}
+.inf-flow{display:flex;align-items:center;gap:9px;font-size:13.5px;font-weight:500;margin-bottom:8px;flex-wrap:wrap;}
+.inf-flow .arrow{color:var(--text-sub);font-weight:400;}
+.inf-verdict{display:inline-block;font-size:11px;font-weight:500;padding:2px 8px;border-radius:8px;margin-top:8px;}
 
 #nav-arrows { position: fixed; top: 1.5rem; left: 1.5rem; display: flex; gap: 8px; z-index: 1000; }
 .action-btn { background: var(--card-bg); border: 1px solid var(--border); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.2s ease; z-index: 1000; text-decoration: none; padding: 0; }
@@ -78,6 +112,7 @@ h4{font-size:13px;font-weight:500;margin:1.1rem 0 0.4rem;color:var(--purple-text
 #nav-arrows { left: 5.5rem !important; }
 body { padding-top: 5.75rem !important; }
 @media(max-width:640px){ body { padding-top: 6.25rem !important; } }
+@media(max-width:500px){.toc-grid{grid-template-columns:1fr;}}
 @media print { .menu-toggle, #sidebar, #sidebar-scrim { display: none !important; } }
 </style>
 </head>
@@ -93,7 +128,7 @@ body { padding-top: 5.75rem !important; }
     <a href="../index.html" class="sidebar-link">Home</a>
     <a href="../pages/case_guide.html" class="sidebar-link">Case guide - IRAC &amp; briefing</a>
     <div class="sidebar-title" style="margin-top:1.5rem;">Readings by class</div>
-    <a href="../pages/crimlaw_readings.html" class="sidebar-link">Criminal Law</a>
+    <a href="../pages/crimlaw_readings.html" class="sidebar-link active">Criminal Law</a>
     <a href="../pages/property_readings.html" class="sidebar-link">Property</a>
     <a href="../pages/torts_readings.html" class="sidebar-link">Torts</a>
     <a href="../pages/gateway_readings.html" class="sidebar-link">Gateway to Lawyering I</a>
@@ -123,78 +158,164 @@ body { padding-top: 5.75rem !important; }
   <svg id="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
 </button>
 
-<h1>Burdens of Proof &amp; Presumptions</h1>
-<p class="subtitle">Part II, Proving Crimes &middot; Pleading, production &amp; persuasion, presumptions &amp; inferences &mdash; with class discussion notes</p>
-<div><span class="tag tag-amber">Criminal Law &middot; Assigned Reading</span></div>
-
-<div class="section" style="margin-top:1.5rem;">
-<div class="info-box">This page expands on Part II of <a href="crimlaw_process_reading.html" style="color:var(--info-text);font-weight:500;">The Criminal Justice Process</a> reading, which introduces the three burdens at a survey level. Everything here is rewritten in original language, not copied from any casebook or treatise; case holdings and statutory citations are reproduced because they're facts, not protected expression. Section VII below responds to my own discussion questions on this material, reconstructed in carnet's voice rather than pasted verbatim from where they were first drafted &mdash; if I want the original phrasing folded in exactly, the fix is to drop that text back in and have it merged.</div>
-</div>
+<span class="tag tag-amber">Criminal Law &middot; Study Guide</span>
+<h1>Burdens of Proof</h1>
+<p class="subtitle">A working-through of the life cycle of a criminal case and the mechanics of proving crimes &mdash; reorganized from the assigned reading and answered against my own discussion questions, for my own review.</p>
 
 <div class="section">
-<p class="section-title"><span class="num">I.</span> Why &ldquo;Proof&rdquo; Splits Into Three</p>
-<p class="written">When the process reading described trial as carrying &ldquo;a prosecution burden of proof beyond a reasonable doubt,&rdquo; it compressed a lot of doctrine into one phrase. In practice, &ldquo;burden of proof&rdquo; isn't one requirement &mdash; it's three distinct burdens, each asking a different question, each allocated between prosecution and defense by different rules, and each capable of shifting in ways that change how a trial actually plays out. The <strong>burden of pleading</strong> asks who has to raise an issue in the first place. The <strong>burden of production</strong> asks whether enough evidence exists for that issue to legitimately reach the jury at all. The <strong>burden of persuasion</strong> asks how convinced the jury has to be once the issue is there. A related doctrine &mdash; presumptions and inferences &mdash; governs how a jury is allowed to reason its way from one proven fact to another. This page works through all four in the depth the survey version skipped.</p>
+<div class="info-box">This is a personal study guide, not the assigned PDF pages. Section I works through three of my own discussion questions on the life cycle of a case &mdash; the reading itself covers proof, not the life cycle, so these answers draw on general criminal-law and procedure theory rather than the excerpt. Section II reorganizes the assigned reading on proof by burden, folding the case law in where it belongs rather than leaving it as footnotes. Read the actual assigned pages too.</div>
+
+<div class="card" style="margin-bottom:0;">
+<p class="toc-label">Contents</p>
+<div class="toc-grid">
+<div>
+<p style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">I. Life cycle of a case</p>
+<a href="#q1" class="toc-link">Non-reporting &amp; theory</a>
+<a href="#q2" class="toc-link">Where to limit discretion</a>
+<a href="#q3" class="toc-link">Plea bargaining, 95%+</a>
+</div>
+<div>
+<p style="font-size:12px;font-weight:500;color:var(--text);margin-bottom:4px;">II. Proving crimes</p>
+<a href="#glance" class="toc-link">At a glance</a>
+<a href="#pleading" class="toc-link">Burden of pleading</a>
+<a href="#production" class="toc-link">Burden of production</a>
+<a href="#persuasion" class="toc-link">Burden of persuasion</a>
+<a href="#shifting" class="toc-link">Shifting the burden?</a>
+<a href="#presumptions" class="toc-link">Presumptions &amp; inferences</a>
+</div>
+</div>
+</div>
 </div>
 
-<div class="section">
-<p class="section-title"><span class="num">II.</span> The Burden of Pleading</p>
-<p class="written">The burden of pleading is the most basic of the three: the obligation to put an issue into the case formally, on the record, before either side has to prove anything about it. For every element of the charged offense, that burden sits with the state &mdash; the prosecution has to specify, in the charging document, exactly what it claims the defendant did, because a defendant is constitutionally entitled to know the accusation before defending against it. The defendant, by contrast, generally carries the burden of pleading for affirmative defenses: self-defense, duress, insanity, entrapment, and similar doctrines. If a defendant wants the jury to consider self-defense, it's the defendant &mdash; not the prosecution &mdash; who has to raise it, typically through a pretrial notice requirement or by putting on evidence at trial that fairly puts the issue in play.</p>
-<p class="written">This isn't just a formality. Without a pleading burden on the defense, the prosecution would have to anticipate and preemptively negate every conceivable defense just to file a valid charge, which would make charging documents unworkable in practice.</p>
+<div class="section" id="life-cycle">
+<p class="section-title"><span class="num">I.</span> Life cycle of a criminal case</p>
+<p class="written">Your reading covered proof, not the life cycle of a case &mdash; these three are your own discussion questions. The answers below draw on general criminal-law and procedure theory rather than the excerpt.</p>
+
+<div class="card" id="q1">
+<p class="q-label">Q1</p>
+<p class="card-title">Many crimes are never reported or prosecuted &mdash; does this matter for utilitarianism? For retributivism?</p>
+<p class="written">For a utilitarian, it matters quite directly. Deterrence theory works through a rough expected-cost calculation: a rational offender discounts the threatened punishment by the probability of being caught and punished at all. If huge swaths of offending are never reported or charged, that probability is low, general deterrence is diluted, and &mdash; on classic Beccaria-style reasoning &mdash; the state can only recover the deterrent effect by ratcheting up the severity of punishment for the cases it does catch, which is its own cost. Underenforcement can also blunt law's expressive or norm-shaping function: people learn, correctly, that a given crime mostly goes unpunished, which erodes voluntary compliance quite apart from any deterrence math. And because utilitarian punishment is supposed to be justified by its social benefit, resources spent prosecuting the small, arbitrary slice of crime that happens to get reported may not be the allocation that maximizes welfare.</p>
+<p class="written">For a retributivist, the core commitment &mdash; punishment proportionate to an individual offender's desert &mdash; is in principle untouched by what happens to everyone else. What a given defendant deserves doesn't depend on how many similarly culpable people got away with it. But this exposes a real fairness problem inside retributivism itself: its own logic demands treating like cases alike, and if punishment turns almost entirely on the accident of who got reported or caught, similarly culpable offenders end up punished wildly unequally for reasons that have nothing to do with desert. That's a genuine tension worth pressing on in class &mdash; retributivism can shrug off aggregate underenforcement more easily than utilitarianism can, but it has a harder time shrugging off the arbitrariness of who ends up in the punished slice.</p>
 </div>
 
-<div class="section">
-<p class="section-title"><span class="num">III.</span> The Burden of Production</p>
-<p class="written">Once an issue has been pleaded, the burden of production asks a narrower, more mechanical question: has enough evidence actually come in for the issue to go to the jury, or is it thin enough that a judge should resolve it as a matter of law instead? For every element of the offense, the prosecution always carries this burden &mdash; and that burden persists even after a defendant raises a defense like alibi, mistake of fact, or mental illness, because those defenses typically work by negating an element the prosecution must prove in the first place. An alibi defense, for instance, isn't really a separate defense so much as a direct denial of the identity element; once it's raised, the prosecution still has to produce enough evidence on identity to survive.</p>
-<p class="written">The constitutional floor for how thin is too thin comes from <em>Jackson v. Virginia</em>, 443 U.S. 307 (1979): an appellate court must reverse a conviction if, viewing the evidence in the light most favorable to the prosecution, no rational trier of fact could have found the essential elements of the crime beyond a reasonable doubt. That's a highly deferential standard &mdash; it doesn't ask whether the reviewing judges themselves would have voted to convict, only whether some rational jury plausibly could have.</p>
-<p class="written">For the narrower category of defenses the Model Penal Code specifically labels &ldquo;affirmative defenses&rdquo; under MPC &sect; 1.12(2)&ndash;(3) &mdash; involuntary intoxication, duress, obedience to military orders, the justification defenses, insanity, and renunciation of criminal purpose &mdash; the production burden shifts onto the defendant. Everything outside that specific, closed list stays on the prosecution. A drafter can't quietly shift the production burden onto a defendant just by calling something a &ldquo;defense&rdquo; in casual language; under the MPC's own framework, the burden only shifts for the defenses expressly enumerated.</p>
+<div class="card" id="q2">
+<p class="q-label">Q2</p>
+<p class="card-title">If police or prosecutorial discretion should be limited, at what stage should that happen?</p>
+<p class="written">Discretion isn't a single choke point &mdash; it's exercised in sequence: whether police stop or investigate, whether to arrest, whether the prosecutor files charges at all (and which ones), whether to offer a plea and on what terms, and finally what the judge does at sentencing. Courts have historically been most protective of prosecutorial charging discretion specifically &mdash; it's treated as close to a core executive function and is rarely subject to judicial review (a defendant challenging a charging decision as selective or vindictive faces a steep burden). Police discretion at the stop-and-arrest stage is comparatively more constrained, at least on paper, by Fourth Amendment doctrine (reasonable suspicion, probable cause).</p>
+<p class="written">The harder point for discussion is that constraining discretion at one stage tends to relocate it rather than eliminate it. A mandatory-arrest policy (as in many domestic-violence statutes) removes police discretion at the arrest stage, but the prosecutor still decides whether to charge, and that decision becomes correspondingly more consequential and less visible. The same is true of mandatory-minimum sentencing statutes, which were meant to cabin judicial discretion at sentencing but are widely understood to have shifted the real bargaining power to prosecutors, who now control outcomes through the charging decision itself. So the honest answer to "at what stage" is less about picking the right stage and more about recognizing that discretion is conserved across the system &mdash; the live question is which actor you trust most (or can best hold accountable) to exercise it, not how to make it disappear.</p>
 </div>
 
-<div class="section">
-<p class="section-title"><span class="num">IV.</span> The Burden of Persuasion</p>
-<p class="written">The burden of persuasion is what most people actually mean by &ldquo;proof beyond a reasonable doubt&rdquo; &mdash; it measures how convinced the factfinder has to be before convicting, not merely whether some evidence exists. <em>In re Winship</em>, 397 U.S. 358 (1970), constitutionalized this requirement: due process forbids convicting a defendant on anything less than proof beyond a reasonable doubt as to every element of the offense.</p>
-<p class="written"><em>Winship</em>'s hard edge case is what actually counts as an &ldquo;element.&rdquo; Because a legislature can often describe the same underlying fact either as an element the state must disprove, or as a mitigating or affirmative-defense fact the defendant must prove, the label a legislature chooses can functionally reallocate who has to convince whom of what, without changing the substance of the crime at all. <em>Mullaney v. Wilbur</em>, 421 U.S. 684 (1975), and <em>Patterson v. New York</em>, 432 U.S. 197 (1977), show how differently this can come out on similar facts. Maine's murder statute defined malice aforethought in a way that heat-of-passion provocation directly negated, so <em>Mullaney</em> held the prosecution had to disprove provocation beyond a reasonable doubt &mdash; provocation wasn't a separate mitigating circumstance, it was functionally the absence of an element. New York's &ldquo;extreme emotional disturbance&rdquo; mitigation, by contrast, was drafted as a free-standing affirmative defense that didn't negate any element of the murder charge, so <em>Patterson</em> upheld New York's choice to place the burden of proving it on the defendant. The two cases reach opposite results on strikingly similar underlying facts, and the line between them &mdash; is this fact really an element in substance, or genuinely just a mitigation &mdash; remains one of the most heavily litigated interpretive questions in the area.</p>
-<p class="written">Insanity gets its own separate carve-out entirely. <em>Leland v. Oregon</em>, 343 U.S. 790 (1952), and <em>Rivera v. Delaware</em>, 429 U.S. 877 (1976) (summarily affirming a similar rule), both allow a state to place the full burden of persuasion for insanity on the defendant, even though insanity plainly bears on culpability in a way that looks a great deal like it should be the state's burden to disprove. The doctrinal justification is that insanity, unlike <em>Mullaney</em>'s provocation, doesn't negate any element of the crime as historically defined &mdash; a legally insane defendant still acted with the technical mens rea the offense requires; the law simply excuses that conduct separately, rather than treating the insanity as evidence the mens rea was never actually present. Whether that's a principled distinction or a convenient one is worth sitting with (see Section VII below).</p>
-<p class="written">The Model Penal Code takes a more categorically defendant-protective position than the Constitution actually requires: MPC &sect; 1.12(1) puts the burden of proving every element beyond a reasonable doubt on the prosecution, and MPC &sect; 1.13(9) defines &ldquo;element&rdquo; broadly enough to sweep in most of the facts that determine either guilt or the grade of the offense &mdash; leaving a legislature drafting under the MPC's own framework far less room to relabel an element as a mitigation purely to shift the burden.</p>
+<div class="card" id="q3" style="margin-bottom:0;">
+<p class="q-label">Q3</p>
+<p class="card-title">95%+ of cases are plea bargained &mdash; is that important? Is it bad?</p>
+<p class="written">It's important almost by definition: if the overwhelming majority of "criminal law" as actually practiced happens in negotiation rather than at trial, then most of what a course like this teaches &mdash; burdens of proof, jury-trial rights, rules of evidence &mdash; describes the shadow those doctrines cast over bargaining, not what actually resolves most cases. Plea bargains are typically struck in the shadow of an anticipated trial outcome (a strong prosecution case commands a harsher plea; a weak one, a lighter one), so the doctrine still matters, just indirectly, as leverage rather than as the mechanism of decision itself.</p>
+<p class="written">Whether that's bad is genuinely contested, and reasonable people land in different places. The case against it: an innocent defendant facing a severe "trial penalty" (a much harsher sentence if convicted after trial than if he pleads) can be rationally pressured into pleading guilty regardless of actual guilt; bargaining power is wildly unequal between well-resourced prosecutors and overworked defense counsel; plea negotiations are largely invisible and unreviewable compared to public trials; and a jury &mdash; the constitutional check on prosecutorial power &mdash; never gets involved. The case for it, or at least for tolerating it: courts and public defender offices are resourced for nothing close to a world where even a fifth of cases go to trial, so wholesale abolition of plea bargaining without a matching investment in trial capacity would likely just produce worse delay and more pretrial detention; it lets both sides price in genuine uncertainty about how a trial would go; and it can produce individualized outcomes (charge or sentence concessions) that a rigid trial verdict wouldn't. Both threads are worth holding at once rather than resolving too quickly.</p>
+</div>
 </div>
 
-<div class="section">
-<p class="section-title"><span class="num">V.</span> Presumptions &amp; Permissive Inferences</p>
-<p class="written">A related and easily confused doctrine governs how a judge may instruct the jury to move from a fact the prosecution has proved to a further fact it hasn't directly proved. A <strong>mandatory presumption</strong> tells the jury it <em>must</em> find fact B once fact A is proved &mdash; effectively removing the second fact from the jury's independent judgment and, in substance, shifting the burden of persuasion away from the prosecution. <em>Sandstrom v. Montana</em>, 442 U.S. 510 (1979), struck down exactly this kind of instruction, where a jury was told a person &ldquo;is presumed to intend&rdquo; the ordinary consequences of their voluntary acts; because intent was an element of the crime, an instruction that presumed it away from the jury's independent finding violated <em>Winship</em> directly.</p>
-<p class="written">A <strong>permissive inference</strong> is different in kind, not just in degree: it tells the jury it <em>may</em>, but is not required to, infer fact B from fact A, leaving the ultimate call to the jury's own judgment. <em>County Court of Ulster County v. Allen</em>, 442 U.S. 140 (1979), upheld a permissive inference of this kind &mdash; that occupants of a car may be presumed to possess a gun found inside it &mdash; so long as, on the facts of the specific case before the jury, the presumed fact more likely than not actually follows from the proved fact. That's a rational-connection test applied to the case at hand, not to the inference in the abstract; the same inference can be constitutional on one record and not on another. The Model Penal Code codifies the same basic standard for permissive presumptions under MPC &sect; 1.12(5)&ndash;(6). The upshot: the exact same underlying logical move &mdash; reasoning from one fact to another &mdash; is constitutional or not almost entirely based on whether the instruction leaves the inference optional.</p>
+<div class="section" id="proving">
+<p class="section-title"><span class="num">II.</span> Proving crimes</p>
+<p class="written">This is the reorganized content from the reading, restated by burden, with the case law folded in where it belongs rather than left as footnotes.</p>
+
+<h3 id="glance"><span class="tag tag-gray" style="margin:0;">Ref</span> Three burdens, at a glance</h3>
+<p class="written" style="font-size:13px;color:var(--text-muted);margin-bottom:0.75rem;">Quick comparison &mdash; use this to orient, then read the sections below for the reasoning.</p>
+<div class="cmp-wrap">
+<table class="cmp">
+<thead><tr><th>Burden</th><th>What it decides</th><th>Standard</th><th>Who checks it</th><th>If unmet</th></tr></thead>
+<tbody>
+<tr><td>Pleading</td><td>Whether an issue is in the case at all</td><td>Low &mdash; just requires raising it, timely &amp; properly</td><td>Parties themselves / court rules on timeliness</td><td>Issue is waived &mdash; no evidence on it allowed later</td></tr>
+<tr><td>Production</td><td>Whether an issue gets to the jury</td><td>Enough evidence that a rational fact-finder could find for the burdened party (<em>Jackson v. Virginia</em> floor)</td><td>Trial judge, as a matter of law</td><td>Element unmet &rarr; judgment of acquittal. Defense unmet &rarr; no jury instruction on it</td></tr>
+<tr><td>Persuasion</td><td>Whether the jury actually finds for that party</td><td>Beyond reasonable doubt (elements); preponderance or clear-and-convincing (defendant-borne defenses)</td><td>Jury (or fact-finding judge), as a matter of fact</td><td>Doubt on any element &rarr; acquittal, even if the jury thinks it "probably" true</td></tr>
+</tbody>
+</table>
 </div>
 
-<div class="section">
-<p class="section-title"><span class="num">VI.</span> A Sentencing Postscript</p>
-<p class="written">The same beyond-a-reasonable-doubt logic eventually reached sentencing. <em>Apprendi v. New Jersey</em>, 530 U.S. 466 (2000), held that any fact &mdash; other than a prior conviction &mdash; that increases a sentence beyond the statutory maximum otherwise authorized by the jury's verdict must itself be submitted to a jury and proved beyond a reasonable doubt, not simply found by a judge at sentencing on a lower standard. <em>United States v. Booker</em>, 543 U.S. 220 (2005), extended that logic specifically to the federal sentencing guidelines: because the guidelines were mandatory, a judge finding sentencing facts by a mere preponderance of the evidence, in order to push a sentence above what the jury's actual verdict alone would support, violated the Sixth Amendment. Rather than strike the guidelines down outright, the Court's remedy made them advisory rather than mandatory &mdash; judges still calculate and consider the guideline range, but are no longer bound by it, which lets judge-found facts inform a sentence without constitutionally requiring jury findings or a heightened standard of proof for every fact that pushes a sentence upward.</p>
+<h3 id="pleading"><span class="rank">A</span> Burden of pleading</h3>
+<p class="eyebrow">What</p>
+<p class="written">The obligation to raise an issue in the first place &mdash; sometimes called the burden of going forward. It takes very little evidence; it's a notice function, not a proof function.</p>
+<p class="eyebrow">Who</p>
+<p class="written">The state bears it for every element of the offense (they must appear in the charging instrument). The defendant usually bears it for issues of defense &mdash; including, notably, defenses that operate by negating an element. Mental illness offered to negate culpability still has to be raised in a timely, proper way, or the defendant may be barred from offering evidence of it later, even though it bears on an element the state must otherwise prove.</p>
+<p class="eyebrow">Why</p>
+<p class="written">Notice and administrability: the system needs to know before trial what's actually contested, and much of the factual basis for a defense (what set the defendant off, his mental state, his whereabouts) is peculiarly within the defendant's own knowledge &mdash; he's the party positioned to flag it.</p>
+
+<h3 id="production"><span class="rank">B</span> Burden of production</h3>
+<p class="eyebrow">What</p>
+<p class="written">Once pleading is satisfied, this sets how much evidence a party must put on to get the issue in front of the jury at all. It's a legal threshold assessed by the judge &mdash; not a question of whether the jury will actually be convinced.</p>
+<p class="eyebrow">Who</p>
+<p class="written">The prosecution always carries it for every offense element, including when the defendant's own evidence (alibi, mistake, mental illness) tends to suggest an element is missing &mdash; the state still has to show sufficient evidence exists for that element regardless. The defendant may carry it for non-element defense issues. Many jurisdictions, following the Model Penal Code, push the production burden for most defenses onto the prosecution too, reserving the defendant's burden of production for what the Code specifically labels affirmative defenses.</p>
+<p class="eyebrow">Why</p>
+<p class="written">It's the gatekeeping function that keeps genuinely unsupported claims &mdash; on either side &mdash; away from the jury, while still letting anything a rational fact-finder could credit go forward.</p>
+
+<div class="case-note">
+<p class="cn-title">Jackson v. Virginia (1979)</p>
+<p>Provides the constitutional floor: a conviction must be reversed if, viewing the evidence in the light most favorable to the prosecution, no rational trier of fact could have found guilt beyond a reasonable doubt. If the prosecution's evidence can't clear that bar, the case should never have gone to the jury &mdash; i.e., the prosecution failed its burden of production.</p>
 </div>
 
-<div class="section">
-<p class="section-title"><span class="num">VII.</span> Discussion Notes &mdash; Proving Crimes</p>
+<p class="written">If the prosecution fails its production burden on any element, the judge enters a judgment of acquittal outright. If the prosecution has the production burden to disprove a defense and fails, the jury simply gets instructed on that defense (the judge doesn't decide it for them). If the defendant fails a production burden he carries, the defense doesn't reach the jury at all &mdash; no instruction, no consideration.</p>
+<p class="written">Pleading vs. production, precisely: pleading is the first procedural step &mdash; asserting that an issue exists. Production is a separate, higher bar &mdash; actually backing that assertion with evidence sufficient to justify letting the fact-finder decide it. A defendant can satisfy pleading (properly raise a defense) and still fail production (offer no real evidence, or have it undercut by the prosecution's contrary evidence) &mdash; in which case the defense never reaches the jury despite having been properly raised.</p>
 
-<h3>Should the persuasion burden shift for manslaughter mitigation and insanity?</h3>
-<p class="written">Two of the doctrines above rest on a real policy choice: <em>Patterson</em> lets a state place the burden of disproving mitigation &mdash; extreme emotional disturbance, or heat-of-passion provocation under most modern manslaughter statutes &mdash; on the defendant, and <em>Leland</em> does the same for insanity. Should it be this way, or would a rule closer to <em>Mullaney</em>'s, requiring the prosecution to disprove these facts beyond a reasonable doubt, better serve the values <em>Winship</em> is protecting?</p>
-<p class="written">The case for <em>Patterson</em>'s approach is partly practical. Evidence bearing on a defendant's subjective emotional state at the moment of a killing often sits almost entirely in the defendant's own hands &mdash; their own account, their own witnesses, their own history with the victim. Requiring the state to affirmatively disprove that kind of claim beyond a reasonable doubt, for every homicide prosecution, risks making mitigation available almost automatically: a defendant could assert emotional disturbance, and the state would struggle to disprove a subjective mental state it has no direct access to. There's also a legislative-line-drawing argument: a state legislature that wants to define murder narrowly and treat everything else as a lesser offense subject to mitigation is doing ordinary legislative work, and <em>Patterson</em> gives it room to do that without every drafting choice becoming a constitutional question.</p>
-<p class="written">The case against it, sharpened by Justice Powell's dissent in <em>Patterson</em> itself, is that this reasoning proves too much. If the &ldquo;real&rdquo; distinction between murder and manslaughter is functionally the presence or absence of provocation &mdash; which, as a matter of substantive criminal law, it usually is &mdash; then letting a legislature relabel that distinction as a defendant's mitigation burden rather than the state's element lets it evade <em>Winship</em>'s core protection through drafting alone. A defendant facing a murder conviction is at much greater risk from an erroneous finding than the beyond-a-reasonable-doubt standard is generally understood to guard against, and that asymmetry doesn't disappear just because the state chose favorable statutory language.</p>
-<p class="written">Insanity complicates the picture further, because it isn't really analogous to <em>Mullaney</em>'s provocation in the first place. A legally insane defendant typically still acted with the technical mens rea the offense requires &mdash; they intended to pull the trigger, they knew the gun was loaded &mdash; so insanity doesn't negate an element the way provocation negated Maine's malice-aforethought element. That weakens the argument for treating it as functionally an element under a <em>Mullaney</em>-style analysis. But it doesn't fully answer the objection, because criminal law's underlying justification for punishment is personal moral blameworthiness, not the mechanical presence of a mental-state word in a statute, and a genuinely insane defendant may lack exactly the kind of blameworthiness the whole system is supposed to require &mdash; regardless of which box the doctrine files that lack of blameworthiness into. There's no doctrinally required answer here beyond the constitutional floor <em>Patterson</em> and <em>Leland</em> set; the underlying tension &mdash; formal, label-based rules that are predictable and deferential to legislatures, against substance-based rules that are more protective of defendants but harder to administer &mdash; is one worth watching for across the rest of the semester, not just here.</p>
+<h3 id="persuasion"><span class="rank">C</span> Burden of persuasion</h3>
+<p class="eyebrow">What</p>
+<p class="written">Once an issue is actually before the jury, this tells the jury which side has to convince it, and how firmly. Absent persuasion, the default finding goes to the un-burdened party.</p>
+<p class="eyebrow">Who</p>
+<p class="written">The prosecution always carries it for every element &mdash; and carries it heavily: beyond a reasonable doubt. If a reasonable doubt survives on even one element, the jury must acquit, even if it thinks that element is "probably" satisfied. The prosecution often also carries it to disprove certain defenses (justification defenses, commonly). The defendant sometimes carries it &mdash; classically for insanity &mdash; but typically at a lighter standard: preponderance of the evidence, or clear-and-convincing.</p>
+<p class="eyebrow">Why</p>
+<p class="written">It encodes the system's tolerance for error. Making the state prove every element beyond a reasonable doubt reflects a deliberate asymmetry &mdash; wrongful convictions are treated as far worse than wrongful acquittals. Where the defendant carries persuasion on a narrower defense issue, the stakes and knowledge asymmetry are judged different enough to justify a lighter standard and a different bearer.</p>
 
-<h4>Evaluating permissive inferences</h4>
-<p class="written">The &ldquo;more likely than not, on these facts&rdquo; test from <em>Ulster County</em> is easy to state and genuinely hard to apply consistently. Three commonly tested examples, run through that test:</p>
-
-<div class="example-card">
-<p class="claim">Possession of recently stolen property permits an inference that the possessor knew it was stolen.</p>
-<p class="eval">Generally upheld (see <em>Barnes v. United States</em>, 412 U.S. 837 (1973)). Unexplained possession shortly after a theft has a genuinely strong logical connection to knowledge &mdash; most people who end up holding property stolen days ago either stole it themselves or have some reason to suspect its origin. But the qualifiers do real work: the inference weakens the further out from the theft the possession is, and it weakens further still if the defendant offers a plausible innocent explanation. This is a fact-bound inference dressed up as a categorical rule, exactly the way <em>Ulster County</em> contemplates.</p>
+<div class="case-note">
+<p class="cn-title">In re Winship (1970)</p>
+<p>The prosecution must prove beyond a reasonable doubt every fact necessary to constitute the charged crime. This is the constitutional anchor for everything below.</p>
 </div>
 
-<div class="example-card">
-<p class="claim">Flight from the scene of a crime permits an inference of consciousness of guilt.</p>
-<p class="eval">Courts allow it, but it's a much shakier inference than it sounds. Innocent people flee crime scenes for reasons that have nothing to do with guilt &mdash; fear of being wrongly blamed, distrust of police, an unrelated outstanding warrant, simple panic. Whether flight is &ldquo;more likely than not&rdquo; probative of guilt depends heavily on facts that rarely make it into the jury instruction itself (how soon after the crime, in what direction, toward what), which is exactly why defense counsel routinely and often successfully attacks flight instructions rather than treating them as settled.</p>
+<p class="written">Persuasion vs. production, precisely: production is a legal question for the judge &mdash; "could a rational fact-finder go either way on this." Persuasion is a factual question for the jury itself &mdash; "are we actually convinced." An issue can clear the production bar easily and still be lost on persuasion if the jury simply isn't convinced to the required degree.</p>
+
+<h3 id="shifting"><span class="rank">D</span> Can the persuasion burden be shifted to the defendant?</h3>
+<p class="written">Sometimes &mdash; but the line the Supreme Court has drawn turns almost entirely on how a state defines the crime, which is itself worth interrogating.</p>
+
+<div class="case-note">
+<p class="cn-title">Mullaney v. Wilbur (1975)</p>
+<p>Under Maine's murder statute, the absence of provocation was treated as part of "malice aforethought" &mdash; functionally an element. So the state could not put the burden of disproving provocation onto the defendant; that would let a defendant be convicted of murder without the state proving an element beyond a reasonable doubt, violating <em>Winship</em>.</p>
+</div>
+<div class="case-note">
+<p class="cn-title">Patterson v. New York (1977)</p>
+<p>New York's "extreme emotional disturbance" doctrine covered similar ground to provocation, but New York defined it as an independent mitigating doctrine &mdash; not something that negates an offense element, but a separate reason to punish a killing as a lesser degree of murder. Because it wasn't framed as negating an element, the state could constitutionally put the burden of proving it (by preponderance) on the defendant.</p>
 </div>
 
-<div class="example-card">
-<p class="claim">Presence at the scene of a crime, without more, permits an inference of participation.</p>
-<p class="eval">This one generally fails the rational-connection test standing alone. Mere presence is a weak logical predicate for guilt &mdash; bystanders are present at crimes constantly, and treating presence itself as evidence of participation would sweep in a great many people whose only fault was bad timing. Courts typically require something more &mdash; encouragement, assistance, a legal duty to intervene &mdash; before presence becomes probative of anything. An instruction that let bare presence trigger even a permissive inference of participation would likely not survive <em>Ulster County</em> scrutiny in most fact patterns.</p>
+<p class="written">Read together, <em>Mullaney</em> and <em>Patterson</em> reach opposite results for substantively similar mitigation, purely because of how each legislature chose to draft the statute &mdash; as an element (<em>Mullaney</em>) versus as a freestanding affirmative doctrine (<em>Patterson</em>). The Court has never supplied a cleaner test than that formal distinction, which is a fair target for criticism: from the defendant's perspective, the practical stakes (murder versus manslaughter-level punishment) are identical either way, so it's uncomfortable that due-process protection turns on legislative labeling rather than on what's actually at stake for the defendant.</p>
+
+<div class="case-note">
+<p class="cn-title">Sandstrom v. Montana (1979)</p>
+<p>Struck down a jury instruction that "the law presumes a person intends the ordinary consequences of his voluntary acts" as an unconstitutional mandatory presumption &mdash; it had the practical effect of shifting the persuasion burden on intent to the defendant.</p>
 </div>
 
+<p class="written">Insanity has long been treated as squarely on the <em>Patterson</em> side of the line: states may constitutionally place the burden of persuasion for insanity on the defendant (by preponderance or clear-and-convincing evidence), because &mdash; at least where a jurisdiction defines it as an excuse rather than as negating mens rea &mdash; it more closely resembles EED than it resembles the provocation-as-malice-element structure in <em>Mullaney</em>.</p>
+<p class="written">Would we want to shift it, as a policy matter? For manslaughter-style mitigation, the case for shifting rests on administrability: the facts of provocation or emotional disturbance are largely subjective and internal to the defendant, so requiring the prosecution to disprove them on demand in every homicide risks making the exception easy to invoke opportunistically. The case against shifting is the formalism problem above &mdash; a defendant facing the functional choice between a murder and a manslaughter sentence probably shouldn't have his due-process protection depend on which side of an essentially cosmetic drafting line his state happened to land on. For insanity, the case for shifting rests on sanity being the ordinary, presumed condition of people generally, and on the defendant typically having far better access to evidence about his own mental state and history. The case against it is that the stakes (potentially lengthy institutional confinement, and a judgment about whether the defendant is a fit subject for moral blame at all) are severe enough that the same "better to risk acquitting the guilty than convicting the blameless" logic underlying <em>Winship</em> arguably ought to apply here too &mdash; though the Court, in <em>Leland v. Oregon</em> and again via <em>Patterson</em>, has consistently declined to extend <em>Winship</em> that far.</p>
+
+<h3 id="presumptions"><span class="rank">E</span> Presumptions and inferences</h3>
+<div class="el-row"><div class="el-dot" style="background:var(--coral-border);"></div><div style="font-size:13px;line-height:1.6;"><strong style="font-weight:500;">Mandatory &mdash;</strong> directs (or could reasonably be read by the jury as directing) the jury to find the presumed fact once the predicate fact is proved. Unconstitutional &mdash; it functionally relieves the state of its <em>Winship</em> burden on an element (<em>Sandstrom</em>, above).</div></div>
+<div class="el-row" style="margin-bottom:0;"><div class="el-dot" style="background:var(--teal-border);"></div><div style="font-size:13px;line-height:1.6;"><strong style="font-weight:500;">Permissive &mdash;</strong> tells the jury it may, but is not required to, find the presumed fact from the predicate fact. Constitutional so long as the presumed fact more likely than not actually follows from the predicate fact, as a matter of everyday reality &mdash; the rational-connection test.</div></div>
+
+<p class="written" style="margin-top:1rem;">What they actually do, evidentiarily: a valid permissive inference can serve two distinct jobs at once, which the Model Penal Code makes explicit. First, a production job &mdash; proof of the predicate fact can itself be enough to satisfy the proponent's burden of production on the presumed fact, so the issue reaches the jury at all (unless the record as a whole clearly negates the presumed fact). Second, a persuasion job &mdash; once the issue is with the jury, the court can tell the jury it's entitled to treat the predicate fact as sufficient evidence of the presumed fact, while still making clear the presumed fact must ultimately be found beyond a reasonable doubt on the whole record, not just on the inference alone.</p>
+
+<h4>Are these inferences actually sound?</h4>
+
+<div class="inf-card">
+<div class="inf-flow">body found in state <span class="arrow">&rarr;</span> death occurred in state</div>
+<p class="written">Sensible, and low-stakes by design: it's typically used for venue, not for an offense element, so it only has to clear the lower standard venue is usually held to (preponderance), not beyond a reasonable doubt. As ordinary experience, bodies aren't usually moved far after death, so the correlation is real. The inference is sound largely because it's been aimed at a low-stakes issue &mdash; it would be much shakier if a jurisdiction tried to use it to establish a genuine element of the offense.</p>
+<span class="inf-verdict tag-teal" style="background:var(--teal-bg);color:var(--teal-text);">Sound for venue</span>
+</div>
+
+<div class="inf-card">
+<div class="inf-flow">dealer buys stolen goods in bulk, or far under value <span class="arrow">&rarr;</span> dealer knows they're stolen</div>
+<p class="written">Reasonably sound, but its strength comes specifically from the "dealer" premise. A dealer has trade expertise, so red flags like a suspiciously low price or an unusual pattern of acquisition are far more diagnostic for a dealer than they would be for an ordinary one-off buyer &mdash; a naive consumer buying a single item cheaply doesn't carry nearly the same inferential weight. The inference is well-tailored precisely because it's scoped to people whose specialized knowledge makes ignorance implausible.</p>
+<span class="inf-verdict tag-teal" style="background:var(--teal-bg);color:var(--teal-text);">Sound as scoped to dealers</span>
+</div>
+
+<div class="inf-card" style="margin-bottom:0;">
+<div class="inf-flow">D knows serial number was defaced/removed <span class="arrow">&rarr;</span> D knows item is stolen</div>
+<p class="written">This is the strongest of the three. Legitimately acquired goods essentially never have their serial numbers defaced &mdash; there's no innocent reason to do it &mdash; so once a defendant is shown to actually know about the defacement, the inference to guilty knowledge is well grounded in ordinary experience. Worth noting precisely what has to be proved first: not just that the item happens to be defaced, but that the defendant knew it was &mdash; the inference does its work only after that predicate is independently established.</p>
+<span class="inf-verdict tag-teal" style="background:var(--teal-bg);color:var(--teal-text);">Strong, once predicate knowledge is shown</span>
+</div>
 </div>
 
 <div class="section" style="text-align:center; margin-top:2rem;">
